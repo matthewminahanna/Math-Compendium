@@ -1,0 +1,110 @@
+\begin{example}\label{example: average velocity 1}
+Suppose the distance you have traveled (as a function of time) is given by \( y = t^2 \). What is your average velocity between \( t = 1 \) second and \( t = 3 \) seconds?
+
+At time \( t = 1 \), you have traveled \( y = 1^2 = 1 \) unit, and at \( t = 3 \), you have traveled \( y = 3^2 = 9 \) units. The average velocity over this time interval is
+\begin{align*}
+\text{average velocity} &= \frac{\Delta \text{distance}}{\Delta \text{time}} \\
+&= \frac{9 - 1}{3 - 1} \, \frac{\text{units}}{\text{second}} \\
+&= \frac{8}{2} \, \frac{\text{units}}{\text{second}} = 4 \, \frac{\text{units}}{\text{second}}.
+\end{align*}
+Therefore, the average velocity is
+\[
+\boxed{\text{average velocity} = 4 \, \frac{\text{units}}{\text{second}}}.
+\]
+
+Now suppose instead we want to find the average velocity between \( t = 1 \) second and \( t = 2 \) seconds.
+
+At time \( t = 2 \), the distance traveled is \( y = 2^2 = 4 \) units. Then the average velocity is
+\begin{align*}
+\text{average velocity} &= \frac{\Delta \text{distance}}{\Delta \text{time}} \\
+&= \frac{4 - 1}{2 - 1} \, \frac{\text{units}}{\text{second}} \\
+&= \frac{3}{1} \, \frac{\text{units}}{\text{second}} = 3 \, \frac{\text{units}}{\text{second}}.
+\end{align*}
+Therefore, the average velocity over this shorter interval is
+\[
+\boxed{\text{average velocity} = 3 \, \frac{\text{units}}{\text{second}}}.
+\]
+\end{example}
+
+
+\begin{example}\label{example: average velocity 2}
+Now suppose the distance you have traveled is given by \( y = t^3 + 1 \). If you start a timer at \( t_0 = 2 \) seconds and end the timer 3 seconds later, what is your average velocity over that period?
+
+The timer runs from \( t = 2 \) to \( t = 5 \). We compute the total change in distance over this interval:
+
+\[
+y(2) = 2^3 + 1 = 8 + 1 = 9, \quad y(5) = 5^3 + 1 = 125 + 1 = 126.
+\]
+
+Now compute the average velocity:
+
+\begin{align*}
+\text{average velocity} &= \frac{\Delta \text{distance}}{\Delta \text{time}} \\
+&= \frac{126 - 9}{5 - 2} \, \frac{\text{units}}{\text{second}} \\
+&= \frac{117}{3} \, \frac{\text{units}}{\text{second}} = 39 \, \frac{\text{units}}{\text{second}}.
+\end{align*}
+
+Therefore, the average velocity is
+\[
+\boxed{\text{average velocity} = 39 \, \frac{\text{units}}{\text{second}}}.
+\]
+
+Now suppose instead that the timer runs for only 1 second, from \( t = 2 \) to \( t = 3 \).
+
+We compute the change in distance over this shorter interval:
+
+\[
+y(2) = 2^3 + 1 = 9, \quad y(3) = 3^3 + 1 = 27 + 1 = 28.
+\]
+
+Then the average velocity is
+\begin{align*}
+\text{average velocity} &= \frac{\Delta \text{distance}}{\Delta \text{time}} \\
+&= \frac{28 - 9}{3 - 2} \, \frac{\text{units}}{\text{second}} \\
+&= \frac{19}{1} \, \frac{\text{units}}{\text{second}} = 19 \, \frac{\text{units}}{\text{second}}.
+\end{align*}
+
+Therefore, the average velocity over this shorter interval is
+\[
+\boxed{\text{average velocity} = 19 \, \frac{\text{units}}{\text{second}}}.
+\]
+\end{example}
+
+
+
+
+Given a function \( y = f(x) \) and two points on its graph, \( (a, f(a)) \) and \( (b, f(b)) \), we have two common approaches to finding the slope of the secant line connecting them. By taking an appropriate limit, we can then obtain the slope of the tangent line at a point.
+
+In the first approach—illustrated in \Cref{example: average velocity 1}, we treat \( a \) as fixed and let the second point \( b \) move closer to \( a \). The slope of the secant line is given by
+\[
+m_{\mathrm{secant}} = \frac{f(b) - f(a)}{b - a},
+\]
+and the slope of the tangent line is defined as the limit:
+\[
+m_{\mathrm{tangent}} = \lim_{b \to a} m_{\mathrm{secant}} = \lim_{b \to a} \frac{f(b) - f(a)}{b - a}.
+\]
+
+In the second approach, used in \Cref{example: average velocity 2}, we express the second point as a displacement \( h \) from \( a \), so that \( b = a + h \). The secant slope becomes
+\[
+m_{\mathrm{secant}} = \frac{f(a + h) - f(a)}{(a + h) - a} = \frac{f(a + h) - f(a)}{h},
+\]
+and again, we define the tangent slope as the limit:
+\[
+m_{\mathrm{tangent}} = \lim_{h \to 0} m_{\mathrm{secant}} = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}.
+\]
+
+This motivates the following crucial definition. 
+
+\begin{dfn}
+   Let \( f \) be a function. If the following limit exists at \( x = a \),
+   \[
+      \lim_{h \to 0} \frac{f(a + h) - f(a)}{h},
+   \]
+   then this limit is called \vocab{the derivative of \( f \) at \( x = a \)}, and we denote it by \( f'(a) \).  
+   \par
+   The \vocab{derivative function} \( f'(x) \) is defined by
+   \[
+      f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h},
+   \]
+   for all \( x \) at which this limit exists.
+\end{dfn}

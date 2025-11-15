@@ -1,0 +1,42 @@
+Sometimes, we are not so lucky to be given \( y \) as an explicit function of \( x \), we are give some relation between \( x \) and \( y \). But we still want to measure how \( y \) changes with respect to a change in \( x \). Implicit differentiation allows us to do this. \\ 
+
+If we want to find the rate of change of the expression with respect to \( x \), \( f(y) \), we can think of this as \( f(y(x)) \) and then apply the chain rule to get 
+\[ \dv{x} \left[ f(y(x )) \right] = f'(y(x)) y'(x)  \text{ .}\]
+
+\begin{example}
+    Suppose that \( x^{2} + y^{2}=1 \), the unit circle. Find \( \dv{y}{x}  \). \\ 
+    Applying the derivate operator to both sides 
+    \begin{align*}
+        \dv{x} \left[ x^{2} + y^{2} \right] &= \dv{x} \left[ 1 \right] \\
+        2x + 2y \dv{y}{x} &=0 \\
+        \dv{y}{x} &= - \frac{x}{y}
+    \end{align*}
+Let us find \( \dv{y}{x}  \) another way. \\ 
+Solving for \( y \) as an explicit function of \( x \), we have two functions: 
+\[ y = \pm \sqrt{1-x^{2}} = \pm \left( 1-x^{2} \right)^{\frac{1}{2}} \]
+Taking the derivative, we have 
+\begin{align*}
+    y' &= \pm \frac{1}{2}\left( 1-x^{2} \right)^{\frac{1}{2}-1} (-2x) \\
+    &= \mp \frac{x}{\sqrt{1-x^{2}}} \\
+    &=- \frac{x }{y}
+\end{align*}
+
+\end{example}
+
+\begin{example}
+    Find \( \dv[2]{y}{x}  \) for \( x^{2}+y^{2}=1 \). \\ 
+    Let us use the expression we found earlier that \( 2x +2y \dv{y}{x} =0  \) or \( x + y \dv{y}{x} = 0 \). We can apply the derivative operator to get 
+    \begin{align*}
+        \dv{x } \left[ x + y \dv{y }{x}  \right]  &= \dv{x } \left[ 0 \right] \\
+        1 + \dv{y }{x}^{2} + y \dv[2]{y }{x} &= 0 \tag{Applying the product rule.} \\
+        \dv[2]{y }{x}  &= \frac{-1- \left(  \dv{y }{x} \right)^{2}}{y} \\
+        \dv[2]{y }{x}  &= \frac{-1 - \left( -\frac{x}{y} \right)^{2}}{y} \\
+        \dv[2]{y }{x}  &= \frac{-y^{2}-x^{2}}{y^{3}}\\
+         \dv[2]{y }{x}  &= - \frac{y^{2}+x^{2}}{y^{3}}
+    \end{align*}
+This is much easier than taking the derivative the other way 
+\begin{align*}
+    \dv{x}\left[y'  \right]  &= \dv{x}\left[ \mp \frac{x }{\sqrt{1-x^{2}}} \right] 
+\end{align*}
+
+\end{example}

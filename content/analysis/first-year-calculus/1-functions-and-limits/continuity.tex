@@ -1,0 +1,73 @@
+\subsection{The Intermediate Value Theorem}
+
+We now state the Intermediate Value Theorem.\\[6pt]
+
+\textbf{The Intermediate Value Theorem.}
+If \( f : [a,b] \to \mathbb{R} \) is continuous and \( N \) is any number between \( f(a) \) and \( f(b) \),
+then there exists at least one \( c \in [a,b] \) such that \( f(c) = N \).
+
+\begin{lemma}
+    Suppose that \( f : [a,b] \to \mathbb{R} \) is continuous and that 
+    \( f([a,b]) \subseteq [a,b] \)
+    (that is, \( f \) maps the interval into itself). 
+    Then there exists at least one \( c \in [a,b] \) such that \( f(c) = c \).
+\end{lemma}
+\begin{proof}
+    If \( f(a)=a \) or \( f(b) =b \), we are done. So let us assume otherwise. In particular, this means that \( f(a) >a \) and \( f(b) <b \). Define a function 
+    \[ g(x):= f(x)-x .\]
+    \( g(x) \) is continuous as it is the sum of continuous functions. We also have that 
+    \[ g(a) = f(a)-a  >0 \quad \text{and} \quad g(b) = f(b)-b <0 .\]
+    By the Intermediate Value Theorem, there must be a \( c \in \left( a,b \right) \) such that \( g(c) =0 = f(c)-c \) and hence, \( f(c)=c \).
+\end{proof}
+
+
+\begin{exercise}
+  Let 
+  \[ f(x) = \sqrt{ \frac{x+1}{ \abs{2x-1}}} .\]
+  \begin{enumerate}[label=\textbf{\roman*)}]
+    \item Find the domain of \( f(x) \). 
+    \item Determine which values of \( x \) (if any) are fixed points of \( f(x) \). That is, find all \( x \) such that \( f(x) = x \).
+  \end{enumerate}
+\end{exercise}
+\begin{solution} $ $
+  \begin{enumerate}[label=\textbf{\roman*)}]
+    \item $ $\\ 
+      We require that the denominator be non-zero, so 
+      \[ \abs{2x-1} = 0 \iff 2x - 1 = 0. \]
+      Thus \( x = \frac{1}{2} \) is not in the domain of \( f(x) \). 
+      Next, we require that the expression inside the square root be non-negative. Since \( \abs{2x-1} \) is always non-negative, we just need to check where \( x + 1 \ge 0 \), that is, 
+      \[ x + 1 \ge 0 \Rightarrow x \ge -1. \]
+      Therefore, the domain of \( f(x) \) is 
+      \[
+        \left[ -1, \frac{1}{2} \right) \cup \left( \frac{1}{2}, \infty \right).
+      \]
+    \item $ $\\ 
+      We need to solve \( f(x) = x \). Squaring both sides gives
+      \[ \frac{x+1}{\abs{2x-1}} = x^{2}. \]
+      Because of the absolute value, we must solve two equations:
+      \[ 
+        \frac{x+1}{2x-1} = x^{2} 
+        \quad \text{or} \quad 
+        \frac{x+1}{1-2x} = x^{2}. 
+      \]
+      Equivalently,
+      \[ 
+        2x^{3}-x^{2}-x-1 = 0 
+        \quad \text{or} \quad 
+        2x^{3}-x^{2}+x+1 = 0. 
+      \]
+  \end{enumerate}
+  By the rational root theorem, the possible rational roots are \( \pm 1 \) and \( \pm \tfrac{1}{2} \). In the context of this problem, we eliminate \( x = \tfrac{1}{2} \). Testing each remaining rational root, we find that \( x = -\tfrac{1}{2} \) satisfies the second equation. However, since the range of \( f(x) \) is non-negative, \( x = -\tfrac{1}{2} \) cannot be a fixed point. 
+
+  Nonetheless, this shows that \( 2x + 1 \) is a factor of \( 2x^{3} - x^{2} + x + 1 \). Indeed, 
+  \[
+    2x^{3} - x^{2} + x + 1 = (2x + 1)(x^{2} - x + 1),
+  \]
+  and \( x^{2} - x + 1 \) has no real roots. Therefore, that equation yields no real fixed points. 
+
+  Now let us see whether the other equation, \( 2x^{3} - x^{2} - x - 1 = 0 \), can yield one. Plugging in \( x = 1 \) gives 
+  \[ g(1) = 2 - 1 - 1 - 1 = -1 < 0, \]
+  and \( x = 2 \) gives 
+  \[ g(2) = 16 - 4 - 2 - 1 = 9 > 0. \]
+  Hence, by the Intermediate Value Theorem, there exists \( \lambda \in (1, 2) \) such that \( g(\lambda) = 0 \), and thus \( f(\lambda) = \lambda \).
+\end{solution}

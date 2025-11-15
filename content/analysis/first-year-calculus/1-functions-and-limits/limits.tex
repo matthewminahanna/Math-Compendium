@@ -1,0 +1,198 @@
+\begin{lemma}
+    \( \lim_{h \to 0} \frac{e^{h}-1}{h} =1\)
+\end{lemma}
+\begin{proof}
+    Since \( \left( 1 + \frac{h }{n} \right)^{n} < e^{h} < \left( 1 + \frac{ h }{n } \right)^{n+1} \) for every natural number \( n \) and real number \( h \), we have 
+  \begin{equation}\label{eq:e-bound-ineq-pos}
+\frac{\left( 1 + \tfrac{h}{n} \right)^{n}}{h} 
+   < \frac{e^{h} - 1}{h} 
+   < \frac{\left( 1 + \tfrac{h}{n} \right)^{n+1} - 1}{h},
+   \quad \text{if } h > 0.
+\end{equation}
+
+\begin{equation}\label{eq:e-bound-ineq-neg}
+\frac{\left( 1 + \tfrac{h}{n} \right)^{n}}{h} 
+   > \frac{e^{h} - 1}{h} 
+   > \frac{\left( 1 + \tfrac{h}{n} \right)^{n+1} - 1}{h},
+   \quad \text{if } h < 0.
+\end{equation}
+
+    First looking at \( \frac{\left( 1 + \frac{h }{n} \right)^{n} }{h}  \), we have 
+    \begin{align*}
+       \frac{\left( 1 + \frac{h }{n} \right)^{n} }{h}  &= \frac{\displaystyle \sum_{j=0}^{n} {n \choose j} \left( \frac{h }{n} \right)^{j} -1 }{h} \\
+       &= \frac{\displaystyle \sum_{j=1}^{n} {n \choose j} \left( \frac{h }{n} \right)^{j} }{h} \\
+       &=  \sum_{j=1}^{n} {n \choose j} \frac{h^{j-1}}{n^{j}}\\
+       &= {n \choose 1} \frac{1}{n} + \sum_{j=2}^{n} {n \choose j} \frac{h^{j-1}}{n^{j}} \\
+       &= 1 +  \sum_{j=2}^{n} {n \choose j} \frac{h^{j-1}}{n^{j}}
+    \end{align*}
+    So taking the limit as \( h \to 0 \), we have 
+    \begin{align*}
+         \lim_{ h \to 0}  \frac{\left( 1 + \frac{h }{n} \right)^{n} }{h} &= \lim_{h \to 0 } \left(  1 +  \sum_{j=2}^{n} {n \choose j} \frac{h^{j-1}}{n^{j}} \right) \\
+         &=1
+    \end{align*}
+For \( \frac{\left( 1 + \tfrac{h}{n} \right)^{n+1} - 1}{h} \), we will similarly get 
+\begin{align*}
+         \lim_{ h \to 0}  \frac{\left( 1 + \frac{h }{n} \right)^{n+1} -1}{h} &= \lim_{h \to 0 } \left(  1 + \sum_{j=2}^{n+1} {n+1 \choose j} \frac{h^{j-1}}{n^{j}} \right) \\
+         &=1
+    \end{align*}
+    Applying the squeeze theorem to inequalities \eqref{eq:e-bound-ineq-pos} and \eqref{eq:e-bound-ineq-neg}, we see that
+    \[ \boxed{\lim_{h \to 0} \frac{e^{h}-1}{h} =1}. \]
+\end{proof}
+
+\begin{exercise}
+    Find 
+    \( \lim_{x \to \infty} \left( x - x \cos{ \left( \frac{1}{\sqrt{x}} \right) } \right) \sin{ \left( \frac{1}{\sqrt{x}} \right) }\).
+\end{exercise}
+\begin{solution}
+    Let \( t = \frac{1}{\sqrt{x}} \) then 
+    \begin{align*}
+     \lim_{x \to \infty} \left( x - x \cos{ \left( \frac{1}{\sqrt{x}} \right) } \right) \sin{ \left( \frac{1}{\sqrt{x}} \right) } &= \lim_{t \to 0+} \left( \frac{1}{t^{2}} - \frac{1}{t^{2}} \cos{ \left( t \right) } \right) \sin{ \left( t \right) } \\
+     &= \lim_{t \to 0+} \frac{ \sin{ \left( t  \right) } \left( 1- \cos{ \left( t \right) } \right)}{t^{2}} \\
+     &= \left[ \lim_{t \to 0+}\frac{ \sin{ \left( t \right) }}{t} \right] \left[ \lim_{t \to 0^{+}}  \frac{1- \cos{ \left( t \right) }}{t}\right] \\
+     &= 1 \cdot 0
+    \end{align*}
+    So 
+    \[ \boxed{\lim_{x \to \infty} \left( x - x \cos{ \left( \frac{1}{\sqrt{x}} \right) } \right) \sin{ \left( \frac{1}{\sqrt{x}} \right) } =0 \text{ .}} \]
+\end{solution}
+
+\subsection{Sequences} 
+
+\begin{dfn}
+    By a \vocab{sequence}, we mean a function 
+    \[
+        a: \{ 1, 2, \dots, n, \dots \} \to \mathbb{R},
+    \]
+    which we usually write as 
+    \[
+        \{ a_{1}, a_{2}, \dots, a_{n}, \dots \},
+    \]
+    where
+    \begin{align*}
+        a_{1} &= a(1), \\
+        a_{2} &= a(2), \\
+              &\ \ \vdots \\
+        a_{n} &= a(n), \\
+              &\ \ \vdots
+    \end{align*}
+    We say that a sequence \( \{ a_n \} \) is \vocab{convergent}, or that it \vocab{converges to the real number} \( L \), if for every \( \epsilon > 0 \) there exists a sufficiently large \( N \) such that whenever \( n > N \),
+    \[
+        \abs{a_{n} - L} < \epsilon.
+    \]
+    A sequence is \vocab{divergent}, or said to \vocab{diverge}, if no such \( L \) exists.
+\end{dfn}
+
+\begin{example}
+    Suppose a sequence is given by \( a_{n} = \frac{2n-1}{n} \). Writing out the first members of this sequence, we have 
+    \begin{align*}
+        a_{1} &= \frac{2(1)-1}{\left( 1 \right)} = 1 \\
+        a_{2} &= \frac{2(2)-1}{(2)} = \frac{3}{2} \\
+        a_{3} &= \frac{2(3)-1}{(3)} = \frac{5}{3} \\
+        a_{4} &= \frac{2(4)-1}{4} = \frac{7}{4} \\
+        & \ \ \vdots
+    \end{align*}
+    Notice that the difference between each successive terms decreases. Indeed if we define \( b_{n} = a_{n+1} -a_{n}\) then 
+    \begin{align*}
+        b_{1} &= a_{2}- a_{1} = \frac{3}{2}-1 = \frac{1}{2} \\
+        b_{2} &= a_{3} - a_{2} = \frac{5}{3} - \frac{3}{2} = \frac{1}{6} \\
+        b_{3} &= a_{4} - a_{3} = \frac{7}{4} - \frac{5}{3} = \frac{1}{12} \\\
+        &\ \ \vdots
+    \end{align*}
+    While the tendency for \( b_{n} \) to go zero does not itself guarantee convergence, it is a good sign and indeed \( a_{n} \) converges. We can write 
+    \[ a_{n} = \frac{2n}{n} - \frac{1}{n} = 2 - \frac{1}{n} \text{ .}\]
+    This suggests that \( a_{n} \) converges to \( 2 \). To show this, we can pick any \( \epsilon >0 \) and can pick an \( n \) sufficiently large such that \( n \epsilon > 1 \) or \( \frac{1}{n} < \epsilon \) Then 
+    \begin{align*}
+        \abs{2 - a_{n}} &= \abs{ 2 - \left( 2- \frac{1}{n} \right)} \\\
+        &= \abs{\frac{1}{n}} \\
+        &= \frac{1}{n } \\
+        &< \epsilon
+    \end{align*}
+    We can do something similar to show that \( b_{n} \) converges to \( 0 \) since 
+    \begin{align*}
+        b_{n} &= a_{n+1} - a_{n} \\
+        &= \frac{2 (n+1) -1}{n+1} - \frac{2n -1}{n} \\
+        &= \frac{n \left( 2n+1  \right) - \left( n+1  \right)(2n-1)}{n(n+1)} \\
+        &= \frac{1}{n(n+1)}
+    \end{align*}
+    As such the same \( n \) chosen for \( a_{n} \) is overkill since 
+    \begin{align*}
+        \abs{0 - b_{n}} &= \abs{-\frac{1}{n(n+1)}} \\
+        &= \frac{1}{n(n+1)} \\
+        &= \frac{1}{n+1} \frac{1}{n} \\
+        & < \frac{1}{n^{2}}\\
+        & < \epsilon^{2} \\
+        &< \epsilon \tag{If $\epsilon < 1$}
+    \end{align*}
+    So \( b_{n} \) converges "faster" than \( a_{n} \).
+\end{example}
+
+\begin{example}
+    Let 
+    \[ H_{n} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} = \sum_{k=1}^{n} \frac{1}{n}  \]
+    This is called the \vocab{harmonic series}. 
+    Writing out the first couple of terms,we have 
+  \begin{alignat*}{2}
+    H_{1} &= 1 \qquad & &= 1 \\
+    H_{2} &= 1 + \frac{1}{2} & &= \frac{3}{2} \\
+    H_{3} &= 1 + \frac{1}{2} + \frac{1}{3} & &= \frac{11}{6} \\
+    H_{4} &=  1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} & &= \frac{25}{12} \\
+    H_{5} &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4}  & &= \frac{137}{60} \\
+    & \ \ \vdots & & \ \ \vdots
+\end{alignat*}
+    If we define \( I_{n}= H_{n+1}-H_{n} \), it is clear that \( I_{n} = \frac{1}{n+1} \), which converges to \( 0 \). But it is \emph{not} the case that \( H_{n} \) converge to any real number \( L \). To see this, 
+    \[ 1 + \frac{1}{2} + \underbrace{\frac{1}{3} + \frac{1}{4}}_{\displaystyle >  \frac{1}{4} + \frac{1}{4} = \frac{1}{2}} + \underbrace{ \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}}_{\displaystyle > \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} = \frac{1}{2}} + \cdots \]
+    This generalizes 
+    \[ 1 + \sum_{k=0}^{n} \frac{1}{2} < H_{2^{n+1}} \]
+    This shows that the harmonic series diverges (albeit very slowly) since I can make \( H_{n} \) as large as I want.
+\end{example}
+
+\begin{exercise}
+    The sequence 
+    \[ x_{n} = \frac{4n^{3} -n^{2} +5n}{2n^{3} + 6n^{2} -11} \]
+    converges. Find its limit.
+\end{exercise}
+\begin{solution}
+    We can multiply the top and bottom by \( \frac{1}{n^{3}} \) so 
+    \begin{align*}
+        \frac{4n^{3} -n^{2} +5n}{2n^{3} + 6n^{2} -11} \cdot \frac{ \displaystyle\frac{1}{n^{3}} }{ \displaystyle\frac{1}{n^{3}}} &= \frac{ \displaystyle\frac{4n^{3}}{n^{3}} -  \frac{n^{2}}{n^{3}} +  \frac{5n}{n^{3}}}{ \displaystyle\frac{2n^{3}}{n^{3}} +  \frac{6n^{2}}{n^{3}} -  \frac{11}{n^{3}}} \\
+        &= \frac{\displaystyle 4 - \frac{1}{n } + \frac{5}{n^{2}}}{\displaystyle2 + \frac{6}{n} - \frac{11}{n^{3}}}
+    \end{align*}
+    So as \( n \to \infty \), the terms with \( n \) in the denominator get arbitrarily small so we can just ignore them so then all we have is 
+    \[ \boxed{\lim_{n \to \infty}  \frac{4n^{3} -n^{2} +5n}{2n^{3} + 6n^{2} -11} = 2 \text{ .}}\]
+\end{solution}
+
+\begin{exercise}
+    Find the limit of the sequence 
+    \[ x_{n} = \sqrt{n + k} - \sqrt{n}  \] where \( k \) is a fixed constant. 
+\end{exercise}
+\begin{solution}
+    We have 
+    \begin{align*}
+        \sqrt{n+k} - \sqrt{n} \cdot \frac{\sqrt{n+k} + \sqrt{n}}{\sqrt{n+k} + \sqrt{n}} &= \frac{n+k -n}{\sqrt{n+k} + \sqrt{n}} \\
+        &= \frac{k}{ \sqrt{n+k} + \sqrt{n}}
+    \end{align*}
+    Since \( n \) can be made arbitrarily large and \( k \) is fixed, we have 
+    \[ \boxed{\lim_{n \to \infty}\sqrt{n + k} - \sqrt{n} = 0 \text{ .}} \]
+\end{solution}
+
+\begin{exercise}
+    Show that the sequence 
+    \[ x_{n} = \frac{1 \cdot 3 \cdot 5 \cdots (2n-1)}{2 \cdot 4 \cdot 6 \cdots (2n)} \]
+    converges.
+\end{exercise}
+\begin{solution}
+    Notice that \( x_{n} < x_{n-1} \) for every \( n \ge 2 \) since 
+    \[ x_{n} = x_{n-1} \cdot \frac{2n-1}{2n} \text{ .}\]
+    Since the sequence is decreasing and bounded below by \( 0 \), it has no choice but to converge. 
+\end{solution}
+
+\begin{exercise}
+    Show that the sequence 
+    \[ x_{n} = \left( -1  \right)^{n} \frac{1}{n^{2}} \]
+    converges.
+\end{exercise}
+\begin{solution}
+    For any \( \epsilon > 0 \), we can choose a sufficiently large \( n \) such that 
+    \[ \abs{\frac{1}{n^{2}}} < \epsilon \]
+    the \( (-1)^{n} \) does not change this. 
+\end{solution}
+

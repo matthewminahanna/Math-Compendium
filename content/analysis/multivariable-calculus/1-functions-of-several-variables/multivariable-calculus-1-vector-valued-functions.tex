@@ -1,0 +1,45 @@
+In single-variable calculus, we studied functions that take a single real input and produce a single real output. Our geometric intuition was built around this setting: the derivative represented the slope of a curve in the plane, and the integral represented the area under that curve.
+In multivariable calculus, we now consider functions of several real inputs and possibly several real outputs. In this broader setting, our earlier visual intuition of slope and area begins to break down. As such, we need to reinterpret the notions of derivative and integral to make sense in higher dimensions.
+
+The good news is that while single-variable functions only map the real line to itself, offering limited geometric complexity, multivariable functions map between higher-dimensional spaces such as the plane or 3-dimensional space. These richer domains and codomains allow us to explore more interesting geometric behavior. We can now ask: what kinds of geometric information do these functions encode? What does “change” or “accumulation” mean in higher-dimensional settings?
+
+
+\section{\( \mathbb{R}^{3} \)}
+\subsection{Lines in \( \mathbb{R}^{3} \)}
+
+If we are given a point \( P = \left( p_{1}, p_{2}, p_{3} \right) \) and a direction \( \va{v} = \left< v_{1}, v_{2}, v_{3} \right> \), then we can form a line that contains \( P \) traveling in the direction of \( \vb{v} \) by 
+\[ L(t) = P + \va{v}t = \left( p_{1} + v_{1}t, p_{2} + v_{2}t, p_{3} + v_{3}t \right) \]
+or 
+\[ L = \begin{cases}
+    &x = p_{1} + v_{1}t \\
+    &y = p_{2} + v_{2}t \\
+    &z = p_{3} + v_{3}t
+\end{cases} \]
+If we solve for \( t \), we get the following equality 
+\[ \frac{x-p_{1}}{v_{1}} = \frac{y-p_{2}}{v_{2}} = \frac{z-p_{3}}{v_{3}} \]
+If any component of \( \va{v} \) is \( 0 \), then we just omit its mention in the above equation since \( L \) would not change in that respective direction.
+
+\begin{exercise}
+    Suppose that \( L \) is the line that contains the points \( P = (-3, -1, 2) \) and \( Q = (5,8,4) \). Where does \( L \) pierce the \( xy \)-plane?
+\end{exercise}
+\begin{solution}
+    First, we need to find the direction vector \( \va{PQ} \). We have 
+    \begin{align*}
+        \va{PQ} &= \left< 5+3,8+1,4-2 \right> \\
+        &= \left< 8,9,2 \right>
+    \end{align*}
+    Using the symmetric equations for a line, we have to find the \( (x,y,0) \) on \( L \). Solving for \( z \), we have 
+    \[ \frac{0-2}{2}=-1 \]
+    so 
+    \[ \frac{x+3}{8} =-1 \Rightarrow x= -11 \]
+    and 
+    \[ \frac{y+1}{9}=-1 \Rightarrow y = -10 \]
+    To check that we have the correct answer, let use \( Q \) in the symmetric equations 
+    \[ \frac{0-4}{2} = -2 \]
+    so 
+    \[ \frac{x-5}{8} =-2 \Rightarrow x = -11 \]
+    and 
+    \[ \frac{y-8}{9}= -2 \Rightarrow y = -10 \]
+    so \( L \) pierces the \( xy \)-plane at 
+    \[ \boxed{\left( -11,-10, 0 \right)} \]
+\end{solution}
