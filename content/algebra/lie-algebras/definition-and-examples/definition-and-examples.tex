@@ -1,0 +1,40 @@
+\begin{dfn}
+    A \vocab{Lie algebra} is a vector space \( \mathfrak{g} \) equipped with a bilinear map \( [\cdot, \cdot]: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g} \) such that the following properties hold:
+    \begin{description}[style=nextline, leftmargin=3em]
+        \item[Skew-symmetry] For all \( x, y \in \mathfrak{g} \), we have
+        \[
+        [x, y] = -[y, x].
+        \]
+        
+        \item[Jacobi identity] For all \( x, y, z \in \mathfrak{g} \), we have
+        \[
+        [x, [y, z]] + [y, [z, x]] + [z, [x, y]] = 0.
+        \]
+    \end{description}
+\end{dfn}
+
+\begin{example}
+    Suppose that \( \mathbf{V} \) is a vector space. The set of linear maps \( \mathcal{L} \left( \mathbf{V} \right) \) can be made into a Lie algebra where 
+    \[  \left[ \varphi, \psi \right]:= \varphi \circ \psi - \psi \circ \varphi \] for all \( \varphi, \psi \in \mathcal{L} \left(  \mathbf{V} \right) \).
+\end{example}
+
+
+\begin{example}
+    Suppose that \( \mathbf{V} \) is vector space with some multiplication equipped. Recall that a derivation on \( V \) is any linear map \( \varphi: \mathbf{V} \to \mathbf{V} \) such that 
+    \[ \varphi \left( \vb{x} \cdot \vb{y} \right) = \varphi \left( \vb{x} \right) \cdot \vb{y} + \vb{x} \cdot \varphi \left( \vb{y} \right) .\]
+    The collection of all such linear maps is denoted by \( \mathrm{Der} \left(  \mathbf{V} \right) .\) Then \( \mathrm{Der} \left( \mathbf{V} \right) \) is a \vocab{Lie subalgebra} of \( \mathcal{L} \left( \mathbf{V} \right) \). To show this, pick \( \varphi, \psi \in \mathrm{Der} \left( \mathbf{V} \right) \). Then,
+    \begin{align*}
+        \left[ \varphi, \psi \right] \left( \vb{x} \cdot \vb{y} \right) &= \left( \varphi \circ \psi - \psi \circ \varphi \right) \left( \vb{x} \cdot \vb{y} \right) \\\\
+        &= \left( \varphi \circ \psi \right) \left( \vb{x} \cdot \vb{y} \right) - \left( \psi \circ \varphi \right) \left( \vb{x} \cdot \vb{y} \right) \\\\
+        &= \varphi \left( \psi \left( \vb{x} \cdot \vb{y} \right) \right) - \psi \left( \varphi \left( \vb{x} \cdot \vb{y} \right) \right) \\
+        &= \varphi\left( \psi (\vb{x}) \cdot \vb{y} + \vb{x} \cdot \psi (\vb{y}) \right) - \psi \left( \varphi(\vb{x}) \cdot \vb{y} + \vb{x} \cdot \varphi (\vb{y}) \right)\\\\
+        &=\varphi \left( \psi (\vb{x}) \cdot \vb{y} \right) + \varphi \left(  \vb{x} \cdot \psi ( \vb{y})\right) - \psi \left( \varphi (\vb{x}) \cdot \vb{y} \right) - \psi\left( \vb{x} \cdot \varphi(\vb{y}) \right)\\\\
+        &= \varphi \left( \psi (\vb{x}) \right) \cdot \vb{y} + \psi (\vb{x}) \cdot \varphi (\vb{y}) +\varphi (\vb{x}) \cdot \psi (\vb{y}) + \vb{x} \cdot \varphi \left( \psi (\vb{y}) \right)\\
+        &-\psi \left( \varphi(\vb{x}) \right) \cdot \vb{y} - \varphi (\vb{x}) \cdot \psi (\vb{y}) - \psi\left( \vb{x} \right) \cdot \varphi \left( \vb{y} \right) - \vb{x} \cdot \psi \left( \varphi (\vb{y}) \right)\\\\
+        &= \varphi \left( \psi (\vb{x}) \right) \cdot \vb{y} + \Ccancel[red]{\psi (\vb{x}) \cdot \varphi (\vb{y})} + \Ccancel[orange]{\varphi (\vb{x}) \cdot \psi (\vb{y})} + \vb{x} \cdot \varphi \left( \psi (\vb{y}) \right)\\
+        &-\psi \left( \varphi(\vb{x}) \right) \cdot \vb{y} - \Ccancel[orange]{\varphi (\vb{x}) \cdot \psi (\vb{y})} -\Ccancel[red]{\psi (\vb{x}) \cdot \varphi (\vb{y})} - \vb{x} \cdot \psi \left( \varphi (\vb{y}) \right) \\\\
+        &= \left(  \varphi \circ \psi \right) (\vb{x}) \cdot \vb{y} - \left( \psi \circ \varphi \right)(\vb{x}) \cdot \vb{y} + \vb{x} \cdot\left(  \varphi \circ \psi \right) (\vb{y})  -  \vb{x} \cdot \left( \psi \circ \varphi \right)(\vb{y}) \\\\
+        &= \left[ \varphi, \psi \right] \left(  \vb{x} \right) \cdot \vb{y} + \vb{x} \cdot \left[ \varphi, \psi \right] \left( \vb{y} \right)
+    \end{align*}
+Hence $[\varphi,\psi] \in \mathrm{Der}(\mathbf{V})$.
+\end{example}

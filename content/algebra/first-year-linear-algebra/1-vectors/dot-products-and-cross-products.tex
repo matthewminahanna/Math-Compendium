@@ -1,0 +1,349 @@
+\subsection{Dot Products}
+\begin{dfn}
+An \( n \)-dimensional \vocab{row vector} is a \( 1 \times n \) matrix:
+\[
+    \vb{\upsilon} = \begin{bmatrix}
+        \upsilon_1 & \cdots & \upsilon_n
+    \end{bmatrix}.
+\]
+\end{dfn}
+
+While row and column vectors contain the same components, they behave differently in matrix operations. For now, we will set aside these distinctions and treat them informally.
+
+\begin{dfn}
+Given two real vectors 
+\[
+    \vb{v}=  \begin{bmatrix}
+        v_1 \\
+        \vdots \\
+        v_n
+    \end{bmatrix}, \quad
+    \vb{w} =  \begin{bmatrix}
+        w_1 \\
+        \vdots \\
+        w_n
+    \end{bmatrix},
+\]
+we define the \vocab{dot product} of \( \vb{v} \) and \( \vb{w} \), denoted \( \vb{v} \cdot \vb{w} \), as
+\[
+    \vb{v} \cdot \vb{w} = \sum_{j=1}^{n} v_j w_j.
+\]
+For those familiar with matrix multiplication, the dot product can also be viewed as the product of the row vector corresponding to \( \vb{v} \) and the column vector \( \vb{w} \). \\
+We will sometimes denote the dot product of \( \vb{v} \) and \( \vb{w} \) as \( \left< \vb{v}, \vb{w} \right> \).
+\end{dfn}
+
+Before we investigate the geometric properties of the dot product, we first verify a key algebraic property.
+
+\begin{theorem}
+The dot product is linear in each argument.
+\end{theorem}
+\begin{proof}
+We begin by noting that the dot product is symmetric in its arguments: \( \vb{v} \cdot \vb{w} = \vb{w} \cdot \vb{v} \). This means it suffices to show linearity in the first argument. Let \( \vb{u}, \vb{v}, \vb{w} \in \mathbb{R}^n \) and \( \lambda \in \mathbb{R} \). Then
+\[
+    \vb{u} + \lambda \vb{v} = \begin{bmatrix}
+        u_1 + \lambda v_1 \\
+        \vdots \\
+        u_n + \lambda v_n
+    \end{bmatrix}.
+\]
+So,
+\begin{align*}
+    (\vb{u} + \lambda \vb{v}) \cdot \vb{w} 
+    &= \sum_{j=1}^n (u_j + \lambda v_j) w_j \\
+    &= \sum_{j=1}^n u_j w_j + \lambda \sum_{j=1}^n v_j w_j \\
+    &= \vb{u} \cdot \vb{w} + \lambda\, \vb{v} \cdot \vb{w}.
+\end{align*}
+\end{proof}
+
+Note that we can express the length \( \abs{\vb{v}} \) of a vector \( \vb{v} \) in terms of the dot product:
+\[
+    \abs{\vb{v}}^2 = \vb{v} \cdot \vb{v}.
+\]
+
+Armed with this identity, we can now give a geometric interpretation of what the dot product measures. Consider the following figure:
+
+\begin{center}
+    \includegraphics[width=0.25\textwidth]{figures/algebra/linearalgebra/dotproduct1.png}
+    \label{fig:dot-product-interpretation}
+\end{center}
+
+Applying the Law of Cosines to the triangle formed by the vectors, we obtain:
+\[
+    \abs{{\color[HTML]{2f21a1} \vb{v} - \vb{w}}}^2 
+    = \abs{{\color[HTML]{3a8939} \vb{v}}}^2 
+    + \abs{{\color[HTML]{a1212e} \vb{w}}}^2 
+    - 2 \abs{{\color[HTML]{3a8939} \vb{v}}} \abs{{\color[HTML]{a1212e} \vb{w}}} \cos(\theta).
+\]
+
+We now rewrite both sides using the dot product:
+\begin{align*}
+    (\vb{v} - \vb{w}) \cdot (\vb{v} - \vb{w}) 
+    &= \vb{v} \cdot \vb{v} + \vb{w} \cdot \vb{w} - 2\, \vb{v} \cdot \vb{w} \tag*{by bilinearity and symmetry} \\
+    &= \vb{v} \cdot \vb{v} + \vb{w} \cdot \vb{w}  - 2 \abs{\vb{v}} \abs{\vb{w}} \cos(\theta).
+\end{align*}
+
+Comparing both expressions, we conclude
+\[
+    \vb{v} \cdot \vb{w} = \abs{\vb{v}} \abs{\vb{w}} \cos(\theta).
+\]
+
+This final expression tells us that the dot product measures how much the vector \( {\color[HTML]{3a8939} \vb{v}} \) points in the direction of \( {\color[HTML]{a1212e} \vb{w}} \), and vice versa. Here is the first consequence of this fact. 
+
+\begin{theorem}[The dot product detects orthogonality]\label{thm: dot product detects orthogonality}
+    Two nonzero vectors \( \vb{v} \) and \( \vb{w} \) are perpendicular if and only if \( \vb{v} \cdot \vb{w} = 0 \).
+\end{theorem}
+\begin{proof}
+    \( \Rightarrow \) Suppose \( \vb{v} \) and \( \vb{w} \) are perpendicular. Then the angle \( \theta \) between them satisfies \( \cos(\theta) = 0 \). By the geometric definition of the dot product,
+    \[
+        \vb{v} \cdot \vb{w} = \abs{\vb{v}} \abs{\vb{w}} \cos(\theta) = \abs{\vb{v}} \abs{\vb{w}} \cdot 0 = 0.
+    \]
+    \( \Leftarrow \) Conversely, suppose \( \vb{v} \cdot \vb{w} = 0 \). Then again using the geometric definition,
+    \[
+        \vb{v} \cdot \vb{w} = \abs{\vb{v}} \abs{\vb{w}} \cos(\theta) = 0.
+    \]
+    Since \( \vb{v} \) and \( \vb{w} \) are nonzero, \( \abs{\vb{v}} \neq 0 \) and \( \abs{\vb{w}} \neq 0 \). Therefore, it must be that \( \cos(\theta) = 0 \), which implies that \( \theta = \frac{\pi}{2} \). In other words, the vectors are perpendicular.
+\end{proof}
+
+
+\begin{theorem}[The dot product detects colinearity or parallelism]
+    Two nonzero vectors \( \vb{v} \) and \( \vb{w} \) are colinear (parallel or antiparallel) if and only if
+    \[
+        \vb{v} \cdot \vb{w} = \lvert \vb{v} \rvert \lvert \vb{w} \rvert
+        \quad\text{or}\quad
+        \vb{v} \cdot \vb{w} = -\lvert \vb{v} \rvert \lvert \vb{w} \rvert.
+    \]
+\end{theorem}
+\begin{proof}
+    \(\Rightarrow\)  
+    Suppose \( \vb{v} \) and \( \vb{w} \) are colinear. Then the angle \(\theta\) between them is either \(0\) (parallel, same direction) or \(\pi\) (parallel, opposite direction).  
+    By the dot product formula,
+    \[
+        \vb{v} \cdot \vb{w} = \lvert\vb{v}\rvert \lvert\vb{w}\rvert \cos\theta,
+    \]
+    so if \(\theta = 0\), \(\cos\theta = 1\) and \(\vb{v} \cdot \vb{w} = \lvert\vb{v}\rvert \lvert\vb{w}\rvert\).  
+    If \(\theta = \pi\), \(\cos\theta = -1\) and \(\vb{v} \cdot \vb{w} = -\lvert\vb{v}\rvert \lvert\vb{w}\rvert\).
+
+    \(\Leftarrow\) 
+    Conversely, suppose
+    \[
+        \vb{v} \cdot \vb{w} = \pm \lvert\vb{v}\rvert \lvert\vb{w}\rvert.
+    \]
+    Then by the dot product formula,
+    \[
+        \cos\theta = \pm 1,
+    \]
+    which means \(\theta = 0\) or \(\theta = \pi\) radians.  
+    In either case, \( \vb{v} \) and \( \vb{w} \) are colinear.
+\end{proof}
+
+\begin{exercise}
+    Let \( \vb{x} = \left< 1,1 \right> \). Find all vectors \( \vb{y} \in \mathbb{R}^{2} \) such that \( \vb{x} \cdot \vb{y} =0 \) and \( \norm{\vb{x}} = \norm{\vb{y}} \).
+\end{exercise}
+\begin{solution}
+    We require that \( \vb{y} \) is perpendicular to \( \vb{x} \). So \( \vb{y} = \left< \lambda, - \lambda \right> \) for some \( \lambda \in \mathbb{R}. \) Since \( \norm{\vb{x}} = \norm{\vb{y}} \), we have 
+    \begin{align*}
+        \sqrt{2} &= \sqrt{ \left( \lambda  \right)^{2} + \left( -\lambda \right)^{2}} \\
+        2 &= 2 \left( \lambda \right)^{2}\\
+        1&= \lambda^{2}
+    \end{align*}
+    This gives that \( \lambda =\pm 1 \) so \( \boxed{ \vb{y} = \left< 1,-1 \right>} \) and \( \boxed{\vb{y} = \left< -1,1 \right>} \; \).
+\end{solution}
+
+
+Another useful application of the dot product is that it helps us define lines, planes, hyperplanes etc. 
+
+
+Consider a line \( a x+by =c \). We know that this line is parallel to \( ax+by=0 \), we will focus on this form for the time being. We can express \( ax+by=0 \) in terms of the dot product. Namely,
+\[ \begin{bmatrix}
+    a & b\\
+\end{bmatrix} \cdot \begin{bmatrix}
+    x \\
+    y\\
+\end{bmatrix} =0 .\]
+
+By \Cref{thm: dot product detects orthogonality}, this means that the line \( ax+by=0 \) consists of all vectors \( \left< x,y \right> \) that are perpendicular to \( \left< a,b \right> \) and that adding \( c \) to the right hand side simply shifts this line without change its slope/direction.
+
+This is a preferable interpretation because it generalizes quite easily to higher dimensions. In particular, if we have the equation 
+
+\[ \sum_{j=1}^{n} a_{j} x_{j} =0  \]
+
+Then the solution consists of all vectors \( \left< x_{1}, x_{2}, \dots, x_{n} \right> \) that are perpendicular to \( \left< a_{1}, a_{2}, \dots, a_{n} \right> \). Adding a constant to the right hand side simply shifts this hyperplane in \( \mathbb{R}^{n} \), again, without changing slope or direction. 
+
+\subsubsection{Vector Projections}
+Another very useful application of the dot product is the calculation of how much one vector points in the direction of the other.
+
+We denote the \vocab{vector projection of \( \vb{w} \) onto \( \vb{v} \)} as \( \mathrm{proj}_{\vb{v}}\vb{w} .\) Now since \( \vb{w} \) projects onto \( \vb{v} \), \( \mathrm{proj}_{\vb{v}}\vb{w} \) must point in the direction of \( \vb{v} \) or more specifically, \( \mathrm{proj}_{\vb{v}}\vb{w} \) must point in the direction of \( \frac{\vb{v}}{\abs{\vb{v}}} \), the unit vector in the direction of \( \vb{v} \). So 
+\[ \mathrm{proj}_{\vb{v}}\vb{w} =\abs{\mathrm{proj}_{\vb{v}}\vb{w}} \frac{\vb{v}}{\abs{\vb{v}}} .\] So all we need to do is find \( \abs{\mathrm{proj}_{\vb{v}}\vb{w}}\). Luckily our friend, the dot product, can help. If we consider the right triangle with \( \vb{w} \) as the hypotenuse and \( \mathrm{proj}_{\vb{v}}\vb{w} \) as one of the legs, then 
+\[ \cos{ \left( \theta \right) }= \frac{\abs{\mathrm{proj}_{\vb{v}}\vb{w}}}{\abs{\vb{w}}} \]
+Now we can multiply both sides by \( \abs{\vb{w}} \) to get 
+\[ \abs{\vb{w}} \cos{ \left( \theta  \right) } = \abs{\mathrm{proj}_{\vb{v}}\vb{w}} .\] While it might seem like we are done, I did promise you that the dot product will show up. In that spirit, let us multiply and divide the left hand side by \( \abs{\vb{v}} \) to get 
+\[ \frac{\abs{\vb{v}} \abs{\vb{w}} \cos{ \left( \theta \right) }}{\abs{\vb{v}}}  = \abs{\mathrm{proj}_{\vb{v}}\vb{w}}\] so 
+\[ \boxed{\abs{\mathrm{proj}_{\vb{v}}\vb{w}} = \frac{\vb{v} \cdot \vb{w}}{\abs{\vb{v}}}} \]
+Substituting this into our earlier expression, we get 
+\[ \boxed{\mathrm{proj}_{\vb{v}} \vb{w} = \frac{\vb{v} \cdot \vb{w}}{\vb{v} \cdot \vb{v}} \vb{v}} \]
+
+\subsection{Square Matrices and the Determinant}
+
+\begin{dfn}
+    By an \vocab{\( m \times n \) matrix}, we mean an \( m \)-by-\( n \) rectangular array of numbers:
+    \[
+        A = \begin{bmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \\
+            a_{21} & a_{22} & \dots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \dots & a_{mn}
+        \end{bmatrix}.
+    \]
+    The entry \(a_{ij}\) denotes the element in the \(i\)th row and \(j\)th column.  
+    Unless otherwise stated, we assume the entries \(a_{ij}\) are real numbers.  
+    If \(m = n\), we say \(A\) is a \vocab{square matrix}.  
+\end{dfn}
+
+Recall that a \(1 \times n\) matrix is a \emph{row vector} and an \(m \times 1\) matrix is called a \emph{column vector}. \\
+
+If we are given two vectors \(  {\color[HTML]{FF0000} \vb{v} = \left< v_{1},v_{2} \right>}\) and \(  {\color[HTML]{0000FF} \vb{w} = \left< w_{1},w_{2} \right>}\), we may arrange them as \textbf{columns of a matrix \( A \)}.
+\[ A = \begin{bmatrix}
+    {\color[HTML]{FF0000} v_{1}} & {\color[HTML]{0000FF} w_{1}}\\
+     {\color[HTML]{FF0000} v_{2}} &  {\color[HTML]{0000FF} w_{2}}\\
+\end{bmatrix}. \]
+Furthermore there is a special operation called the \textbf{determinant} of \( A \) that returns the signed area spanned by the vectors \( {\color[HTML]{FF0000} \vb{v}} \) and \(  {\color[HTML]{0000FF} \vb{w}} \). We will denote this as \( {\color[HTML]{7E00FF} \det \left( A \right)} \).
+\begin{center}
+    \includegraphics[width=0.25\textwidth]{figures/algebra/linearalgebra/determinant.png}
+    \label{fig:cross-product picture}
+\end{center}
+One of the reasons the dot product is so attractive is that it can be computed using components only. The determinant can be similarly calculated from components only. Here is how.\\ 
+Recall that the {\color[HTML]{7E00FF}area of a parallelogram} is {\color[HTML]{FF0000}base} times {\color[HTML]{3B00FF} height}. We can find the height by taking the length of the component of {\color[HTML]{0000FF} \( \vb{w} \)} which does not point in direction of {\color[HTML]{FF0000} \( \vb{v} \)}. This is simply {\color[HTML]{3B00FF} \( \abs{\vb{w}} \abs{\sin{ \left( \theta \right) }} \)}, where \( \theta \) is the angle formed between {\color[HTML]{FF0000}\( \vb{v} \)} and {\color[HTML]{0000FF} \( \vb{w} \)}. To summarize, 
+\begin{align*}
+    \text{{\color[HTML]{7E00FF}area of a parallelogram}} &= \text{{\color[HTML]{FF0000}base} } \text{ times }\text{ {\color[HTML]{3B00FF} height}} \\
+     {\color[HTML]{7E00FF} \abs{\det \left( A \right)}} &= {\color[HTML]{FF0000} \abs{\vb{v}}}  {\color[HTML]{3B00FF} \abs{\vb{w}} \abs{\sin{ \left( \theta \right) }}}
+\end{align*}
+\textbf{Note:} Here we are assuming $ \theta \in \left[ 0, \frac{\pi}{2} \right]$ for visualization's sake. Of course, $\theta \in \left[ 0, 2 \pi \right)$ would explain why the area is \emph{signed}. 
+\begin{center}
+    \includegraphics[width=0.25\textwidth]{figures/algebra/linearalgebra/areaofparallelogram.png}
+    \label{fig:cross-product picture}
+\end{center}
+Now, we can use a useful identity \( \sin{ \left( \theta \right) } = \cos{ \left( \frac{\pi}{2} - \theta \right) } .\) Substituting this in, we have 
+\[ {\color[HTML]{7E00FF} \abs{\det \left( A \right)}} = {\color[HTML]{FF0000} \abs{\vb{v}}} {\color[HTML]{3B00FF} \abs{\vb{w}} \cos{ \left( \frac{\pi }{2} -\theta \right) }} \]
+This is looking like a dot product. To get us over the finish line, we will define a new vector {\color[HTML]{3B00FF}\( \vb{w}' \)} with the same length as {\color[HTML]{0000FF} \( \vb{w} \)}, forms an angle of \( \varphi= \frac{\pi}{2}- \theta \) with {\color[HTML]{FF0000} \( \vb{v} \)}, and forms a \( \frac{\pi}{2} \) angle with {\color[HTML]{0000FF} \( \vb{w} \)}. Therefore 
+\begin{align*}
+    {\color[HTML]{7E00FF} \det \left( A \right)} &=  {\color[HTML]{FF0000} \abs{\vb{v}}} \ {\color[HTML]{3B00FF} \abs{\vb{w}'} \cos{ \left( \varphi\right) }} \\
+    &= {\color[HTML]{FF0000} \vb{v}} \cdot {\color[HTML]{3B00FF} \vb{w}'}
+\end{align*}
+\begin{center}
+    \includegraphics[width=0.25\textwidth]{figures/algebra/linearalgebra/dettodot.png}
+    \label{fig:dettodot}
+\end{center}
+By rotating \( {\color[HTML]{0000FF} \vb{w}} \) counterclockwise by 90°, we obtain \( {\color[HTML]{3B00FF} \vb{w}' = \left< w_{2},-w_{1} \right>} \). This choice ensures that \( \vb{w}' \) is perpendicular to \( \vb{w} \), has the same magnitude, and preserves the correct sign for the determinant based on the orientation of the vectors. So 
+\begin{align*}
+    {\color[HTML]{7E00FF} \det \left( A \right)} &= {\color[HTML]{FF0000} \vb{v}} \cdot {\color[HTML]{3B00FF} \vb{w}'} \\
+    &=  {\color[HTML]{FF0000} \left< v_{1}, v_{2} \right>} \cdot {\color[HTML]{3B00FF} \left< w_{2}, - w_{1} \right>} \\
+    &= {\color[HTML]{FF0000} v_{1}}{\color[HTML]{3B00FF} w_{2}} -{\color[HTML]{FF0000}  v_{2}}{\color[HTML]{3B00FF} w_{1}} 
+\end{align*}
+\subsection{The Cross-Product}
+
+\begin{dfn}
+    The \vocab{cross product} is a function \( C: \mathbb{R}^{2} \times \mathbb{R}^{3} \to \mathbb{R}^{3} \) that takes two vectors \( \vb{x} = \left< x_{1}, x_{2 }, x_{3} \right> \) and \( \vb{y} = \left< y_{1 }, y_{2 }, y_{3} \right> \) and produces the vector:
+    \begin{align*}
+         \vb{x} \times \vb{y} &= \det \begin{bmatrix}
+        \hat{\vb{i}} & \hat{\vb{j}} & \hat{\vb{k}}\\
+        x_{1} & x_{2} & x_{3}\\
+        y_{1} & y_{2} & y_{3}\\
+    \end{bmatrix}\\ 
+    &= \det \begin{bmatrix}
+        x_{2 } & x_{3}\\
+         y_{2} & y_{3}\\
+    \end{bmatrix}  \hat{\vb{i}} - \det \begin{bmatrix}
+        x_{1 } & x_{3}\\
+         y_{1} & y_{3}\\
+    \end{bmatrix}  \hat{\vb{j}} + \det \begin{bmatrix}
+        x_{1 } & x_{2}\\
+         y_{1} & y_{2}\\
+    \end{bmatrix}  \hat{\vb{k}} \\
+    &= \left( x_{2}y_{3} - x_{3}y_{2} \right) \hat{\vb{i}} + \left( x_{3}y_{1}-x_{1}y_{3} \right) \hat{\vb{j}} + \left( x_{1}y_{2}- x_{2}y_{1} \right) \hat{\vb{k}} \\
+    &= \left< x_{2}y_{3} - x_{3}y_{2} , \;  x_{3}y_{1}-x_{1}y_{3}, \; x_{1}y_{2}- x_{2}y_{1}  \right>.
+    \end{align*}
+    It is trivial to check that \( \vb{x} \times  \vb{y} = - (\vb{y} \times \vb{x}). \)
+\end{dfn}
+
+\begin{lemma}
+    The vector \( \vb{x} \times  \vb{y} \) is perpendicular to both \( \vb{x} \) and \( \vb{y} \).
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+\begin{exercise}
+    Suppose that \( \vb{A} = \left< -1, 0,1  \right> \) and \( \vb{B} = \left< 1, -2, 2 \right> \). Find 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item A vector perpendicular to both \( \vb{A} \) and \( \vb{B} \) whose \( y \)-component is \( 6 \). 
+        \item A vector perpendicular to both \( \vb{A} \) and \( \vb{B} \) whose length is \( 6 \). 
+    \end{enumerate}
+\end{exercise}
+\begin{solution} For both parts of the problem, we need to compute \( \vb{A} \times \vb{B} \). 
+    \begin{align*}
+        \vb{A} \times \vb{B} &= \mathrm{det} \begin{bmatrix}
+            \hat{\vb{i}} & \hat{\vb{j}} & \hat{\vb{k}}\\
+            -1 & 0 & 1\\
+            1 & -2 & 2\\
+        \end{bmatrix} \\
+        &= \mathrm{det} \begin{bmatrix}
+            0  & 1 \\
+            -2  & 2 \\
+        \end{bmatrix} \hat{\vb{i}} - \mathrm{det} \begin{bmatrix}
+            -1  & 1 \\
+            1  & 2 \\
+        \end{bmatrix} \hat{\vb{j}} + \mathrm{det} \begin{bmatrix}
+            -1  & 0 \\
+            1 & -2 \\
+        \end{bmatrix} \hat{\vb{k}} \\
+        &= 2 \hat{\vb{i}} + \hat{\vb{j}} + 2 \hat{\vb{k}}\\
+        &= \left< 2,3,2 \right>
+    \end{align*}
+    We can verify that we have the correct vector since \( \left( \vb{A} \times \vb{B} \right) \cdot \vb{A} = 0\) and e \( \left( \vb{A} \times \vb{B} \right) \cdot \vb{B} = 0\).
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item $ $\\ 
+        To find a vector perpendicular to both \( \vb{A} \) and \( \vb{B} \) whose \( y \)-component is \( 6 \), we just need to take our \( \vb{A} \times \vb{B} \) vector and scale it so that its y-component is \( 6 \). This gives us \[ \boxed{\vb{v} = \left< 4,6,4 \right>} .\]
+        \item $ $\\ 
+        To find a vector perpendicular to both \( \vb{A} \) and \( \vb{B} \) whose length is \( 6 \), we first need to calculate \( \abs{\vb{A} \times \vb{B}} \), which is 
+        \[  \abs{\vb{A} \times \vb{B}}= \sqrt{2^{2} + 3^{2} + 2^{2}} = \sqrt{17} \]
+        Now, we just need to scale \(  \vb{A} \times \vb{B} \) by the quantity \( \frac{6 \sqrt{17}}{17} \) (since \( \frac{\sqrt{17 }}{17} \) normalizes \( \vb{A} \times \vb{B}   \) and multiplying by \( 6 \) will scale this new unit vector ) so we have 
+        \[ \boxed{\vb{w} = \left<  \frac{12 \sqrt{17}}{17},\frac{18 \sqrt{17}}{17}, \frac{12 \sqrt{17}}{17}  \right> \text{ .}} \]
+    \end{enumerate}    
+\end{solution}
+Recalling our discussion of how the dot product 
+\[ a \cdot \left( \vb{x} - p \right)=0 \]
+determines a line in \( \mathbb{R}^{n} \), we now have the tools to find a plane in \( \mathbb{R}^{3} \) given \( 3 \) points on it. 
+\begin{example}
+    Find the equation of a plane that contains the points. \( A = \left( 4,1,3 \right) \), \( B = (1,5,4) \), and \( C = (-3,2,6) \). \\ 
+    We first find \( \va{CA} \) and \( \va{CB} \). 
+    \[ \va{CA} = \left< 4 +3, 1-2, 2-6  \right> = \boxed{\left< 7, -1, -4  \right>} \quad \text{and} \quad \va{CB} = \left< 1+3, 5-2 ,4-6 \right> = \boxed{\left< 4,3,-2 \right>} .\]
+    To find the normal, we have \
+    \begin{align*}
+        \hat{\vb{n}} &= \va{CA} \times \va{CB} \\
+        &= \mathrm{det} \begin{bmatrix}
+            \hat{\vb{i}} & \hat{\vb{j}}& \hat{\vb{k}}\\
+            7 & -1 & -4\\
+            4 & 3 & -2\\
+        \end{bmatrix}\\
+        &= \mathrm{det} \begin{bmatrix}
+            -1 & -4\\
+            3 & -2\\
+        \end{bmatrix} \hat{\vb{i}} - \mathrm{det} \begin{bmatrix}
+            7 & -4\\
+            4 & -2 \\
+        \end{bmatrix}\hat{\vb{j}} + \mathrm{det}\begin{bmatrix}
+            7 & -1\\
+            4 & 3\\
+        \end{bmatrix} \hat{\vb{k}} \\
+        &= \left< 14, -2, 25 \right>
+    \end{align*}
+    So the equation of our plane is 
+    \begin{align*}
+        14(x-1) - 2 \left( y-5 \right) + 25(z-4) &=0 \\
+        14x -2y + 25z &= 104
+    \end{align*}
+    We can check that \( A \) and \( C \) also lie on the plane.
+\end{example}
+
+Using the cross and dot products, we can find the volume of a parallelepiped to be 
+\[ \text{volume of a parallelepiped} = \abs{ \left( A \times B  \right) \cdot C} \]
+where \( A, B \), and \( C \) are vectors that make up its side. 

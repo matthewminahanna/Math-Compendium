@@ -1,0 +1,148 @@
+We begin with the familiar definition of the dot product:
+\[
+    \sum_{j=1}^{n} a_{j}x_{j} := a_{1}x_{1} + a_{2}x_{2} + \cdots + a_{n}x_{n}.
+\]
+
+However, if the limits of the sum and the range of indices are clear from context, then writing out the summation symbol provides little additional information. Thus, in many areas of mathematics and physics, we adopt the following convention:
+
+\[
+    a_{j}x_{j} := \sum_{j=1}^{n} a_{j}x_{j}.
+\]
+
+This is known as the \vocab{Einstein summation convention}: whenever an index variable appears exactly twice in a single term, it is understood to be summed over.
+
+% Optional continuation:
+This not only saves notation, but also prepares us to work with more complex indexed expressions, especially when dealing with tensors in differential geometry, general relativity, or continuum mechanics.
+\begin{dfn} 
+    In an indexed expression, an index is called a \vocab{dummy index} (or \vocab{summation index}) if it appears exactly twice in a single term and is implicitly summed over by the Einstein summation convention. 
+
+    An index is called a \vocab{free index} if it is not summed over and appears exactly once in each term of an equation. Free indices determine the components of the resulting expression and must match on both sides of an equation.
+\end{dfn}
+
+Some immediate consequences of the above definition are:
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item \( a_{ij}x_{j} \neq a_{kj}x_{j} \) because \( i \neq k \)
+    \item No index can appear three or more times in an expression.
+\end{enumerate}
+
+\begin{example}
+    Suppose \( n = 4 \). Consider the expressions \( a_{ii}x_{k} \) and \( a_{ij}x_{j} \). By the Einstein summation convention, we interpret:
+    \[
+        a_{ii}x_{k} = a_{11}x_{k} + a_{22}x_{k} + a_{33}x_{k} + a_{44}x_{k},
+    \]
+    since the repeated index \( i \) is implicitly summed over, while \( k \) remains a free index.
+
+    Similarly,
+    \[
+        a_{ij}x_{j} = a_{i1}x_{1} + a_{i2}x_{2} + a_{i3}x_{3} + a_{i4}x_{4},
+    \]
+    where the index \( j \) is summed over and \( i \) is free.
+\end{example}
+
+\begin{example}
+    If \( n=3 \), write down the equations represented by \( y_{i}=a_{ij}x_j \).\\
+    Since \( j \) is the summation index, we have 
+    \[ y_{i}=a_{i1}x_{1}+a_{i2}x_{2}+a_{i3}x_{3}\]
+    which in turn become the equations
+    \begin{align*}
+        y_{1}&=a_{11}x_{1}+a_{12}x_{2}+a_{13}x_{3}\\
+        y_{2}&=a_{21}x_{1}+a_{22}x_{2}+a_{23}x_{3}\\
+        y_{3}&=a_{31}x_{1}+a_{32}x_{2}+a_{33}x_{3}
+    \end{align*}
+    
+\end{example}
+
+\subsection{Double Sums}
+
+Suppose we wish to substitute \( y_i = a_{ij}x_j \) into the expression \( Q = b_{ij}y_i x_j \). A careless substitution yields:
+\[
+Q = b_{ij}a_{ij}x_j x_j,
+\]
+which is problematic: the index \( j \) appears \textbf{four} times on the right-hand side, violating the rules of summation convention. Recall that a dummy index should appear exactly twice—once per term being summed over. 
+
+To remedy this, we take advantage of the fact that dummy indices are arbitrary labels. We can safely rename one pair of repeated \( j \) indices to a new label, say \( k \). Here's the general procedure:
+
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item Identify the overused dummy index. In this case, \( j \) appears too many times:
+    \[
+    y_i = a_{ij}x_j, \qquad Q = b_{ij}y_i x_j.
+    \]
+    
+    \item Rename one pair of the repeated \( j \)'s using a new index (e.g., \( k \)):
+    \[
+    y_i = a_{ik}x_k, \qquad Q = b_{ij}y_i x_j.
+    \]
+    
+    \item Now the substitution is well-formed:
+    \[
+    Q = b_{ij}a_{ik}x_k x_j.
+    \]
+\end{enumerate}
+
+\begin{example}
+    If \( n = 3 \), write out explicitly the equation given by 
+    \[
+    Q = b_{ij}a_{ik}x_k x_j.
+    \]
+    
+    First, sum over the \( k \) index:
+    \[
+    Q = b_{ij}(a_{i1}x_1 + a_{i2}x_2 + a_{i3}x_3)x_j
+    = b_{ij}a_{i1}x_1 x_j + b_{ij}a_{i2}x_2 x_j + b_{ij}a_{i3}x_3 x_j.
+    \]
+    Now sum over the \( j \) index:
+    \begin{align*}
+    Q &= b_{i1}a_{i1}x_1 x_1 + b_{i2}a_{i1}x_1 x_2 + b_{i3}a_{i1}x_1 x_3 \\
+      &\quad + b_{i1}a_{i2}x_2 x_1 + b_{i2}a_{i2}x_2 x_2 + b_{i3}a_{i2}x_2 x_3 \\
+      &\quad + b_{i1}a_{i3}x_3 x_1 + b_{i2}a_{i3}x_3 x_2 + b_{i3}a_{i3}x_3 x_3.
+    \end{align*}
+    Finally, expand over \( i \):
+    \begin{align*}
+    Q &= b_{11}a_{11}x_1 x_1 + b_{12}a_{11}x_1 x_2 + b_{13}a_{11}x_1 x_3 
+      + b_{11}a_{12}x_2 x_1 + b_{12}a_{12}x_2 x_2 + b_{13}a_{12}x_2 x_3 
+      + b_{11}a_{13}x_3 x_1 + b_{12}a_{13}x_3 x_2 + b_{13}a_{13}x_3 x_3 \\
+      &\quad + b_{21}a_{21}x_1 x_1 + b_{22}a_{21}x_1 x_2 + b_{23}a_{21}x_1 x_3 
+      + b_{21}a_{22}x_2 x_1 + b_{22}a_{22}x_2 x_2 + b_{23}a_{22}x_2 x_3 
+      + b_{21}a_{23}x_3 x_1 + b_{22}a_{23}x_3 x_2 + b_{23}a_{23}x_3 x_3 \\
+      &\quad + b_{31}a_{31}x_1 x_1 + b_{32}a_{31}x_1 x_2 + b_{33}a_{31}x_1 x_3 
+      + b_{31}a_{32}x_2 x_1 + b_{32}a_{32}x_2 x_2 + b_{33}a_{32}x_2 x_3 
+      + b_{31}a_{33}x_3 x_1 + b_{32}a_{33}x_3 x_2 + b_{33}a_{33}x_3 x_3.
+    \end{align*}
+    This expansion shows how rapidly the number of terms grows. The compact form
+    \[
+    Q = b_{ij}a_{ik}x_k x_j
+    \]
+    is far more efficient.
+\end{example}
+
+\begin{example}
+Suppose \( y_i = a_{ik}x_k \), and we wish to compute
+\[
+Q = g_{ij}y_i y_j.
+\]
+
+If we substitute directly, we get:
+\[
+Q = g_{ij}(a_{ik}x_k)(a_{jk}x_k),
+\]
+which is invalid since the index \( k \) appears four times.
+
+We fix this by renaming one of the repeated \( k \)'s:
+\[
+Q = g_{ij}(a_{ik}x_k)(a_{jm}x_m),
+\]
+which now respects the summation convention.
+\end{example}
+
+\subsection{Kronecker Delta and Algebraic Rules}
+
+\begin{dfn}
+The \vocab{Kronecker delta} is the tensor defined by
+\[
+\delta_{ij} = \delta^i_j = \delta^{ij} = 
+\begin{cases}
+    1 & \text{if } i = j, \\
+    0 & \text{if } i \neq j.
+\end{cases}
+\]
+\end{dfn}
