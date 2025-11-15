@@ -1,0 +1,150 @@
+\begin{theorem}[Cauchy--Schwarz Inequality]\label{thrm: The Cauchy-Schwarz Inequality}
+  Suppose \( \mathbf{V} \) is a real inner product space. For all \( \vb{v}, \vb{w} \in \mathbf{V} \), we have:
+  \[
+    \abs{\left< \vb{v}, \vb{w} \right>} \le \left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}.
+  \]
+\end{theorem}
+\begin{proof}
+  Consider the vector
+  \[
+    \vb{u} = \frac{\vb{v}}{\left< \vb{v}, \vb{v} \right>^{1/2}} - \frac{\vb{w}}{\left< \vb{w}, \vb{w} \right>^{1/2}}.
+  \]
+  Since inner products are nonnegative on real inner product spaces,
+  \[
+    \left< \vb{u}, \vb{u} \right> \ge 0.
+  \]
+  Expanding \( \left< \vb{u}, \vb{u} \right> \) gives:
+  \begin{align*}
+    \left< \vb{u}, \vb{u} \right>
+    &= \left< \frac{\vb{v}}{\left< \vb{v}, \vb{v} \right>^{1/2}}, \frac{\vb{v}}{\left< \vb{v}, \vb{v} \right>^{1/2}} \right>
+     - 2 \left< \frac{\vb{v}}{\left< \vb{v}, \vb{v} \right>^{1/2}}, \frac{\vb{w}}{\left< \vb{w}, \vb{w} \right>^{1/2}} \right>
+     + \left< \frac{\vb{w}}{\left< \vb{w}, \vb{w} \right>^{1/2}}, \frac{\vb{w}}{\left< \vb{w}, \vb{w} \right>^{1/2}} \right> \\
+    &= \frac{\left< \vb{v}, \vb{v} \right>}{\left< \vb{v}, \vb{v} \right>} 
+     - 2 \cdot \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}} 
+     + \frac{\left< \vb{w}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>} \\
+    &= 1 - 2 \cdot \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}} + 1 \\
+    &= 2 - 2 \cdot \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}}.
+  \end{align*}
+  Since this is \( \ge 0 \), we conclude:
+  \[
+    2 - 2 \cdot \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}} \ge 0,
+  \]
+  which implies:
+  \[
+    \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}} \le 1.
+  \]
+  If \( \left< \vb{v}, \vb{w} \right> < 0 \), the same argument applied to \( -\vb{w} \) yields the inequality
+  \[
+    \abs{\left< \vb{v}, \vb{w} \right>} \le \left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}.
+  \]
+\end{proof}
+
+\begin{example}
+  In \( \mathbb{R}^n \) with the standard dot product
+  \[
+    \left< \vb{v}, \vb{w} \right> := \sum_{j=1}^n v_j w_j,
+  \]
+  the Cauchy--Schwarz inequality becomes
+  \[
+    \left| \sum_{j=1}^n v_j w_j \right| \le 
+    \left( \sum_{j=1}^n v_j^2 \right)^{1/2} 
+    \left( \sum_{j=1}^n w_j^2 \right)^{1/2}.
+  \]
+\end{example}
+
+\begin{theorem}[Cauchy--Schwarz Inequality (Complex Case)]\label{thrm:Complex Cauchy-Schwarz}
+  Let \( \mathbf{V} \) be a complex inner product space. For all \( \vb{v}, \vb{w} \in \mathbf{V} \), we have:
+  \[
+    \abs{\left< \vb{v}, \vb{w} \right>} \le \left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}.
+  \]
+\end{theorem}
+\begin{proof}
+  Let \( \vb{v}, \vb{w} \in \mathbf{V} \) be non-zero vectors and define for \( \lambda \in \mathbb{C} \) the function:
+  \[
+    f(\lambda) = \left< \vb{v} - \lambda \vb{w}, \vb{v} - \lambda \vb{w} \right>.
+  \]
+Note that \( f \left(  \lambda \right) \ge 0 \) by positive semi-definiteness. We can expand \( f \left( \lambda\right)\) as 
+\begin{align*}
+  f \left(  \lambda \right) &= \left< \vb{v} - \lambda \vb{w}, \vb{v}- \lambda \vb{w} \right> \\
+&=  \left< \vb{v}, \vb{v}- \lambda \vb{w} \right> + \left< -\lambda \vb{w}, \vb{v}- \lambda \vb{w} \right>\\
+&=  \left< \vb{v}, \vb{v}- \lambda \vb{w} \right> - \lambda \left< \vb{w}, \vb{v}- \lambda \vb{w} \right>\\
+&= \left< \vb{v}, \vb{v} \right> + \left< \vb{v}, - \lambda \vb{w} \right> - \lambda \left< \vb{w}, \vb{v} \right> - \lambda \left< \vb{w}, - \lambda \vb{w} \right> \\
+&= \left< \vb{v}, \vb{v} \right> - \overline{\lambda} \left< \vb{v}, \vb{w} \right> - \lambda \left< \vb{w}, \vb{v} \right> + \abs{\lambda}^{2}  \left< \vb{w}, \vb{w} \right>
+\end{align*}
+
+Now choose
+  \[
+    \lambda = \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}.
+  \]
+  Substituting into the expanded \( f(\lambda) \), we have
+  \begin{align*}
+    f \left( \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}\right) &=  \left< \vb{v}, \vb{v} \right> - \overline{ \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}} \left< \vb{v}, \vb{w} \right> -  \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>} \left< \vb{w}, \vb{v} \right> + \abs{ \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}}^{2}  \left< \vb{w}, \vb{w} \right> \\
+    &= \left< \vb{v}, \vb{v} \right> - \overline{ \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}} \left< \vb{v}, \vb{w} \right> -  \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>} \overline{ \left< \vb{v}, \vb{w} \right>} + \abs{ \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}}^{2}  \left< \vb{w}, \vb{w} \right> \\
+    &=\left< \vb{v}, \vb{v} \right> -  2 \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w} \right>} + \abs{ \frac{\left< \vb{v}, \vb{w} \right>}{\left< \vb{w}, \vb{w} \right>}}^{2}  \left< \vb{w}, \vb{w} \right> \\
+    &=\left< \vb{v}, \vb{v} \right> -  2 \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w} \right>} + \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w}\right> \left< \vb{w}, \vb{w} \right>} \left< \vb{w}, \vb{w} \right>  \\
+    &=\left< \vb{v}, \vb{v} \right> -  2 \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w} \right>} + \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w} \right>} \\
+    & =\left< \vb{v}, \vb{v} \right> -  \frac{\overline{\left< \vb{v}, \vb{w} \right> } \left< \vb{v}, \vb{w} \right>  }{\left< \vb{w}, \vb{w} \right>}\\
+    &=\left< \vb{v}, \vb{v} \right> -  \frac{  \abs{\left< \vb{v}, \vb{w} \right>}^2  }{\left< \vb{w}, \vb{w} \right>}
+  \end{align*}
+  Finally we can apply the non-negativity of \( f \),
+  \begin{align*}
+   0 &\le \left< \vb{v}, \vb{v} \right> -  \frac{  \abs{\left< \vb{v}, \vb{w} \right>}^2  }{\left< \vb{w}, \vb{w} \right>} \\
+    \frac{  \abs{\left< \vb{v}, \vb{w} \right>}^2  }{\left< \vb{w}, \vb{w} \right>} & \le  \left< \vb{v}, \vb{v} \right> \\
+    \abs{\left< \vb{v}, \vb{w} \right>}^2 & \le \left< \vb{v}, \vb{v} \right> \left< \vb{w}, \vb{w} \right>
+  \end{align*}
+  
+  and taking square roots
+  \[
+  \boxed{  \abs{\left< \vb{v}, \vb{w} \right>} \le \left< \vb{v}, \vb{v} \right>^{1/2} \left< \vb{w}, \vb{w} \right>^{1/2}}.
+  \]
+\end{proof}
+
+\begin{example}
+  Consider the complex inner product on \( \mathbb{C}^n \) defined by:
+  \[
+    \left< \vb{v}, \vb{w} \right> := \sum_{j=1}^n v_j \overline{w_j}.
+  \]
+  Then the Cauchy--Schwarz inequality becomes:
+  \[
+    \left| \sum_{j=1}^n v_j \overline{w_j} \right| 
+    \le \left( \sum_{j=1}^n \abs{v_j}^2 \right)^{1/2}
+         \left( \sum_{j=1}^n \abs{w_j}^2 \right)^{1/2}.
+  \]
+\end{example}
+
+\begin{example}
+  Let \( f, g \in L^2(\gamma) \), where \( \gamma \subset \mathbb{C} \) is a piecewise smooth contour. Define the inner product:
+  \[
+    \left< f, g \right> := \int_{\gamma} f(z) \, \overline{g(z)} \, \abs{\dd{z}}.
+  \]
+  Then the Cauchy--Schwarz inequality gives:
+  \[
+    \left| \int_{\gamma} f(z) \, \overline{g(z)} \, \abs{\dd{z}} \right|
+    \le \left( \int_{\gamma} \abs{f(z)}^2 \, \abs{\dd{z}} \right)^{1/2}
+         \left( \int_{\gamma} \abs{g(z)}^2 \, \abs{\dd{z}} \right)^{1/2}.
+  \]
+\end{example}
+
+\begin{exercise}
+    Show that 
+    \[
+    \sum_{j=1}^{n } a_{j} \le \sqrt{n \sum_{j=1}^{n} \left( a_{j } \right)^{2} }.
+    \]
+\end{exercise}
+\begin{solution}
+    Apply the Cauchy–Schwarz inequality to the vectors \( \vec{a} = (a_1, a_2, \dots, a_n) \) and \( \vec{b} = (1, 1, \dots, 1) \in \mathbb{R}^n \). Then:
+    \[
+    \left( \sum_{j=1}^n a_j \cdot 1 \right)^2 
+    \le \left( \sum_{j=1}^n a_j^2 \right) \left( \sum_{j=1}^n 1^2 \right)
+    = \left( \sum_{j=1}^n a_j^2 \right) \cdot n.
+    \]
+    Taking square roots of both sides gives:
+    \[
+    \sum_{j=1}^n a_j 
+    \le \sqrt{n \sum_{j=1}^n a_j^2}.
+    \]
+    This proves the inequality.
+\end{solution}
+
+
+

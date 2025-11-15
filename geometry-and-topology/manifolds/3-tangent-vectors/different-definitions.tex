@@ -1,0 +1,64 @@
+\subsection{Algebraically}
+
+
+If you go back to the multivariable calculus part, you will see a rather inconspicuous operation called the "directional derivative." Given a function \( f: \mathbb{R}^{n} \to \mathbb{R} \), a point \( a \in \mathbb{R}^{n} \), and a direction \( \vb{v} \in \mathbb{R}^{n} \), the directional derivative tells you the rate of change of \( f \) at \( a \) in the direction of \( \vb{v} \). It has the benefit of being easy to compute, namely \( \left( D_{\vb{v}}(f) \right)(a)= \left( \largetriangledown f \right)(a) \cdot \vb{v} \), and it satisfies established derivative rules, namely linearity and the \textbf{Leibniz rule.} \\
+To define a vector on a manifold, we will leverage a surprising fact: if we have a linear map \( \vb{v}: \mathcal{C}^{\infty} \left( M \right) \to \mathbb{R} \) that satisfies the Leibniz rule, there is sufficient information to \emph{define} a vector from this.
+
+\begin{dfn}
+    Let \( M \) be a manifold and let \( p \in M \).  
+    A \vocab{derivation at \( p \)} is a linear map 
+    \[
+        \vb{v} : C^{\infty}_{p}(M) \to \mathbb{R},
+    \]
+    where \( C^{\infty}_{p}(M) \) denotes the algebra of germs of smooth functions at \( p \), such that the Leibniz rule is satisfied: for all \( f,g \in C^{\infty}_{p}(M) \),
+    \[
+        \vb{v}(fg) = f(p)\,\vb{v}(g) + g(p)\,\vb{v}(f).
+    \]
+\end{dfn}
+
+
+
+\subsection{As an Equivalence Class of Tangents to Paths}
+
+
+For this method, we will leverage one of the gifts that manifolds give us: comparison to \( \mathbb{R}^{n} \). If we are given a smooth path \( \gamma: \left( - \epsilon, \epsilon \right) \to M \), where \( M \) is an \( n \)-manifold, then we may look at \( \gamma(0) \in U \subseteq M \) and consider \( \left(  \varphi \circ \gamma  \right)(0) \in \mathbb{R}^{n} \). Since \( \varphi \circ \gamma: (-\epsilon, \epsilon) \to \mathbb{R}^{n} \), the concept of a derivative exists and we can define \( \left( \varphi \circ \gamma \right)'(0) \), which is the usual tangent vector to a path in \( \mathbb{R}^{n} \). We then regard this derivative as the definition of a tangent vector to \( M \) at \( p = \gamma(0) \), and we can break for lunch, right? \\
+
+Unfortunately, our gazpacho must wait. We have some details to iron out. Suppose that we have two curves \( \gamma_{1} \) and \( \gamma_{2} \) that both pass through \( p \) and have the same slope at \( 0 \). We want these two paths to represent the same tangent vector. This can be remedied by attaching an equivalence relation
+\[
+    \gamma_{1} \sim \gamma_{2} \quad \text{if there exists a chart } \varphi \text{ such that } \left( \varphi \circ \gamma_{1} \right)'(0) = \left( \varphi \circ \gamma_{2} \right)'(0).
+\]
+It might seem problematic that our definition relies on a particular choice of charts. We will show that as soon as we have a chart containing \( p \) that satisfies our definition, then all charts containing \( p \) will satisfy it as well.\\
+
+Finally, we will need to give a vector space structure to our construction. This is done by declaring that addition and scalar multiplication of tangent vectors are defined in local coordinates.
+\begin{lemma}
+    Let \( M \) be a manifold and \( p \in M \). Let 
+    \[ V = \left\{ \gamma: \left( - \epsilon, \epsilon \right) \to M \ \middle| \ \gamma(0) = p, \ \gamma \text{ is smooth.} \right\}. \]
+    Define a relation \( \sim \) on \( V \), \( \gamma_{1} \sim \gamma_{2} \) if there is a chart \( \varphi \) such that \(  \left( \varphi \circ \gamma_{1} \right)'(0) = \left( \varphi \circ \gamma_{2} \right)'(0) \). Then \( \sim \) is an equivalence relation on \( V \).
+\end{lemma}
+\begin{proof}
+    Reflexivity and symmetry are easy to check.\\
+    Transitivity requires a bit more work. Suppose that \( \gamma_{1} \sim \gamma_{2} \) and \( \gamma_{2} \sim \gamma_{3} \). Then, by definition, there are coordinate charts \( \varphi \) and \( \psi \) such that 
+    \[ \left( \varphi \circ \gamma_{1} \right)'(0)= \left( \varphi \circ \gamma_{2} \right)'(0) \quad \text{and} \quad \left( \psi \circ \gamma_{2} \right)'(0) = \left( \psi \circ \gamma_{3} \right)'(0).  \]
+    
+    Since \( \varphi \) and \( \psi \) are charts containing \( \gamma_{i}(0) = p \), we have that \( \psi \circ \varphi^{-1} \) is a smooth map from \( \mathbb{R}^{n} \) to \( \mathbb{R}^{n} \). By the chain rule,
+    \begin{align*}
+         \left( \psi \circ \gamma_{1} \right)'(0) &= \left( \psi \circ \varphi^{-1} \circ \varphi \circ \gamma_{1} \right)'(0)\\
+         &= \left( \left[ \psi \circ \varphi^{-1} \right] \left( \varphi \left( \gamma_{1}(0) \right) \right) \right)'\\
+         &=\left( \left[ \psi \circ \varphi^{-1} \right] \left( \varphi \left( p\right) \right) \right)'\\
+         &= D(\psi \circ \varphi^{-1})|_{\varphi(p)} \cdot \left( \varphi \circ \gamma_{1} \right)'(0).
+    \end{align*}
+    
+    
+    Since \( \gamma_1(0) = \gamma_2(0) = p \), we have \( \varphi(\gamma_1(0)) = \varphi(\gamma_2(0)) = \varphi(p) \). Therefore, \( D(\psi \circ \varphi^{-1})|_{\varphi(\gamma_1(0))} = D(\psi \circ \varphi^{-1})|_{\varphi(\gamma_2(0))} = D(\psi \circ \varphi^{-1})|_{\varphi(p)} \).
+    
+    Using this and the fact that \( \left( \varphi \circ \gamma_{1} \right)'(0)= \left( \varphi \circ \gamma_{2} \right)'(0) \), we get:
+    \begin{align*}
+        \left( \psi \circ \gamma_{1} \right)'(0) &= D(\psi \circ \varphi^{-1})|_{\varphi(p)} \cdot \left( \varphi \circ \gamma_{1} \right)'(0) \\
+        &= D(\psi \circ \varphi^{-1})|_{\varphi(p)} \cdot \left( \varphi \circ \gamma_{2} \right)'(0) \tag{Since $\left( \varphi \circ \gamma_{1} \right)'(0)= \left( \varphi \circ \gamma_{2} \right)'(0)$}\\
+        &=  \left( \psi \circ \varphi^{-1} \circ \varphi \circ \gamma_{2} \right)'(0) \tag{By the chain rule}\\
+        &=  \left( \psi \circ \gamma_{2} \right)'(0) \\
+        &=  \left( \psi \circ \gamma_{3} \right)'(0) \tag{Since $\left( \psi \circ \gamma_{2} \right)'(0) = \left( \psi \circ \gamma_{3} \right)'(0)$.}
+    \end{align*}
+    
+    Therefore, \( \gamma_{1} \sim \gamma_{3} \), establishing transitivity.
+\end{proof}

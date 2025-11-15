@@ -1,0 +1,44 @@
+
+
+\begin{dfn}
+    A \vocab{topological manifold} of dimension $n$ is a second-countable Hausdorff topological space \( M \) that is locally homeomorphic to \( \mathbb{R}^n \), together with a collection of open sets \( U_{\alpha} \) and corresponding homeomorphisms \( \varphi_{\alpha}: U_{\alpha} \to \mathbb{R}^{n} \) where \( \widetilde{U}_{\alpha} = \varphi_{\alpha}(U_{\alpha}) \) denotes the image of \( U_{\alpha} \) under \( \varphi_{\alpha} \) such that 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item The collection \( \left\{ U_{\alpha} \right\} \) covers \( M \). 
+        \item For any \( \alpha, \beta \) such that \( U_{\alpha} \cap U_{\beta} \neq \emptyset \), the \vocab{transition maps} \( \varphi_{\alpha} \circ \varphi_{\beta}^{-1}: \varphi_{\beta}(U_{\alpha} \cap U_{\beta}) \to \varphi_{\alpha}(U_{\alpha} \cap U_{\beta})\) are continuous.
+    \end{enumerate}
+    The pairs \( (U_{\alpha}, \varphi_{\alpha}) \) are called \vocab{charts}, and the collection \( \{(U_{\alpha}, \varphi_{\alpha})\} \) forms an \vocab{atlas} for \( M \).
+    
+    Applying additional conditions to the second criterion will give us different types of manifolds. 
+    \begin{itemize}
+        \item If the transition maps are differentiable, we say that the manifold is differentiable. 
+        \item[!] If the transition maps are smooth, then the manifold is smooth. 
+        \item If the transition maps are analytic, then the manifold is analytic. 
+        \item If the transition maps are holomorphic, then the manifold is complex.
+    \end{itemize}
+    When we say manifold without any other adjective, we will typically mean that it is a smooth manifold.
+\end{dfn}
+
+\begin{exercise}
+    Show that the following three definitions of topological manifold are equivalent:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item The definition given above (where $\widetilde{U}_{\alpha} = \varphi_{\alpha}(U_{\alpha})$ can be any open subset of $\mathbb{R}^{n}$).
+        \item The same definition, but requiring each $\varphi_{\alpha}: U_{\alpha} \to \mathbb{R}^{n}$ to be a homeomorphism onto all of $\mathbb{R}^{n}$.
+        \item The same definition, but requiring each $\widetilde{U}_{\alpha} = \varphi_{\alpha}(U_{\alpha})$ to be an open ball in $\mathbb{R}^{n}$.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+     It is sufficient to just show \textbf{(i)} \( \iff \) \textbf{(iii)} and \textbf{(ii)} \( \iff \) \textbf{(iii)}. \\
+    \textbf{(iii)} \( \Rightarrow \)  \textbf{(i)} Trivial: open balls are themselves open subsets of \( \mathbb{R}^{n} \).\\
+    \textbf{(i)} \( \Rightarrow \) \textbf{(iii)} Suppose \( p \in M \) and pick \( \varphi_{p} \) and \( U_{p} \) containing \( p \) compliant with the conditions of \textbf{(i)}. Given 
+    \[ \varphi_{p}^{-1} : \widetilde{U_{p}} \to U_{p}  \]
+    we may restrict \( \varphi_{p}^{-1}\) to an an open ball \( B_{\varphi_{p}(p)} \) containing \( \varphi_{p}(p) \) since \( \widetilde{U_{p}} \) is open in \( \mathbb{R}^{n} \). The restriction map 
+    \[ \varphi_{p}^{-1} \eval_{B_{\varphi_{p}(p)}} \hspace{-2.5em}: B_{\varphi_{p} \left( p \right)} \to  \varphi_{p}^{-1} \left( B_{\varphi_{p}(p)} \right) \]
+    is a local homeomorphism that satisfies the goal conditions. \\ 
+    \textbf{(iii)} \( \Rightarrow \) \textbf{(ii)} Suppose that \( \varphi_{\alpha} \) maps the open set \( U_{\alpha} \) to \( B\left( \vb{x} ; \epsilon \right) \) with \( \varphi_{\alpha} (p) = \vb{x} \). We then further define a function \( f: B \left( \vb{x}; \epsilon \right) \to \mathbb{R}^{n} \) by 
+    \[ f \left( \vb{y} \right) = \begin{cases}
+        \tan{ \left( \frac{\pi}{2 \epsilon} \cdot \norm{\vb{y} -\vb{x}} \right) } \cdot \frac{\vb{y} -\vb{x}}{\norm{\vb{y} - \vb{x}}} \quad  & \text{if } \vb{y} \neq \vb{x} \\
+        \vb{0}\quad & \text{if } \vb{y} = \vb{x}
+    \end{cases} \]
+Although the definition of \( f \) looks a bit unwieldy, all it is really doing is shifting the epsilon ball so it is centered at \( \vb{0}\), then stretching it outward along each ray with a tangent-based scaling that sends the boundary to infinity. The center is set to map to \( \vb{0} \) by hand.  We leave it to the reader to verify that \( f \) is doing what we claim and that it is a homeomorphism between \( B \left( \vb{x} ; \epsilon \right) \) and \( \mathbb{R}^{n} \). The composition \( f \circ \varphi_{\alpha} \) is the desired homeomorphism between \( U_{\alpha} \) and \( \mathbb{R}^{n} \).\\
+\textbf{(ii)} \( \Rightarrow \) \textbf{(iii)} Assume the conditions of \textbf{(ii)}. Composing \( \varphi_\alpha \) with \( f^{-1} \) yields a chart whose image is an open ball.
+\end{solution}

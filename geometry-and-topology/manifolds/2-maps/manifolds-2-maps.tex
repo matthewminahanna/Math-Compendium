@@ -1,0 +1,35 @@
+\section{Smooth maps to \( \mathbb{R}^{n} \)}
+
+\begin{dfn}
+    Let \( M  \) be a manifold. A function \( f: M \to \mathbb{R} \) is smooth at \( p \in M \) if there exists a chart, \( \left( U_{\alpha}, \varphi_{\alpha} \right) \) the map 
+    \[ f \circ \varphi_{\alpha}^{-1} : \widetilde{U_{\alpha}} \to \mathbb{R} \] is smooth at \( \varphi_{\alpha}(p) .\) A map is smooth if it smooth everywhere.
+\end{dfn}
+
+\begin{exercise}
+    If \( f:M \to \mathbb{R} \) is smooth at \( p  \) for a particular chart, show it is smooth for all charts containing \( p \).
+\end{exercise}
+\begin{solution}
+    Suppose that \( f \) is smooth at \( p \) in the chart \( \left( U_{\alpha}, \varphi_{\alpha} \right) \). Pick chart \( \left( U_{\beta}, \varphi_{\beta} \right) \) that contains \( p \). Then 
+    \[ f \circ \varphi_{\beta}^{-1} = \left( f \circ \varphi^{-1}_\alpha \right) \circ \left( \varphi_{\alpha} \circ \varphi^{-1}_\beta \right): \varphi_{\beta} \left( U_{\alpha} \cap U_{\beta} \right) \to \mathbb{R} \] is smooth at \( \varphi_{\beta} \left( p \right) \) as it is the composition of smooth maps.
+\end{solution}
+
+\begin{exercise}
+    Suppose that \( f: M \to \mathbb{R} \) and \( g : \mathbb{R} \to \mathbb{R} \) are both smooth. Show that \( g \circ f: M \to \mathbb{R} \) is smooth.
+\end{exercise}
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{theorem}
+    Let \( \mathcal{C}^{\infty} \left( M \right) \) be the set of all smooth maps \( M \to \mathbb{R} \). Then \( \mathcal{C}^{\infty} \left( M \right) \) is a commutative ring as well as a commutative and associative \( \mathbb{R} \)-algebra where 
+    \begin{align*}
+        \left( f +g \right)(p) &:= f(p) +g(p) \\
+        \left( fg \right)(p) &:= f(p)g(p) \\
+        \left( \lambda f \right) &:= \lambda f(p)
+    \end{align*}
+    For every \( f,g \in \mathcal{C}^{\infty}(M) \), \( p \in M \) and \( \lambda \in \mathbb{R} \).
+\end{theorem}
+\begin{proof}
+  
+\end{proof}

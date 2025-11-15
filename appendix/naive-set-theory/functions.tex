@@ -1,0 +1,201 @@
+\subsection{Relations}
+
+\begin{dfn}
+    Let \( X \) and \( Y \) be non-empty sets. Then the \vocab{Cartesian product} of \( X  \) and \( Y \) is the following set: 
+    \[ X \times Y = \{(x,y)  \mid x \in X, \ y \in Y\}. \] 
+\end{dfn}
+
+\begin{example}
+    Suppose \( X = \{1,2,3\} \) and \( Y = \{a,b\} \). Then 
+    \[ X \times  Y = \{(1,a), (1,b), (2,a), (2,b), (3,a), (3,b)\} \] 
+\end{example}
+
+\begin{dfn}
+    A \vocab{relation} on a non-empty set \( X \) is any subset \( R \) of the Cartesian product \( X \times X \). If the ordered pair \( (x,y) \in R \), we will often express this as \( xRy \).
+\end{dfn}
+
+\begin{dfn}
+    Let \( S \) be a set. An \vocab{order} on \( S \) is a relation \( < \) with following two properties.
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item For every \( x,y \in S \) exactly one of the following hold:
+        \[ x <y \quad y <x \quad x=y \]
+        \item If \( x <y \) and \( y <z \), then \( x <z \).
+    \end{enumerate}
+\end{dfn}
+
+\begin{dfn}
+    An \vocab{equivalence relation} is a relation \( \sim \) on a non-empty set \( X \) such that the following criteria hold:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item For every \( x \in X \), \( x \sim x \). This is called the \vocab{reflexive} property.
+        \item For every \( x,y \in X \), \( x \sim y \) implies \( y \sim x \). This is called the \vocab{symmetric} property.
+        \item For every \( x,y,z \in X \), \( x \sim y \) and \( y \sim z \) implies \( x \sim z \). This is called the \vocab{transitive} property.
+    \end{enumerate}
+The set 
+\[ A_{x} = \{ y \in X \mid x \sim y\} \] 
+is called the \vocab{equivalence class} of \( x \).
+\end{dfn}
+
+\begin{example}
+Let \( X = \{a,b,c\} \). The reader can verify that the set 
+\[ \sim = \left\{ (a,a), (a,b), (b,a), (b,b), (c,c) \right\} \] is an equivalence relation.
+\end{example}
+
+\begin{example}[Construction of the rational numbers]
+For a non-trivial example, suppose \( \mathbb{Z} \) is the set of integers. We define an equivalence relation on \( \mathbb{Z} \times  \mathbb{Z} - \{ (x,0) \mid x \in \mathbb{Z} \} \) by 
+\[ \left( x_{1},y_{1} \right) \sim \left( x_{2}, y_{2} \right) \iff x_{1} \cdot y_{2} = x_{2} \cdot y_{1 }. \] 
+The reflexive and symmetric properties are trivial. So we will just demonstrate transitivity.\\
+Suppose that 
+\[ \left( x_{1},y_{1} \right) \sim \left( x_{2}, y_{2} \right) \text{ and } \left( x_{2}, y_{2} \right) \sim \left( x_{3}, y_{3} \right)\] 
+Then, 
+\begin{align*}
+    x_{1} \cdot y_{2} &= x_{2} \cdot y_{1} \comment{Since $\left( x_{1},y_{1} \right) \sim \left( x_{2}, y_{2} \right)$}\\
+    y_{3} \cdot\left( x_{1} \cdot y_{2} \right) &= y_{3} \cdot \left( x_{2} \cdot y_{1} \right) \comment{Since $y_{3} \neq 0$}\\
+    \left( x_{1} \cdot y_{3} \right) \cdot y_{2} &= \left( x_{2} \cdot y_{3} \right) \cdot y_{1} \comment{Rearranging}\\
+    \left( x_{1} \cdot y_{3} \right) \cdot y_{2} &= \left( x_{3} \cdot y_{2} \right) \cdot y_{1} \comment{Since $\left( x_{2},y_{2} \right) \sim \left( x_{3}, y_{3} \right)$}\\
+    \left( x_{1} \cdot y_{3} \right) \cdot y_{2} &= \left( x_{3} \cdot y_{1} \right) \cdot y_{2} \comment{Rearranging}\\
+    \left( x_{1} \cdot y_{3} \right) \cdot y_{2} &- \left( x_{3} \cdot y_{1} \right) \cdot y_{2}=0 \\
+    \left( x_{1} \cdot y_{3} \right . &- \left . x_{3} \cdot y_{1} \right) \cdot y_{2} =0 \comment{By the disributive law of the integers}\\
+    x_{1} \cdot y_{3}  &-  x_{3} \cdot y_{1} =0 \comment{Since the $\mathbb{Z}$ is an integral domain and $y_{2} \neq 0$}\\
+    x_{1} \cdot y_{3} &= x_{3} \cdot y_{1}\\
+    \left( x_{1},y_{1} \right) & \sim \left( x_{3}, y_{3} \right) 
+\end{align*}
+We will finish this demonstration by writing \( \frac{x_{1}}{y_{1}} \) instead of \( \left( x_{1}, y_{1} \right) \).\\
+We call this set \(  \mathbb{Z} \times  \mathbb{Z} - \{ (x,0)  \} \) together with this identification, the \vocab{rational numbers} and denote it by \( \mathbb{Q} \) .
+\end{example}
+
+Building on the previous example, we notice that even if \( \left( 1,2 \right)  \) and \( \left( 3,6 \right) \) are distinct elements of \( \mathbb{Z} \times \mathbb{Z} - \{(x,0)\} \), they are the same as elements of \( \mathbb{Q} \). This motivates the following definition and theorem.
+
+\begin{dfn}
+    A \vocab{partition} \( P \)  on a set \( X \) is a collection of subsets \( X_{\alpha} \) of \( X \) such that the following criteria hold:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( \bigcup_{\alpha}^{} X_{\alpha} = X \)
+        \item For any distinct sets \( X_{\alpha}, X_{\beta} \) in the partition \( P \), we have \( X_{\alpha} \cap X_{\beta} = \varnothing \) 
+    \end{enumerate}
+\end{dfn}
+
+\begin{theorem}
+    Any equivalence class \( \sim \) on a non-empty set \( X \) forms a partition. And similarly, for every partition \( P \)  on a non-empty set \( X \), there exists an equivalence relation \( \sim \) whose equivalence classes are precisely the subsets described by the partition.
+\end{theorem}
+\begin{proof}
+    Let \( X_{\alpha}, \alpha \in A \) denote the collection of equivalence classes as defined by the equivalence relation \( \sim \) on \( X \). The reflexive condition guarantees that every element of \( X \) is in some equivalence class so 
+    \[ \bigcup_{\alpha \in A}^{} X_{\alpha} =X \] 
+    is automatically satisfied.
+Now suppose
+\[ X_{a} = \{x \in X \mid a \sim x\} \] 
+\[ X_{b} = \{x \in X \mid b \sim x\} \] 
+are the equivalence classes of \( a \) and \( b \), each members of \( X \). We want to show that they are either disjoint or identical.\\
+So suppose that \( X_{a} \cap X_{b} \) contained at least one element call it \( c \). Now pick any element \( x_{a} \in X_{a} \). Then,
+\begin{align*}
+     a & \sim c \quad a \sim x_{a} \comment{Since $c,x_{a} \in X_{a}$}\\
+    c & \sim a \quad a \sim x_{a} \comment{Applying symmetry}\\
+    c & \sim x_{a} \comment{Applying transitivity}\\
+    b & \sim c \quad c  \sim x_{a} \comment{Since $c \in X_{b}$}\\
+    b & \sim x_{a} \comment{Applying transitivity}
+\end{align*}
+This shows that \( x_{a} \in X_{b} \) so \( X_{a} \subseteq X_{b} \). It is similar to show that \( X_{b} \subseteq  X_{a} \). In other words, we have shown that \( X_{a} \) and \( X_{b} \) contain at least one element in common, then \( X_{a}= X_{b} \). \\
+The other part of this theorem is trivial. If \( P = \{X_{\alpha}\}\) is a partition, then simply say \( x \sim y \) if they belong to same subset defined by the partition. Verifying that this defines an equivalence relation is an exercise.
+\end{proof}
+
+\subsection{Functions}
+
+We arrive at one of the most crucial objects of study in mathematics. 
+\begin{dfn}
+    A \vocab{function} between two non-empty sets \( X \) and \( Y \) is a relation \( f \) that satisfies the following conditions:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item For every \( x \in X \), there exists some \( y \in Y \) such that \( \left( x,y \right) \in f\). 
+        \item \( \left( x,y \right) \) and \( \left( x,y' \right) \) are members of \( f \) if and only if \( y = y' \).
+    \end{enumerate}
+We will write \( f: X \to Y \) if \( f \) is function from \( X \) to \( Y \). We will also write \( f: x \mapsto y \) (read: \( f  \) maps \( x \) to \( y \)) or \( y= f \left( x \right) \)(read: \( y = \) \( f \) of \( x \)) if \( \left( x,y \right) \in f\).\\
+Moreover, we call \( X \) the \vocab{domain} of \( f \) and \( Y \) the \vocab{codomain}.
+\end{dfn}
+
+\begin{dfn}
+    Suppose \( X \), \( Y \), and \( Z \) are sets and \( f: X \to Y \), \( g: Y \to Z \). We define the \vocab{composite} function \( g \circ f: X \to Z \) as follows: 
+    \[ \left( x,z \right) \in g \circ f \text{ if } \left( x,y \right) \in f \text{ and } \left( y,z \right) \in g .\]
+In other words, if \( y =f(x) \) and \( z= g(y) \), we define \( z= \left( g \circ f \right) \left( x \right) \).
+\end{dfn}
+
+\begin{dfn}
+    Suppose \( X \) and \( Y \) are sets, \( f: X \to Y \) and \( A \subset X \). We define the \vocab{restriction} of \( f \) to \( A \), denoted by \( f \vert_{A}: A \to Y \), as a new function
+    \[ f \vert_{A}(a) := f(a) \quad \text{for every } a \in A.\]
+In other words, 
+\[ f \vert_{A} = f \cap \left( A \times Y \right) .\]
+\end{dfn}
+
+\begin{example}
+    Let \( X \) be any set. We have a natural function called the \vocab{identity} function on \( X \), \( \mathrm{Id}_{X}:X \to X \), where 
+    \[ \mathrm{Id}_{X} \left( x \right):=x \quad  \text{   for every } x \in X.\]
+\end{example}
+
+\begin{example}
+    Let \( X \) be any non-empty set and \( A \subseteq X \). We have the \vocab{characteristic function} of \( A \), \( \chi_{A}: X \to \{0,1\} \), where 
+    \[ \chi_{A} \left( x  \right): = 
+    \begin{cases}
+        1 & x \in A\\
+        0 & x \not \in A.
+    \end{cases}
+    \]
+\end{example}
+
+\begin{dfn}
+    Let \( X \) and \( Y \) be sets and \( f: X \to Y \) be a function. We say that \( f \) is \vocab{injective}, is \vocab{one-to-one}, or is an \vocab{injection} if for every \( x_{1}, x_{2} \in X \), we have 
+    \[ x_{1} \neq x_{2} \Rightarrow f \left( x_{1} \right) \neq f \left( x_{2} \right). \]
+\end{dfn}
+
+\begin{dfn}
+    Let \( X \) and \( Y \) be sets and \( f: X \to Y \) be a function. We say that \( f \) is \vocab{surjective}, is \vocab{onto}, or is a \vocab{surjection} if for every \( y \in Y \), there exists an \( x \in X \) such that \( y = f(x) \).
+\end{dfn}
+
+\begin{dfn}
+    Let \( X \) and \( Y \) be sets and \( f: X \to Y \) be a function. We say that \( f \) is \vocab{bijective} or is a \vocab{bijection} if it is both injective and surjective.
+\end{dfn}
+
+\begin{dfn}
+Suppose \( X \) and \( Y \) are sets and \( f: X \to Y \), we say:
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item \( f \) has a \vocab{left-inverse} or is \vocab{left-invertable}  if there exists a function \( g: Y \to X \) such that \( g \circ f = \mathrm{Id}_{X} \). 
+    \item \( f \) has a \vocab{right-inverse} or is \vocab{right-invertable} if there exists a function \( g: Y \to X \) such that \( f \circ g = \mathrm{Id}_{Y} \).
+    \item \( f \) has a \vocab{two-sided-inverse} or is \vocab{invertable} if there exists a function \( g: Y \to X \) such that the above two criteria hold.
+\end{enumerate}
+\end{dfn}
+
+\begin{theorem}
+    Suppose \( X \) and \( Y \) are sets and \( f:X \to Y \) is a function. \( f \) has a left-inverse if and only \( f \) is an injection.
+\end{theorem}
+\begin{proof} 
+    \( \Rightarrow \) For the forward implication, suppose that \( f \) is \textbf{not} injective. Then there are \( x_{1}, x_{2} \in X \) such that \( f \left( x_{1} \right) = f \left(  x_{2} \right)\) but \( x_{1} \neq x_{2} \). But then no possible function \( g: Y \to X \) could be a left inverse since \( \left( g \circ f \right)(x_{1})= x_{1} \) and \( \left( g \circ f \right)(x_{2})= x_{2}  \). cannot be simultaneously true. \\
+    \( \Leftarrow \) Now suppose that \( f \) is injective. Then for any \( y \in \mathrm{Img}\left( f \right) \), we define \( g(y)=x \) whenever \( y= f(x) \). If \( y \not \in \mathrm{Img}(f) \), then we fix an element \( a \in X \) simply define \( g(y)=a \). It is clear from construction that \( g \circ f = \mathrm{Id}_{X} \) and the proof is complete.
+\end{proof}
+
+\begin{theorem}
+    Suppose \( X \) and \( Y \) are sets and \( f: X \to Y \) is a function. \( f \) has a right-inverse if and only if \( f \) is a surjection.
+\end{theorem}
+\begin{proof}
+    \( \Rightarrow \) Suppose that \( f \) is \textbf{not} surjective. Then, by definition, there exists at least one \( y \in Y \) such that \( y \not \in \mathrm{Img} \left( f \right) \). Then for no function \(  g : Y \to X \) can we have \( \left( f \circ g \right) \left(  y \right)= y\). So \( f \) cannot have a right inverse.\\
+    \( \Leftarrow \) Now suppose that \( f \) is surjective. Then for every \( y \in Y \), there is some \( x \in X \) such that \( f(x)=y \). We then define \( g(y)=x \) and \( f \) is not injective, we simply choose a particular \( x \). By construction, it is clear that \( \left( f \circ g \right) = \mathrm{Id}_{Y} \) and the proof is complete.
+\end{proof}
+
+\begin{theorem}
+    Suppose \( X \) and \( Y \) are finite sets with the same number of elements. Then the following are equivalent for \( f: X \to Y \):
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( f \) is bijective. 
+        \item \( f \) is injective. 
+        \item \( f \) is surjective.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+From the statement of the theorem, it suffices to show \( \textbf{ii} \iff \textbf{iii}\). We will proceed by induction on the cardinality of both sets.
+
+The base case \( |X| = |Y| = 1 \) is trivial.
+
+Suppose that the result holds up to \( n-1 \).
+
+\( \Rightarrow \) Now suppose \( |X| = |Y| = n \) and \( f:X \to Y \) is injective. We fix some \( a \in X \) and hence, some \( f(a) \in Y \) and consider the restriction map \( f \vert_{X \setminus \{a\}}: X \setminus \{a\} \to Y \setminus \{f(a)\} \). Since \( f \) is injective, the restriction is also injective. By the inductive hypothesis, \( f \vert_{X \setminus \{a\}} \) is surjective onto \( Y \setminus \{f(a)\} \). Therefore, \( f \) is surjective onto \( Y \).
+
+\( \Leftarrow \) Now suppose \( |X| = |Y| = n \) and \( f:X \to Y \) is surjective. We fix some \( a \in X \) and consider \( f(a) \in Y \). Let's define the restriction \( f \vert_{X \setminus \{a\}}: X \setminus \{a\} \to Y \setminus \{f(a)\} \). To ensure this restriction is well-defined, we need to verify that for all \( b \in X \setminus \{a\} \), we have \( f(b) \neq f(a) \).
+
+Suppose for contradiction that there exists some \( b \in X \setminus \{a\} \) such that \( f(b) = f(a) \). Then \( f \) maps at least two elements \( a \) and \( b \) to the same value, meaning \( f \) maps at most \( n-1 \) elements of \( X \) to distinct elements of \( Y \). Since \( |Y| = n \), there must be at least one element of \( Y \) that is not in the image of \( f \), contradicting the assumption that \( f \) is surjective.
+
+Therefore, the restriction \( f \vert_{X \setminus \{a\}} \) is well-defined. Since \( |X \setminus \{a\}| = |Y \setminus \{f(a)\}| = n-1 \), and the restriction is surjective by construction, we can apply the inductive hypothesis to conclude that \( f \vert_{X \setminus \{a\}} \) is also injective. This implies that \( f \) is injective on all of \( X \).
+\end{proof}

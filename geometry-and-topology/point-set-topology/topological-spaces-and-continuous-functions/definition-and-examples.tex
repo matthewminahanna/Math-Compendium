@@ -1,0 +1,103 @@
+\begin{dfn}
+    Let \( X \) be any set. A \vocab{topology} on \( X \) is a collection \( \mathscr{T} \subseteq \mathcal{P}(X) \) such that the following criteria hold:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( \varnothing, X \in \mathscr{T} \).
+        \item For any collection of sets \( \left\{ U_{\alpha} \right\}_{\alpha \in \mathcal{A}} \subseteq \mathscr{T} \), we have \[ \bigcup_{\alpha \in \mathcal{A}} U_{\alpha} \in \mathscr{T}. \]
+        \item For any finite collection of sets \( \left\{ U_{j} \right\}_{j=1}^n \subseteq \mathscr{T}\), we have \[ \bigcap_{j=1}^{n} U_{j} \in \mathscr{T}. \]
+    \end{enumerate}
+If a set \( U \subseteq X \) belongs to \( \mathscr{T} \), we call \( U \) an \vocab{open} set. If \( x \in U \) and \( U \) is open, we sometimes refer to \( U \) as an \vocab{open neighborhood} of \( x \).
+\end{dfn}
+
+The topology on the empty set is not interesting, so from now on we will assume that \( X \) is non-empty.
+
+\begin{dfn}
+    Let \( X \) be a set and let \( \mathscr{T} \) and \( \mathscr{T}' \) be two topologies on \( X \).  If \( \mathscr{T} \subseteq \mathscr{T}' \), we say that \( \mathscr{T}' \) is \vocab{finer} than \( \mathscr{T} \), or equivalently that \( \mathscr{T} \) is \vocab{coarser} than \( \mathscr{T}' \). If \( \mathscr{T} \subset \mathscr{T}' \), we say that \( \mathscr{T}' \) is \vocab{strictly finer} than \( \mathscr{T} \), or that \( \mathscr{T} \) is \vocab{strictly coarser} than \( \mathscr{T}' \). We call the topologies \( \mathscr{T} \) and \( \mathscr{T}' \) \vocab{comparable} if one is finer than the other.
+\end{dfn}
+
+\begin{example}
+    For any set \( X \), there are two obvious topologies. The \vocab{indiscrete} topology which is just 
+    \[ \mathscr{T}_{\mathrm{indiscrete}} =\left\{ \varnothing, X \right\}\]
+    and the \vocab{discrete} topology which is just 
+    \[ \mathscr{T}_{\mathrm{discrete}} = \mathcal{P} \left( X \right).\]
+\end{example}
+
+\begin{exercise}
+    Let \( X = \left\{ a,b,c \right\} \). What are all the possible topologies on \( X \)?
+\end{exercise}
+\begin{solution}
+    We have the discrete and indiscrete topologies on \( X \). 
+    \[ \mathscr{T}_{\mathrm{discrete}} = \left\{ \varnothing, \left\{ a \right\}, \left\{ b \right\}, \left\{ c \right\}, \left\{ a,b  \right\}, \left\{ a,c  \right\}, \left\{ b,c \right\}, \left\{ a,b,c \right\} \right\} \]
+    \[ \mathscr{T}_{\mathrm{indiscrete}} = \left\{ \varnothing, \left\{ a,b,c \right\} \right\} \]
+Then we have the topologies that augment the indiscrete topology with a singleton set 
+\[ \mathscr{T}_{1} = \left\{ \varnothing, \left\{ a \right\}, \left\{ a ,b, c \right\} \right\},\  \mathscr{T}_{2} = \left\{ \varnothing, \left\{ b \right\}, \left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{3} = \left\{ \varnothing, \left\{ c \right\}, \left\{ a ,b, c \right\} \right\} \]
+\[ \]
+We can fill out the rest 
+\[ \mathscr{T}_{4} = \left\{ \varnothing, \left\{ a \right\}, \left\{ a,b \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{5} = \left\{ \varnothing, \left\{ a \right\}, \left\{ a,c \right\},\left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{6} = \left\{ \varnothing, \left\{ a \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}\]
+\[ \mathscr{T}_{7} = \left\{ \varnothing, \left\{ b \right\}, \left\{ a,b \right\}, \left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{8} = \left\{ \varnothing, \left\{ b \right\}, \left\{ a,c \right\},\left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{9} = \left\{ \varnothing, \left\{ b \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}  \]
+\[ \mathscr{T}_{10} = \left\{ \varnothing, \left\{ c \right\}, \left\{ a,b \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{11} = \left\{ \varnothing, \left\{ c \right\}, \left\{ a,c \right\},\left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{12} = \left\{ \varnothing, \left\{ c \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\} \]
+
+
+\[ \mathscr{T}_{13} = \left\{ \varnothing, \left\{ a \right\}, \left\{ b \right\}, \left\{ a,b \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{14} = \left\{ \varnothing, \left\{ a \right\}, \left\{ c \right\}, \left\{ a,c \right\}, \left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{15} = \left\{ \varnothing, \left\{ b  \right\}, \left\{ c \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}\]
+\[ \mathscr{T}_{16} = \left\{ \varnothing, \left\{ a \right\}, \left\{a, b \right\}, \left\{ a,c \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{17} = \left\{ \varnothing, \left\{ b \right\}, \left\{ a,b \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}, \  \mathscr{T}_{18} = \left\{ \varnothing, \left\{ c  \right\}, \left\{ a,c \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}\]
+
+\[ \mathscr{T}_{19} = \left\{ \varnothing, \left\{ a \right\}, \left\{ b  \right\}, \left\{a, b \right\} ,\left\{ a,c \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{20} = \left\{ \varnothing, \left\{ a \right\}, \left\{ c  \right\}, \left\{a, b \right\} ,\left\{ a,c \right\}, \left\{ a ,b, c \right\} \right\}\]
+\[ \mathscr{T}_{21} =  \left\{ \varnothing, \left\{ a \right\}, \left\{ b  \right\}, \left\{a, b \right\} ,\left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}, \ \mathscr{T}_{22} = \left\{ \varnothing, \left\{ a \right\}, \left\{ c  \right\}, \left\{a, c \right\}, \left\{ b,c \right\}, \left\{ a ,b, c \right\} \right\}\]
+\[ \mathscr{T}_{23}= \left\{ \varnothing, \left\{ b \right\}, \left\{ c \right\}, \left\{ b,c \right\}, \left\{ a,b \right\}, \left\{ a,b,c \right\} \right\}, \mathscr{T}_{24}= \left\{ \varnothing, \left\{ b \right\}, \left\{ c \right\}, \left\{ b,c \right\}, \left\{ a,c \right\}, \left\{ a,b,c \right\} \right\} \]
+
+\[ \mathscr{T}_{25} = \left\{ \varnothing, \left\{ a,b \right\}, \left\{ a,b,c \right\} \right\}, \  T_{26} = \left\{ \varnothing, \left\{ a,c \right\}, \left\{ a,b,c \right\} \right\}, \  \mathscr{T}_{27} = \left\{ \varnothing, \left\{ b,c \right\}, \left\{ a,b,c \right\} \right\}  \]
+
+
+\end{solution}
+
+\begin{exercise}
+    Let \( X \) be a set and we define the co-finite topology \( \mathscr{T}_{\mathrm{cf}} \) as follows: \( U \) is open in \( \mathscr{T}_{\mathrm{cf}} \) if and only if \( X-U \) is finite or all of \( X \). Show that this is indeed a topology.
+\end{exercise}
+\begin{solution}
+    Clearly \( \varnothing \) and \( X \) each belong to \( \mathscr{T}_{\mathrm{cf}} \), so we will jump right into verifying closure under arbitrary unions and finite intersections. \\
+    Let \( U_{\alpha \in A} \in \mathscr{T}_{\mathrm{cf}} \). We want to show that 
+    \[ \bigcup_{\alpha \in A} U_{\alpha} \in \mathscr{T}_{\mathrm{cf}} \]
+    or that 
+    \[ X - \left(  \bigcup_{\alpha \in A} U_{\alpha} \right) \]
+    is finite. We can apply one of DeMorgan's laws to the above expression to get 
+    \[ X - \left(  \bigcup_{\alpha \in A} U_{\alpha} \right) = \bigcap_{\alpha \in A } \left( X - U_{\alpha} \right)\]
+Since each \( U_{\alpha} \) belongs to \( \mathscr{T}_{\mathrm{cf}} \), each \( X- U_{\alpha} \) is finite. Therefore \( \bigcap_{\alpha \in A } \left( X - U_{\alpha} \right) \) is certainly finite. This establishes that \( \bigcup_{\alpha \in A} U_{\alpha} \in \mathscr{T}_{\mathrm{cf}} \).\\
+Now for finite intersections, suppose that \( \{U_{1}, \dots U_{n}\} \subseteq \mathscr{T}_{\mathrm{cf}} \). We want to show that 
+\[ \bigcap_{j=1}^{n} U_{n} \in \mathscr{T}_{\mathrm{cf}}\] or 
+\[ X - \left( \bigcap_{j=1}^{n} U_{j} \right) \]
+is finite. Again, we apply one of DeMorgan's laws to get 
+\[ X - \left( \bigcap_{j=1}^{n} U_{j} \right) = \bigcup_{j=1}^{n } \left( X- U_{j}\right).\]
+Since each \( U_{j} \in \mathscr{T}_{\mathrm{cf}} \), each \( X-U_{j} \) is finite. This implies that \( \bigcup_{j=1}^{n }\left( X-U_{j} \right) \) is finite so \( \bigcap_{j=1}^{n }U_{j} \in \mathscr{T}_{\mathrm{cf}}\). This concludes the proof.
+\end{solution}
+
+\begin{dfn}\label{def: basis for a topology}
+    If \( X \) is a set, we define a \vocab{basis} \( \mathscr{B} \) for a topology to be a collection of subsets of \( X \) that satisfies the following criteria:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item For every \( x \in X \), there is some \( B \in \mathscr{B} \) such that \( x \in B \). 
+        \item For every \( B_{1}, B_{2} \in \mathscr{B} \) and \( x \in B_{1} \cap B_{2} \) there is some \( B_{3} \in \mathscr{B} \) such that \( x \in B_{3} \) and \( B_{3} \subseteq B_{1} \cap B_{2} \). 
+    \end{enumerate}
+A subset \( U \) of \( X \) belongs to the topology  \( \mathscr{T} \) generated by \( \mathscr{B} \) if for each \( x \in U \), there is some \( B_{x} \in \mathscr{B} \) such that \( x \in B_{x} \) and \( B_{x} \subseteq U \).
+\end{dfn}
+
+\begin{theorem}
+    The topology \( \mathscr{T} \) generated by \( \mathscr{B} \) is indeed a topology.
+\end{theorem}
+\begin{proof}
+    \( \varnothing \in \mathscr{T} \) vacuously and \( X  \in \mathscr{T} \) by definition. Now let \( U_{\alpha \in A}  \) be an arbitrary collection of open sets. We wish to show that 
+    \[ \bigcup_{\alpha \in A } U_{\alpha} \in \mathscr{T}. \]
+Pick any \( x \in \bigcup_{\alpha \in A } U_{\alpha}  \). Then \( x \in U_{\beta} \) for at least one \( \beta \in A \). Since \( U_{\beta} \in \mathscr{T} \), there is some \( B \in \mathscr{B} \) for which \( x \in B \) and \( B \subseteq U_{\beta} \). So we can choose the same \( B \) to get 
+\[ x \in B \subseteq  \bigcup_{\alpha \in A } U_{\alpha}.\]
+Since this holds for all \( x \in \bigcup_{\alpha \in A } U_{\alpha}  \), this shows that \( \bigcup_{\alpha \in A } U_{\alpha} \in \mathscr{T} \).\\
+Now let \( U_{1},\dots, U_{n} \) be a finite collection of open sets.  We wish to show that 
+\[ \bigcap_{j=1}^{n} U_{j} \in \mathscr{T}. \]
+We will proceed by induction. The case \( n=1 \) is trivial so our base case will be \( n=2 \). Suppose \( U_{1} \) and \( U_{2} \) are open sets. We wish to show that \( U_{1} \cap U_{2} \) is open. In other words, for any \( x \in U_{1} \cap U_{2} \), we wish to find a basis element that contains \( x \) and is contained in \( U_{1} \cap U_{2}. \) So pick any \( x \in U_{1} \cap U_{2} \). Then \( x \in U_{1} \) and \( x \in U_{2} \). Since \( U_{1} \) and \( U_{2} \) were already open, there exists \( B_{1}, B_{2} \in \mathscr{B} \) such that \( x \in B_{1} \subseteq U_{1} \) and \( x \in B_{2} \subseteq U_{2}\). Since \( \mathscr{B} \) is a basis, there is another basis element \( B_{3} \) containing \( x \) and contained in \( B_{1} \cap B_{2} \). It is clear that \( B_{3} \in U_{1} \cap U_{2} \), and hence\( U_{1} \cap U_{2} \) is open in \( \mathscr{T} \).\\
+ Now for the inductive step, assume that we have shown that \( \bigcap_{j=1}^{n-1} U_{j} \) is open in \( \mathscr{T} \). We define \( V = \bigcap_{j=1}^{n-1} U_{j} \), which is open by the inductive hypothesis. Then \( V \cap U_{n} \) collapses to the base case The inductive step and the proof is completed.
+\end{proof}
+
+\begin{theorem}
+    Let \( \mathscr{B} \) be a basis for a topology \( \mathscr{T} \) on \( X \). Then \( \mathscr{T} \) equals the collection of all unions of elements of \( \mathscr{B} \).
+\end{theorem}
+\begin{proof}
+    Suppose that \( \mathbf{B} \) is the collection of all unions of elements of \( \mathscr{B} \). We wish to show that \( \mathscr{T} = \mathbf{B} \).\\ \( \mathbf{B} \subseteq \mathscr{T} \) since each member of \( \mathscr{B} \) is open in \( \mathscr{T} \) and since \( \mathscr{T} \) is a topology, their unions are also members of \( \mathscr{T} \). \\ One the other hand, we pick any \( U \in \mathscr{T} \). Since \( \mathscr{B} \) generates the topology \( \mathscr{T} \), for every \( x \in U \), we may find \( B_{x} \in \mathscr{B} \) such that \( x \in B_{x} \subseteq U \). So we may write
+    \[ U = \bigcup_{x \in U} B_{x}. \]
+    This completes the proof.
+\end{proof}
