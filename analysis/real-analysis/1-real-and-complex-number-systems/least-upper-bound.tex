@@ -1,0 +1,73 @@
+\begin{theorem}
+    Suppose that \( n \in \mathbb{Z}^{+} \) and that \( \sqrt{n} \not \in \mathbb{Z} \), then \( \sqrt{n} \not \in \mathbb{Q} \).
+\end{theorem}
+\begin{proof}
+    Let the given be as stated and suppose, for the sake of contradiction, that \( \sqrt{n} = \frac{p }{q} \) for some \( p,q \in \mathbb{Z} \) and \( q >0 \). Now since \( \sqrt{n} \not \in \mathbb{Z} \), there must exist some \( k \in \mathbb{Z} \) for which
+    \[ 0 <  \sqrt{n} -k <1\]
+    holds. Now consider the set 
+    \[ S = \left\{ \left( \sqrt{n}-k \right)^{j}: j=1,2,3 \dots  \right\} .\]
+We will note two properties of the elements of \( S \) in which the reader should verify by induction. 
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item If we set \( s_{j}= \left( \sqrt{n}-k \right)^{j} \), then 
+    \[ s_{1} > s_{2} > \cdots > s_{j-1}>s_{j}>s_{j+1}> \cdots \]
+    \item All elements \( s_{j} \) of \( S \) are of the form \( a_{j}+b_{j} \cdot \sqrt{n} \) for some \( a_{j},b_{j} \in \mathbb{Z} \).
+\end{enumerate}
+Applying the hypothesis for contradiction to the second observation, we get that all elements of \( S \) are of the form 
+\[ a_{j}+b_{j} \cdot \sqrt{n} = a_{j}+b_{j} \cdot \frac{p }{q} = \frac{a_{j } \cdot q + b_{j} \cdot p}{q} . \]
+Since \( a_{j}, b_{j}, p, q \in \mathbb{Z}\) and if we consider the set \( Q  = \left\{ \frac{r }{q}: r=1,2, \dots  \right\} \), we have that \( S \subseteq Q \). However, the first observation about elements of \( S \) ensures that this cannot be the case. (Why?) The contradiction establishes the result.
+\end{proof}
+
+\begin{lemma}
+    Suppose that \( n \in \mathbb{Z}^{+} \) and \(  \sqrt{n} \not \in \mathbb{Q}\). Consider the sets 
+    \[ A = \left\{ x \in \mathbb{Q}^{+}: x^{2} < n \right\}  \quad B = \left\{ x \in \mathbb{Q}^{+}: x^{2} > n \right\}.\]
+    Then \( A \) has no maximal element and \( B \) has no minimal element.
+\end{lemma}
+\begin{proof}
+   Let the given be as stated, and pick \( p \in A \cup B \). Define an element \( q \) given by 
+    \[ q = p - \frac{p^{2}-n}{p+n} .\]
+We simplify \( q \) as follows:
+\begin{align*}
+    q &= \frac{p \cdot \left( p+n \right)}{p+n} - \frac{p^{2}-n}{p+n}\\
+    &= \frac{p^{2}+n \cdot p - p^{2} +n}{p+n}\\
+    &= \frac{n \cdot p +n}{p+n}
+\end{align*}
+Now, we compute \( q^{2}-n \).
+\begin{align*}
+    q^{2}-n &= \left( \frac{n \cdot p +n}{p+n} \right)^{2} -n \\
+    &= \frac{\left( n \cdot p +n \right) ^{2}}{ \left( p+n \right)^{2}}- \frac{n \cdot \left( p+n \right)^{2} }{ \left( p+n \right)^{2}}\\
+    &= \frac{n^{2} \cdot p^{2} + 2 n^{2} \cdot p +n^{2} - n \cdot p^{2} - 2n^{2} \cdot p -n^{3}}{\left( p+n \right)^{2}}\\
+    &= \frac{n^{2}\cdot p^{2} -n \cdot p^{2} - \left( n^{3} -n^{2} \right)}{\left( p+n \right)^{2}}\\
+    &= \frac{n \cdot p^{2} \cdot \left( n-1 \right) - n^{2} \cdot \left( n-1 \right)}{\left( p+n \right)^{2}}\\
+    q^{2}-n &= \left( n^{2}-n \right) \cdot \frac{  p^{2} - n}{\left( p+n \right)^{2}}
+\end{align*}
+Now if \( p \in A \), our last equation shows that \( q \in A \) and the first equation shows that \( q >p \). If \(  p \in B \), our last equation shows that \( q \in B\) and the first equation shows that \( q <p \).
+\end{proof}
+
+
+\begin{dfn}
+    Suppose that \( S \) is an ordered set. We say that \( A \subseteq S \) is \vocab{bounded above} if there exists some \( x \in S \) such that for all \( a \in A \), we have that \( a \le x \). We call \( x \) an \vocab{upper bound} for \( A \).\\
+    The definition for a set that is \vocab{bounded below} and an element that is a \vocab{lower bound} is similar.
+\end{dfn}
+
+\begin{dfn}
+    Suppose that \( S \) is an ordered set and \( A \subset S \) is bounded above. If there is some upper bound \( \alpha \in S \) with the property that if \( \gamma < \alpha \) then \( \gamma \) is not an upper bound for \( A \), we refer to \( \alpha \) as the \vocab{least upper bound} or the \vocab{supremum} of \( A \) and we write 
+    \[ \alpha = \sup \left( A \right) .\]
+    Similarly, if \( A \) is bounded below and there is some lower bound \( \beta \) such that if \( \gamma > \beta \) then \( \gamma \) is not a lower bound of \( A \), we will call \( \beta \) the \vocab{greatest lower bound} or the \vocab{infimum} of \( A \) and we write 
+    \[ \beta = \inf{\left( A \right)} .\]
+    If \textbf{every} subset of \( S \) that has an upper bound also has a least upper bound, we say that \( S \) has the \vocab{least upper bound property}. If every subset of \( S \) that has a lower bound also has greatest lower bound, we say that \( S \) has the \vocab{greatest lower bound property}.
+\end{dfn}
+
+\begin{lemma}
+    Every set with the least upper bound property has the greatest lower bound property.
+\end{lemma}
+\begin{proof}
+    Let \( S \) be a non-empty set with least upper bound property and suppose that \( A \subset S \) is bounded below. Since \( A \) is bounded below, the set 
+    \[ B= \{x \in S: x \le a \text{ for every } a \in A\} \]
+    is well-defined and non-empty. By definition, every element of \( A \) is an upper bound for \( B \). So \( B \) is bounded above and since \( S \) has the least upper bound property, the supremum, call it \( \gamma \), of \( B \) exists. I claim that \( \gamma = \inf \left( A \right) \). We need to show that:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( \gamma \) is a lower bound of \( A \); 
+        \item if \( \eta > \gamma \), then \( \eta \) is not a lower bound of \( A \).
+    \end{enumerate}
+    For the first part, suppose that \( \gamma \) is \textbf{not} a lower bound of \( A \). Then there is some \( a \in A \), such that \( a < \gamma \). But since every element of \( A \) is an upper bound of \( B \), we have found an upper bound of \( B \) less than \( \gamma \), which contradicts that \( \gamma \) is the \textbf{least} upper bound. So \( \gamma \) is a lower bound of \( A \).\\
+    For the second part suppose that \( \eta > \gamma \) and that \( \eta \) is a lower bound of \( A \). It follows, by definition, that \( \eta \in B \). This contradicts that \( \gamma \) is an upper bound of \( B \), as we have just found an element of \( B \), namely \( \eta \), for which \( \eta > \gamma \). So \( \gamma \) is the greatest lower bound of \( A \).
+\end{proof}

@@ -1,0 +1,217 @@
+\begin{example}
+ Find the extreme values of the function \( f(x,y) = x^{2}+2y^{2} \) over the circle \( x^{2 } + y^{2 }=1 \). \\
+
+     We apply the method of Lagrange multipliers the functions \( f(x,y) = x^{2}+2y^{2}  \), \( g(x,y)= x^{2} +y^{2} \)to get 
+    \[ 2x = \lambda \cdot 2x , \quad 4y = \lambda \cdot 2y .\]
+    Now if \( \lambda =1 \) to resolve the equation \( 2x = \lambda \cdot 2x \). Then the second equation must have \( y=0 \). Applying this to the constraint equation gives us the points \( \boxed{(x,y)=(1,0)} \) and \(  \boxed{(x,y)=(-1,0)} \) as our first two candidates for critical points. Conversely, if \( \lambda =2 \) to resolve the second equation, then \( x=0 \). As such, our second pair of candidates are  \( \boxed{(x,y)=(0,1)} \) and \(  \boxed{(x,y)=(0,-1)} \). Substituting our candidates into \( f(x,y) \), we get 
+    \begin{align*}
+        f(-1,0) &= 1 \\
+        f(1,0) &= 1 \\
+        f(0,-1) &= 2 \\
+        f(0,1) &= 2 
+    \end{align*}
+    So over the unit-circle, \( f \) attains its maximum at \( \boxed{(x,y)=(0,1)} \) and \(  \boxed{(x,y)=(0,-1)} \) and its minimum at \( \boxed{(x,y)=(1,0)} \) and \(  \boxed{(x,y)=(-1,0)} \). \\
+    Now parametrize \( f(x,y) \) by \( \theta \) with \( x = \cos{ \left( \theta \right) } \) and \( y = \sin{ \left( \theta \right) } \) and compare this problem with \Cref{example:cos2_plus_2sin2}
+
+\end{example}
+
+\begin{exercise}
+    Suppose that you are give \( 12 \) square feet of cardboard and asked to make a box without a lid. What is the maximum volume of such a box? What are the dimensions?
+\end{exercise}
+\begin{solution}
+    Let \( x \) and \( y \) denote the dimensions of the base and \( z \) denote the height of the box. Then we wish to solve the optimization problem 
+    \begin{align*}
+        \text{maximize: }\quad  &f(x,y,z) = xyz \\
+         \text{subject to: } \quad &g(x,y,z) = xy + 2xz + 2yz - 12 = 0\\
+         &x,y,z >0
+    \end{align*}
+    
+    Applying the method of Lagrange multipliers, we need $\largetriangledown f = \lambda \largetriangledown g$, which gives us the system 
+    \begin{equation}\label{exc:cardboard-lagrange-1}
+        yz = \lambda \left( y+ 2z \right)
+    \end{equation}
+    \begin{equation}\label{exc:cardboard-lagrange-2}
+        xz = \lambda \left( x+ 2z \right)
+    \end{equation}
+    \begin{equation}\label{exc:cardboard-lagrange-3}
+        xy = \lambda \left( 2x +2y \right)
+    \end{equation}
+    
+    Since we're looking for a maximum in the interior of the domain where $x,y,z > 0$, and since $\largetriangledown g \neq 0$ at any feasible point, we know that $\lambda \neq 0$.
+    
+    Multiplying \Cref{exc:cardboard-lagrange-1} by \( x \) and \Cref{exc:cardboard-lagrange-2} by \( y \), we get
+    \[ xyz = \lambda \left( xy + 2xz  \right) \quad \text{and} \quad xyz = \lambda \left( xy + 2yz \right) \]
+    
+    Since both expressions equal $xyz$, we have:
+    \begin{align*}
+        \lambda \left( xy + 2xz  \right) &= \lambda \left( xy + 2yz \right) \\
+        xy + 2xz &= xy + 2yz \tag{since $\lambda \neq 0$} \\
+        2xz &= 2yz \\
+        x &= y \tag{since $z > 0$}
+    \end{align*}
+    
+    Therefore, $\boxed{x=y}$. 
+    
+    Substituting this result into \Cref{exc:cardboard-lagrange-3}, we have 
+    \[ x^{2} = \lambda \left( 2x + 2x \right) = 4\lambda x \]
+    Since $x > 0$, we can divide by $x$ to get $\boxed{ x = 4 \lambda}$.
+    
+    Substituting $x = y = 4\lambda$ into \Cref{exc:cardboard-lagrange-2}, we have
+    \[ (4\lambda) z = \lambda \left( 4 \lambda + 2z \right) \]
+    \[ 4\lambda z = \lambda(4\lambda + 2z) \]
+    \begin{align*}
+        4z &= 4\lambda + 2z \tag{since $\lambda \neq 0$} \\
+        2z &= 4\lambda \\
+    \end{align*}
+    \[ \boxed{z = 2 \lambda} \]
+    
+    Now that we have expressions for \( x,y,z \) in terms of \( \lambda \), we can solve for \( \lambda \) using the constraint equation:
+    \begin{align*}
+        12 &= xy + 2xz + 2 yz \\
+        &= \left( 4 \lambda \right) \left(  4 \lambda \right) + 2 \left( 4 \lambda \right) \left( 2 \lambda \right) + 2 \left( 4 \lambda \right) \left( 2 \lambda \right) \\
+        &= 16\lambda^2 + 16\lambda^2 + 16\lambda^2 \\
+        &= 48\lambda^2
+    \end{align*}
+    
+    Therefore, $48\lambda^2 = 12$, which gives us $\lambda^2 = \frac{1}{4}$. Since we need $\lambda > 0$ (as the constraint gradient and objective gradient point in the same direction at the maximum), we have $\lambda = \frac{1}{2}$.
+    
+    Substituting this into our expressions for \( x,y,z \), we get:
+    \[ \boxed{x = 4 \cdot \frac{1}{2} = 2} \]
+    \[ \boxed{y = 4 \cdot \frac{1}{2} = 2} \]  
+    \[ \boxed{z = 2 \cdot \frac{1}{2} = 1} \]
+    
+    This gives us a maximum volume of $\boxed{ \text{Volume } = xyz = 2 \cdot 2 \cdot 1 = 4 \text{ cubic feet}}$.
+    
+\end{solution}
+
+\begin{exercise}
+    What are the points on the sphere \( x^{2}+ y^{2}+ z^{2}=4 \) that are closest and furthest from the point \( (x,y,z) = (3,1, -1) \)?
+\end{exercise}
+\begin{solution}
+    The distance from a point \( (x,y,z) \) to the point \( (3,1,-1) \) is given by 
+    \[ d(x,y,z) = \sqrt{\left( x-3  \right)^{2} + \left( y-1  \right)^{2} + \left( z +1  \right)^{2}}. \]
+    However, we can make our lives easier by choosing to optimize \( f \left( x,y,z  \right) = \left( d (x,y,z ) \right)^{2} \) since extremizing the distance is equivalent to extremizing the squared distance. So our problem is: 
+    \begin{align*}
+        \text{extremize: } \quad &f(x,y,z) =\left( x-3  \right)^{2} +\left( y-1  \right)^{2} + \left( z +1  \right)^{2} \\
+        \text{subject to: } \quad &g (x,y,z) = x^{2} + y^{2} + z^{2} -4 =0
+    \end{align*}
+    
+    Through Lagrange multipliers, we have \( \largetriangledown f = \lambda \largetriangledown g \) which becomes the system:
+    \begin{align*}
+        2(x - 3) &= 2\lambda x \\
+        2(y - 1) &= 2\lambda y \\
+        2(z + 1) &= 2\lambda z
+    \end{align*}
+    
+    Dividing by 2 and rearranging each equation:
+    \begin{align*}
+        x - 3 &= \lambda x \implies x(1 - \lambda) = 3 \\
+        y - 1 &= \lambda y \implies y(1 - \lambda) = 1 \\
+        z + 1 &= \lambda z \implies z(1 - \lambda) = -1
+    \end{align*}
+    
+ If \( \lambda =1 \), then the above three equations are absurd, so we can assume \( \lambda \neq 1 \). Therefore:
+    \[ \boxed{x = \frac{3}{1- \lambda}, \quad y = \frac{1}{1- \lambda}, \quad z = - \frac{1}{1- \lambda}} \]
+    
+    We can now substitute these expressions into the constraint:
+    \begin{align*}
+        4 &= x^{2} +y^{2} + z^{2} \\
+        4 &= \left( \frac{3}{1 - \lambda } \right)^{2} + \left( \frac{1 }{1 - \lambda } \right)^{2} + \left( - \frac{1}{1- \lambda} \right)^{2} \\
+        4 &= \frac{9 + 1 + 1}{(1 - \lambda)^2} \\
+        4(1 - \lambda)^2 &= 11 \\
+        (1 - \lambda)^2 &= \frac{11}{4} \\
+        1 - \lambda &= \pm \frac{\sqrt{11}}{2}
+    \end{align*}
+    
+    Therefore: $\lambda = 1 \pm \frac{\sqrt{11}}{2}$, giving us $\lambda_1 = 1 - \frac{\sqrt{11}}{2}$ and $\lambda_2 = 1 + \frac{\sqrt{11}}{2}$.
+    
+    For $\lambda_1 = 1 - \frac{\sqrt{11}}{2}$:
+    \begin{align*}
+        1 - \lambda_1 &= \frac{\sqrt{11}}{2} \\
+        x &= \frac{3}{\sqrt{11}/2} = \frac{6}{\sqrt{11}} = \frac{6\sqrt{11}}{11} \\
+        y &= \frac{1}{\sqrt{11}/2} = \frac{2}{\sqrt{11}} = \frac{2\sqrt{11}}{11} \\
+        z &= \frac{-1}{\sqrt{11}/2} = \frac{-2}{\sqrt{11}} = -\frac{2\sqrt{11}}{11}
+    \end{align*}
+    
+    This gives us the point $P_1 = \left( \frac{6\sqrt{11}}{11}, \frac{2\sqrt{11}}{11}, -\frac{2\sqrt{11}}{11} \right)$.
+    
+    For $\lambda_2 = 1 + \frac{\sqrt{11}}{2}$:
+    \begin{align*}
+        1 - \lambda_2 &= -\frac{\sqrt{11}}{2} \\
+        x &= \frac{3}{-\sqrt{11}/2} = -\frac{6}{\sqrt{11}} = -\frac{6\sqrt{11}}{11} \\
+        y &= \frac{1}{-\sqrt{11}/2} = -\frac{2}{\sqrt{11}} = -\frac{2\sqrt{11}}{11} \\
+        z &= \frac{-1}{-\sqrt{11}/2} = \frac{2}{\sqrt{11}} = \frac{2\sqrt{11}}{11}
+    \end{align*}
+    
+    This gives us the point $P_2 = \left( -\frac{6\sqrt{11}}{11}, -\frac{2\sqrt{11}}{11}, \frac{2\sqrt{11}}{11} \right)$.
+    
+    To determine which point is closest and which is furthest, we compute the squared distances:
+    
+    For $P_1$: 
+    \begin{align*}
+        f(P_1) &= \left(\frac{6\sqrt{11}}{11} - 3\right)^2 + \left(\frac{2\sqrt{11}}{11} - 1\right)^2 + \left(-\frac{2\sqrt{11}}{11} + 1\right)^2 \\
+        &= \frac{1}{121}\left[(6\sqrt{11} - 33)^2 + (2\sqrt{11} - 11)^2 + (11 - 2\sqrt{11})^2\right] \\
+        &= \frac{1}{121} \cdot 4(11 - 6\sqrt{11} + 121 - 22\sqrt{11} + 121) \\
+        &= 4 - 2\sqrt{11}
+    \end{align*}
+    
+    For $P_2$:
+    \begin{align*}
+        f(P_2) &= \left(-\frac{6\sqrt{11}}{11} - 3\right)^2 + \left(-\frac{2\sqrt{11}}{11} - 1\right)^2 + \left(\frac{2\sqrt{11}}{11} + 1\right)^2 \\
+        &= 4 + 2\sqrt{11}
+    \end{align*}
+    
+    Since $\sqrt{11} > 0$, we have $f(P_1) < f(P_2)$.
+    
+    Therefore:
+    \begin{itemize}
+        \item The \textbf{closest} point is $\boxed{\left( \frac{6\sqrt{11}}{11}, \frac{2\sqrt{11}}{11}, -\frac{2\sqrt{11}}{11} \right)}$
+        \item The \textbf{furthest} point is $\boxed{\left( -\frac{6\sqrt{11}}{11}, -\frac{2\sqrt{11}}{11}, \frac{2\sqrt{11}}{11} \right)}$
+    \end{itemize}
+    
+\emph{Note:} Geometrically, these points lie on the line passing through the center of the sphere $(0,0,0)$ and the external point $(3,1,-1)$, which explains why they represent the closest and furthest points on the sphere. (Compare this approach to the one shown in \Cref{ex:sphere-closest-furthest-vector}.)
+\end{solution}
+
+\begin{exercise}
+   Let \( S =\left\{ \va{v} \in \mathbb{R}^{2}\  \middle|\  \va{v} \cdot \left< 1,2 \right>  =5\right\} \). What is the shortest vector in \( S \)?
+\end{exercise}
+\begin{solution}$ $
+    \begin{align*}
+        \text{minimize: } &f(x,y) = x^{2}+ y^{2} \\
+        \text{subject to: } &g(x,y) =x + 2y -5 = 0
+    \end{align*}
+    This gives 
+    \begin{align*}
+        2x &= \lambda  \Rightarrow x = \frac{\lambda}{2}\\
+        2y &= 2 \lambda \Rightarrow y = \lambda
+    \end{align*}
+    Substituting this into our constraint, we get 
+    \[ \frac{\lambda}{2} + 2 \lambda = 5 \Rightarrow \lambda = 2 \]
+    Therefore \( \boxed{ \left< v,y  \right> = \left< 1,2 \right>} \) is the vector in \( S \) of minimal length.
+\end{solution}
+
+\begin{exercise}
+    Let \( \va{v} \in \mathbb{R}^{n} \) and \( c \in \mathbb{R} \) be fixed and non-zero. Define \( S = \left\{ \va{x} \in \mathbb{R}^{n} \ \middle| \ \va{x} \cdot \va{v} = c \right\} \) find the vector in \( S \) with the shortest length.
+\end{exercise}
+\begin{solution} Suppose that \( \va{x} = \left< x_{1}, x_{2}, \dots, x_{n} \right> \) and \( \va{v} = \left< v_{1}, v_{2}, \dots, v_{n} \right> \). Then
+    \begin{align*}
+        \text{minimize: } &f\left( \va{x} \right) = \sum_{k =1}^{n} \left( x_{k} \right)^{2 } \\
+        \text{subject to: } &g(\va{x}) = \left( \sum_{k=1}^{n} v_{k} x_{k} \right) - c = 0
+    \end{align*}
+    So for any \( 1 \le k \le n \), we have 
+    \begin{align*}
+        \pdv{f }{x_{k}} &= \lambda \pdv{g }{x_{k}} \\
+        2 x_{k} &= \lambda v_{k} \\
+        x_{k} &= \frac{\lambda v_{k}}{2}
+    \end{align*}
+    Substituting this into our constraint, we have 
+    \begin{align*}
+        \sum_{k =1}^{n} v_{k} \left(  \frac{\lambda v_{k}}{2}\right) &=c \\
+        \frac{\lambda}{2} \sum_{k =1}^{n} \left( v_{k} \right)^{2} & = c \\
+        \lambda \frac{\norm{\va{v}}^{2}}{2} &= c \\
+        \lambda &= \frac{2c}{\norm{\va{v}}^{2}}
+    \end{align*}
+    So 
+    \[ x_{k} = \frac{1}{2}\frac{2c}{\norm{\va{v}}^{2}} v_{k} \Rightarrow \frac{c}{\norm{\va{v}}^{2}} v_{k} \]
+    So the minimal element of \( S \) is \[ \boxed{\frac{c}{\norm{\va{v}}^{2}} \va{v}} \]
+\end{solution}

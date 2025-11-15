@@ -1,0 +1,34 @@
+\begin{dfn}
+    Suppose that \( f \) is a continuous real-valued function. We say that \( f \) attains a \vocab{local maximum} at \( p \) if there exists a \( \delta >0 \) such that \( f(p) \ge f(q) \) whenever \( q \in B\left( p; \delta \right)\).\\
+
+    Similarly, we say that \( f \) attains a \vocab{local minimum} at \( p \) if there exists a \( \delta >0 \) such that \( f(p) \le f(q) \) whenever \( q \in B\left( p; \delta \right)\).
+\end{dfn}
+
+\begin{theorem}
+    Suppose that \( f: \left[ a,b \right]\to \mathbb{R}\) is differentiable on \( (a,b) \). If \( f \) attains a local maximum or minimum at \( x \), then \( f'(x) =0 \).
+\end{theorem}
+\begin{proof}
+    Let the givens be as stated and suppose that \( f \) attains a local maximum at \( x \in \left( a,b \right) \). Then there is a \( \delta >0 \) such that whenever \( t \in B \left( x, \delta \right) \), we have \( f(x) \ge f(t) \). 
+    
+    First suppose that \( x- \delta < t < x \). Then \( f(x) - f(t) \ge 0 \) and \( x - t > 0 \), so
+    \begin{equation}\label{eq:difference-quotient-positive}
+        \frac{f(x) - f(t)}{x-t} \ge 0 
+    \end{equation}
+    as it is the quotient of two non-negative numbers where the denominator is positive.
+    
+    On the other hand, if \( x < t < x + \delta \), then \( f(x) - f(t) \ge 0 \) and \( x - t < 0 \), so
+    \begin{equation}\label{eq:difference-quotient-negative}
+        \frac{f(x) - f(t)}{x-t} \le 0 
+    \end{equation}
+    as it is the quotient of a non-negative and negative number.
+    
+    Since \( f \) is differentiable at \( x \), the limit 
+    \[ f'(x)= \lim_{t \to x}\frac{f(x) - f(t)}{x-t} \] 
+    exists. By \Cref{eq:difference-quotient-positive}, we have 
+    \[ f'(x) = \lim_{t \to x^-}\frac{f(x) - f(t)}{x-t} \ge 0 \]
+    and by \Cref{eq:difference-quotient-negative}, we have
+    \[ f'(x) = \lim_{t \to x^+}\frac{f(x) - f(t)}{x-t} \le 0 \]
+    Since both one-sided limits equal \( f'(x) \), we must have \( f'(x) = 0 \).
+    
+    The case where \( f \) attains a local minimum at \( x \) follows by similar reasoning, with the inequalities reversed.
+\end{proof}

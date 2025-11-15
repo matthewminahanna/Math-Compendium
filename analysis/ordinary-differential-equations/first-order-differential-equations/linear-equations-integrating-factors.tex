@@ -1,0 +1,117 @@
+\begin{dfn}
+    If \( f \) in \Cref{6/4/25/7} is of the form \( f(t,y) = p(t)y + g(t) \), we call \Cref{6/4/25/7} a \vocab{first-order linear equation}.
+\end{dfn}
+
+Observe that this is equivalent to the form
+\begin{equation}
+    P(t) \dv{y }{t } + Q(t)y = G(t), \quad P(t) \neq 0, \label{6/4/25/8}
+\end{equation}
+which can always be rewritten in the form of \Cref{6/4/25/7} by dividing both sides by \( P(t) \). 
+
+
+\begin{exercise}
+    Solve the differential equation 
+    \begin{equation}
+        \left( \sin \left( t^{2} \right) + 2 \right) \dv{y }{t} + \left( 2t \cos \left( t^{2} \right) \right)y = 6t^{2}. \label{6/4/25/9}
+    \end{equation}
+\end{exercise}
+
+\begin{solution}
+    We observe that the left-hand side is the derivative of a product:
+    \[
+        \dv{t} \left[ \left( \sin \left( t^{2} \right) + 2 \right) y \right] = 6t^{2}.
+    \]
+    Integrating both sides, we obtain
+    \[
+        \int \dv{t} \left[ \left( \sin \left( t^{2} \right) + 2 \right) y \right] \dd{t} = \int 6t^{2} \dd{t},
+    \]
+    which gives
+    \[
+        \left( \sin \left( t^{2} \right) + 2 \right) y = 2t^{3} + C.
+    \]
+    Solving for \( y \), we find the general solution:
+    \[
+        \boxed{y = \frac{2t^{3} + C}{\sin \left( t^{2} \right) + 2}}.
+    \]
+\end{solution}
+
+We can generalize the above procedure. Suppose we are given a differential equation of the form
+\[
+    P(t) \dv{y}{t} + P'(t)y = G(t), \quad P(t) \neq 0.
+\]
+Then the left-hand side is the derivative of \( P(t)y \), and we may write
+\[
+    \dv{t} \left[ P(t) y \right] = G(t),
+\]
+so that
+\[
+    y = \frac{1}{P(t)} \int G(t) \dd{t}.
+\]
+
+
+Now consider the general first-order linear equation
+\[
+    \dv{y}{t} + p(t)y = g(t).
+\]
+Unless \( p(t) = 0 \), we cannot directly apply the previous trick. Instead, we multiply through by a nonzero function \( \mu(t) \), chosen so that the left-hand side becomes the derivative of a product:
+\[
+    \mu(t) \dv{y}{t} + \mu(t)p(t)y = \mu(t) g(t),
+\]
+or equivalently,
+\[
+    \dv{t} \left[ \mu(t)y \right] = \mu(t)g(t).
+\]
+
+It is straightforward to verify that setting
+\[
+    \mu(t) = e^{\int p(t) \dd{t}}
+\]
+achieves this goal. We call \( \mu(t) \) the \vocab{integrating factor}. In particular, the linear equation becomes
+\begin{align*}
+    \dv{t} \left[  e^{\int p(t) \dd{t}} y \right] &=  e^{\int p(t) \dd{t}} g(t) \\
+    \int \dv{t} \left[  e^{\int p(t) \dd{t}} y \right] \dd{t} &=  \int e^{\int p(t) \dd{t}} g(t) \dd{t}\\
+    e^{ \int p(t) \dd{t}}y &=\int e^{\int p(t) \dd{t}} g(t) \dd{t}\\
+    y &= \frac{1}{e^{ \int p(t) \dd{t}}} \int e^{\int p(t) \dd{t}} g(t) \dd{t}
+\end{align*}
+
+
+\begin{example}
+    If we are given the equation
+    \[ \dv{y}{t}+ \frac{1}{2}y = \frac{1}{2}e^{\frac{t }{3}} .\]
+Here \( p(t)= \frac{1}{2} \) so our integrating factor becomes 
+    \[ \mu(t)= e^{\int \frac{1}{2} \dd{t}}= e^{\frac{t}{2} +c}= Ce^{\frac{t}{2}} \]
+    We do not need maximum generality for out integrating factor so we can just pick \( C=1 .\)
+    Multiplying through with our integrating factor, we get 
+    \[ e^{\frac{t}{2}} \dv{y }{t} + \frac{1}{2}e^{\frac{t}{2}}y = \frac{1}{2}e^{\frac{t}{3}}e^{\frac{t}{2}} \]
+    or 
+    \[ \dv{t} \left[ e^{\frac{t }{2}}y \right] = \frac{1}{2} e^{\frac{5t}{6}}.\]
+    Integrating both sides, we have 
+    \[ e^{\frac{t }{2}}y= \frac{3}{5}e^{\frac{5t }{6}} +C\] or
+    \[ \boxed{y = \frac{3}{5} e^{\frac{t }{3}} + C e^{\frac{-t }{2}}} \]
+    Now suppose that we want to find the particular solution that goes through the point \( (0,1) \), we would have 
+    \[ 1= \frac{3}{5} e^{\frac{0 }{3}} + C e^{\frac{-0 }{2}} \]
+    or 
+    \[ 1 = \frac{3}{5}+C \]
+    so \( C= \frac{2}{5} \) and the particular solution is 
+    \[ \boxed{y = \frac{3}{5} e^{\frac{t }{3}} + \frac{2}{5} e^{\frac{-t }{2}}} \]
+\end{example}
+
+\begin{example}
+    Solve the initial value problem.
+    \begin{align*}
+        t \dv{y}{t}+ 2y &= 4t^{2}\\
+        y(1)&=2
+    \end{align*}
+Dividing every term by \( t \), we have 
+\[ \dv{y}{t} + \frac{2}{t}y =4t \]
+Here \( p(t)= \frac{2}{t} \) so \( \mu(t)= e^{ \int \frac{2}{t } \dd{t}} \) or \( \mu (t) = t^{2} \). So multiplying through by \( \mu(t) \), we have 
+\[ t^{2} \dv{y}{t} + 2t = 4t^{3} \]
+or 
+\[ \dv{t} \left[ t^{2}y \right] = 4t^{3} \]
+Integrating both sides, we have 
+\[ t^{2}y = t^{4}+C .\]
+Applying the initial condition, we have 
+\[ 1^{2} \cdot 2=1^{4}+C \Rightarrow C=1 \]
+So 
+\[ \boxed{y= t^{2} + \frac{1}{t^{2}}, \quad t>0} \]
+\end{example}

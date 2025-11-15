@@ -1,0 +1,60 @@
+We now consider one of the central motivating problems of calculus:
+
+\begin{quote}
+    Given a function \( f(x) \), how do we find the equation of the line \vocab{tangent} to \( f(x) \) at \( x = a \)?
+\end{quote}
+
+
+While tangent lines can be difficult to find directly, we can start with a simpler question:
+
+\begin{quote}
+    How do we find a \vocab{secant} line between two points \( x = a \) and \( x = b \) on the graph of \( f \)?
+\end{quote}
+
+The slope of the secant line is given by:
+\[
+m = \frac{f(b) - f(a)}{b - a}
+\]
+So the equation of the secant line is:
+\[
+y = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)
+\]
+
+If we let \( b \) get arbitrarily close to \( a \), we get an increasingly accurate approximation of the tangent line.
+
+
+\begin{example}
+  To estimate the slope of the tangent line of \( y= \sin{ \left( x \right) } \) at \( x=0 \), we compute the slope of secant lines approaching \( x = 0 \). That is,
+\[
+\text{slope} = \frac{\sin(b) - \sin(0)}{b - 0} = \frac{\sin(b)}{b}
+\]
+
+We can produce the following table of secant slopes:
+
+\begin{center}
+\begin{tabular}{c|c}
+\toprule
+\textbf{Value of \( b \)} & \( \frac{\sin(b)}{b} \) \\
+\midrule
+1.0     & 0.84147 \\
+0.5     & 0.95885 \\
+0.1     & 0.99833 \\
+0.01    & 0.99998 \\
+0.001   & 1.00000 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+As \( b \to 0 \), the secant slope \( \frac{\sin(b)}{b} \to 1 \). So we estimate:
+\[
+\text{Slope of tangent line at } x = 0 \text{ is approximately } \boxed{1}.
+\]
+
+Since \( \sin(0) = 0 \), the tangent line at \( x = 0 \) is:
+\[
+y = \sin(0) + 1 \cdot (x - 0) = x
+\]
+
+
+\end{example}

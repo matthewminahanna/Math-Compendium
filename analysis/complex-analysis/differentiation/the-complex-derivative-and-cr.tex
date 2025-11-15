@@ -1,0 +1,78 @@
+\begin{dfn}
+    Suppose that \( U \) is an open subset of \( \mathbb{C} \) and \( f: U \to \mathbb{C} \). 
+    We say that \( f \) is \vocab{differentiable} at \( z_{0} \in U \) if 
+    \[
+        \lim_{h \to 0} \frac{f(z_{0} + h) - f(z_{0})}{h}
+    \]
+    exists and is finite. We denote this limit by \( f'(z_{0}) \).
+\end{dfn}
+
+We can consider \( f(z) \) has having a real and imaginary part. That is, \( f(z) = u \left( x,y \right) + i v(x,y) \) where \( u, v: \mathbb{R}^{2} \to \mathbb{R} \) and \( z=x+iy \).
+
+\begin{theorem}[The Cauchy-Riemann Equations]
+    Let $f: U \to \mathbb{C}$ where $U$ is an open subset of $\mathbb{C}$, and write $f(z) = u(x,y)+i v(x,y)$ with $z=x+iy$. Suppose $u$ and $v$ have continuous partial derivatives in $U$. Then $f$ is complex differentiable at $z$ if and only if the \vocab{Cauchy-Riemann equations} hold at $z$:
+    \[ \pdv{u}{x} = \pdv{v}{y}, \quad \pdv{u }{y} = - \pdv{v }{x} \]
+\end{theorem}
+\begin{proof}
+    $(\Rightarrow)$ If $f$ is complex differentiable at $z$, then 
+    \[ f'(z) = \lim_{\Delta z \to 0} \frac{f \left( z + \Delta z\right) - f(z)}{\Delta z} \] 
+    exists and is finite. Letting $\Delta z = \Delta x + i \Delta y$, we have 
+    \[ f'(z) = \lim_{ \left( \Delta x, \Delta y \right) \to  \left( 0,0 \right)} \frac{u \left( x + \Delta x , y + \Delta y \right) + i v \left( x + \Delta x, y + \Delta y \right) - u (x,y) -iv (x,y)}{\Delta x+i \Delta y} \]
+    Since the limit is independent of the path chosen, we first choose the path with $\Delta y = 0$:
+    \[ f'(z) = \lim_{\Delta x \to 0}  \frac{u \left( x + \Delta x , y \right) + i v \left( x + \Delta x,y\right) - u (x,y) -iv (x,y)}{ \Delta x}  \]
+    Separating real and imaginary parts:
+     \[ f'(z) = \lim_{\Delta x \to 0}  \frac{u \left( x + \Delta x , y \right) - u (x,y)}{ \Delta x} + i \lim_{\Delta x \to 0} \frac{v \left( x + \Delta x , y \right) - v (x,y)}{ \Delta x} \]
+     Therefore:
+     \[ \boxed{ f'(z) = \pdv{u }{x} + i \pdv{v }{x}} \]
+     Now choosing the path with $\Delta x = 0$:
+      \[ f'(z) = \lim_{\Delta y\to 0}  \frac{u \left( x, y + \Delta y  \right) + i v \left( x, y + \Delta y\right) - u (x,y) - iv (x,y)}{i \Delta y} \]
+    Factoring out $\frac{1}{i} = -i$:
+      \[ f'(z) = \lim_{\Delta y\to 0} \left( -i \right) \left[ \frac{u \left( x, y + \Delta y  \right) - u (x,y) }{ \Delta y}  + i \frac{ v \left( x, y + \Delta y\right)- v (x,y)}{\Delta y} \right] \] 
+      Therefore:
+      \[ \boxed{f'(z) = -i \pdv{u}{y} + \pdv{v }{y}} \]
+      Since both expressions equal $f'(z)$, we have:
+      \[ \pdv{u }{x} + i \pdv{v }{x} = \pdv{v }{y} - i \pdv{u}{y} \]
+      Equating real and imaginary parts:
+       \[ \boxed{\pdv{u}{x} = \pdv{v}{y}, \quad \pdv{v }{x} = - \pdv{u }{y}} \]
+       
+    $(\Leftarrow)$ Now suppose the Cauchy-Riemann equations hold and $u, v$ have continuous partial derivatives. We need to show that 
+    \[ \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} \]
+    exists. Let $\Delta z = \Delta x + i\Delta y$. Since $u$ and $v$ are differentiable (having continuous partial derivatives), we can write:
+    \begin{align*}
+    u(x+\Delta x, y+\Delta y) - u(x,y) &= \pdv{u }{x} \Delta x + \pdv{u}{y} \Delta y + \epsilon_1(\Delta x, \Delta y)|\Delta z|\\
+    v(x+\Delta x, y+\Delta y) - v(x,y) &= \pdv{v }{x} \Delta x + \pdv{v }{y}\Delta y + \epsilon_2(\Delta x, \Delta y)|\Delta z|
+    \end{align*}
+    where $\epsilon_1, \epsilon_2 \to 0$ as $(\Delta x, \Delta y) \to (0,0)$.
+    
+    Therefore:
+    \begin{align*}
+    \frac{f(z + \Delta z) - f(z)}{\Delta z} &= \frac{u(x+\Delta x, y+\Delta y) - u(x,y) + i \left(  v(x+\Delta x, y+\Delta y) - v(x,y) \right)}{ \Delta x + i \Delta y}\\ 
+    &= \frac{\pdv{u }{x} \Delta x + \pdv{u}{y} \Delta y + \epsilon_1(\Delta x, \Delta y)|\Delta z| + i \left(  \pdv{v }{x} \Delta x + \pdv{v }{y}\Delta y + \epsilon_2(\Delta x, \Delta y)|\Delta z| \right)}{\Delta x + i \Delta y}\\
+     &= \frac{\left( \pdv{u }{x} + i \pdv{v }{x} \right)\Delta x + \left( \pdv{u }{y} + i \pdv{v }{y} \right)\Delta y + \epsilon(\Delta z)|\Delta z|}{\Delta x + i\Delta y}
+    \end{align*}
+    where $\epsilon(\Delta z) = \epsilon_{1} (\Delta x, \Delta y) + i \epsilon_{2} \left( \Delta x, \Delta y \right) \to 0$ as $\Delta z =\Delta x + i \Delta y \to 0$.
+    
+    Using the Cauchy-Riemann equations $\pdv{u}{x} = \pdv{v}{y}$ and $\pdv{u}{y} = -\pdv{v}{x}$:
+    \begin{align*}
+    \frac{f(z + \Delta z) - f(z)}{\Delta z} &= \frac{\left( \pdv{u}{x} + i\pdv{v}{x} \right)\Delta x +\left(  -\pdv{v}{x} + i\pdv{u}{x} \right)\Delta y + \epsilon(\Delta z)|\Delta z|}{\Delta x + i\Delta y}\\
+    &= \frac{\left( \pdv{u}{x} + i\pdv{v}{x} \right)(\Delta x + i\Delta y) + \epsilon(\Delta z)|\Delta z|}{\Delta x + i\Delta y}\\
+    &= \frac{\left( \pdv{u}{x} + i\pdv{v}{x} \right)(\Delta x + i\Delta y) }{\Delta x + i\Delta y} + \frac{\epsilon(\Delta z)|\Delta z|}{\Delta z}\\
+    &= \pdv{u}{x} + i\pdv{v}{x} + \epsilon(\Delta z)\frac{\abs{\Delta z}}{\Delta z}
+    \end{align*}
+    
+    Since $ \abs{ \frac{\abs{\Delta z}}{\Delta z}}= 1$, we have:
+    \[ \lim_{\Delta z \to 0}\left|\frac{f(z + \Delta z) - f(z)}{\Delta z} - \left(\pdv{u }{x} + i \pdv{v }{x}\right)\right| =  \lim_{\Delta z \to 0}|\epsilon(\Delta z)| = 0 \]
+    
+    Therefore $f'(z)  = \pdv{u}{x} + i\pdv{v}{x}$ exists.
+    
+
+\end{proof}
+    \textbf{Geometric interpretation:} The Jacobian matrix of $f$ viewed as a real function $(x,y) \mapsto (u(x,y), v(x,y))$ is:
+    \[ J_f = \begin{bmatrix}
+        \pdv{u}{x} & \pdv{u}{y}\\ \\
+        \pdv{v}{x} & \pdv{v}{y}
+    \end{bmatrix} = \begin{bmatrix}
+        \pdv{u}{x} &-\pdv{v}{x}\\ \\
+        \pdv{v}{x} & \pdv{u}{x}
+    \end{bmatrix} \]
+    This matrix represents multiplication by the complex number $\pdv{u}{x} + i\pdv{v}{x} = f'(z)$, showing that complex differentiability corresponds to similarity transformations (combinations of scaling and rotation) in the plane.

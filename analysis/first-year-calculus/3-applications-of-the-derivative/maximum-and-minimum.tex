@@ -1,0 +1,64 @@
+\begin{example}\label{example:cos2_plus_2sin2}
+    Find the maximum and minimum of the function
+    \[
+        f(\theta)=\cos^{2}\theta+2\sin^{2}\theta
+    \]
+    over the interval \([0,2\pi]\).
+
+    First note that
+    \[
+        f(\theta)=\cos^{2}\theta+2\sin^{2}\theta=(\cos^{2}\theta+\sin^{2}\theta)+\sin^{2}\theta=1+\sin^{2}\theta.
+    \]
+    Differentiating,
+    \[
+        f'(\theta)=2\sin\theta\cos\theta=\sin(2\theta).
+    \]
+    Setting \(f'(\theta)=0\) gives
+    \[
+        \sin(2\theta)=0\quad\Longrightarrow\quad 2\theta=k\pi\quad(k\in\mathbb{Z}),
+    \]
+    so the critical points in \([0,2\pi]\) are
+    \[
+        \theta=0,\ \tfrac{\pi}{2},\ \pi,\ \tfrac{3\pi}{2},\ 2\pi.
+    \]
+
+    \medskip
+
+     We test one point in each sub-interval determined by the critical points.
+
+    \[
+    \begin{array}{c|c|c|c}
+        \text{Interval} & \text{Test point } \theta & \sin(2\theta) & \text{Monotonicity of } f\\\hline
+         \left( 0,\tfrac{\pi}{2} \right)& \tfrac{\pi}{4} & \sin(\tfrac{\pi}{2})=+1 & \text{increasing}\\[4pt]
+        \left( \tfrac{\pi}{2},\pi \right) & \tfrac{3\pi}{4} & \sin(\tfrac{3\pi}{2})=-1 & \text{decreasing}\\[4pt]
+        \left( \pi,\tfrac{3\pi}{2} \right)& \tfrac{5\pi}{4} & \sin(\tfrac{5\pi}{2})=+1 & \text{increasing}\\[4pt]
+        \left( \tfrac{3\pi}{2},2\pi \right) & \tfrac{7\pi}{4} & \sin(\tfrac{7\pi}{2})=-1 & \text{decreasing}
+    \end{array}
+    \]
+
+    From this sign chart: \(f\) increases on \((0,\tfrac{\pi}{2})\), decreases on \((\tfrac{\pi}{2},\pi)\), increases on \((\pi,\tfrac{3\pi}{2})\), and decreases on \((\tfrac{3\pi}{2},2\pi)\). Hence \(\theta=\tfrac{\pi}{2}\) and \(\theta=\tfrac{3\pi}{2}\) are local maxima, while \(\theta=0,\pi,2\pi\) are local minima.
+
+    \medskip
+Testing each candidate \( \theta \) value, we get:
+    \[
+        f(0)=1+\sin^{2}0=1,\qquad
+        f\!\bigl(\tfrac{\pi}{2}\bigr)=1+\sin^{2}\!\bigl(\tfrac{\pi}{2}\bigr)=2,
+    \]
+    \[
+        f(\pi)=1+\sin^{2}\pi=1,\qquad
+        f\!\bigl(\tfrac{3\pi}{2}\bigr)=1+\sin^{2}\!\bigl(\tfrac{3\pi}{2}\bigr)=2,
+    \]
+    \[
+        f(2\pi)=1+\sin^{2}(2\pi)=1.
+    \]
+
+    \medskip
+
+     So, on \([0,2\pi]\),
+    \[
+        \boxed{\text{Maximum value } 2 \text{ attained at } \theta=\tfrac{\pi}{2},\ \tfrac{3\pi}{2},}
+        \qquad
+        \boxed{\text{Minimum value } 1 \text{ attained at } \theta=0,\ \pi,\ 2\pi.}
+    \]
+\end{example}
+

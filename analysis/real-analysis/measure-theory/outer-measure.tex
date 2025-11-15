@@ -1,0 +1,23 @@
+\begin{dfn}
+    Let \( I \) be a basis element of the standard topology on \( \mathbb{R} \),
+    where basis elements are intervals of the form
+    \( (a,b) \), \( (-\infty,b) \), \( (a,\infty) \), or \( \mathbb{R} = (-\infty,\infty) \).
+    We define the \vocab{length} of \( I \) to be
+    \[
+        \ell(I) = \begin{cases}
+            b - a & \text{if } I = (a,b), \\
+            0     & \text{if } I = \varnothing, \\
+            \infty & \text{otherwise}.
+        \end{cases}
+    \]
+\end{dfn}
+\begin{dfn}
+    Let \( A \subset \mathbb{R} \). The \vocab{outer measure} of \( A \), denoted 
+    \( m^{*}(A) \), is defined by
+    \[
+        m^{*}(A) = \inf \left\{ \sum_{k=1}^{\infty} \ell(I_{k}) 
+        \ \middle|\ 
+        A \subseteq \bigcup_{k=1}^{\infty} I_{k},\ I_{k} \text{ are open} \right\}.
+    \]
+\end{dfn}
+

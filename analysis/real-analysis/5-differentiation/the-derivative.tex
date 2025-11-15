@@ -1,0 +1,36 @@
+\begin{theorem}[The Chain Rule]\label{thm: chain rule}
+    Suppose \( f: \left[ a,b \right] \to \left[ c,d \right] \) is continuous and that it is differentiable at \( x \). Also \( g:I \to \mathbb{R} \) (where \( \left[ c,d \right] \subseteq I \)) is continuous and that it is differentiable at \( f(x) \). Then the composition function \( g \circ f: \left[ a,b \right] \to \mathbb{R} \) is differentiable at \( x \) and 
+    \[ \left( g \circ f \right)'(x) = g'\left( f(x) \right) \cdot f'(x). \]
+\end{theorem}
+\begin{proof}
+    Our goal is to verify that the following limit 
+    \[ \lim_{t \to x}  \frac{g\left( f (t) \right) - g \left( f (x) \right)}{t-x}\] exists and equals \( \left( g \circ f \right)'(x) = g'\left( f(x) \right) \cdot f'(x). \)\\
+    Since \( g \) is differentiable at \( f(x) \), the limit 
+    \[ \lim_{y \to f(x)} \frac{g(y) - g(f(x))}{y-f(x)} \]
+    exists and equals \( g' \left( f(x) \right) \). As such, we can define a continuous auxiliary function 
+    \[ \Psi \left( y \right) := \begin{cases}
+        \frac{g(y) - g(f(x))}{y-f(x)} & y \neq f(x)\\
+         g' \left( f(x) \right) & y = f(x)
+    \end{cases} \]
+    Note that $\Psi$ is continuous at $f(x)$ since 
+    \[ \lim_{y \to f(x)} \Psi(y) = \lim_{y \to f(x)} \frac{g(y) - g(f(x))}{y-f(x)} = g'(f(x)) = \Psi(f(x)). \]
+    For \( y \neq f(x) \), we have  
+    \[ g(y) - g(f(x)) = \Psi(y) \left( y-f(x) \right)  .\]
+    This equation also holds when $y = f(x)$ since both sides equal 0.
+    
+    Letting \( y= f(t) \), we have 
+    \[  g\left( f(t) \right) - g \left( f(x) \right)= \Psi \left( f(t) \right) \left( f(t)- f(x) \right)  .\]
+    Now we can divide both sides by \( t-x \) (for $t \neq x$) to get
+    \[ \frac{ g\left( f(t) \right) - g \left( f(x) \right)}{t-x}= \Psi \left( f(t) \right) \frac{f(t)- f(x) }{t-x}  \]
+    Finally we can take the limit as \( t \to x \) of both sides 
+    \begin{align*}
+        \lim_{t \to x}\frac{ g\left( f(t) \right) - g \left( f(x) \right)}{t-x} &= \lim_{t \to x}\left[\Psi \left( f(t) \right) \cdot \frac{f(t)- f(x) }{t-x}\right]\\
+        &= \left(\lim_{t \to x}\Psi \left( f(t) \right)\right) \left(\lim_{t \to x} \frac{f(t)- f(x) }{t-x}\right) \tag{Since both limits exist}\\
+        &= \Psi \left( \lim_{t \to x}f(t) \right) \left(\lim_{t \to x} \frac{f(t)- f(x) }{t-x}\right) \tag{By continuity of $\Psi$ and $f$}\\
+        &= \Psi \left( f(x) \right) \left(\lim_{t \to x} \frac{f(t)- f(x) }{t-x}\right) \\
+        &= g'(f(x)) \left(\lim_{t \to x} \frac{f(t)- f(x) }{t-x}\right) \\
+        &=  g'(f(x)) \cdot f'(x) \tag{Since $f$ is differentiable at $x$}
+    \end{align*}
+    So we have shown that 
+    \[  \lim_{t \to x}\frac{ g\left( f(t) \right) - g \left( f(x) \right)}{t-x}  \] exists and equals \(   g'(f(x)) \cdot f'(x) \), as desired.
+\end{proof}

@@ -1,0 +1,207 @@
+Now that we have compiled a list of important functions, we will use them as building blocks to produce all the functions typically considered in a first year calculus course. 
+
+\subsection{Transformations of Functions}
+
+\begin{dfn}
+    Let \( y=f(x) \) be any function and \( c >0 \), then we can apply the following transformations to \( f(x) \).
+\begin{description}[style=nextline]
+ \item[Upward shift:] 
+  \( y = f(x) + c \) shifts the graph \textbf{up} by \( c \) units.  
+  If \( (x_0, y_0) \) is on the graph of \( y = f(x) \), then \( (x_0, y_0 + c) \) is on the graph of \( y = f(x) + c \).
+
+  \item[Downward shift:] 
+  \( y = f(x) - c \) shifts the graph \textbf{down} by \( c \) units.  
+  If \( (x_0, y_0) \) is on the graph of \( y = f(x) \), then \( (x_0, y_0 - c) \) is on the graph of \( y = f(x) - c \).
+
+  \item[Left shift:] 
+  \( y = f(x + c) \) shifts the graph \textbf{left} by \( c \) units.  
+  If \( (x_0, y_0) \) is on the graph of \( y = f(x) \), then \( (x_0 - c, y_0) \) is on the graph of \( y = f(x + c) \).
+
+  \item[Right shift:] 
+  \( y = f(x - c) \) shifts the graph \textbf{right} by \( c \) units.  
+  If \( (x_0, y_0) \) is on the graph of \( y = f(x) \), then \( (x_0 + c, y_0) \) is on the graph of \( y = f(x - c) \).
+
+    \item[Vertical stretch:] 
+  \( y = a f(x) \) \textbf{stretches} the graph vertically by a factor of \( |a| \) if \( |a| > 1 \).  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( (x_0, a y_0) \) lies on the graph of \( y = a f(x) \).
+
+  \item[Vertical compression:] 
+  \( y = a f(x) \) \textbf{compresses} the graph vertically if \( 0 < |a| < 1 \).  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( (x_0, a y_0) \) lies on the graph of \( y = a f(x) \).
+
+  \item[Horizontal compression:] 
+  \( y = f(ax) \) \textbf{compresses} the graph horizontally by a factor of \( \frac{1}{|a|} \) when \( |a| > 1 \).  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( \left( \frac{x_0}{a}, y_0 \right) \) lies on the graph of \( y = f(ax) \).
+
+  \item[Horizontal stretch:] 
+  \( y = f(ax) \) \textbf{stretches} the graph horizontally by a factor of \( \frac{1}{|a|} \) when \( 0 < |a| < 1 \).  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( \left( \frac{x_0}{a}, y_0 \right) \) lies on the graph of \( y = f(ax) \).
+
+  \item[Reflection across \( x \)-axis:] 
+  \( y = -f(x) \) reflects the graph across the \( x \)-axis.  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( (x_0, -y_0) \) lies on the graph of \( y = -f(x) \).
+
+  \item[Reflection across \( y \)-axis:] 
+  \( y = f(-x) \) reflects the graph across the \( y \)-axis.  
+  If \( (x_0, y_0) \) lies on the graph of \( y = f(x) \), then \( (-x_0, y_0) \) lies on the graph of \( y = f(-x) \).
+
+
+\end{description}
+\end{dfn}
+
+\begin{dfn}
+Because functions output real numbers, we can combine them using familiar algebraic operations. Given two functions \( f(x) \) and \( g(x) \), we define:
+
+\begin{description}[style=nextline, leftmargin=3.2cm]
+
+  \item[Addition:] 
+  \( (f + g)(x) := f(x) + g(x) \)
+
+  \item[Subtraction:] 
+  \( (f - g)(x) := f(x) - g(x) \)
+
+  \item[Multiplication:] 
+  \( (f \cdot g)(x) := f(x) \cdot g(x) \)
+
+  \item[Division:] 
+  \( \left( \frac{f}{g} \right)(x) := \frac{f(x)}{g(x)} \quad \) (as long as \( g(x) \ne 0 \))
+
+\end{description}
+\end{dfn}
+
+\vspace{1em}
+
+Functions also support a new operation that is unique and fundamental to calculus: \vocab{function composition}.
+
+\begin{dfn}[Function Composition]
+Given two functions \( f(x) \) and \( g(x) \), the \textbf{composition} of \( f \) with \( g \), written as \( (f \circ g)(x) \), means:
+\[
+(f \circ g)(x) := f(g(x))
+\]
+In words, we first evaluate \( g(x) \), and then plug that result into \( f \).
+
+\vspace{0.5em}
+\textbf{Important:} Composition is generally \emph{not commutative}, meaning \( f(g(x)) \ne g(f(x)) \) in general.
+\end{dfn}
+
+
+\begin{exercise}
+  Suppose that \( g(x) =x-1 \) and that \( f(x) = g(x^{2}-1) \). Find all \( x \) such that 
+  \[ \left( f \circ g \right)(x) = \left( g \circ f  \right)(x) \]
+\end{exercise}
+\begin{solution}
+    We can explicitly find \( f(x) \) 
+    \begin{align*}
+          f(x) &= g(x^{2}-1) \\
+          &= \left[ x^{2}-1 \right]-1 \\
+          f(x) &= x^{2} -2
+    \end{align*}
+    Now to find \( \left( f \circ g \right)(x) \)
+    \begin{align*}
+      \left( f \circ g \right)(x)  &= \left( x-1 \right)^{2} -2\\
+      &= x^{2}-2x+1 -2 \\
+      \left( f \circ g \right)(x) &= x^{2}-2x-1
+    \end{align*}
+    For \( \left( g \circ f \right)(x) \) 
+    \begin{align*}
+       \left( g \circ f \right)(x)  &= \left( x^{2}-2 \right)-1 
+        \left( g \circ f \right)(x) &= x^{2}-3
+    \end{align*}
+    Finally, 
+    \begin{align*}
+       \left( g \circ f \right)(x)  &=  \left( f \circ g \right)(x) \\
+       x^{2}-3 &= x^{2}-2x-1 \\
+       -3 &=-2x -1 \\
+       -2 &= -2x \\
+       1 &= x
+    \end{align*}
+    
+\end{solution}
+
+\begin{example}
+  Let \( f(x)= \dfrac{b}{x-a}+a \). Find \( (f \circ f)(x) \), that is, compute \( f(f(x)) \).
+  
+  \vspace{1em}
+  First, recall that composition means we evaluate:
+  \[
+  (f \circ f)(x) = f(f(x))
+  \]
+
+  Step 1: Start with the inner function:
+  \[
+  f(x) = \frac{b}{x - a} + a
+  \]
+
+  Step 2: Plug this into the outer \( f \). That is, replace every \( x \) in \( f(x) \) with \( f(x) \):
+  \[
+  f(f(x)) = \frac{b}{\left( \frac{b}{x - a} + a \right) - a} + a
+  \]
+
+  \vspace{0.5em}
+  Step 3: Simplify the expression inside the denominator:
+  \[
+  f(f(x)) = \frac{b}{\frac{b}{x - a}} + a
+  \]
+
+  Step 4: Invert the inner fraction:
+  \[
+  \frac{b}{\frac{b}{x - a}} = x - a
+  \]
+
+  So:
+  \[
+  f(f(x)) = (x - a) + a = x
+  \]
+
+  \vspace{0.5em}
+ \( (f \circ f)(x) = \boxed{x} \)
+\end{example}
+
+In the above example, we can say \( f(x) \) is its own \vocab{inverse}. 
+\begin{dfn}
+Given a function \( f(x) \), another function \( g(y) \) is called the \vocab{inverse function} of \( f(x) \) if each undoes the effect of the other:
+\[
+g(f(x)) = x \quad \text{for all } x \text{ in the domain of } f, 
+\quad \text{and} \quad
+f(g(y)) = y \quad \text{for all } y \text{ in the domain of } g.
+\]
+We often write \( g = f^{-1} \).
+\end{dfn}
+
+A function is invertible if and only if it passes the \textbf{Horizontal Line Test}, or equivalently, if it is \textbf{strictly monotonic} (either strictly increasing or strictly decreasing) on its domain.
+
+\begin{example}
+  Let us test (without trying to find an explicit inverse) if the function 
+  \[ f(x) = x^{3}+ x- 4 \]
+  has an inverse. \\ 
+  Let \( h \neq 0 \), if \( f(x) \) is invertible then 
+  \( f(x+ h) - f(x) \) cannot be zero. 
+  \begin{align*}
+    f(x + h) - f(x) &= \left[ \left( x+ h \right)^{3} + \left( x +h \right) -4\right] - \left[ x^{3} +x -4 \right] \\
+    &= \left[ \left( x+h  \right)^{3} - x^{3} \right] + \left[ \left( x+h \right) -x \right] + \left[ -4 - \left( -4 \right) \right] \\
+    &= \left( x+h -x \right)\left( \left( x+h \right)^{2}  +x \left( x+h \right) +x^{2 }\right) +h \tag{Applying difference of cubes.} \\
+    &= h \left( 3x^{2} + 2hx + h^{2} \right) +h
+  \end{align*}
+  It can be easily verified that when \( h \neq 0 \), the quadratic \( 3x^{2} +2hx + h^{2} \ge 0 \) for every \( x \in \mathbb{R} \) (Setting \(a = 3, b =2h, c =h^{2}\) gives you a negative discriminant.) Since \( f(x+h) - f(x) \) is the sum of positive terms (if \( h \) is positive) or the sum of negatives terms (if \( h  \) is negative), \( f(x+h)- f(x) \neq 0 \) every \( x \in \mathbb{R} \) and \( h \neq 0 \). As such, \( f^{-1} (x) \) exists. \\ 
+  Now suppose we wanted to find \( f^{-1} (2) \). Again, we don't need to calculate an explicit inverse. If \( f^{-1}(2)=a \) then, by definition, \( f(a) =-2 \) So 
+  \begin{align*}
+    f(a) &= -2 \\
+    a^{3} + a -4 &= -2 \\
+    a^{3} + a =2 
+  \end{align*}
+We can see that \( f(1) =-2 \) so \(  f^{-1} (-2) = 1 \).
+\end{example}
+
+\begin{exercise}
+  Suppose that \( f: \left( -1,1  \right) \to \mathbb{R} \) be defined by 
+  \[ f(x) = \frac{x}{1-x^{2}} .\] 
+  Find \( f^{-1} \).
+\end{exercise}
+\begin{solution}
+    We apply the algorithm of exchanging \( y \) and \( x \)
+    \[ x = \frac{y}{1-y^{2}} .\]
+    
+    
+
+    
+\end{solution}
