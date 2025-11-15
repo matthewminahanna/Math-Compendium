@@ -1,0 +1,152 @@
+\subsection{Introduction to the Row and Column Picture: Two Equations, Two Unknowns}
+
+
+    Suppose that we are given the following system of equations
+    \begin{align}
+2x + 3y &= 12 \label{6/4/25/1} \\
+x - y &= 1 \label{6/4/25/2}
+\end{align}
+We wish to find values for \( x \) and \( y \) that simultaneously solve \cref{6/4/25/1} and \cref{6/4/25/2}. \\
+We can first view this system by the rows; that is, we wish to find the point of intersection of the lines \(  2x + 3y = 13 \) and \( x - y = 1 \), which is shown in \Cref{fig:FirstLinearSystem}. This picture is quite familiar.\\
+The novel idea is to now consider the column picture. We can combine the above system into a single vector equation 
+\[ x\begin{pmatrix}2\\1\end{pmatrix} +y \begin{pmatrix}
+3\\
+-1
+\end{pmatrix}= \begin{pmatrix}
+12\\
+1
+\end{pmatrix} .\]
+Now, we wish to find the correct scalars \( x \) and \( y \) that makes this equation true, this is highlighted in \Cref{fig:FirstScalars}. \\
+
+
+
+\begin{figure}[ht]
+  \centering
+
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\textwidth]{figures/algebra/firstlinearsystem}}
+    \caption{The lines \(2x+3y=12\) (blue) and \(x-y=1\) (green) intersect at \((3,2)\).}
+    \label{fig:FirstLinearSystem}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\textwidth]{figures/algebra/firstscalars}}
+    \caption{\(c_1 = x = 3\) copies of \(u = \begin{pmatrix}2\\1\end{pmatrix}\) plus \(c_2 = y = 2\) copies of \(v = \begin{pmatrix}3\\-1\end{pmatrix}\) yields \(w = \begin{pmatrix}12\\1\end{pmatrix}\).}
+    \label{fig:FirstScalars}
+  \end{subfigure}
+
+  \caption{Geometric and algebraic views of solving a linear system.}
+  \label{fig:GeometricAndAlgebgraicViews}
+\end{figure}
+
+Now to solve this equation, we observe that we can add \( 3 \) copies of \Cref{6/4/25/2} to \Cref{6/4/25/1} to get 
+\begin{equation}
+	2x+3y+ 3(x-y)= 12 + 3(1) \Rightarrow 5x =15 \label{6/4/25/3}
+\end{equation}
+
+From \Cref{6/4/25/3}, we see that \( x=3 \) and then substitution into either \Cref{6/4/25/1} or \Cref{6/4/25/2} (If you are new to this, substitute into both to verify consistency) and solving for \( y \), we get that \( y=2 \), which is consistent with both of our pictures.\\
+The standard way to write this equation in linear algebra is collect all of our left coefficients in a \vocab{coefficient matrix} \( A \) where 
+\[ A = \begin{pmatrix}
+2 & 3\\
+1 & -1
+\end{pmatrix} .\] Then we collect our variables 
+\[ \vb{x}= \begin{pmatrix}
+x \\
+y
+\end{pmatrix} \] and finally our right hand side 
+\[ \vb{b} = \begin{pmatrix}
+12\\
+1
+\end{pmatrix} .\]
+Combining everything, we have 
+\[ A \vb{x}= \vb{b} \quad \text{or} \quad  \begin{pmatrix}
+2 & 3\\
+1 & -1
+\end{pmatrix} \begin{pmatrix}
+x \\
+y
+\end{pmatrix} = \begin{pmatrix}
+12\\
+1
+\end{pmatrix} . \]
+
+\subsection{Three Equations, Three Unknowns}
+
+
+\begin{example}
+  Consider the following system of three equations with three unknowns:
+\[
+\begin{aligned}
+  3x+y-z &= 2 \quad\quad&(1)\\
+  4x+2y +3z &=23 \quad\quad&(2)\\
+  x-3y+2z &=19 \quad\quad&(3)
+\end{aligned}
+\]
+
+Using the row/plane picture, the normals to the three planes are
+\[
+\mathbf{n}_1=(3,1,-1),\qquad \mathbf{n}_2=(4,2,3),\qquad \mathbf{n}_3=(1,-3,2).
+\]
+None of these is a scalar multiple of another so no two planes are parallel. This means that the first two planes intersect along a line and that line will intersect the third plane at a point. That point will be the solution to our system.
+
+Now solve the system by eliminating \(y\).  One convenient approach is to form combinations that cancel the \(y\)-terms.
+
+First, add (1), (2), and (3):
+\[
+(3x+y-z)+(4x+2y+3z)+(x-3y+2z)=8x+0y+4z=44,
+\]
+so
+\[
+8x+4z=44 \quad\Longrightarrow\quad 2x+z=11. \tag{A}
+\]
+
+Next, take \(-1\) times (1), plus \(2\) times (2), plus \(1\) times (3):
+\[
+-1\cdot(3x+y-z)+2\cdot(4x+2y+3z)+1\cdot(x-3y+2z)
+\]
+Compute coefficients:
+\[
+x:\ -3+8+1=6,\qquad y:\ -1+4-3=0,\qquad z:\ 1+6+2=9,
+\]
+RHS: \(-2+46+19=63\). Thus
+\[
+6x+9z=63 \quad\Longrightarrow\quad 2x+3z=21. \tag{B}
+\]
+
+Now solve the \(2\times2\) system (A) and (B):
+\[
+\begin{cases}
+2x+z=11\\[4pt]
+2x+3z=21
+\end{cases}
+\]
+Subtract (A) from (B) to eliminate \(x\):
+\[
+(2x+3z)-(2x+z)=2z=21-11=10 \quad\Longrightarrow\quad z=5.
+\]
+Substitute \(z=5\) into (A):
+\[
+2x+5=11 \quad\Longrightarrow\quad 2x=6 \quad\Longrightarrow\quad x=3.
+\]
+Finally substitute \(x=3,z=5\) into equation (1) to find \(y\):
+\[
+3(3)+y-(5)=2 \quad\Longrightarrow\quad 9+y-5=2 \quad\Longrightarrow\quad y=-2.
+\]
+So the solution is
+\[
+\boxed{(x,y,z)=(3,-2,5)}.
+\]
+
+Writing the system in matrix form \(A\mathbf{x}=\mathbf{b}\):
+\[
+A=\begin{bmatrix}
+3 & 1 & -1\\[4pt]
+4 & 2 & 3\\[4pt]
+1 & -3 & 2
+\end{bmatrix},\qquad
+\mathbf{x}=\begin{bmatrix}x\\y\\z\end{bmatrix},\qquad
+\mathbf{b}=\begin{bmatrix}2\\23\\19\end{bmatrix}.
+\]
+\end{example}

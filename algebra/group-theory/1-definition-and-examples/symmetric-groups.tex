@@ -1,0 +1,57 @@
+\begin{theorem}
+    Let \( \Omega \) be any non-empty set. Then the set 
+    \[ S_{\Omega}= \left\{f: \Omega \to \Omega: f \text{ is a bijection}. \right\} \]
+is a group under the operation of function composition.
+\end{theorem}
+\begin{proof}
+    The composition of bijective functions is a bijective function and composition is associative. We take the identity element of \( S_{\Omega} \) to be \( \mathrm{Id}_{\Omega} \). For the inverse of \( f \in S_{\Omega}, \) we take \( f^{-1} \).
+\end{proof}
+
+The above group is called the \vocab{symmetric group} on \( \Omega \). For the rest of this section, we will take the special case that \( \Omega = \left\{ 1,2, \dots n \right\} \). This symmetric group is called the \vocab{symmetric group of degree \( n \)} and is denoted by \( S_{n} \).
+
+\begin{theorem}
+    \( \abs{S_{n}} =n! \)
+\end{theorem}
+\begin{proof}
+    Let \( \sigma \in S_{n} \). Then there are \( n \) choices for \( \sigma(1) \), \( n-1 \) choices for \( \sigma(2) \) and in general there are \( n+1-j \) choices for \( \sigma \left( j \right) \). Multiplying all these choices together, we get
+    \[ \abs{S_{n}} = \prod_{j=1}^{n } \left( n+1-j \right) =n! \]
+\end{proof}
+
+\begin{example}
+    We will use this example to motive the need for cycle notation as well as how to write a permutation in cycle notation.\\
+    Let \( n =13 \) and \( \sigma \in S_{13} \) be given by 
+    \begin{align*}
+        &\sigma(1)= 12, &&\sigma(2)=13, &&&\sigma(3)=3, &&&&\sigma(4)=1, &&&&&\sigma(5)=11,\\
+        &\sigma(6)=9, &&\sigma(7)=5, &&&\sigma(8) = 10, &&&&\sigma(9)=6, &&&&&\sigma(10)=4,\\
+        &\sigma(11)=7, &&\sigma(12)=8, &&&\sigma(13)= 2
+    \end{align*}
+This is quite cumbersome to write and it is difficult to deduce information quickly from reading this. That is why we use cycle notation.\\
+To convert a permutation into a cycle, we begin with the smallest element not yet in a cycle and then we follow where the permutation sends this element and repeat until we end up back to where we started. For this example, we have 
+\[ 1 \to 12 \to 8 \to 10 \to 4 \to 1 .\]
+So this cycle is written as 
+\[ \left( 1 \quad  12\quad  8 \quad  10 \quad   4 \right) . \]
+We repeat this process with the next smallest element that is not in a previous cycle until all elements are accounted for. Then we write all cycles next to each other. In this example, we have 
+\[ \sigma = \left( 1 \quad  12\quad  8 \quad  10 \quad   4 \right) \left( 2 \quad 13 \right) \left( 3 \right) \left( 5 \quad 11 \quad 7 \right) \left( 6 \quad 9 \right).\]
+As a final step, we will omit mention of fixed points since they can be understood by their absence. So finally, we have
+\[ \sigma = \left( 1 \quad  12\quad  8 \quad  10 \quad   4 \right) \left( 2 \quad 13 \right)  \left( 5 \quad 11 \quad 7 \right) \left( 6 \quad 9 \right).\]
+By construction, it is easy to find the inverse of permutation in cycle notation. We see that 
+\[ \sigma^{-1}= \left( 4 \quad  10 \quad  8 \quad  12 \quad   1 \right) \left( 13 \quad 2 \right)  \left( 7 \quad 11 \quad 5 \right) \left( 9 \quad 6 \right).\]
+\end{example}
+
+\begin{example}
+    Let \( \sigma, \tau \in S_{3} \) be given by 
+    \[ \sigma = \left( 1 \ \  2 \right) \quad \quad \tau = \left( 1 \ \  3 \right) .\]
+    We can compose by simply following the elements under consecutive permutations. For example, if we we wish to find \( \tau \circ \sigma \), we start with \( 1 \) and see that it gets sent to \( 2 \) by \( \sigma \). And we see the that \( \tau \) fixes \( 2 \). So \( \tau \circ \sigma \) sends \( 1 \) to \( 2 \). Now \( \sigma \) sends \( 2 \) to \( 1 \) and \( \tau \) sends \( 1 \) to \( 3 \). So \( \tau \circ \sigma \) sends \( 2 \) to \( 3 \). So we have 
+    \[ \tau \circ \sigma = \left( 1 \ \ 2 \ \ 3 \right) .\]
+We can do the same for \( \sigma \circ \tau \) and get 
+\[ \sigma \circ \tau = \left( 1 \ \ 3 \ \ 2 \right). \]
+In this example, we have shown that \( S_{3} \) is not abelian.
+\end{example}
+
+\begin{theorem}
+    For all \( n \ge 3 \), \( S_{n} \) is non-abelian.
+\end{theorem}
+\begin{proof}
+    Take the element \( \sigma \) that exchanges \( 1 \) and \( 2 \) and leaves everything else fixed and the element \( \tau \) that exchanges the elements \( 1 \) and \( 3 \) and leaves everything else fixed. By the above example, we know that 
+    \[ \tau \circ \sigma \neq \sigma \circ \tau. \]
+\end{proof}

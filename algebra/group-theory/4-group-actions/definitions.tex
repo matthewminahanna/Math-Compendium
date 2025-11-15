@@ -1,0 +1,128 @@
+\begin{dfn}
+We say that a group \( G \) \vocab{acts} on a set \( A \) if there is a map
+\[
+    \cdot \colon G \times A \to A, \quad (g,a) \mapsto g \cdot a
+\]
+such that for all \(g_{1}, g_{2} \in G\) and \(a \in A\):
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item \( g_{1} \cdot \big( g_{2} \cdot a \big) = (g_{1} g_{2}) \cdot a \), where \(g_{1} g_{2}\) denotes the product in \(G\).
+    \item \( e_{G} \cdot a = a \), where \(e_G\) is the identity of \(G\).
+\end{enumerate}
+We call this a \vocab{group action} of \( G \) on \( A \). We will denote this as \( G \acts A \).
+\end{dfn}
+
+
+Instead of viewing the group action as a map from \( G \times A \) to \( A \), we could actually adopt the view that a group action is a map from \( G \) to \( S_{A} \), where \( S_{A} \) is the collection of bijections on \( A \). Moreover, this map is a homomorphism! This requires proof. 
+
+\begin{theorem}
+    Let \(G\) be a group acting on a set \(A\) via a map
+    \[
+        \cdot \colon G \times A \to A.
+    \]
+    Then there is an associated map
+    \[
+        \varphi \colon G \to S_{A}, \quad g \mapsto \varphi \left( g \right)  \text{ such that }
+        \left[ \varphi(g) \right] (a) = g \cdot a,
+    \]
+    where \(S_{A}\) is the symmetric group on \(A\) (the set of all bijections \(A \to A\)).
+    Moreover, \(\varphi\) is a group homomorphism.
+
+    Conversely, any group homomorphism \(\varphi \colon G \to S_{A}\) defines a group action of \(G\) on \(A\) via
+    \[
+        g \cdot a := \left[ \varphi(g) \right](a).
+    \]
+\end{theorem}
+\begin{proof}
+First, we will verify that for each \(g \in G\), the map \(\varphi(g)\colon A \to A\) is a bijection. To do this, it suffices to show that \(\varphi(g)\) has a two-sided inverse. The natural candidate is
+\[
+\left[ \varphi(g) \right]^{-1} := \varphi(g^{-1}).
+\]
+
+For any \(a \in A\), we have
+\begin{align*}
+\big(\varphi(g^{-1}) \circ \varphi(g)\big)(a) &= \varphi(g^{-1})\big(\varphi(g)(a)\big) \\
+&= \varphi(g^{-1})(g \cdot a) && \text{(by definition of \(\varphi\))}\\
+&= g^{-1} \cdot (g \cdot a) && \text{(by definition of the group action)}\\
+&= (g^{-1} g) \cdot a \\
+&= e \cdot a \\
+&= a && \text{(identity property of the action).}
+\end{align*}
+
+Similarly, \(\varphi(g) \circ \varphi(g^{-1}) = \operatorname{id}_A\), so \(\varphi(g)\) is bijective.\\
+Now to show that \( \varphi \) is a homomorphism, pick any \( g,h \in G \) and \( a \in A \), then 
+\begin{align*}
+   \left[  \varphi \left( gh \right) \right] \left( a \right) &= \left( gh \right) \cdot a\\
+   &= g \cdot \left( h \cdot a \right)\\
+   &= g \cdot \left( \varphi \left( h  \right) \left( a \right) \right)\\
+   &= \varphi \left( g \right) \left( \varphi \left( h  \right)\left( a \right) \right) \\
+   &= \left[ \varphi \left( g \right) \circ \varphi \left( h \right) \right] \left( a \right)
+\end{align*}
+which shows that \( \varphi \left( gh \right) = \varphi \left( g \right) \circ \varphi \left( h \right) \).\\
+Finally, to show that any group homomorphism \( \varphi: G \to S_{A} \) defines a \( G \)-action on \( A \) by \( g \cdot a = \left[ \varphi \left( g \right) \right] \left( a \right) \), we just need to verify the axioms of a group action. For any \( g_{1}, g_{2} \in G \) and \( a \in A \), we have
+\begin{align*}
+    \left( g_{1} g_{2} \right) \cdot a &= \left[ \varphi \left( g_{1}g_{2} \right) \right] \left( a \right)\\
+    &= \left[ \varphi \left( g_{1} \right) \circ \varphi \left( g_{2} \right) \right] \left( a \right) \tag{Since $\varphi$ is a homomorphism.}\\
+    &= \varphi \left( g_{1} \right) \left( g_{2} \cdot a \right) \\
+    &= g_{1} \cdot \left( g_{2} \cdot a \right)
+\end{align*}
+For the identity property,
+\begin{align*}
+    e \cdot a &= \left[ \varphi \left( e \right) \right] \left( a \right)\\
+    &= \mathrm{Id}_{A} \left( a \right) \tag{Since $\varphi$ is a homomorphism.}\\
+    &= a
+\end{align*}
+which completes the proof.
+\end{proof}
+
+
+
+The above result highlights why group theory is such a powerful tool. Any group action corresponds to a subgroup of the group of all bijections on \(A\). This means that groups provide a powerful angle of attack for tackling and understanding symmetries of any set. When we restrict our attention to bijections preserving additional structure, such as homeomorphisms in topology, biholomorphisms in complex analysis, or linear transformations in linear algebra (this is the focus of representation theory), the same framework applies, giving us a systematic way to understand and manipulate these transformations through their group properties.
+
+\begin{dfn}
+    If the homomorphism, \( \varphi: G \to S_{A} \) is injective, we say that the associated group action of \( G \) on \( A \) \vocab{acts faithfully}.
+\end{dfn}
+
+\begin{lemma}
+    We define the \vocab{kernel} of a \( G \) action on \( A \) to be 
+    \[ \mathrm{Ker}\left( G \acts A \right)=\left\{ g \in G \ \middle| \ g \cdot a =a \text{ for all } a \in A\right\} \]
+    Then \(\mathrm{Ker}\left( G \acts A \right) \unlhd G \).
+\end{lemma}
+\begin{proof}
+    This fact is readily apparent from the result that if \( \varphi: G \to S_{A} \) is a homomorphism, then \( \mathrm{Ker} \left( \varphi \right) \) is a normal subgroup of \( G \). However, we will prove this result using the group action perspective for practice. \\
+    First we will show that \( \mathrm{Ker} \left( G \acts A \right) \) is a subgroup. Since \( G \acts A \), \( e \in \mathrm{Ker} \left( G \acts A \right) \). Pick any \( g,h \in \mathrm{Ker} \left( G \acts A \right) \). Then 
+    \begin{align*}
+        a &= g \cdot a \tag{Since $g\in \mathrm{Ker} \left( G \acts A \right)$}\\
+        &= g \cdot \left( e \cdot a \right) \\
+        &= g \cdot \left( \left( h^{-1} h \right) \cdot a \right) \\
+        &= g \cdot \left( h^{-1} \cdot \left( h \cdot a \right)  \right) \\
+        &= g \cdot \left( h^{-1} \cdot a \right)  \tag{Since $h\in \mathrm{Ker} \left( G \acts A \right)$} \\
+        &= \left( gh^{-1} \right) \cdot a
+    \end{align*}
+   This shows that \( gh^{-1} \in \mathrm{Ker} \left( G \acts A \right) \). By the subgroup test, \( \mathrm{Ker} \left( G \acts A \right) \le G \). \\
+   Now to show that \( \mathrm{Ker} \left( G \acts A \right) \unlhd G \), pick any \( g \in  \mathrm{Ker} \left( G \acts A \right) \), \( h \in G \), and \( a \in A \). Then 
+   \begin{align*}
+    \left( hgh^{-1} \right) \cdot a &= \left( hg \right) \cdot \left( h^{-1} \cdot a \right)\\
+    &= h \cdot \left( g \cdot \left( h^{-1}  \cdot a\right) \right) \\
+    &= h \cdot \left( h^{-1} \cdot a \right) \tag{Since $g\in \mathrm{Ker} \left( G \acts A \right)$} \\
+    &= \left( h h^{-1} \right) \cdot a \\
+    &= e \cdot a \\
+    &= a
+   \end{align*}
+   This shows that \( \mathrm{Ker} \left( G \acts A \right) \) is a normal subgroup of \( G \).
+\end{proof}
+
+\begin{exercise}
+    Show that the kernel of a \( G \) action on \( A \) contains only the identity if and only if \( G \) acts faithfully on \( A \).
+\end{exercise}
+\begin{solution}
+    Let $\varphi: G \to S_A$ be the homomorphism associated to the action.
+
+    $(\Rightarrow)$ Suppose $\ker \varphi \neq \{e\}$. Then there exists $g \in G$, $g \neq e$, such that $\varphi(g) = \mathrm{id}_A$. In particular, for all $a \in A$ we have $g \cdot a = a$, so $g$ and $e$ induce the same permutation of $A$. Hence $\varphi$ is not injective, and the action is not faithful.
+
+    $(\Leftarrow)$ Conversely, if the action is not faithful, then $\varphi$ is not injective. Thus there exist distinct $g,h \in G$ such that $\varphi(g) = \varphi(h)$. Then
+    \[
+        \varphi(gh^{-1}) = \varphi(g)\varphi(h)^{-1} = \varphi(h)\varphi(h)^{-1} = \mathrm{id}_A,
+    \]
+    so $gh^{-1} \in \ker \varphi$ and $gh^{-1} \neq e$. Therefore the kernel is nontrivial.
+\end{solution}
+
