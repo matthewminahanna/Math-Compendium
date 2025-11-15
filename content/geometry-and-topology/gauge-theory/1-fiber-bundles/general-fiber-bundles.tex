@@ -1,0 +1,27 @@
+\begin{dfn}
+    Let \( \rho: E \to M \) be surjective smooth map between smooth manifolds. We call \( M \) the \vocab{base space}, \( E \) the \vocab{total space}, and \( \rho \) the \vocab{projection}.\\
+
+    We call the set 
+    \[ \rho^{-1} \left( x \right) = \left\{ e \in E \  \middle| \ \rho(e)=x \right\} \]
+    the \vocab{fiber of \( \rho \) over \( x \)}. \\
+    Similarly if \( U \subset M \) we call the set 
+    \[ \rho^{-1} \left( U \right) = \left\{ e \in E \  \middle| \ \rho(e) \in U \right\} \]
+     the \vocab{fiber of \( \rho \) over \( U \)}. 
+
+    If \( s: M \to E \) is a differentiable map such that 
+    \[ \rho \circ s = \mathrm{Id}_{M} \]
+    we call \( s \) a \vocab{global section} of \( \rho \).\\
+    If \( U \subset M \) is open and \( s: U \to E \) is a differentiable map such that 
+    \[ \rho \circ s = \mathrm{Id}_{U} \]
+    we call \( s \) a \vocab{local section} of \( \rho \).\\
+    
+    The quartet \( \left( E, \rho, M;F \right) \) is called a \vocab{fiber bundle} if for every \( x \in M \), there is an open set \( U \subseteq M \) and diffeomorphism \[ \varphi_{U}: \rho^{-1} \left( U \right) \to U \times F \] such that \[ \mathrm{pr}_{1} \circ \varphi_{U} = \rho \] Where \( \mathrm{pr}_{1}: U \times F \to U \) is given by \( \mathrm{pr}_{1} \left( u,f \right) = u\) for all \( u \in U \) and \( f \in F \). In other words, the following diagram commutes
+    \[\begin{tikzcd}
+	{\rho^{-1}(U)} && {U \times F} \\
+	\\
+	&& U
+	\arrow["{\varphi_U}", from=1-1, to=1-3]
+	\arrow["\rho"', from=1-1, to=3-3]
+	\arrow["{\mathrm{pr}_1}", from=1-3, to=3-3]
+\end{tikzcd}\]
+\end{dfn} 

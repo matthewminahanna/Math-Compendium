@@ -1,0 +1,137 @@
+\begin{dfn}
+    Let \( f, g : X \to Y \) be continuous maps. We say that \( f \) and \( g \) are \vocab{homotopic} if there exists a \vocab{homotopy} between them; that is, there exists a continuous function 
+    \[
+        H : [0,1] \times X \to Y
+    \]
+    such that
+    \[
+        H(0, x) = f(x) \quad \text{and} \quad H(1, x) = g(x) \quad \text{for all } x \in X.
+    \]
+    Moreover, we say that two spaces \( X \) and \( Y \) are \vocab{homotopy equivalent} if there exist continuous maps \( f: X \to Y \) and \( g: Y \to X \) such that \( g \circ f \) is homotopic to \( \mathrm{Id}_{X} \) and \( f \circ g \) is homotopic to \( \mathrm{Id}_{Y} \).
+\end{dfn}
+
+\begin{lemma}
+    Homotopy defines an equivalence relation on the set of continuous maps \( X \to Y \).
+\end{lemma}
+
+\begin{proof}
+    We verify the three properties of an equivalence relation.
+
+    \textbf{Reflexivity:}  
+    For any \( f: X \to Y \), we have \( f \sim f \) via the constant homotopy
+    \[
+        H(t, x) = f(x) \quad \text{for all } t \in [0,1], \, x \in X.
+    \]
+    As a bonus, this shows that every continuous function lies in some equivalence class.
+
+    \textbf{Symmetry:}  
+    Suppose \( f \sim g \) via a homotopy \( H \). Define
+    \[
+        H'(t, x) := H(1 - t, x).
+    \]
+    Then \( H' \) is continuous, \( H'(0, x) = g(x) \), and \( H'(1, x) = f(x) \), so \( g \sim f \).
+
+    \textbf{Transitivity:}  
+    Suppose \( f_{1} \sim f_{2} \) via \( H_{1} \) and \( f_{2} \sim f_{3} \) via \( H_{2} \). Define
+    \[
+        H(t, x) =
+        \begin{cases}
+            H_{1}(2t, x), & 0 \le t \le \frac{1}{2}, \\
+            H_{2}(2t - 1, x), & \frac{1}{2} < t \le 1.
+        \end{cases}
+    \]
+    The function \( H \) is continuous since \( H_{1} \) and \( H_{2} \) are continuous and match at \( t = \frac{1}{2} \), where \( H_{1}(1, x) = H_{2}(0, x) = f_{2}(x) \). Moreover, \( H(0, x) = f_{1}(x) \) and \( H(1, x) = f_{3}(x) \), so \( f_{1} \sim f_{3} \).
+\end{proof}
+
+For now, we will limit our attention to homotopies of loops; that is, we will consider maps
+\[
+    \gamma: [0,1] \to X
+\]
+such that \( \gamma \) is continuous and \( \gamma(0) = \gamma(1) \).
+
+
+\begin{dfn}
+Let $\Gamma_x$ denote the set of loops $\gamma: [0,1] \to X$ with $\gamma(0) = \gamma(1) = x$. We define an equivalence relation $\sim$ on $\Gamma_x$ by setting $\gamma_1 \sim \gamma_2$ if there exists a homotopy between them, leaving the endpoints fixed. A \textbf{homotopy class} is an equivalence class of loops under this relation, denoted $[\gamma]$.
+\end{dfn}
+
+\begin{lemma}
+Concatenation of loops induces a well-defined group operation on the homotopy classes $\Gamma_x/\sim$.
+\end{lemma}
+\begin{proof}
+We must verify that concatenation gives $\Gamma_x/\sim$ the structure of a group. This requires showing well-definedness and the three group axioms.\\
+
+ Suppose $\alpha_1 \sim \alpha_2$ and $\beta_1 \sim \beta_2$. We need to show that $\alpha_1 \cdot \beta_1 \sim \alpha_2 \cdot \beta_2$.
+
+First, suppose $\alpha_1 \sim \alpha_2$. We show that $\alpha_1 \cdot \beta \sim \alpha_2 \cdot \beta$ for any loop $\beta$. By definition:
+\[ (\alpha_i \cdot \beta)(t) = \begin{cases}
+    \alpha_i(2t) & 0 \leq t \leq \frac{1}{2}\\
+    \beta(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+Since $\alpha_1 \sim \alpha_2$, there exists a homotopy $H(s,t)$ with $H(0,t) = \alpha_1(t)$ and $H(1,t) = \alpha_2(t)$. Define
+\[ H'(s,t) = \begin{cases}
+    H(s,2t) & 0 \leq t \leq \frac{1}{2} \\
+    \beta(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+Then $H'(0,t) = (\alpha_1 \cdot \beta)(t)$ and $H'(1,t) = (\alpha_2 \cdot \beta)(t)$, so $\alpha_1 \cdot \beta \sim \alpha_2 \cdot \beta$.
+
+Similarly, if $\beta_1 \sim \beta_2$, then $\alpha \cdot \beta_1 \sim \alpha \cdot \beta_2$ for any $\alpha$. Combining these results shows that the operation $[\alpha] \cdot [\beta] = [\alpha \cdot \beta]$ is well-defined on homotopy classes.\\
+
+ Let $\mathbf{1}$ denote the constant loop $\mathbf{1}(t) = x$ for all $t \in [0,1]$. For any loop $\gamma$:
+\[ (\mathbf{1} \cdot \gamma)(t) = \begin{cases}
+    \mathbf{1}(2t) = x & 0 \leq t \leq \frac{1}{2}\\
+    \gamma(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+Define a homotopy $F(s,t)$ by:
+\[ F(s,t) = \begin{cases}
+    x & 0 \leq t \leq \frac{1-s}{2}\\
+    \gamma\left(\frac{2t-(1-s)}{1+s}\right) & \frac{1-s}{2} \leq t \leq 1
+\end{cases} \]
+
+Then $F(0,t) = (\mathbf{1} \cdot \gamma)(t)$ and $F(1,t) = \gamma(t)$, so $\mathbf{1} \cdot \gamma \sim \gamma$. Similarly, $\gamma \cdot \mathbf{1} \sim \gamma$.
+
+ For any loop $\gamma$, define its inverse $\overline{\gamma}$ by $\overline{\gamma}(t) = \gamma(1-t)$. We show that $\gamma \cdot \overline{\gamma} \sim \mathbf{1}$.
+
+The concatenation $\gamma \cdot \overline{\gamma}$ is given by:
+\[ (\gamma \cdot \overline{\gamma})(t) = \begin{cases}
+    \gamma(2t) & 0 \leq t \leq \frac{1}{2}\\
+    \gamma(2(1-t)) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+Define a homotopy $G(s,t)$ by:
+\[ G(s,t) = \begin{cases}
+    \gamma(2t(1-s)) & 0 \leq t \leq \frac{1}{2}\\
+    \gamma(2(1-t)(1-s)) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+Then $G(0,t) = (\gamma \cdot \overline{\gamma})(t)$ and $G(1,t) = \gamma(0) = x$ for all $t$, so $\gamma \cdot \overline{\gamma} \sim \mathbf{1}$. Similarly, $\overline{\gamma} \cdot \gamma \sim \mathbf{1}$.\\
+
+ For loops $\alpha, \beta, \gamma$, we need $(\alpha \cdot \beta) \cdot \gamma \sim \alpha \cdot (\beta \cdot \gamma)$.
+
+The loop $(\alpha \cdot \beta) \cdot \gamma$ is defined by:
+\[ ((\alpha \cdot \beta) \cdot \gamma)(t) = \begin{cases}
+    \alpha(4t) & 0 \leq t \leq \frac{1}{4}\\\\
+    \beta(4t-1) & \frac{1}{4} \leq t \leq \frac{1}{2}\\\\
+    \gamma(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \]
+
+The loop $\alpha \cdot (\beta \cdot \gamma)$ is defined by:
+\[ (\alpha \cdot (\beta \cdot \gamma))(t) = \begin{cases}
+    \alpha(2t) & 0 \leq t \leq \frac{1}{2}\\\\
+    \beta(4t-2) & \frac{1}{2} \leq t \leq \frac{3}{4}\\\\
+    \gamma(4t-3) & \frac{3}{4} \leq t \leq 1
+\end{cases} \]
+
+These differ only in the timing of transitions between the three constituent loops. A linear reparametrization homotopy can interpolate between these two parameterizations, establishing the required homotopy equivalence.
+
+Therefore, $\Gamma_x/\sim$ forms a group under the concatenation operation.
+\end{proof}
+
+\begin{dfn}
+    Let \( X \) be a topological space and \( x \in X \).
+    We will call \( \Gamma_{x}/ \sim \), the \vocab{fundamental group with basepoint at \( x \)} and denote it by \( \pi_{1}\left( X, x \right) \).
+\end{dfn}
+
+

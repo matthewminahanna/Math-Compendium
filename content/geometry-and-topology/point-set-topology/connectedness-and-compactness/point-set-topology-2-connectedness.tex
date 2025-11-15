@@ -1,0 +1,60 @@
+\begin{dfn}
+    A topological space \( X \) is said to be \vocab{disconnected} if there exists non-empty open sets \( U \) and \( V \) of \( X \) such that 
+    \[ U \cup V =X \]
+    and 
+    \[ U \cap V = \varnothing .\]
+    A topological space is \vocab{connected} if it is not disconnected.
+\end{dfn}
+
+Here is a useful equivalent condition for connectedness. 
+
+\begin{theorem}
+    A topological space \( X \) is connected if and only if every continuous characteristic function \( \chi_{U}: X \to \left\{ 0,1 \right\} \) is constant.
+\end{theorem}
+\begin{proof}
+    For a given subset \( U \subseteq X \), recall that the characteristic function \( \chi_{U} \) is defined by
+    \[
+        \chi_{U}(x) = \begin{cases}
+            1 & \text{if } x \in U \\
+            0 & \text{if } x \notin U
+        \end{cases}.
+    \]
+    \( \Rightarrow \) Suppose there exists a continuous, non-constant characteristic function \( \chi_U \) for some \( U \subset X \). Then by definition,
+    \[
+        \chi_U^{-1}(1) = U \quad \text{and} \quad \chi_U^{-1}(0) = X - U.
+    \]
+    Since \( \chi_U \) is non-constant, both \( U \) and \( X - U \) are nonempty. And since \( \chi_U \) is continuous and \( \{0,1\} \) has the discrete topology, both \( U \) and \( X - U \) are open in \( X \).\\
+    Thus, \( X \) is the union of two disjoint, nonempty open sets  so \( X \) is disconnected.\\
+    \(\Leftarrow\) Now assume that \( X \) is disconnected. Then there exist disjoint, non-empty open sets \( U \) and \( V \) in \( X \) such that \( U \cup V = X \). \\
+Consider the characteristic function \( \chi_U : X \to \{0,1\} \). Since \( U \) and \( V = X - U \) are both open, and \( \{0,1\} \) has the discrete topology, the preimages
+\[
+\chi_U^{-1}(1) = U \quad \text{and} \quad \chi_U^{-1}(0) = V
+\]
+are open. Hence, \( \chi_U \) is continuous. Moreover, it is non-constant, since both \( U \) and \( V \) are non-empty. This completes the proof.
+
+\end{proof}
+
+\begin{corollary}
+    Suppose \( X \) is a connected topological space and \( Y \) is any topological space. If \( f: X \to Y \) is continuous, then the image \( f(X) \), equipped with the subspace topology from \( Y \), is connected.
+\end{corollary}
+\begin{proof}
+   If \( f(X) \) contains exactly one point, the result holds trivially, since a one-point space is connected. So assume \( f(X) \) contains more than one point.\\
+Suppose, for a contradiction, that \( f(X) \) is not connected. Then, by the previous theorem, there exists a non-constant continuous characteristic function \( \chi_U : f(X) \to \{0,1\} \) for some proper, nonempty clopen subset \( U \subset f(X) \).\\
+Now consider the composition \( \chi_U \circ f : X \to \{0,1\} \). This map is continuous, since it is the composition of continuous functions. Moreover, since \( f \) is surjective onto \( f(X) \), the composition is also non-constant.\\
+But this contradicts the connectedness of \( X \), since we've constructed a non-constant continuous characteristic function on \( X \). Hence, \( f(X) \) must be connected.
+\end{proof}
+
+\begin{exercise}
+    Show that a finite set of points in a \( T_2 \) (Hausdorff) space is not connected.
+\end{exercise}
+\begin{solution}
+    Let \( S = \{x_1, x_2, \dots, x_n\} \subseteq X \), where \( X \) is a \( T_2 \)  space and \( n \geq 2 \). We aim to show that \( S \), with the subspace topology inherited from \( X \), is not connected.\\
+    Since \( X \) is Hausdorff, we can find pairwise disjoint open sets \( U_{x_1}, \dots, U_{x_n} \) in \( X \), each containing \( x_i \).\\
+    Now consider the subspace topology on \( S \). Let
+    \[
+        U = U_{x_1} \cap S, \qquad V = \bigcup_{j = 2}^{n} \left( U_{x_j} \cap S \right).
+    \]
+    Then \( U \) and \( V \) are open in the subspace topology on \( S \), disjoint by construction, and cover \( S \), since each \( x_i \in S \) is contained in some \( U_{x_i} \).\\
+    Thus, \( S = U \cup V \) is a separation of \( S \) into two nonempty, disjoint, open sets. Therefore, \( S \) is disconnected.
+\end{solution}
+
