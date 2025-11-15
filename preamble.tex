@@ -1,0 +1,312 @@
+\usepackage{makeidx}
+\makeindex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+
+\usepackage{tikz-cd,tikz}
+    \usetikzlibrary{hobby, calc, intersections, decorations.markings, decorations.pathreplacing} %libraries
+    \tikzset{>=latex}
+
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{import}
+\usepackage{subfiles}
+\usepackage[sfdefault,lining,book]{FiraSans}
+\usepackage{FiraMono}
+\usepackage{sansmathfonts}
+
+
+\usepackage{faktor}
+\DeclareMathSizes{10.95}{11.2}{7}{7}
+%\boldmath
+\everymath{\displaystyle}
+\usepackage{hyperref}
+\usepackage{nameref,cleveref}
+\usepackage[a4paper, 
+left=0.08in,
+right=0.16in,
+top=0.60in,
+bottom=0.60in
+]{geometry}
+\usepackage[mathscr]{eucal}
+\PassOptionsToPackage{usenames,svgnames,dvipsnames,table,xcdraw}{xcolor}
+\usepackage{xcolor}
+
+\usepackage[tight]{minitoc}
+\mtcsetfont{parttoc}{chapter}{\sffamily\bfseries}
+\mtcsetfont{parttoc}{section}{\footnotesize\upshape\mdseries}
+\mtcsetfont{parttoc}{subsection}{\footnotesize\upshape\mdseries}
+\mtcsetfont{parttoc}{subsubsection}{\footnotesize\upshape\mdseries}
+%\mtcsetdepth{parttoc}{1}
+\setcounter{parttocdepth}{3}
+\renewcommand*{\partheadstartvskip}{\vspace*{-7em}}
+\renewcommand*{\partheadendvskip}{}
+%\noptcrule
+\renewcommand\beforeparttoc{\noindent{}}
+%\hspace{\fill}\rule{0.95\linewidth}{2pt}\hspace{\fill}
+\doparttoc[n]
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{intersections, angles, quotes, calc, positioning}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\tikzset{
+    force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
+}
+\makeatother
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\usepackage{wasysym}
+
+\newenvironment{ignore}{}{}
+
+\theoremstyle{definition}
+
+\newenvironment{solutiont}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+% Catppuccin Latte - Blue for theorems
+\definecolor{theoremcolor}{HTML}{1e66f5}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{theoremcolor!70!black}, bodyfont=\normalfont,
+     postheadspace=\newline,
+    mdframed={
+        linewidth=4pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=theoremcolor, backgroundcolor=theoremcolor!20,
+    }
+]{theoremst}
+
+\declaretheorem[style=theoremst, name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=theoremst, name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=theoremst, name=Proposition,numberwithin=section]{proposition}
+\declaretheorem[style=theoremst, name=Corollary, numbered=no]{corollary}
+
+% Catppuccin Latte - Lavender for ideas
+\definecolor{ideacolor}{HTML}{7287fd}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ideacolor!70!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=ideacolor, backgroundcolor=ideacolor!20,
+    }
+]{ideast}
+
+\declaretheorem[style=ideast, name=Idea]{idea}
+
+\declaretheoremstyle[
+	numbered = no,
+    headfont=\bfseries\sffamily\color{theoremcolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        linewidth=4pt,
+        skipabove = 0pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=theoremcolor, backgroundcolor=theoremcolor!10,
+    },
+    qed = $\blacksquare$
+]{proofst}
+
+\declaretheorem[style=proofst, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+
+% Catppuccin Latte - Red for definitions
+\definecolor{definitioncolor}{HTML}{d20f39}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{definitioncolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=3pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=definitioncolor, backgroundcolor=definitioncolor!20,
+    }
+]{definitionst}
+
+\declaretheorem[style=definitionst, name=Definition, numberwithin=section]{dfn}
+
+% Catppuccin Latte - Teal for examples
+\definecolor{examplecolor}{HTML}{179299}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{examplecolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=3pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=examplecolor, backgroundcolor=examplecolor!20,
+    }
+]{examplest}
+
+\declaretheorem[style=examplest, name=Example, numberwithin=section]{example}
+
+% Catppuccin Latte - Lavender for exercises
+\definecolor{exercisecolor}{HTML}{7287fd}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{exercisecolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=3pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=exercisecolor, backgroundcolor=exercisecolor!20,
+    }
+]{exercisest}
+
+\declaretheorem[style=exercisest, name=Exercise, numberwithin=section]{exercise}
+
+
+\declaretheoremstyle[
+    numbered= no,
+    headfont=\bfseries\sffamily\color{exercisecolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=3pt,
+        skipabove = 0pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=exercisecolor, backgroundcolor=exercisecolor!10,
+    },
+qed = $\newmoon$
+]{solutionst}
+
+\declaretheorem[style=solutionst, name=Solution]{solution}
+\renewenvironment{solutiont}[1][\solutionstname]{\vspace{-20pt}\begin{solution}}{\end{solution}}
+
+% Catppuccin Latte - Peach for recall
+\definecolor{recallcolor}{HTML}{fe640b}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{recallcolor!70!black}, bodyfont=\normalfont,
+    numbered = no,
+    mdframed={
+        linewidth=3pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=recallcolor, backgroundcolor=recallcolor!10,
+    }
+]{recallst}
+
+\declaretheorem[style=recallst, name=Recall]{recall}
+
+% Catppuccin Latte - Maroon for vocabulary
+\definecolor{vocabb}{HTML}{e64553}
+
+\newcommand{\vocab}[1]{\textbf{\color{vocabb} #1}}
+
+\newcommand{\comment}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+\usepackage{physics}
+
+\DeclareMathOperator*{\str}{\ast}
+
+% Catppuccin Latte - Subtext0 for section colors
+\definecolor{sectcolor}{HTML}{6c6f85}
+
+\renewcommand*{\sectionformat}{\color{sectcolor}\S\firaextrabold\thesection\autodot\enskip}
+\renewcommand*{\subsectionformat}{\color{sectcolor}\S\thesubsection\autodot\enskip}
+
+
+
+\addtokomafont{chapterprefix}{}{\raggedleft}
+\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+\renewcommand*{\chapterformat}{%
+\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+\scalebox{1.5}{\color{sectcolor}\firaheavy\thechapter\autodot}\enskip}}
+
+
+\addtokomafont{partprefix}{\firaheavy}
+\renewcommand*{\partformat}{}
+
+
+\setkomafont{chapter}{\Huge\firaheavy}
+\setkomafont{section}{\Large\firaextrabold}
+\setkomafont{subsection}{\large\firasemibold}
+% for smarter referencing (optional but helpful)
+
+% Custom equation numbering format: Part.Chapter.Section.Equation
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Reset equation counter at each new section
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+
+\usepackage{subcaption}
+
+% *** quiver ***
+% A package for drawing commutative diagrams exported from https://q.uiver.app.
+%
+% This package is currently a wrapper around the `tikz-cd` package, importing necessary TikZ
+% libraries, and defining a new TikZ style for curves of a fixed height.
+%
+% Version: 1.5.4
+% Authors:
+% - varkor (https://github.com/varkor)
+% - AndrÃ©C (https://tex.stackexchange.com/users/138900/andr%C3%A9c)
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{quiver}[2021/01/11 quiver]
+
+% `tikz-cd` is necessary to draw commutative diagrams.
+\RequirePackage{tikz-cd}
+% `amssymb` is necessary for `\lrcorner` and `\ulcorner`.
+\RequirePackage{amssymb}
+% `calc` is necessary to draw curved arrows.
+\usetikzlibrary{calc}
+% `pathmorphing` is necessary to draw squiggly arrows.
+\usetikzlibrary{decorations.pathmorphing}
+
+% A TikZ style for curved arrows of a fixed height, due to AndrÃ©C.
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+\endinput
+
+
+\usepackage{tocbasic}
+\makeatletter
+\renewcommand*{\l@part}[2]{%
+  \ifnum \scr@tocdepth >-2\relax
+    \addpenalty\@secpenalty
+    \addvspace{1.0em plus\p@}%
+    \begingroup
+      \parindent \z@
+      \rightskip \@tocrmarg
+      \parfillskip -\rightskip
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \llap{\thepart\enskip \quad}% â† ADD SPACE HERE
+      #1\nobreak\hfil\nobreak\hb@xt@\@pnumwidth{\hss #2}%
+      \par
+    \endgroup
+  \fi}
+\makeatother
+
+\usepackage{xpatch}
+
