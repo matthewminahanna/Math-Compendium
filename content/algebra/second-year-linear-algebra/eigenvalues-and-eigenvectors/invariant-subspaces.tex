@@ -1,0 +1,52 @@
+\begin{dfn}
+    Let \( T \in \mathcal{L} \left( \mathbf{V} \right) \). A subspace \( \mathbf{U} \subset \mathbf{V} \) is \vocab{invariant under \( T \)}  or is an \vocab{invariant subspace of \( T \)} if \( T \vb{u} \in \mathbf{U} \) for all \( \vb{u} \in \mathbf{U} \).
+\end{dfn}
+
+\begin{exercise}
+    Suppose that \( T \in \mathcal{L} \left( \mathbf{V} \right) \) and \( \mathbf{U} \) is a subspace of \( \mathbf{V} \). Prove that if \( \mathbf{U} \subseteq \mathrm{null} \left( T \right) \), then \( \mathbf{U} \) is an invariant subspace of \( T \).
+\end{exercise}
+\begin{solution}
+    Since \( \mathbf{U} \subseteq \mathrm{null}(T) \), \( T \vb{u} = \vb{0} \) for all \( \vb{u} \in \mathbf{U} \). Since \( \mathbf{U} \) is a subspace, \( \vb{0} \in \mathbf{U} \) and hence \( T \vb{u} \in \mathbf{U} \) for all \( \vb{u} \in \mathbf{U} \). Therefore \( \mathbf{U} \) is invariant under \( T \).
+\end{solution}
+
+
+\begin{exercise}
+    Suppose that \( T \in \mathcal{L} \left( \mathbf{V} \right) \) and \( \mathbf{U} \) is a subspace of \( \mathbf{V} \). Prove that if \( \mathrm{range} \left( T \right) \subseteq \mathbf{U} \), then \( \mathbf{U} \) is an invariant subspace of \( T \).
+\end{exercise}
+\begin{solution}
+     Let \( \vb{u} \in \mathbf{U} \). Then \( T\vb{u} \in \mathrm{range}(T) \) by definition of the range. Since \( \mathrm{range}(T) \subseteq \mathbf{U} \), we have \( T\vb{u} \in \mathbf{U} \). Therefore \( \mathbf{U} \) is invariant under \( T \).
+\end{solution}
+
+\begin{exercise}
+    Suppose that \( T \in \mathcal{L} \left( \mathbf{V} \right) \) and \( \mathbf{V}_{1}, \dots , \mathbf{V}_{n} \) are invariant under \( T \). Show that \( \mathbf{V}_{1} + \cdots + \mathbf{V}_{n} \) is invariant under \( T \).
+\end{exercise}
+\begin{solution}
+    Pick any \( \vb{v} \in \mathbf{V}_{1} + \cdots + \mathbf{V}_{n} \). Then \( \vb{v}= \sum_{k=1}^{n} \vb{v}_{k}  \) for \( \vb{v}_{k} \in \mathbf{V}_{k} \). Then 
+    \begin{align*}
+        T \left( \vb{v} \right) &= T \left(\sum_{k=1}^{n} \vb{v}_{k} \right) \\
+        &= \sum_{k=1}^{n} T (\vb{v}_{k})
+    \end{align*}
+    Since each \( \mathbf{V}_{k} \) is invariant under \( T \), \( T (\vb{v}_{k}) \in \mathbf{V}_{k} \) and hence \( \sum_{k=1}^{n} T (\vb{v}_{k}) \in \mathbf{V}_{1} + \cdots + \mathbf{V}_{n}\) so \( \mathbf{V}_{1} + \cdots + \mathbf{V}_{n} \) is invariant under \( T \).
+\end{solution}
+
+\begin{exercise}
+    Suppose that \( T \in \mathcal{L} \left( \mathbf{V} \right) \). Prove that the intersection of every collection of invariant subspaces of \( T \) is invariant under \( T \).
+\end{exercise}
+\begin{solution}
+    Let \( \left\{ \mathbf{V}_{\alpha} \right\}_{\alpha \in A} \) be the collection of all invariant subspaces of \( T \). Let \( B \subseteq A \) be any subcollection, and consider \( \bigcap_{\beta \in B} \mathbf{V}_{\beta} \). 
+    Pick any \( \vb{v} \in \bigcap_{\beta \in B} \mathbf{V}_{\beta} \). Then \( \vb{v} \in \mathbf{V}_{\beta} \) for all \( \beta \in B \). Since each \( \mathbf{V}_{\beta} \) is invariant under \( T \), we have \( T\vb{v} \in \mathbf{V}_{\beta} \) for all \( \beta \in B \). Hence \( T\vb{v} \in \bigcap_{\beta \in B} \mathbf{V}_{\beta} \).
+\end{solution}
+
+\begin{exercise}
+    Prove or provide a counterexample: If \( \mathbf{V} \) is finite-dimensional and \( \mathbf{U} \) is a subspace of \( \mathbf{V} \) that is invariant under every operator on \( \mathbf{V} \), then \( \mathbf{U} = \left\{ \vb{0} \right\} \) or \( \mathbf{U} = \mathbf{V} \).
+\end{exercise}
+\begin{solution}
+    Suppose that \( \mathbf{U} \) is a proper non-trivial subspace of \( \mathbf{V} \). Hence, there exists \( \vb{u} \in \mathbf{U} \) and \( \vb{v} \in \mathbf{V} - \mathbf{U} \), each non-zero. Since \( \vb{u} \neq \vb{0} \), we can extend \( \left\{ \vb{u} \right\} \) to a basis \( \left\{ \vb{u}, \vb{u}_{1}, \vb{u}_{2}, \dots, \vb{u}_{n} \right\} \) for \( \mathbf{V} \). Define 
+    \[ T  \left( \vb{u} \right) = \vb{v} \quad T \left( \vb{u}_{k} \right) =0  \quad  \text{for } k =1,2, \dots, n\]
+    and extend linearly. By construction, \( \mathbf{U} \) is not invariant under \( T \) and hence the claim is true.
+\end{solution}
+
+
+\begin{dfn}
+    Suppose \( T \in \mathcal{L} \left(  \mathbf{V} \right) \). We say that \( \vb{v} \in \mathbf{V} \) is an \vocab{eigenvector} of \( T \) if there exists a \( \lambda \in \mathbb{K} \), called the \vocab{eigenvalue}, such that \( T \vb{v} = \lambda \vb{v} \).
+\end{dfn}

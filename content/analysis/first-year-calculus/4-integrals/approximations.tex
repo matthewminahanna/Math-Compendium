@@ -24,3 +24,11 @@ For the \( k \)-th rectangle (where \( k \) goes from 0 to \( n-1 \)):
 Adding up all \( n \) rectangles, the total approximate area is
 \[ \mathrm{Area}(f) \approx \sum_{k=0}^{n-1} f(a + k \Delta x) \cdot \Delta x \]
 where \( \Delta x = \frac{b-a}{n} \).
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/analysis/calculus/LHRS.png}
+    \caption{Left Riemann Sum with $n$ subdivisions. Each rectangle has width $\Delta x = \frac{b-a}{n}$ and height $f(a + k\Delta x)$ for $k = 0, 1, \ldots, n-1$.}
+    \label{fig:LHRS}
+\end{figure}

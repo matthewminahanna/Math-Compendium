@@ -24,4 +24,20 @@
 	\arrow["\rho"', from=1-1, to=3-3]
 	\arrow["{\mathrm{pr}_1}", from=1-3, to=3-3]
 \end{tikzcd}\]
+
+To communicate this, we will write 
+
+\[\begin{tikzcd}
+	F && E \\
+	\\
+	&& M
+	\arrow[from=1-1, to=1-3]
+	\arrow["\rho", from=1-3, to=3-3]
+\end{tikzcd}\]
+or 
+\[ F \to E \xrightarrow{\rho} M \]
+We can think of this diagram as say \( F \) fits into \( E \) as fiber and then is projected down into \( M \).
 \end{dfn} 
+
+
+The way I like to think of fiber bundles is this. Someone hands you \( M \) and copies of \( F \) indexed by \( M \) (imagine that each copy of \( F \) has a little nametag on it---like coat hooks in a kindergarten classroom, where each hook is labeled with a child's name. Here, each point \( x \in M \) gets their own personal copy of \( F \)). Since \( M \) is a manifold, it carries topological information and we use that topology as instructions to glue our copies of \( F \) together to form \( E \).

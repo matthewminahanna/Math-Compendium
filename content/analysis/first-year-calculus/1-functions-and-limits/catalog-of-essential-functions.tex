@@ -35,3 +35,28 @@ When we applied the decreasing function \( \log_{\frac{1}{2}} \) to both sides o
 \[ \frac{t}{45} \log_{\frac{1}{2}} \left( \frac{1}{2} \right) > \log_{\frac{1}{2}} \left( \frac{11}{24} \right), \]
 which gives us the correct answer: \( t > 51 \) minutes.
 \end{example}
+
+\begin{exercise}
+   In the popular RPG \textbf{Pokémon}, there are different colorations of pocket monsters often referred to as "shiny" Pokémon. In the current games, the base odds of encountering a shiny Pokémon is \( \frac{1}{4096} \). This can be optimized to \( \frac{1}{683} \) through various in-game methods.
+   \begin{enumerate}[label=\textbf{\roman*)}]
+    \item How many encounters are required to have a \( 50\% \) chance of encountering a shiny at the base odds of \( \frac{1}{4096} \)? 
+    \item How many encounters are required to have a \( 50\% \) chance of encountering a shiny at the optimized odds of \( \frac{1}{683} \)? 
+   \end{enumerate}
+\end{exercise}
+\begin{solution}
+    We can tackle both \textbf{(i)} and \textbf{(ii)} simultaneously. Let \( p \) be the probability of encountering a shiny Pokémon in a single encounter, so \( 1-p \) is the probability of not encountering a shiny. The probability of not encountering a shiny in \( n \) independent encounters is \( (1-p)^n \). We want this to equal \( 0.5 \):
+    \[ \left( 1-p \right)^{n} = 0.5 \]
+    Taking the natural logarithm of both sides:
+    \[ n \ln(1-p) = \ln(0.5) \]
+    \[ n = \frac{\ln(0.5)}{\ln(1-p)} \]
+    
+    For \textbf{(i)}, with \( p = \frac{1}{4096} \):
+    \[ n = \frac{\ln(0.5)}{\ln(1-\frac{1}{4096})} \approx \frac{-0.693}{-0.000244} \approx 2839 \text{ encounters} \]
+    
+    For \textbf{(ii)}, with \( p = \frac{1}{683} \):
+    \[ n = \frac{\ln(0.5)}{\ln(1-\frac{1}{683})} \approx \frac{-0.693}{-0.00147} \approx 473 \text{ encounters} \]
+
+This exercise shows that the median number of encounters to find a shiny at base odds is approximately 2839, not 4096. The value \( \frac{1}{4096} \) represents the probability per encounter, not the expected number of encounters for a 50\% success rate.
+\end{solution}
+
+
