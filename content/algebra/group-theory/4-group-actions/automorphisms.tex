@@ -1,0 +1,35 @@
+\begin{dfn}
+    Let \( G \) be a group. An \vocab{automorphism} of \( G \) is an isomorphism from \( G \) to itself. We denote 
+    \[ \mathrm{Aut} \left( G \right)  = \left\{ \varphi : G \to G \ \middle| \ \varphi \text{ is an automorphism. }\right\} \]
+\end{dfn}
+
+\begin{lemma}
+    \( \mathrm{Aut}(G) \) is a group under function composition. 
+\end{lemma}
+\begin{proof}
+We verify the group axioms.
+
+\textbf{Closure:} Suppose \( \varphi, \psi \in \mathrm{Aut} \left( G \right) \) and pick \( g,h \in G \). Then 
+\begin{align*}
+    \left( \varphi \circ \psi \right) \left(  g \str_{G} h \right) &= \varphi \left(  \psi \left(  g \str_{G} h \right) \right) \\
+    &= \varphi \left( \psi \left( g \right) \str_{G} \psi \left( h \right) \right)  \\
+    &= \varphi \left(  \psi \left( g \right) \right) \str_{G} \varphi \left(  \psi \left( h \right) \right) \\
+    &=  \left( \varphi \circ \psi \right)  \left( g \right) \str_{G}  \left( \varphi \circ \psi \right) \left( {h} \right)
+\end{align*}
+So \( \varphi \circ \psi \) is a homomorphism. Since the composition of bijections is a bijection, \( \varphi \circ \psi \) is an automorphism. Thus \( \mathrm{Aut}(G) \) is closed under function composition. 
+
+\textbf{Identity:} The identity map \( \mathrm{id}_G : G \to G \) given by \( \mathrm{id}_G(g) = g \) is clearly a bijective homomorphism, hence \( \mathrm{id}_G \in \mathrm{Aut}(G) \).
+
+\textbf{Inverses:} Let \( \varphi \in \mathrm{Aut}(G) \). Since \( \varphi \) is a bijection, \( \varphi^{-1} : G \to G \) exists. We need to show \( \varphi^{-1} \) is a homomorphism. Let \( g, h \in G \). Then there exist \( g', h' \in G \) such that \( \varphi(g') = g \) and \( \varphi(h') = h \). Thus
+\begin{align*}
+    \varphi^{-1}(g \str_{G} h) &= \varphi^{-1}(\varphi(g') \str_{G} \varphi(h')) \\
+    &= \varphi^{-1}(\varphi(g' \str_{G} h')) \\
+    &= g' \str_{G} h' \\
+    &= \varphi^{-1}(g) \str_{G} \varphi^{-1}(h)
+\end{align*}
+So \( \varphi^{-1} \in \mathrm{Aut}(G) \).
+
+\textbf{Associativity:} Function composition is associative.
+
+Therefore \( \mathrm{Aut}(G) \) is a group under function composition.
+\end{proof}

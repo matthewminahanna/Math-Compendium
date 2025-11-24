@@ -1,0 +1,66 @@
+\section{Hilbert Spaces}
+
+
+Hilbert spaces provide the natural setting for extending geometric and analytical results from finite-dimensional inner product spaces to infinite dimensions. While finite-dimensional inner product spaces are automatically complete, this fails in infinite dimensions. We need an additional completeness assumption to ensure Cauchy sequences converge. This completeness allows us to perform limiting operations and develop a robust theory of approximation, projection, and convergence.
+
+
+\subsection{Continuity of the Inner Product and Norm}
+
+Before defining Hilbert spaces, we establish some fundamental continuity properties. Although the metric on an inner product space is induced by the inner product (via the norm), the continuity of the inner product and norm with respect to this metric requires proof. These results will be used in the chapter on Banach spaces as well.
+
+\begin{theorem}\label{thm:inner-product-continuity}
+   Let \( \mathbf{V} \) be an inner product space. If the sequences \( \left\{ \vb{x}_{n} \right\} \) converges to \( \vb{x} \) and \( \left\{ \vb{y}_{n} \right\} \) converges to \( \vb{y} \), then \( \left\{ \left< \vb{x}_{n}, \vb{y}_{n} \right> \right\} \) converges to \( \left< \vb{x}, \vb{y} \right> \).
+\end{theorem}
+\begin{proof}
+    We have
+    \begin{align*}
+        \abs{\left< \vb{x}_{n}, \vb{y}_{n} \right> - \left< \vb{x}, \vb{y} \right>} &= \abs{ \left< \vb{x}_{n} - \vb{x}, \vb{y}_{n} - \vb{y} \right> + \left< \vb{x}, \vb{y}_{n} -\vb{y} \right> + \left< \vb{x}_{n}- \vb{x}, \vb{y} \right>} \tag{\Cref{exc:expand-ip-diff}}\\
+        & \le \abs{\left< \vb{x}_{n} - \vb{x}, \vb{y}_{n} - \vb{y} \right>} + \abs{\left< \vb{x}, \vb{y}_{n} -\vb{y} \right>} + \abs{\left< \vb{x}_{n}- \vb{x}, \vb{y} \right>} \tag{Triangle inequality} \\
+        & \le \norm{\vb{x}_{n} - \vb{x}} \norm{\vb{y}_{n} - \vb{y}} + \norm {\vb{x}} \norm{\vb{y}_{n} - \vb{y}} + \norm{\vb{x}_{n} - \vb{x}} \norm{\vb{y}}. \tag{Cauchy-Schwarz inequality}
+    \end{align*}
+    Given \( \epsilon >0 \), choose \( N \) sufficiently large so that for all \( n \ge N \),
+    \[ \norm{\vb{x}_{n} - \vb{x}} < \min \left\{ \sqrt{ \frac{\epsilon}{3}}, \frac{\epsilon}{ 3 \left( \norm{\vb{y}} +1 \right)} \right\} \]
+    and 
+     \[ \norm{\vb{y}_{n} - \vb{y}} < \min \left\{ \sqrt{ \frac{\epsilon}{3}}, \frac{\epsilon}{ 3 \left( \norm{\vb{x}} +1 \right)} \right\}. \]
+     Then for \( n \ge N \),
+     \begin{align*}
+        \abs{\left< \vb{x}_{n}, \vb{y}_{n} \right> - \left< \vb{x}, \vb{y} \right>} &\le \norm{\vb{x}_{n} - \vb{x}} \norm{\vb{y}_{n} - \vb{y}} + \norm {\vb{x}} \norm{\vb{y}_{n} - \vb{y}} + \norm{\vb{x}_{n} - \vb{x}} \norm{\vb{y}}  \\
+        & <  \sqrt{\frac{\epsilon}{3}} \sqrt{\frac{\epsilon}{3}} + \frac{\norm{\vb{x}}}{\norm{\vb{x}} +1} \cdot \frac{\epsilon}{3} + \frac{\norm{\vb{y}}}{\norm{\vb{y}} +1} \cdot \frac{\epsilon}{3} \\
+        & < \frac{\epsilon}{3} +  \frac{\epsilon}{3} +  \frac{\epsilon}{3} = \epsilon.
+     \end{align*}
+     Therefore \( \left< \vb{x}_{n}, \vb{y}_{n} \right> \to \left< \vb{x}, \vb{y} \right> \).
+\end{proof}
+
+\begin{theorem}\label{thm:continuity-of-norm}
+    If \( \left\{ \vb{x}_{n} \right\} \) converges to \( \vb{x} \) in a normed vector space \( \mathbf{V} \), then \( \norm{\vb{x}_{n}} \) converges to \( \norm{\vb{x}} \).
+\end{theorem}
+\begin{proof}
+    If \( \mathbf{V} \) is an inner product space and the norm is induced by the inner product, then the result is simply a corollary of \Cref{thm:inner-product-continuity}. \\ 
+    Otherwise, we proceed directly. For any \( \epsilon > 0 \), pick \( N \) sufficiently large so that if \( n \ge N \), then \( \norm{\vb{x}_{n} - \vb{x}} < \epsilon \). Then for \( n \ge N \), 
+  \begin{align*}
+       \abs{\norm{\vb{x}_{n}} - \norm{\vb{x}}} &\le \norm{\vb{x}_{n} -\vb{x}} \tag{reverse triangle inequality}\\
+       &< \epsilon
+   \end{align*}
+    Hence, \( \norm{\vb{x}_{n}} \to \norm{\vb{x}} \).
+\end{proof}
+
+
+
+\begin{theorem}
+    If \( \left\{ \vb{x}_{n} \right\} \) and \( \left\{ \vb{y}_{n} \right\} \) is a Cauchy sequence of vectors in an inner product space \( \mathbf{V} \), then \( \left< \vb{x}_{n}, \vb{y}_{n} \right> \) is a Cauchy sequence of scalars.
+\end{theorem}
+\begin{proof}
+    The proof is similar to the proof of \Cref{thm:inner-product-continuity} and, as such, can be skipped. \\ 
+    For any \( m,n \in \mathbb{N} \), we have 
+    \begin{align*}
+        \abs{ \left< \vb{x}_{m}, \vb{y}_{m} \right> - \left< \vb{x}_{n}, \vb{y}_{n} \right>} &= \abs{ \left< \vb{x}_{m}- \vb{x}_{n}, \vb{y}_{m} - \vb{y}_{n} \right> + \left< \vb{x}_{n}, \vb{y}_{m} - \vb{y}_{n}  \right> + \left< \vb{x}_{m}- \vb{x}_{n}, \vb{y}_{n} \right>} 
+    \end{align*}
+    
+\end{proof}
+
+
+
+\subsection{Definition and Basic Examples}
+\begin{dfn}
+    A \hyperref[def:complete-metric-space]{complete} \hyperref[def:inner-product]{\textcolor[RGB]{180, 109, 214}{inner-product space}} is called a \vocab{Hilbert space}.
+\end{dfn}

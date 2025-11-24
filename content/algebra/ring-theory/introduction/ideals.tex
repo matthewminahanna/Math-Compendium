@@ -1,0 +1,19 @@
+Much like in group theory, we want to develop some quotient structure on rings. Since a ring is a group under addition, that can be taken care of with existing tools. So let us contend with multiplication. \\ 
+
+Given a subset \( I \) of a ring \( R \). What conditions do we need for the quotient \( \faktor{R}{I} \) to be a ring? Let \( r+I \) and \( s+I \) be left additive cosets. We want 
+\[ \left( r+I \right) \left( s+I \right) = rs +I .\]
+Let us "expand" the left side. 
+\[ \left( r+I \right) \left( s+I \right) = rs + rI + sI + I \cdot I \]
+If we impose the conditions, that 
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item \( I \) is a subring of \( R \), 
+    \item For all \( r \in R \), \( rI \subseteq I \),
+\end{enumerate}
+we quickly see that sets \( \left( r+I \right)\left( s+I \right)  \) and \( rs + I \) are equal. This is the motivation for the definition of an \vocab{ideal}. 
+
+\begin{dfn}
+    Let \( I \subseteq R \) be a subset of a ring \( R \). We say \( I \) is a \vocab{left ideal} of \( R \) if \( I \) is an additive subgroup of \( R \) closed under multiplication, and for all \( r \in R \) and \( x \in I \), we have \( rx \in I \). \\ 
+    Similarly, \( I \) is a \vocab{right ideal} of \( R \) if \( I \) is an additive subgroup of \( R \) closed under multiplication, and for all \( r \in R \) and \( x \in I \), we have \( xr \in I \). \\ 
+    A \vocab{two-sided ideal} of \( R \) is a subset that is both a left ideal and a right ideal. \\ 
+    When the sidedness is clear from context or irrelevant, we will simply use the term \vocab{ideal}.
+\end{dfn}

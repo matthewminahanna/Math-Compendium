@@ -48,5 +48,18 @@
 
 
 \begin{dfn}
-    Suppose \( T \in \mathcal{L} \left(  \mathbf{V} \right) \). We say that \( \vb{v} \in \mathbf{V} \) is an \vocab{eigenvector} of \( T \) if there exists a \( \lambda \in \mathbb{K} \), called the \vocab{eigenvalue}, such that \( T \vb{v} = \lambda \vb{v} \).
+    Suppose \( T \in \mathcal{L} \left(  \mathbf{V} \right) \). We say that \( \vb{v} \in \mathbf{V} \) is an \vocab{eigenvector} of \( T \) if there exists a \( \lambda \in \mathbb{K} \), called the \vocab{eigenvalue}, such that \( T \vb{v} = \lambda \vb{v} \) and \( \vb{v} \neq \vb{0} \).
 \end{dfn}
+
+\begin{exercise}
+    Suppose that \( P \in \mathcal{L} \left( \mathbf{V} \right) \) has the property that \( P^{2} = P \). If \( \lambda \) has an eigenvalue, then \( \lambda \) must be \( 0 \) or \( 1 \).
+\end{exercise}
+\begin{solution}
+    Suppose \( \vb{v} \) is an eigenvector of \( P \) with eigenvalue \( \lambda \). Then, on one hand,
+    \[ P^{2} \left( \vb{v} \right) = P \left( \vb{v} \right) = \lambda \vb{v}\]
+    On the other hand,
+    \[ P^{2}\left( \vb{v} \right) = P \left( P \left( \vb{v} \right) \right) = P \left( \lambda \vb{v} \right) = \lambda P \left( \vb{v} \right) = \lambda^{2} \vb{v}\]
+    So 
+    \[ \lambda \vb{v} = \lambda^{2} \vb{v}. \]
+    Therefore \( \lambda =0 \) or \( \lambda =1 \).
+\end{solution}

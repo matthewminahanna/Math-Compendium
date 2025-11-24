@@ -1,0 +1,37 @@
+This section relies on the key observation that the steps behind elimination are linear. As such, we can record the elimination steps in a matrix. 
+
+\begin{example}
+    Suppose that we want to transform the matrix 
+    \( A = \begin{bmatrix}
+        2 & 1\\
+        6 & 8\\
+    \end{bmatrix} \) into an upper triangular matrix \( U \). To do this, we need to subtract \( 3 \) copies of row 1 from row 2. We record this operation in a matrix \( E_{21} = \begin{bmatrix}
+        1 & 0\\
+        -3 & 1\\
+    \end{bmatrix} \) The ones on the diagonal indicate that we are not scaling any rows and the \( -3 \) in the \( (i,j) = (2,1) \) entry records the operation of subtracting \( 3 \) copies of row 1 from row 2. Sure enough, 
+    \[ \begin{bmatrix}
+        1 & 0\\
+        -3 & 1\\
+    \end{bmatrix} \begin{bmatrix}
+        2 & 1\\
+        6 & 8\\
+    \end{bmatrix} = \begin{bmatrix}
+        (1 \cdot 2) + (0 \cdot 6) & (1 \cdot 1) + (0 \cdot 8)\\
+        (-3 \cdot 2) + (1 \cdot 6) & (-3 \cdot 1) + (1 \cdot 8)\\
+    \end{bmatrix} =\begin{bmatrix}
+        2 & 1\\
+        0 & 5\\
+    \end{bmatrix} \]
+  Moreover, since we know what \( E_{21} \) represents, we can calculate \( E^{-1}_{21} \) in our heads. Namely, to undo \( R_{2} - 3R_{1} \to R_{2} \), we simply apply the operation \( R_{2} + 3 R_{1} \to R_{2} \). So 
+  \[ E^{-1}_{21} = \begin{bmatrix}
+        1 & 0\\
+        3 & 1\\
+    \end{bmatrix}. \]
+    It easy to check that \( E^{-1}_{21} E_{21} = I \). Moreover, 
+    \begin{align*}
+        E_{21} A &= U \\
+        E^{-1}_{21} E_{21} A &= E^{-1}_{21} U \\
+        A &= E^{-1}_{21} U
+    \end{align*}
+    This is the goal. Letting \( E^{-1}_{21} = L \), we have factored \( A \) into a lower triangular matrix times an upper triangular matrix. This is an example of\vocab{LU factorization}. 
+\end{example}

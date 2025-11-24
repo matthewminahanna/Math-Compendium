@@ -1,0 +1,116 @@
+\begin{exercise}
+    Find the general solution to the differential equation 
+    \[ y'' + y' + 9.25y =0 \]
+    Then find a particular solution with initial conditions \( y(0) =2 \) and \( y'(0) =8 \).
+\end{exercise}
+\begin{solution}
+    We have the characteristic equation 
+    \[ \lambda^{2} + \lambda + \frac{37}{4} = 0 \]
+    Hence, we have 
+    \begin{align*}
+        \lambda^{2} + \lambda &= - \frac{37}{4} \\ 
+        \lambda^{2} + \lambda + \frac{1}{4} &= -\frac{37}{4} + \frac{1}{4} \\
+        \left( \lambda + \frac{1}{2} \right)^{2} &= -9 \\
+        \lambda + \frac{1}{2} &= \pm 3i
+    \end{align*}
+    So \( \lambda = -\frac{1}{2} \pm 3i \). Letting \( \lambda_{1} = -\frac{1}{2} + 3i\) and \( \lambda_{2} = - \frac{1}{2} - 3i \), we have for \( \lambda_{1} \)
+    \begin{align*}
+         y_{1}(t) &= e^{ \left( - \frac{1}{2} + 3i \right)t} \\
+         &= e^{-\frac{1}{2}t} \cdot e^{3i t}\\ 
+         &= e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right) 
+    \end{align*}
+    and for \( \lambda_{2} = - \frac{1}{2}- 3i \)
+    \begin{align*}
+        y_{2}(t) &=  e^{ \left( - \frac{1}{2} - 3i \right)t} \\
+        &= e^{-\frac{1}{2}t} \cdot e^{-3i t} \\
+        &= e^{-\frac{1}{2}t} \left( \cos{ \left( -3t \right) } + i \sin{ \left( -3t \right) } \right) \\
+        &= e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) 
+    \end{align*}
+
+Calculating the Wronskian for \( y_{1}(t) =  e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right) \) and \( y_{2}(t) = e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) \).
+\begin{align*}
+    W \left[ y_{1}, y_{2} \right](t) &= \mathrm{det} \begin{bmatrix}
+        y_{1}(t) & y_{2}(t)\\
+        y_{1}'(t) & y_{2}'(t)\\
+    \end{bmatrix}\\
+    &= y_{1}(t) \cdot y_{2}'(t) - y_{2}(t) \cdot y_{1}'(t) \\
+    &= \left[ e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right)  \right] \cdot \left[ - \frac{1}{2} e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right)  + e ^{- \frac{1}{2}t} \left( - 3 \sin{ \left( 3t \right) } - 3i \cos{ \left( 3t \right) } \right)\right] \\
+    &- \left[ e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right)  \right] \cdot \left[ - \frac{1}{2} e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right)  + e ^{- \frac{1}{2}t} \left( - 3 \sin{ \left( 3t \right) } + 3i \cos{ \left( 3t \right) } \right)\right]
+\end{align*}
+
+Now we can set \( a(t)=  e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right)\), \(  b(t) = - \frac{1}{2} e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) \), \(   c(t) = e ^{- \frac{1}{2}t} \left( - 3 \sin{ \left( 3t \right) } - 3i \cos{ \left( 3t \right) } \right) \). So 
+\begin{align*}
+    W \left[ y_{1}, y_{2} \right](t) &= a(t)\left( b(t) + c(t) \right) - \overline{a(t)\left( b(t) + c(t) \right)} \\
+    &= 2i \;  \Im \left[  a(t)\left( b(t) + c(t) \right) \right]
+\end{align*}
+where \( \Im \left[ z \right] \) is the imaginary part of a complex number \( z \). If \( \Re \left[ z \right] \) denotes the real part of \( z \), it can be shown that 
+\[ \Im \left[ w \cdot z \right] = \Re \left[ w \right] \Im \left[ z \right] + \Re \left[ z \right]\Im \left[ w \right]\]
+and 
+\[ \Im \left[ w +z \right] = \Im \left[ w \right] + \Im \left[ z \right] \]
+So 
+\begin{align*}
+    W \left[ y_{1}, y_{2} \right](t) &= 2i \;  \Im \left[  a(t)\left( b(t) + c(t) \right) \right] \\
+    &= 2i \left[ \Im \left( a(t) b(t) \right) + \Im \left( a(t) c(t) \right) \right] \\
+    &= 2i \left[ \Re \left( a(t) \right) \Im \left( b(t) \right) +  \Re \left( b(t) \right) \Im \left( a(t) \right) +  \Re \left( a(t) \right) \Im \left( c(t) \right) +  \Re \left( c(t) \right) \Im \left( a(t) \right)\right]
+\end{align*}
+We see 
+    \begin{align*}
+        &\Re \left[ a(t) \right] = e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } && \Im \left[ a(t) \right] = e^{- \frac{1}{2}t} \sin{ \left( 3t \right) } \\
+        &\Re \left[ b(t) \right] = - \frac{1}{2}  e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } && \Im \left[ b(t) \right] =  \frac{1}{2} e^{- \frac{1}{2}t} \sin{ \left( 3t \right) } \\
+        &\Re \left[ c(t) \right] = -3 e^{- \frac{1}{2}t}  \sin{ \left( 3t \right) } && \Im \left[ c(t) \right] -3 e^{- \frac{1}{2}t}  \cos{ \left( 3t \right) } 
+    \end{align*}
+    So 
+    \begin{align*}
+         W \left[ y_{1}, y_{2} \right](t) &= 2i \left[ \Re \left( a(t) \right) \Im \left( b(t) \right) +  \Re \left( b(t) \right) \Im \left( a(t) \right) +  \Re \left( a(t) \right) \Im \left( c(t) \right) +  \Re \left( c(t) \right) \Im \left( a(t) \right)\right] \\
+         &= 2i \left[  e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } \cdot  \frac{1}{2} e^{- \frac{1}{2}t} \sin{ \left( 3t \right) } - \frac{1}{2}  e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } e^{- \frac{1}{2}t} \sin{ \left( 3t \right) }\right. \\
+         &+ \left.  e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } \cdot \left( -3 e^{- \frac{1}{2}t}  \cos{ \left( 3t \right) } \right)  +  e^{- \frac{1}{2}t} \sin{ \left( 3t \right) }  \cdot \left( -3 e^{- \frac{1}{2}t}  \sin{ \left( 3t \right) }  \right)\right] \\
+         &= 2i \left[ \Ccancel[DeepRed]{ e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } \cdot  \frac{1}{2} e^{- \frac{1}{2}t} \sin{ \left( 3t \right) }}  -  \Ccancel[DeepRed]{ e^{- \frac{1}{2}t} \cos{ \left( 3t \right) } \cdot  \frac{1}{2} e^{- \frac{1}{2}t} \sin{ \left( 3t \right) }}\right. \\
+        &+ \left. -3 e^{- \frac{1}{2}t} \left(  \cos^{2} { \left( 3t \right) }\right) + \sin^{2}{ \left( 3t \right) }\right] \\
+        &= -6i  e^{- \frac{1}{2}t}
+    \end{align*}
+So a general solution is of the form 
+    \[ y(t) = K_{1} \left( e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right) \right) + K_{2} \left( e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) 
+    \right) \]
+    for \( K_{1}, K_{2} \in \mathbb{C} \). But we need \emph{real solutions}. But since \( y(t) \) can be expressed as arbitrary linear combinations of \( y_{1}(t) \) and \( y_{2}(t) \), for any \( C_{1}, C_{2} \in \mathbb{R} \), we can pick constants \( K_{1} = \frac{C_{1}}{2} - \frac{C_{2}}{2}i \) and \(  K_{2} = \frac{C_{1}}{2} + \frac{C_{2}}{2}i  \). This gives us 
+    \begin{align*}
+        y(t) &= K_{1} \left( e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right) \right) + K_{2} \left( e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) \right) \\
+        &= \left(\frac{C_{1}}{2} - \frac{C_{2}}{2}i\right) e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } + i \sin{ \left( 3t \right) } \right) \\
+        &\quad + \left(\frac{C_{1}}{2} + \frac{C_{2}}{2}i\right) e^{-\frac{1}{2}t} \left( \cos{ \left( 3t \right) } - i \sin{ \left( 3t \right) } \right) \\
+        &= e^{-\frac{1}{2}t} \left[ \frac{C_{1}}{2}\cos(3t) + \frac{C_{1}}{2}i\sin(3t) - \frac{C_{2}}{2}i\cos(3t) + \frac{C_{2}}{2}\sin(3t) \right. \\
+        &\quad \left. + \frac{C_{1}}{2}\cos(3t) - \frac{C_{1}}{2}i\sin(3t) + \frac{C_{2}}{2}i\cos(3t) + \frac{C_{2}}{2}\sin(3t) \right] \\
+        &= e^{-\frac{1}{2}t} \left[ C_{1}\cos(3t) + C_{2}\sin(3t) \right]
+    \end{align*}
+    Therefore, the general real solution is 
+    \[ y(t) = e^{-\frac{1}{2}t}\left( C_{1}\cos(3t) + C_{2}\sin(3t) \right) \]
+    where \( C_{1}, C_{2} \in \mathbb{R} \).
+
+    \textbf{Verification:} Let's check that this is indeed a solution to \( y'' + y' + 9.25y = 0 \). We have 
+    \[ y(t) = e^{-\frac{1}{2}t}\left( C_{1}\cos(3t) + C_{2}\sin(3t) \right) \]
+    
+    Using the product rule:
+    \begin{align*}
+        y'(t) &= -\frac{1}{2}e^{-\frac{1}{2}t}\left( C_{1}\cos(3t) + C_{2}\sin(3t) \right) + e^{-\frac{1}{2}t}\left( -3C_{1}\sin(3t) + 3C_{2}\cos(3t) \right) \\
+        &= e^{-\frac{1}{2}t}\left[ \left(3C_{2} - \frac{1}{2}C_{1}\right)\cos(3t) + \left(-3C_{1} - \frac{1}{2}C_{2}\right)\sin(3t) \right]
+    \end{align*}
+    
+    And for the second derivative:
+    \begin{align*}
+        y''(t) &= -\frac{1}{2}e^{-\frac{1}{2}t}\left[ \left(3C_{2} - \frac{1}{2}C_{1}\right)\cos(3t) + \left(-3C_{1} - \frac{1}{2}C_{2}\right)\sin(3t) \right] \\
+        &\quad + e^{-\frac{1}{2}t}\left[ -3\left(3C_{2} - \frac{1}{2}C_{1}\right)\sin(3t) + 3\left(-3C_{1} - \frac{1}{2}C_{2}\right)\cos(3t) \right] \\
+        &= e^{-\frac{1}{2}t}\left[ \left(-9C_{1} + \frac{3}{4}C_{1} - \frac{3}{2}C_{2} - \frac{3}{2}C_{2}\right)\cos(3t) \right. \\
+        &\quad \left. + \left(-9C_{2} + \frac{3}{4}C_{2} + \frac{3}{2}C_{1} + \frac{3}{2}C_{1}\right)\sin(3t) \right] \\
+        &= e^{-\frac{1}{2}t}\left[ \left(3C_{1} - \frac{37}{4}C_{1} - 3C_{2}\right)\cos(3t) + \left(3C_{2} - \frac{37}{4}C_{2} + 3C_{1}\right)\sin(3t) \right] \\
+        &= e^{-\frac{1}{2}t}\left[ \left(-\frac{25}{4}C_{1} - 3C_{2}\right)\cos(3t) + \left(3C_{1} - \frac{25}{4}C_{2}\right)\sin(3t) \right]
+    \end{align*}
+    
+    Now substituting into the differential equation:
+    \begin{align*}
+        &y'' + y' + 9.25y \\
+        &= e^{-\frac{1}{2}t}\left[ \left(-\frac{25}{4}C_{1} - 3C_{2}\right)\cos(3t) + \left(3C_{1} - \frac{25}{4}C_{2}\right)\sin(3t) \right] \\
+        &\quad + e^{-\frac{1}{2}t}\left[ \left(3C_{2} - \frac{1}{2}C_{1}\right)\cos(3t) + \left(-3C_{1} - \frac{1}{2}C_{2}\right)\sin(3t) \right] \\
+        &\quad + \frac{37}{4}e^{-\frac{1}{2}t}\left[ C_{1}\cos(3t) + C_{2}\sin(3t) \right] \\
+        &= e^{-\frac{1}{2}t}\left[ \left(-\frac{25}{4} - \frac{1}{2} + \frac{37}{4}\right)C_{1} + (-3 + 3)C_{2} \right]\cos(3t) \\
+        &\quad + e^{-\frac{1}{2}t}\left[ (3 - 3)C_{1} + \left(-\frac{25}{4} - \frac{1}{2} + \frac{37}{4}\right)C_{2} \right]\sin(3t) \\
+        &= e^{-\frac{1}{2}t}\left[ 0 \cdot C_{1}\cos(3t) + 0 \cdot C_{2}\sin(3t) \right] = 0 \quad \checkmark
+    \end{align*}
+\end{solution}

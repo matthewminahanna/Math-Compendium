@@ -8,6 +8,21 @@
     We call the pair \( \left( M, \rho \right) \) a \vocab{metric space}. We will often omit mention of \( \rho \) if it is understood in context or mention of \( \rho \) is unnecessary.
 \end{dfn}
 
+\begin{lemma}
+    A metric is non-negative. That is; 
+    \[ \rho \left(  x,y  \right) \ge 0 \] for all \( x,y \in M \).
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \rho \left( x,x \right) &\le \rho \left( x,y \right) + \rho \left( y,x \right) \tag{By the triangle ineqality}\\
+        \rho \left( x,x \right) & \le 2 \rho \left( x,y \right) \\
+        0 & \le 2 \rho \left( x,y \right) \\
+        0 &\le \rho \left( x,y \right)
+    \end{align*}
+    
+\end{proof}
+
+
 \begin{dfn}
     Let \( M \) be a metric space and define the \vocab{\( \epsilon \)-ball centered at \( x \)} to be
     \[ B_{\rho} \left( x; \epsilon \right) = \left\{ y \in M: \rho \left( x,y \right)< \epsilon \right\}\]
@@ -142,11 +157,35 @@ Although the base cases of \( n =2 \) or \( n=3 \) trivially hold, we will set t
 
 
 \begin{lemma}
-    Let \( \mathbf{V} \) be a normed space. Then \( \mathbf{V} \) has a \vocab{metric induced by the norm} defined by 
+    Let \( \mathbf{V} \) be a  \hyperref[def:norm]{normed space}.  Then \( \mathbf{V} \) has a \vocab{metric induced by the norm} defined by 
     \[ \rho \left( \vb{x}, \vb{y} \right) : = \norm{ \vb{x} - \vb{y}}\quad \text{for all } \vb{x}, \vb{y} \in \mathbf{V} .\]
 \end{lemma}
 \begin{proof}
-    
+    We want to show that \( \rho \left( \vb{x}, \vb{y} \right) = \norm{ \vb{x} - \vb{y}} \) defines a metric.\\ 
+    Suppose that \( \vb{x} = \vb{y} \). Then 
+    \begin{align*}
+        \rho \left( \vb{x} ,\vb{y} \right) &= \norm{\vb{x} - \vb{y}}\\
+        &= \norm{\vb{0}} \\
+        &=0
+    \end{align*}
+    So \( \vb{x} =\vb{y}  \Rightarrow \rho \left( \vb{x},\vb{y} \right) =0\). Conversely, if \( \rho \left( \vb{x}, \vb{y} \right) =0\) then \( \norm{\vb{x} - \vb{y}} =0 \) so \( \vb{x} - \vb{y} = \vb{0} \) or \( \vb{x} = \vb{y} \). \\ 
+    For symmetry, 
+    \begin{align*}
+        \rho \left( \vb{y},\vb{x} \right) &= \norm{\vb{y} - \vb{x}}\\
+        &= \norm{-1 \left( \vb{x} -\vb{y} \right)} \\
+        &= \abs{-1} \norm{\vb{x} - \vb{y} }\\
+        &= \norm{ \vb{x} - \vb{y}} \\
+        &= \rho \left( \vb{x}, \vb{y} \right)
+    \end{align*}
+    Finally, for the triangle inequality, 
+    \begin{align*}
+        \rho \left( \vb{x}, \vb{z} \right) &= \norm{\vb{x} - \vb{z}}\\
+        &= \norm{ \left( \vb{x} - \vb{y} \right) + \left( \vb{y} - \vb{z} \right)} \\
+        &\le \norm{\vb{x} - \vb{y}} + \norm{ \vb{y} - \vb{z}} \\
+        & = \rho \left( \vb{x}, \vb{y} \right) + \rho \left( \vb{y}, \vb{z} \right)
+    \end{align*}
+    So \( \rho \left( \vb{x}. \vb{z} \right) \le \rho \left( \vb{x}, \vb{y} \right) + \rho \left( \vb{y}, \vb{z} \right) \).\\
+    So \( \rho \left( \vb{x}, \vb{y} \right) = \norm{ \vb{x} - \vb{y}} \) defines a metric.
 \end{proof}
 
 

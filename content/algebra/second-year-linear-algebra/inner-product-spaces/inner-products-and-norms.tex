@@ -34,6 +34,24 @@
 \end{proof}
 
 
+\begin{exercise}\label{exc:expand-ip-diff}
+    Let \( \vb{v}_{1}, \vb{v}_{2}, \vb{w}_{1}, \vb{w}_{2} \) be vectors in an inner product space \( \mathbf{V} \). Show that 
+    \[ \left< \vb{v}_{1}, \vb{w}_{1} \right> - \left< \vb{v}_{2}, \vb{w}_{2} \right> = \left< \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{1} -\vb{w}_{2} \right> + \left< \vb{v}_{2} , \vb{w}_{1} -\vb{w}_{2} \right> + \left<  \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{2} \right>\]
+\end{exercise}
+\begin{solution}
+    Just calculate the right hand side. 
+    \begin{align*}
+         \left< \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{1} -\vb{w}_{2} \right> + \left< \vb{v}_{2} , \vb{w}_{1} -\vb{w}_{2} \right> + \left<  \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{2} \right> &= \left< \vb{v}_{1}, \vb{w}_{1} - \vb{w}_{2} \right> - \left< \vb{v}_{2}, \vb{w}_{1} - \vb{w}_{2} \right> + \left< \vb{v}_{2} , \vb{w}_{1} -\vb{w}_{2} \right> + \left<  \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{2} \right>\\ 
+         &= \left<  \vb{v}_{1}, \vb{w}_{1} - \vb{w}_{2} \right> - \Ccancel[DeepRed]{\left< \vb{v}_{2}, \vb{w}_{1} - \vb{w}_{2} \right>}  + \Ccancel[DeepRed]{\left< \vb{v}_{2}, \vb{w}_{1} - \vb{w}_{2} \right>} + \left<  \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{2} \right> \\
+         &= \left<  \vb{v}_{1}, \vb{w}_{1} - \vb{w}_{2} \right> + \left<  \vb{v}_{1}-\vb{v}_{2}, \vb{w}_{2} \right> \\
+         &= \left< \vb{v}_{1}, \vb{w}_{1} \right> - \left< \vb{v}_{1}, \vb{w}_{2} \right> + \left< \vb{v}_{1}, \vb{w}_{2} \right> - \left< \vb{v}_{2}, \vb{w}_{2} \right> \\
+         &=  \left< \vb{v}_{1}, \vb{w}_{1} \right> - \Ccancel[DeepRed]{ \left< \vb{v}_{1}, \vb{w}_{2} \right>} + \Ccancel[DeepRed]{ \left< \vb{v}_{1}, \vb{w}_{2} \right>} - \left< \vb{v}_{2}, \vb{w}_{2} \right> \\
+         &= \left< \vb{v}_{1}, \vb{w}_{1} \right> - \left< \vb{v}_{2}, \vb{w}_{2} \right>
+    \end{align*}
+    
+\end{solution}
+
+
 \begin{exercise}
     For a complex inner product space \( \mathbf{V} \), show that 
     \[ \Im \left( \left< \vb{v},\vb{w} \right> \right) = \Re \left( \left< \vb{v}, i \vb{w} \right> \right) \quad  \text{for all } \vb{v}, \vb{w} \in \mathbf{V}.\]
@@ -48,6 +66,17 @@
     \end{align*}
     It is clear that \( \Im (a+bi) = \Re (b-ai) \).
 \end{solution}
+
+\begin{dfn}
+    Suppose that \( \mathbf{V} \) is an inner-product space. If \( \vb{v}, \vb{w} \in \mathbf{V}\) have the property that \( \left< \vb{v},\vb{w} \right> =0\), we say that \( \vb{v} \) and \( \vb{w} \) are \vocab{orthogonal} and sometimes write \( \vb{v} \perp \vb{w} \). Note that the zero vector is orthogonal to every vector in \( \mathbf{V} \).
+\end{dfn}
+
+\begin{example}
+    Suppose that \( \vb{x} \perp \vb{y} \) and \( \vb{y} \perp \vb{z} \). Is it necessarily true that \( \vb{x} \perp \vb{z} \)?\\
+    No. For a counterexample, take \( \vb{x} = \vb{z} \neq \vb{0} \). Then \( \left< \vb{x}, \vb{y} \right> = 0 \) and \( \left< \vb{y}, \vb{z} \right> = 0 \) are satisfied, but \( \left< \vb{x}, \vb{z} \right> \neq 0 \).\\
+    Alternatively, take \( \vb{y} = \vb{0} \) and choose any \( \vb{x} \) and \( \vb{z} \) such that \( \left< \vb{x}, \vb{z} \right> \neq 0 \).
+\end{example}
+
 
 
 \begin{lemma}
@@ -81,9 +110,10 @@
 \end{solution}
 
 
+
 \subsection{Norms}
 
-\begin{dfn}
+\begin{dfn}\label{def:norm}
     A \vocab{norm} is a map \( \norm{ \cdot }: \mathbf{V} \to \left[ 0, \infty \right) \), where we write \( \vb{v} \mapsto \norm{\vb{v}} \), such that: 
     \begin{enumerate}[label=\textbf{\roman*)}]
         \item \( \norm{\vb{v}} = 0 \) if and only if \( \vb{v} = \vb{0} \). 
@@ -244,7 +274,25 @@ This shows that \( \norm{\vb{v} + \vb{w}} \le \norm{\vb{v}} + \norm{\vb{w}} \). 
         \norm{\vb{v} + \vb{w}}^{2} &= \norm{\vb{v}}^{2} + \norm{\vb{w}}^{2} + \left< \vb{v},\vb{w} \right> + \overline{\left< \vb{v},\vb{w} \right>} \\
         &= \norm{\vb{v}}^{2} + \norm{\vb{w}}^{2} + 2 \Re \left( \left< \vb{v},\vb{w} \right> \right)
     \end{align*}
-    
+\end{solution}
+
+\begin{exercise}
+  Suppose that \( \vb{u}, \vb{v} \in \mathbf{V} \) a complex inner-product space, such that \( \norm{\vb{u}}^{2} + \norm{\vb{v}}^{2} = \norm{\vb{u} + \vb{v}}^{2} \). Is it necessarily true that \( \left< \vb{u}, \vb{v} \right> = 0 \)? If not, provide a counter-example
+\end{exercise}
+\begin{solution}
+    \Cref{exc:equality-for-norm-squared} suggests that it is not true. Let \( \mathbf{V} = \mathbb{C} \) and let \( \vb{u} = 1+i \) and \( \vb{v} = 1-i \). On one hand, we have 
+    \begin{align*}
+        \norm{\vb{u} + \vb{v}}^{2} -\norm{\vb{u}}^{2} - \norm{\vb{v}}^{2} &= \norm{ 1+ i + 1-i}^{2} - \norm{ 1+i}^{2} - \norm{1-i}^{2} \\
+        &= 4 - 2 -2 \\
+        &= 0
+    \end{align*}
+    So  \( \norm{\vb{u}}^{2} + \norm{\vb{v}}^{2} = \norm{\vb{u} + \vb{v}}^{2} \) But on the other hand, 
+    \begin{align*}
+        \left< \vb{u}, \vb{v} \right> &= \left( 1+i \right) \cdot \overline{1-i} \\
+        &= (1+i) \cdot (1+i) \\
+        &= 2i
+    \end{align*}
+    So the claim is false.
 \end{solution}
 
 
