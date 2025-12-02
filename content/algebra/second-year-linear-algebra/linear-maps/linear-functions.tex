@@ -1,0 +1,180 @@
+\begin{dfn}
+    Suppose that \( \mathbf{V} \) and \( \mathbf{W} \) are vector spaces over the same field \( \mathbb{K} \). The \vocab{linear map} is a map \( T: \mathbf{V} \to \mathbf{W} \) such that 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( T \left( \vb{v}_{1} + \vb{v}_{2} \right) = T \left(  \vb{v}_{1} \right) + T \left( \vb{v}_{2} \right) \) for all \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \). 
+        \item \( T \left( \lambda \vb{v} \right) = \lambda T \left( \vb{v} \right) \) for all \( \lambda \in \mathbb{K} \) and \( \vb{v} \in \mathbf{V} \).
+    \end{enumerate}
+    The set of linear maps from \( \mathbf{V} \) to \( \mathbf{W} \) is denoted by \( \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). In the case that the codomain is the same as the domain, (\( T: \mathbf{V} \to \mathbf{V} \)), we sometimes call such a linear map a \vocab{linear operator} and we denote the set of linear operators on a vector space \( \mathbf{V} \) as \( \mathcal{L} \left( \mathbf{V} \right) \).
+\end{dfn}
+
+\begin{lemma}\label{thm:linear-maps-0-to-0}
+    Let \( \mathbf{V} \) and \( \mathbf{W} \) be vector spaces and \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). \( T \) maps the additive identity of \( \mathbf{V} \) to the additive identity of \( \mathbf{W} \); that is, 
+    \[ T \left( \vb{0}_{\mathbf{V}} \right) = \vb{0}_{\mathbf{W}}\]
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        T \left( \vb{0}_{\mathbf{V}} \right) &= T \left(\vb{0}_{\mathbf{V}} + \vb{0}_{\mathbf{V}}  \right) \\
+        &= T \left( \vb{0}_{\mathbf{V}} \right) + T \left( \vb{0}_{\mathbf{V}} \right)
+    \end{align*}
+    So \( T \left( \vb{0}_{\mathbf{V}} \right) \) is the additive identity for \( \mathbf{W} \).
+\end{proof}
+
+
+\begin{lemma}[An easy linear map test]\label{thm:easy-linear-map-test}
+    A map \( T \) between vector spaces \( \mathbf{V} \) and \( \mathbf{W} \) is a linear map if and only if 
+    \( T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) = T \left( \vb{v}_{1} \right)+ \lambda T \left( \vb{v}_{2} \right) \) for all \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \) and \( \lambda \in \mathbb{K} \).
+\end{lemma}
+\begin{proof}
+\( \left( \Rightarrow \right) \) Suppose that \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). Then for any \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \) and \( \lambda \in \mathbb{K} \)
+    \begin{align*}
+        T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= T \left( \vb{v}_{1} \right) + T \left( \lambda \vb{v}_{2} \right) \\
+        &= T \left( \vb{v}_{1} \right) + \lambda T \left(  \vb{v}_{2} \right)
+    \end{align*}
+    \( \left(  \Leftarrow \right) \) Now suppose \( T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) = T \left( \vb{v}_{1} \right)+ \lambda T \left( \vb{v}_{2} \right) \) for all \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \) and \( \lambda \in \mathbb{K} \). If we set \( \lambda =1 \), then 
+    \begin{align*}
+        T \left(  \vb{v}_{1} + \vb{v}_{2} \right) &= T \left( \vb{v}_{1} + 1 \cdot \vb{v}_{2} \right)\\
+         &= T \left( \vb{v}_{1} \right) + 1 T \left( \vb{v}_{2} \right)\\ 
+        &= T \left( \vb{v}_{1} \right) + T \left( \vb{v}_{2} \right)
+    \end{align*}
+    And if we set \( \vb{v}_{1} = \vb{0}_{\mathbf{V}} \), 
+    \begin{align*}
+        T \left( \lambda \vb{v}\right) &= T \left(  \vb{0}_{\mathbf{V}}+ \lambda \vb{v}\right) \\
+        &= T \left( \vb{0}_{\mathbf{V}} \right) + \lambda T \left( \vb{v} \right) \\
+        &= \vb{0}_{\mathbf{W}} +  \lambda T \left( \vb{v} \right)  \\
+        &=  \lambda T \left( \vb{v} \right) 
+    \end{align*}
+    Therefore T satisfies both additivity and scalar multiplication, so \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \).
+\end{proof}
+
+\begin{example}\label{eg:zero-map-is-linear}
+    The zero map 
+    \begin{align*}
+        Z&: \mathbf{V} \to \mathbf{W}\\
+        Z&: \vb{v} \mapsto \vb{0}_{\mathbf{W}}
+    \end{align*}
+    is linear. To show this, pick any \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \) and \(  \lambda \in \mathbb{K} \), then 
+    \begin{align*}
+        Z \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= \vb{0}_{\mathbf{W}}\\
+        &= \vb{0}_{\mathbf{W}} + \lambda \vb{0}_{\mathbf{W}} \\
+        &= Z \left( \vb{v}_{1} \right) + \lambda Z \left( \vb{v}_{2} \right)
+    \end{align*}
+\end{example}
+
+
+
+\begin{exercise}
+    Most textbooks use \( T \left( \lambda_{1} \vb{v}_{1} + \lambda_{2} \vb{v}_{2}\right) = \lambda_{1} T \left( \vb{v}_{1} \right) + \lambda_{2} T \left( \vb{v}_{2} \right)\) as the linear map test. Show directly that this test is equivalent to the test in \cref{thm:easy-linear-map-test}. That is to say, if \( T: \mathbf{V} \to \mathbf{W} \) is \emph{any} map, show that \(  T \left( \lambda_{1} \vb{v}_{1} + \lambda_{2} \vb{v}_{2}\right) = \lambda_{1} T \left( \vb{v}_{1} \right) + \lambda_{2} T \left( \vb{v}_{2} \right)\) if and only if \( T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) = T(\vb{v}_{1}) + \lambda T \left( \vb{v}_{2} \right) \).
+\end{exercise}
+\begin{solution}
+    \( \Rightarrow \) Suppose that \( T \left( \lambda_{1} \vb{v}_{1} + \lambda_{2} \vb{v}_{2}\right) = \lambda_{1} T \left( \vb{v}_{1} \right) + \lambda_{2} T \left( \vb{v}_{2} \right)\) for all \( \lambda_{1}, \lambda_{2} \in \mathbb{K} \) and \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \). Set \( \lambda_{1} =1 \) and \( \lambda_{2} = \lambda \). We have
+     \[ T \left( \vb{v}_{1} + \lambda \vb{v}_{2}\right) = T \left( \vb{v}_{1}  \right) + \lambda T \left(  \vb{v}_{2} \right).\]\\ 
+    \( \Leftarrow \) Now suppose that \( T \left( \vb{v}_{1} + \lambda \vb{v}_{2}\right) = T \left( \vb{v}_{1}  \right) + \lambda T \left(  \vb{v}_{2} \right) \) for all \( \lambda \in \mathbb{K} \) and \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \). We want to show that \( T \left( \lambda_{1} \vb{x}_{1} + \lambda_{2} \vb{x}_{2} \right) = \lambda_{1} T \left( \vb{x}_{1} \right) + \lambda_{2} T \left( \vb{x}_{2} \right) \) for all \( \lambda_{1}, \lambda_{2} \in \mathbb{K} \) and \( \vb{x}_{1}, \vb{x}_{2} \in \mathbf{V} \). \\
+    
+    The result is obvious if \( \lambda_{1} = 1 \) (by setting \( \lambda = \lambda_{2} \)), so assume \( \lambda_{1} \neq 1 \). For any \( \lambda_{1}, \lambda_{2} \in \mathbb{K} \) with \( \lambda_{1} \neq 1 \) and \( \vb{x}_{1}, \vb{x}_{2} \in \mathbf{V} \), pick 
+    \[ \boxed{\vb{v}_{1} = \vb{x}_{1}} \; ,  \;  \boxed{\lambda = \lambda_{1} -1} \; , \;  \text{and} \; \boxed{ \vb{v}_{2} = \vb{x}_{1} + \frac{\lambda_{2}}{\lambda_{1}-1} \vb{x}_{2}}  .\] 
+    On one hand, 
+    \begin{align*}
+        T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= T \left( \vb{x}_{1} + \left( \lambda_{1} -1 \right)  \left( \vb{x}_{1} + \frac{\lambda_{2}}{\lambda_{1}-1} \vb{x}_{2} \right)\right)\\
+        &= T \left(  \vb{x}_{1} + \left( \lambda_{1}-1 \right)  \vb{x}_{1} + \frac{\lambda_{2} \left( \lambda_{1}-1 \right)}{\lambda_{1}-1} \vb{x}_{2} \right) \\
+        &= T \left( \lambda_{1} \vb{x}_{1} + \lambda_{2} \vb{x}_{2} \right)
+    \end{align*}
+    On the other hand, 
+    \begin{align*}
+         T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= T \left( \vb{v}_{1} \right) + \lambda T \left( \vb{v}_{2} \right) \\
+         &= T \left( \vb{x}_{1} \right) + \left( \lambda_{1} -1 \right) \left[ T \left( \vb{x}_{1} + \frac{\lambda_{2}}{\lambda_{1}-1} \vb{x}_{2} \right) \right] \\
+         &= T \left( \vb{x}_{1} \right) + \left( \lambda_{1} -1 \right) \left[ T \left( \vb{x}_{1} \right) + \frac{\lambda_{2}}{\lambda_{1}-1} T \left( \vb{x}_{2} \right) \right] \\
+         &= \lambda_{1} T \left( \vb{x}_{1} \right) + \lambda_{2} T \left( \vb{x}_{2} \right)
+    \end{align*}
+    This shows that \(T \left( \lambda_{1} \vb{x}_{1} + \lambda_{2} \vb{x}_{2} \right) = \lambda_{1} T \left( \vb{x}_{1} \right) + \lambda_{2} T \left( \vb{x}_{2} \right)\).
+\end{solution}
+
+
+\begin{theorem}[The set of linear maps is itself a vector space.]\label{thm:linear-maps-are-a-vector-space}
+    Let \( \mathbf{V} \) and \( \mathbf{W} \) be vector spaces over \( \mathbb{K} \). The set \( \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) is itself a vector space where we define 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( \left( S +T \right) \left( \vb{v} \right): = S \left( \vb{v} \right) + T \left( \vb{v} \right) \) for all \( S,T \in   \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right)\) and \( \vb{v} \in \mathbf{V} \)
+        \item \( \left( \lambda T  \right)(\vb{v}) := \lambda \left( T \left( \vb{v} \right) \right) \) for all \( \lambda \in \mathbb{K} \), \( T \in   \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \), and \( \vb{v} \in \mathbf{V} \).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We need to verify that the conditions laid out in \cref{def:vector-space} hold.\\ 
+    First, to show that if \( S,T \in   \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right)\) then \( S+T \in   \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right)\), pick \( \lambda \in \mathbb{K} \) and \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \). Then 
+    \begin{align*}
+        \left( S+T \right) \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= S \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) + T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) \\
+        &= S \left( \vb{v}_{1} \right) + \lambda S \left( \vb{v}_{2} \right) + T \left( \vb{v}_{1} \right) + \lambda T \left( \vb{v}_{2} \right) \\
+        &= S \left( \vb{v}_{1} \right) + T \left( \vb{v}_{1} \right) + \lambda \left( S \left( \vb{v}_{2} \right) + T \left( \vb{v}_{2} \right) \right) \\
+        &= \left( S+T \right)\left( \vb{v}_{1} \right) + \lambda  \left( S+T \right)\left( \vb{v}_{2} \right)
+    \end{align*}
+    Similarly to show that \( \lambda T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \), for any \( \mu \in \mathbb{K} \) and \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \), we have 
+    \begin{align*}
+        \left( \lambda T \right) \left( \vb{v}_{1} + \mu \vb{v}_{2} \right) &= \lambda \left( T  \left( \vb{v}_{1} + \mu \vb{v}_{2} \right) \right) \\
+        &= \lambda \left( T \left( \vb{v}_{1} \right) \right) + \lambda \mu T \left( \vb{v}_{2} \right) \\
+        &=\left( \lambda T \right) \left( \vb{v}_{1} \right) + \mu \left( \lambda T \right) \left( \vb{v}_{2} \right)
+    \end{align*}
+    Thus, \( \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) is closed under addition and scalar multiplication. \\ 
+    For commutativity, we have 
+    \begin{align*}
+        \left( S + T \right) \left( \vb{v} \right) &= S \left( \vb{v} \right) + T \left( \vb{v} \right) \\
+        &= T \left( \vb{v} \right) + S \left( \vb{v} \right) \tag{Since $\mathbf{W}$ is a vector space.} \\
+        &= \left( T + S\right) \left( \vb{v} \right)
+    \end{align*}
+   Associativity and the distributive properties will also rely on inheritance of those properties from \( \mathbf{W} \). If \( S,T, U \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) and \( \lambda \in \mathbb{K} \)
+   \begin{align*}
+        \left( \left( S +T \right) + U \right) \left( \vb{v} \right) &= \left( S+T \right)\left( \vb{v} \right) + U \left( \vb{v} \right) \\ 
+        &= \left( S \left( \vb{v} \right) + T \left( \vb{v} \right) \right) + U \left( \vb{v} \right) \\ 
+        &= S \left( \vb{v} \right) +\left(  T \left( \vb{v} \right) + U \left( \vb{v} \right)\right) \\
+        &= S \left( \vb{v} \right) + \left( T+U \right) \left( \vb{v} \right) \\
+        &= \left( S + \left( T +U \right) \right) \left( \vb{v} \right)
+   \end{align*}
+   \begin{align*}
+    \left( \lambda \left( S +T \right) \right) \left( \vb{v} \right) &= \lambda \left( \left( S+T  \right)\left( \vb{v} \right) \right) \\ 
+    &= \lambda \left( S \left( \vb{v} \right) + T \left( \vb{v} \right)\right) \\
+    &= \lambda \left( S \left( \vb{v} \right) \right) + \lambda \left( T \left( \vb{v} \right) \right) \\
+    &= \left( \lambda S \right) \left( \vb{v} \right) +  \left( \lambda T \right) \left( \vb{v} \right) \\
+    &= \left( \lambda S + \lambda T \right) \left( \vb{v} \right)
+   \end{align*}
+   
+   Similarly, if \( \alpha, \beta \in \mathbb{K} \) and \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) then 
+   \begin{align*}
+    \left( \alpha \left( \beta T \right) \right) \left( \vb{v} \right) &= \alpha \left( \left( \beta T \right) \left( \vb{v} \right) \right) \\
+    &= \alpha \left( \beta \left( T \left( \vb{v} \right) \right) \right) \\
+    &= \left( \alpha \beta \right)\left( T \left( \vb{v} \right) \right) \\
+    &= \left( \left( \alpha \beta \right)T \right) \left( \vb{v} \right)
+   \end{align*}
+   
+   \begin{align*}
+    \left( \left( \alpha + \beta \right)T \right)\left( \vb{v} \right) &= \left( \alpha + \beta \right) \left( T \left( \vb{v} \right) \right) \\
+    &= \alpha \left( T \left( \vb{v} \right) \right) + \beta \left( T \left( \vb{v} \right) \right) \\
+    &= \left( \alpha T \right) \left( \vb{v} \right) + \left(  \beta T \right) \left(  \vb{v} \right)\\ 
+    &= \left(  \alpha T + \beta T \right) \left( \vb{v} \right)
+   \end{align*}
+   So the associative and distributive properties hold. \\ 
+   For the additive identity, let us use \cref{eg:zero-map-is-linear}. For any \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) and \( \vb{v} \in \mathbf{V} \), 
+   \begin{align*}
+    \left( T+Z \right) \left( \vb{v} \right) &= T \left( \vb{v} \right) + Z \left( \vb{v} \right) \\
+    &= T \left( \vb{v} \right) + \vb{0}_{\mathbf{W}} \\
+    &= T \left( \vb{v} \right)
+   \end{align*}
+   So the zero map is the additive identity. We will use \( 0 \)  or \( 0_{\mathcal{L} \left( \mathbf{V}, \mathbf{W} \right)} \) (only when context is absolutely required) in place of \( Z \). \\ 
+   For additive inverses, if \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \), define \( -T \) by \( \left( -T \right)\left( \vb{v} \right) := -T \left( \vb{v} \right) \) for all \( \vb{v} \in \mathbf{V} \). First, we verify that \( -T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). For any \( \lambda \in \mathbb{K} \) and \( \vb{v}_{1}, \vb{v}_{2} \in \mathbf{V} \),
+   \begin{align*}
+       \left( -T \right)\left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) &= -T \left( \vb{v}_{1} + \lambda \vb{v}_{2} \right) \\
+       &= -\left( T \left( \vb{v}_{1} \right) + \lambda T \left( \vb{v}_{2} \right) \right) \\
+       &= -T \left( \vb{v}_{1} \right) - \lambda T \left( \vb{v}_{2} \right) \\
+       &= \left( -T \right)\left( \vb{v}_{1} \right) + \lambda \left( -T \right)\left( \vb{v}_{2} \right)
+   \end{align*}
+   Thus \( -T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). Now, for any \( \vb{v} \in \mathbf{V} \),
+   \begin{align*}
+       \left( T + \left( -T \right) \right)\left( \vb{v} \right) &= T \left( \vb{v} \right) + \left( -T \right)\left( \vb{v} \right) \\
+       &= T \left( \vb{v} \right) + \left( -T \left( \vb{v} \right) \right) \\
+       &= \vb{0}_{\mathbf{W}} \\
+       &= Z \left( \vb{v} \right)
+   \end{align*}
+   So \( -T \) is the additive inverse of \( T \). \\
+   Finally, for the multiplicative identity, if \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) and \( \vb{v} \in \mathbf{V} \),
+   \begin{align*}
+       \left( 1 T \right)\left( \vb{v} \right) &= 1 \left( T \left( \vb{v} \right) \right) \\
+       &= T \left( \vb{v} \right)
+   \end{align*}
+   Therefore, all the vector space axioms are satisfied, and \( \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \) is a vector space over \( \mathbb{K} \).
+\end{proof}

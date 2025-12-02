@@ -359,6 +359,31 @@ This shows that \( \norm{\vb{v} + \vb{w}} \le \norm{\vb{v}} + \norm{\vb{w}} \). 
 
  \textbf{Note:} An easy way to write (or remember) the polarization identity is \[ \boxed{\left< \vb{u}, \vb{v} \right> = \frac{1}{4} \left( \sum_{k=0}^{3}  i^{k} \norm{\vb{u} + i^{k} \vb{v}}^{2}\right)   \text{ .}} \] 
 
+\begin{lemma}
+    Suppose that \( \mathbf{V} \) and \( \mathbf{W} \) are complex inner product spaces and \( T \in \mathcal{L} \left( \mathbf{V}, \mathbf{W} \right) \). Then \( T \) preserves the inner product if and only if it preserves the induced norm. That is,
+    \[ \left< \vb{x}, \vb{y} \right>_{\mathbf{V}} = \left< T \left( \vb{x} \right), T \left( \vb{y} \right)\right>_{\mathbf{W}} \text{ for all } \vb{x}, \vb{y} \in \mathbf{V}\]
+    if and only if
+    \[ \norm{\vb{x}}_{\mathbf{V}} = \norm{T \left( \vb{x} \right)}_{\mathbf{W}} \text{ for all } \vb{x} \in \mathbf{V}.\]
+\end{lemma}
+\begin{proof}
+     \( \left( \Rightarrow \right) \) Suppose that \( T \) preserves the inner product. Then 
+     \begin{align*}
+        \norm{\vb{x}}_{\mathbf{V}} &= \sqrt{ \left< \vb{x}, \vb{x} \right>_{\mathbf{V}}} \\
+        &= \sqrt{\left< T \left( \vb{x} \right), T \left( \vb{x} \right)\right>_{\mathbf{W}}} \\
+        &= \norm{T \left( \vb{x} \right)}_{\mathbf{W}}
+     \end{align*}
+     So \( T \) also preserves norms. \\ 
+     \( \left( \Leftarrow \right) \) Conversely if \( T \) preserves norms, then by the \hyperref[thm:polarization-identiy]{poloarization identity} 
+     \begin{align*}
+        \left< \vb{x}, \vb{y} \right>_{\mathbf{V}} &= \frac{1}{4} \left( \sum_{k=0}^{3} i^{k} \norm{\vb{x} + i^{k} \vb{y}}_{\mathbf{V}}^{2} \right) \\
+        &= \frac{1}{4} \left( \sum_{k=0}^{3} i^{k} \norm{T \left( \vb{x} + i^{k} \vb{y} \right)}_{\mathbf{W}}^{2} \right) \\
+        &=  \frac{1}{4} \left( \sum_{k=0}^{3} i^{k} \norm{T(\vb{x}) + i^{k} T(\vb{y})}_{\mathbf{W}}^{2} \right) \\
+        &= \left< \vb{x}, \vb{y} \right>_{\mathbf{W}}
+     \end{align*}
+     So \( T \) also preserves the inner product.
+ \end{proof}
+ 
+
 \begin{exercise}\label{exc:re-and-im-polarization}
     Suppose that \( \mathbf{V} \) is a normed complex vector space and define the map \( p: \mathbf{V} \times \mathbf{V} \to \mathbb{C} \) given by 
     \[ p \left( \vb{u}, \vb{v} \right) = \frac{1}{4} \left( \sum_{k=0}^{3}  i^{k} \norm{\vb{u} + i^{k} \vb{v}}^{2}\right) \text{ .}\] Show that

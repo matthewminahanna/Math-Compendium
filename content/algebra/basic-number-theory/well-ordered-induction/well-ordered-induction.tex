@@ -1,0 +1,70 @@
+\section{Well-Ordered Sets and Induction}
+
+\begin{dfn}
+     An \hyperref[def:order-on-a-set]{ordered}  set \( X \) is said to be \vocab{well-ordered} if every non-empty subset of \( X \) contains a minimal element.
+\end{dfn}
+
+\begin{dfn}
+    An ordered set \( X \) is said to satisfy the \vocab{principle of (strong) induction} if for every statement \( P(x) \) (that is, a map \( P: X \to \{\text{True}, \text{False}\} \)) and every element \( x_0 \in X \) such that: for all \( x \geq x_{0} \), if \( P(y) \) is true for all \( y \) with \( x_{0} \leq y < x \), then \( P(x) \) is true, it follows that \( P(x) \) is true for all \( x \geq x_{0} \).
+\end{dfn}
+
+\textbf{Note:} In dealing whether to include \( 0 \) as a natural number, we adopt \vocab{the axiom of convinience}. For any statement involving \( \mathbb{N} \) as the universal set, we leave it to the reader to deduce from context if \( 0 \in \mathbb{N} \) or \( 0 \not \in \mathbb{N} \).
+
+\section{The Division Algorithm}
+
+\begin{theorem}[The Division Algorithm]
+    For any \( a,b \in \mathbb{N} \), with \( b >0 \), there exists unique \( q \in \mathbb{N} \) called the \vocab{quotient} and unique \( r \in \mathbb{N} \), with \( 0 \le r < b \) called the \vocab{remainder} for which 
+    \[ a = bq +r. \]
+\end{theorem}
+\begin{proof}
+Let
+\[
+S=\{\,n\in\mathbb{N}\mid n=a-bq\text{ for some }q\in\mathbb{N}\,\}.
+\]
+Since \(q=0\) gives \(a-b\cdot 0=a\), the set \(S\) is nonempty, so it has a least element; call that element \(r\).
+
+We claim \(0\le r<b\). Certainly \(r\ge0\) because \(r\in\mathbb{N}\). If \(r\ge b\), write \(r=a-bq_1\) for some \(q_1\in\mathbb{N}\). Then
+\[
+r-b=a-b(q_1+1).
+\]
+Since \(r-b\ge0\), the element \(r-b\) lies in \(S\) and satisfies \(r-b<r\), contradicting the minimality of \(r\). Hence \(r<b\).
+
+Now suppose there are two such remainders \(r_1\) and \(r_2\) with \(0\le r_1<r_2<b\). Write
+\[
+r_1=a-bq_1,\qquad r_2=a-bq_2.
+\]
+Subtracting gives
+\[
+r_2-r_1=b(q_1-q_2).
+\]
+Because \(r_2-r_1>0\), we have \(q_1-q_2>0\), so \(q_1-q_2\in\mathbb{N}\). But then \(b(q_1-q_2)\ge b\), contradicting \(r_2-r_1<b\). Thus the remainder \(r\) is unique.\\ 
+Finally, once \(r\) is fixed, the quotient \(q\) is determined by \(q=\frac{a-r}{b}\), so \(q\) is also unique.
+\end{proof}
+
+\begin{dfn}
+    Suppose that \( a, b \in \mathbb{N} \) with \( b>0 \). We say that \( b \) \vocab{divides} \( a \), denoted as \( b  \mid   a \) if the remainder given by the division algorithm of \( a \) by \( b \) is \( 0 \). If \( b \) does not divide \( a \), we write \( b   \nmid  a \).
+\end{dfn}
+
+\begin{example}
+    For any natural number \( n \), \( 1  \mid  n \) and \( n   \mid  n \).
+\end{example}
+
+\begin{exercise}
+    Suppose that \( n >2 \). Show that \( n-1 \nmid n \).
+\end{exercise}
+\begin{solution}
+    Since \(n>2\), we have \(n-1\ge 2\). By the division algorithm,
+    \[
+        n = 1\cdot(n-1) + 1.
+    \]
+    The remainder is \(1\), which satisfies \(0<1<n-1\). Because the remainder is not \(0\), we conclude that \(n-1\nmid n\).
+\end{solution}
+
+
+
+\begin{dfn}
+    Suppose \( n \in \mathbb{N} \) with \( n>1 \). \( n \) is \vocab{prime} if the only natural numbers that divide \( a \) are \( 1 \) and \( n\). \( n \) is \vocab{composite} if it is not prime. \\ 
+    \textbf{Note:} \( 1 \) is neither composite nor prime. It is \vocab{unit}. 
+\end{dfn}
+
+

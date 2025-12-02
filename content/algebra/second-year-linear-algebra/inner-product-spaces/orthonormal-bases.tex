@@ -1,0 +1,19 @@
+\begin{example}[FINISH LATER]
+    Use the Gram-Schmidt process to orthonormalize the basis \( \left\{ 1,x, x^{2}, \dots, x^{k}, \dots \right\} \) for the inner product space \( \mathcal{P} \left( \left[ a,b \right] \right) \), where 
+    \[ \left< f,g \right> = \int_{a}^{b} f(x)g(x) \dd{x} .\]
+    We set \(\boxed{ f_{0}(x) =1} \). Then for \( f_{1}(x) \), we have 
+    \begin{align*}
+        f_{1}(x) &= x - \frac{\left< x, f_{0}(x) \right>}{\left< f_{0}(x), f_{0}(x) \right>} f_{0}(x) \\
+        &= x - \frac{{\int_{a}^{b} x \dd{x}}}{{ \int_{a}^{b} 1^{2} \dd{x}}} \\
+        &= x - \frac{1}{2}(b-a)
+    \end{align*}
+So \(\boxed{ f_{1}(x) =x - \frac{1}{2}(b-a)}\). \\
+For \( f_{2}(x) \), we have 
+    \begin{align*}
+        f_{2} \left( x \right) &= x^{2} - \frac{\left< x^{2}, f_{0}(x) \right>}{ \left< f_{0}(x), f_{0}(x) \right>} f_{0}(x) - \frac{\left< x^{2}, f_{1}(x)\right>}{ \left< f_{1}(x),f_{1}(x) \right>} f_{1}(x) \\
+        &= x^{2} - \frac{ \int_{a}^{b} x^{2} \dd{x}}{ \int_{a}^{b} 1^{2} \dd{x}} - \frac{ \int_{a}^{b} x^{2} \left( x - \frac{1}{2}(b-a) \right) \dd{x}}{ \int_{a}^{b} \left( x - \frac{1}{2}(b-a) \right)^{2}\dd{x}} \left( x - \frac{1}{2}(b-a) \right)
+    \end{align*}
+    
+
+
+\end{example}

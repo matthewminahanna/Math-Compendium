@@ -1,0 +1,85 @@
+\begin{dfn}
+    Let \( X \) be a topological space. A set \( C \subseteq X \) is said to be \vocab{closed} in \( X \) if \( X - C \) is open in \( X \).
+\end{dfn}
+
+\begin{theorem}
+    The following are equivalent: 
+    \begin{enumerate}[label=\textbf{\Roman*)}]
+        \item There is a set \( \mathscr{C} \subseteq \mathcal{P} \left( X \right) \) such that: 
+        \begin{enumerate}[label=\textbf{\roman*)}]
+            \item \( \varnothing, X \in \mathscr{C} \)
+            \item For any arbitrary collection \( \left\{ C_{\alpha} \right\}_{\alpha \in A} \subseteq  \mathscr{C} \), \( \bigcap_{\alpha \in A } C_{\alpha} \in \mathscr{C} \)
+            \item For any finite collection \( \left\{ C_{k} \right\}_{k=1}^{n} \), \( \bigcup_{k=1 }^{n } C_{k} \in \mathscr{C} \)
+        \end{enumerate}
+        \item There is a topology on \( X \) whose collection of closed sets is precisely \( \mathscr{C} \).
+    \end{enumerate}
+    This is to say that we could have defined a topology on \( X \) in terms of closed sets.
+\end{theorem}
+\begin{proof}
+   \( \left(  \Rightarrow  \right) \) Assume the conditions of \textbf{(I)} and define 
+   \[ \mathscr{T} = \left\{ U \in \mathcal{P} \left( X \right) \ \middle| \ X-U \in \mathscr{C} \right\} \]
+   We want to show that \( \mathscr{T} \) is indeed a topology. \\ 
+   \( \varnothing \in \mathscr{T}\) since \( X = X- \varnothing \in \mathscr{C} \) and similarly \( X \in \mathscr{T} \) since \( \varnothing = X-X \in \mathscr{C} \). \\ 
+   Pick some arbitrary subcollection \( \left\{ U_{\alpha} \right\}_{\alpha \in A} \) of \( \mathscr{T} \). We want to show that \(  \bigcup_{\alpha \in A} U_{\alpha} \in \mathscr{T} \) or, equivalently, \( X - \left(  \bigcup_{\alpha \in A} U_{\alpha} \right) \in \mathscr{C} \)
+   \begin{align*}
+    X - \left(  \bigcup_{\alpha \in A} U_{\alpha} \right)  &= \bigcap_{\alpha \in A} \left( X-U_{\alpha} \right) \\
+    & \in \mathscr{C}
+   \end{align*}
+   Similarly, if \( \left\{ U_{k} \right\}_{k=1}^{n} \) is a finite subcollection of \( \mathscr{T} \), we want to show that \( \bigcap_{k=1 }^{n} U_{k} \in \mathscr{T} \) or, equivalently, \( X - \left( \bigcap_{k=1}^{n} U_{k}\right) \in \mathscr{C} \)
+   \begin{align*}
+    X - \left( \bigcap_{k=1}^{n} U_{k}\right) &= \bigcup_{k=1}^{n} \left( X- U_{k} \right) \\
+    & \in \mathscr{C}
+   \end{align*}
+   So \( \mathscr{T} \) is a topology defined on \( X \) whose collection of closed sets is, by construction, \( \mathscr{C} \). \\ 
+ \(
+\left( \Leftarrow \right)
+\)
+Assume \( X \) is equipped with a topology \( \mathscr{T} \), and let
+\[
+\mathscr{C} = \{\, X - U \mid U \in \mathscr{T} \,\}
+\]
+be the collection of closed sets. We check that \(\mathscr{C}\) satisfies \textbf{(i)}–\textbf{(iii)}.\\
+\textbf{(i)} Since \( X \) and \( \varnothing \) are open, their complements
+\[
+X - X = \varnothing, \qquad X - \varnothing = X
+\]
+are closed, so \( \varnothing, X \in \mathscr{C} \).\\
+\textbf{(ii)} Let \( \{ C_{\alpha} \}_{\alpha \in A} \subseteq \mathscr{C} \). For each \( \alpha \), choose an open set \( U_{\alpha} \) with
+\( C_{\alpha} = X - U_{\alpha} \). Then
+\[
+\bigcap_{\alpha \in A} C_{\alpha}
+= \bigcap_{\alpha \in A} (X - U_{\alpha})
+= X - \bigcup_{\alpha \in A} U_{\alpha},
+\]
+and since an arbitrary union of open sets is open, the right-hand side is in \( \mathscr{C} \).\\
+\textbf{(iii)} For a finite collection \( C_1, \dots, C_n \in \mathscr{C} \), write
+\( C_k = X - U_k \) with each \( U_k \) open. Then
+\[
+\bigcup_{k=1}^n C_k
+= \bigcup_{k=1}^n (X - U_k)
+= X - \bigcap_{k=1}^n U_k,
+\]
+and because a finite intersection of open sets is open, this lies in \( \mathscr{C} \) as well.\\
+Thus \(\mathscr{C}\) satisfies the three conditions, completing the proof.
+\end{proof}
+
+
+\begin{dfn}
+    A point \( x \) of a topological space \( X \) is said to be a \vocab{limit point} of a set \( A \subseteq X \) if every deleted open neighborhood of \( x \) contains a point of \( A \). That is to say; for every open set \( U \) that contains \( x \): 
+    \[ \left( U - \left\{ x \right\} \right) \cap A \neq \varnothing.\]
+    The collection of limit points of \( A \) is denoted by \( A' \).
+\end{dfn}
+
+\begin{theorem}
+    A subset \( C \) of a topological space \( X \) is closed if and only if it contains all its limit points. In other words,
+    \[ C \text{ is closed} \iff C' \subseteq C .\]
+\end{theorem}
+\begin{proof}
+    \( (\Rightarrow) \) Suppose that \( C \) is closed. Pick some \( x \notin C \). So \( x \in X - C \). Since \( C \) is closed, \( X - C \) is open. But that means we have found an open neighborhood, particularly \( X - C \), of \( x \) that is disjoint from \( C \). So \( x \) cannot be a limit point of \( C \). Since the assumption \( x \notin C \) leads to the conclusion that \( x \) is not a limit point of \( C \), it follows that \( C \) must contain all its limit points.\\
+    \( (\Leftarrow) \) Suppose that \( C \) contains all its limit points. Consider the set \( X - C \). Since \( C \) contains all its limit points, for every element \( x \in X - C \), we know that \( x \) is not a limit point of \( C \). Therefore, there exists a neighborhood \( U \) of \( x \) for which \( (U - \{x\}) \cap C = \varnothing \). Since \( x \in X - C \) (so \( x \notin C \)), this implies that \( U \cap C = \varnothing \), and hence \( U \subseteq X - C \). This shows that every point of \( X - C \) is an interior point of \( X - C \), or equivalently \( X - C = \mathrm{Int}(X - C) \). By \cref{thm:open-set-equals-its-interior}, this implies \( X - C \) is open and hence \( C \) is closed.
+\end{proof}
+
+\begin{dfn}
+    The \vocab{closure} of a set \( A \) in a topological space \( X \), denoted as \( \overline{A} \), is the set 
+    \[ \overline{A} = \bigcap \; \left\{ A \subseteq C \; \middle| \; C \text{ is a closed set.} \right\} \]
+\end{dfn}
