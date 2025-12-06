@@ -1,4 +1,4 @@
-\documentclass[10pt,twoside=semi,open=any,numbers=noenddot, paper = 30cm:43cm]{scrbook}
+\documentclass[10pt,twoside=false,open=any,numbers=noenddot]{scrbook}
 \usepackage[utf8]{inputenc}
 \input{preamble.tex}
 \input{preamble2.tex}
@@ -105,7 +105,7 @@ The primary resource for this part is \cite{ref:axler}. \vspace*{-1em}
 \parttoc
 \input{content/analysis/functional-analysis/functional-analysis-master}
 
-\part{Algebraic Topology}
+\part{\enskip Algebraic Topology}
 \label{Algebraic Topology}
 \parttoc 
 \input{content/geometry-and-topology/algebraic-topology/algebraic-topology-master}
@@ -130,7 +130,12 @@ The primary resource for this part is \cite{ref:axler}. \vspace*{-1em}
 \parttoc
 \input{content/geometry-and-topology/gauge-theory/gauge-theory-master}
 
-\part{\enskip First Course in Number Theory}
+\part{\enskip A First Course in Probability and Statistics}
+\label{part:First-Course-Probability}
+\parttoc
+\input{content/probability-and-statistics/first-course-in-probability/first-course-in-probability-master}
+
+\part{\enskip \enskip A First Course in Number Theory}
 \label{part:Basic-Number-Theory}
 \parttoc
 \input{content/algebra/basic-number-theory/basic-number-theory}
@@ -148,7 +153,7 @@ The primary resource for this part is \cite{ref:axler}. \vspace*{-1em}
 \input{content/appendix/inequalities/inequalites-master}
 
 
-\part*{References}
+
 \printbibliography[
 heading=bibintoc,
 title={Bibliography}

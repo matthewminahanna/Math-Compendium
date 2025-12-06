@@ -51,3 +51,44 @@ sorting=ynt
 \renewcommand{\Re}{\mathfrak{Re}}
 \renewcommand{\Im}{\mathfrak{Im}}
 \newcommand{\colorboxed}[3][theoremcolor!10]{\fcolorbox{#2}{#1}{$\displaystyle #3$}}
+
+
+
+
+
+
+
+\usepackage[
+  automark,
+  autooneside=false,  % Keep leftmark and rightmark separate in one-sided docs
+  headsepline,        % Add line under header
+  footsepline         % Add line above footer
+]{scrlayer-scrpage}
+
+% Clear default page styles
+\clearpairofpagestyles
+
+% Initialize current part name
+\newcommand{\currentpartname}{}
+
+% Redefine \part to save the part name
+\let\oldpart\part
+\renewcommand{\part}[1]{%
+  \oldpart{#1}%
+  \renewcommand{\currentpartname}{Part \thepart: #1}%
+}
+
+% Set up what goes into marks
+% \automark[right mark]{left mark}
+\automark[section]{chapter}
+
+% Set up headers and footers (one-sided)
+\lohead{\leftmark}             % Top left: chapter
+\rohead{\rightmark}            % Top right: section  
+\lofoot{\currentpartname}      % Bottom left: part
+\rofoot{\pagemark}             % Bottom right: page number
+
+% Apply the page style
+\pagestyle{scrheadings}
+
+
