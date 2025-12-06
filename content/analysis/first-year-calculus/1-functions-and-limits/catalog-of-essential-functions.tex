@@ -1,36 +1,26 @@
 \begin{example}
-    Suppose a drug X has a half-life of \( 45 \) minutes in the blood stream and that it is not safe to have more than \( 175 \)mg of the drug in your blood. If Alice took a \( 120 \)mg dose, how long does she have to wait until she can take another \( 120 \)mg dose?\\
-    Alice needs to wait until her current drug level drops below \( 55 \) mg (since \( 55 + 120 = 175 \)). We need to determine the time when Alice has less than \( 55 \) mg of drug X left in her system, so we have 
+    Suppose a drug X has a half-life of \( 45 \) minutes in the blood stream and that it is not safe to have more than \( 175 \)mg of the drug in a patient's blood. If Dr. Alice administered a \( 120 \)mg dose to her patient, how long does she need to wait before she can safely administer another \( 120 \)mg dose?\\
+    Dr. Alice needs to wait until the patient's current drug level drops below \( 55 \) mg (since \( 55 + 120 = 175 \)). We need to determine the time when the patient has less than \( 55 \) mg of drug X left in their system, so we have 
 \[  120 \left( \frac{1}{2} \right)^{\frac{t }{45}} <55.  \]
-
 Dividing both sides by \( 120 \), 
    \begin{equation}
      \left( \frac{1}{2}  \right)^{ \frac{t }{45}} < \frac{55}{120} = \frac{11}{24}. \label{eqn:6/21/25/1} 
 \end{equation}
-
 Taking the natural logarithm of both sides, 
 \[ \frac{t}{45} \ln \left( \frac{1}{2} \right) < \ln \left( \frac{11}{24} \right). \]
-
 Since \( \ln \left( \frac{1}{2} \right) < 0 \), dividing both sides by this negative number flips the inequality:
 \[ \frac{t}{45} > \frac{\ln \left( \frac{11}{24} \right)}{ \ln \left( \frac{1}{2} \right)}. \]
-
 Therefore,
 \[ t >   45 \cdot \frac{\ln \left( \frac{11}{24} \right)}{ \ln \left( \frac{1}{2} \right)} \approx 51 \text{ minutes}. \]
-
-Alice must wait at least 51 minutes before she can take drug X again.
-
+Dr. Alice must wait at least 51 minutes before she can safely administer drug X again.
 \textbf{Common Mistake:} We can take a different route following from \Cref{eqn:6/21/25/1}. Namely, we might try taking \( \log_{\frac{1}{2}} \) of both sides:
 \[  \frac{t}{45} \log_{\frac{1}{2}} \left( \frac{1}{2} \right) < \log_{\frac{1}{2}} \left( \frac{11}{24} \right). \]
-
 Since \( \log_{\frac{1}{2}} \left( \frac{1}{2} \right) = 1 \), this would give us
 \[ \frac{t}{45} < \log_{\frac{1}{2}} \left(  \frac{11}{24} \right), \] 
 or \[ t < 45 \log_{\frac{1}{2}} \left(  \frac{11}{24} \right) \approx 51 \text{ minutes}. \]
-
-This solution would incorrectly suggest that Alice has to take drug X \textit{before} 51 minutes, which is absurd.
-
+This solution would incorrectly suggest that Dr. Alice should administer drug X \textit{before} 51 minutes have passed, which would be unsafe for the patient.
 \textbf{What went wrong?} The function \( f(x) = \log_{\frac{1}{2}}(x) \) is decreasing since its base \( \frac{1}{2} < 1 \). For any decreasing function \( f \), we have 
 \[ x <y \iff f(x) > f(y). \]
-
 When we applied the decreasing function \( \log_{\frac{1}{2}} \) to both sides of the inequality, we should have flipped the inequality sign:
 \[ \frac{t}{45} \log_{\frac{1}{2}} \left( \frac{1}{2} \right) > \log_{\frac{1}{2}} \left( \frac{11}{24} \right), \]
 which gives us the correct answer: \( t > 51 \) minutes.

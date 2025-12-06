@@ -1,0 +1,94 @@
+\usepackage{graphicx}
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\usepackage[toc,page]{appendix}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{epigraph}
+\usepackage{float}
+\usepackage{placeins}
+\newcommand{\acts}{\curvearrowright}
+\usepackage[thicklines]{cancel}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\xcancel{#2}}
+\usepackage{tocloft}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand\cftchapfont{\mdseries}
+\renewcommand\cftchappagefont{\mdseries}
+\usepackage[scale=1.1, boldweight =Bold, opstyle=sans]{fdsymbol}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Catppuccin Latte - Mauve for hyperlinks
+\definecolor{tturqddark}{HTML}{8839ef}
+% Catppuccin Latte - Overlay2 for TOC
+\definecolor{toccolor}{HTML}{7c7f93}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=tturqddark,
+    citecolor=tturqddark,
+    urlcolor=tturqddark
+}
+\addtocontents{toc}{\protect\hypersetup{linkcolor=toccolor}}
+\makeatletter
+\renewcommand{\ptcfont}{\hypersetup{linkcolor=toccolor}}
+\makeatother
+
+% Catppuccin Latte - Colorful accent colors
+\definecolor{DeepRed}{HTML}{d20f39}        % Latte Red
+\definecolor{AmberOrange}{HTML}{fe640b}    % Latte Peach
+\definecolor{GoldenYellow}{HTML}{df8e1d}   % Latte Yellow
+\definecolor{Emerald}{HTML}{40a02b}        % Latte Green
+\definecolor{AzureBlue}{HTML}{1e66f5}      % Latte Blue
+\definecolor{RoyalPurple}{HTML}{8839ef}    % Latte Mauve
+
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+\newcommand{\colorboxed}[3][theoremcolor!10]{\fcolorbox{#2}{#1}{$\displaystyle #3$}}
+
+
+
+
+
+
+
+\usepackage[
+  automark,
+  autooneside=false,  % Keep leftmark and rightmark separate in one-sided docs
+  headsepline,        % Add line under header
+  footsepline         % Add line above footer
+]{scrlayer-scrpage}
+
+% Clear default page styles
+\clearpairofpagestyles
+
+% Initialize current part name
+\newcommand{\currentpartname}{}
+
+% Redefine \part to save the part name
+\let\oldpart\part
+\renewcommand{\part}[1]{%
+  \oldpart{#1}%
+  \renewcommand{\currentpartname}{Part \thepart: #1}%
+}
+
+% Set up what goes into marks
+% \automark[right mark]{left mark}
+\automark[section]{chapter}
+
+% Set up headers and footers (one-sided)
+\lohead{\leftmark}             % Top left: chapter
+\rohead{\rightmark}            % Top right: section  
+\lofoot{\currentpartname}      % Bottom left: part
+\rofoot{\pagemark}             % Bottom right: page number
+
+% Apply the page style
+\pagestyle{scrheadings}
+
+

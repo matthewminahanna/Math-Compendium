@@ -146,5 +146,20 @@ Now choose
     This proves the inequality.
 \end{solution}
 
+\begin{exercise}
+  Suppose that \( p,q \in \mathbb{R} \) such that \( p+q=2 \). Show that 
+  \[ \sum_{k=1}^{\infty} a_{k} \le \sqrt{ \sum_{k=1}^{\infty} \abs{a_{k}}^{p}} \cdot  \sqrt{ \sum_{k=1}^{\infty} \abs{a_{k}}^{q}}\]
+  when \( a_{k} >0 \) for all \( k \in \mathbb{N} \).
+\end{exercise}
+\begin{solution}
+    Since \( \frac{p}{2} + \frac{q}{2} =1\), we have 
+    \[ \sum_{k=1}^{\infty} a_{k} = \sum_{k=1}^{\infty} a_{k}^{\frac{p}{2}} \cdot a_{k}^{\frac{q}{2}}.\]
+    Apply Cauchy-Schwarz, to get 
+    \[  \sum_{k=1}^{\infty} a_{k} = \sum_{k=1}^{\infty} a_{k}^{\frac{p}{2}} \cdot a_{k}^{\frac{q}{2}} \le \sqrt{\sum_{k=1}^{\infty} a_{k}^{\frac{2p}{2}}} \cdot \sqrt{\sum_{k=1}^{\infty} a_{k}^{\frac{2q}{2}}} \]
+    or 
+     \[ \sum_{k=1}^{\infty} a_{k} \le \sqrt{ \sum_{k=1}^{\infty} \abs{a_{k}}^{p}} \cdot  \sqrt{ \sum_{k=1}^{\infty} \abs{a_{k}}^{q}}\]
+\end{solution}
+
+
 
 

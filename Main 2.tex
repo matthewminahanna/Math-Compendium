@@ -1,0 +1,163 @@
+\documentclass[10pt,twoside=false,open=any,numbers=noenddot]{scrbook}
+\usepackage[utf8]{inputenc}
+\input{preamble.tex}
+\input{preamble2.tex}
+ 
+
+
+
+
+\addbibresource{sample.bib} %Imports bibliography file
+
+
+
+\begin{document}
+\subfile{cover/frontcover}
+
+\newpage
+\frontmatter
+
+\setcounter{tocdepth}{0}
+\noptcrule
+\tableofcontents
+
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+This project benefited from open-source tools and examples created by:\\\\
+
+\textbf{Evan Chen} — The Napkin project served as the initial model for this compendium, and portions of its code are used throughout. GitHub: \url{https://github.com/vEnhance/napkin/} \\
+
+\textbf{Aareyan Manzoor (The TeXromancers)} — Provided permission to reuse the code used for the front cover. GitHub: \url{https://aareyanmanzoor.github.io/Texromancers.html} \\
+
+\textbf{Gilles Castel (R.I.P.)} — His work on integrating UltiSnips into LaTeX workflows (I use HyperSnips, a VS Code port) removed many bottlenecks and sped up development. GitHub: \url{https://github.com/gillescastel}
+
+
+
+\mainmatter
+
+\part{Precalculus}
+\label{part: Precalculus}
+\parttoc
+
+\part{First Year Calculus}
+\label{part: First Year Calculus}
+\vspace*{2em} The primary resource for this part is \cite{ref:stewart}. \vspace*{1em}
+\parttoc
+\input{content/analysis/first-year-calculus/first-year-calculus-master}
+
+
+\part{First Year Linear Algebra}
+\label{part: First Year Linear}
+\parttoc
+\input{content/algebra/first-year-linear-algebra/first-year-linear-algebra-master}
+
+
+\part{Multivariable Calculus}
+\label{part: Multivariable Calculus}
+\parttoc
+\input{content/analysis/multivariable-calculus/multivariable-calculus-master}
+
+
+\part{Ordinary Differential Equations}
+\label{part: Ordinary Differential Equations}
+\parttoc
+\input{content/analysis/ordinary-differential-equations/ordinary-differential-equations-master}
+
+
+\part{A Second Course in Linear Algebra}
+\label{Proof Based Linear Algebra}
+The primary resource for this part is \cite{ref:axler}. \vspace*{-1em}
+\parttoc
+\input{content/algebra/second-year-linear-algebra/second-year-linear-algebra-master}
+
+\part{Real Analysis}
+\label{Real Analysis}
+\parttoc
+\input{content/analysis/real-analysis/real-analysis-master}
+
+
+\part{\enskip Complex Analysis}
+\label{Complex Analysis}
+\parttoc
+\input{content/analysis/complex-analysis/complex-analysis-master}
+
+
+\part{\enskip Group Theory}
+\label{Group Theory}
+\parttoc
+\input{content/algebra/group-theory/group-theory-master}
+
+
+\part{Ring Theory}
+\label{Ring Theory}
+\parttoc
+\input{content/algebra/ring-theory/ring-theory-master}
+
+
+\part{Point-Set Topology}
+\label{part: Point-Set Topology}
+\parttoc
+\input{content/geometry-and-topology/point-set-topology/point-set-topology-master}
+
+\part{Functional Analysis}
+\label{part: Functional Analysis}
+\parttoc
+\input{content/analysis/functional-analysis/functional-analysis-master}
+
+\part{\enskip Algebraic Topology}
+\label{Algebraic Topology}
+\parttoc 
+\input{content/geometry-and-topology/algebraic-topology/algebraic-topology-master}
+
+
+\part{\enskip Manifolds}
+\label{Manifolds}
+\parttoc
+\input{content/geometry-and-topology/manifolds/manifolds-master}
+
+
+\part{ \enskip Lie Groups, Lie Algebras, and their Representations}
+\label{part: Lie Groups, Lie Algebras, and their Representations}
+\parttoc
+\input{content/geometry-and-topology/lie-groups/lie-groups-master}
+\input{content/algebra/lie-algebras/lie-algebras-master}
+
+
+
+\part{ \enskip Gauge Theory}
+\label{part:Gauge-Theory}
+\parttoc
+\input{content/geometry-and-topology/gauge-theory/gauge-theory-master}
+
+\part{\enskip A First Course in Probability and Statistics}
+\label{part:First-Course-Probability}
+\parttoc
+\input{content/probability-and-statistics/first-course-in-probability/first-course-in-probability-master}
+
+\part{\enskip \enskip A First Course in Number Theory}
+\label{part:Basic-Number-Theory}
+\parttoc
+\input{content/algebra/basic-number-theory/basic-number-theory}
+
+\appendix
+\part{\enskip Appendix}
+\label{part: Appendix}
+
+\parttoc
+\chapter{Naive Approach to Set Theory}
+\label{ch:Naive Sets}
+\input{content/appendix/naive-set-theory/naive}
+\chapter{Inequalities}
+\label{ch:Inequalities}
+\input{content/appendix/inequalities/inequalites-master}
+
+
+
+\printbibliography[
+heading=bibintoc,
+title={Bibliography}
+] 
+
+
+\end{document}

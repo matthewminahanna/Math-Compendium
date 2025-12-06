@@ -1,0 +1,74 @@
+\begin{dfn}
+    The set \( \Omega \) of all possible outcomes of an experiment is called the \vocab{sample space}.  
+    A subset \( A \subseteq \Omega \) is called an \vocab{event}.
+\end{dfn}
+
+\begin{example}
+    Suppose that we conduct an experiment of rolling a six-sided die. Then 
+    \[ \Omega = \{\text{roll a }1,\text{ roll a }2,\dots,\text{ roll a }6\},\]
+    An example event is "roll a \( 1 \) or a \( 4 \).
+\end{example}
+
+
+\begin{dfn}
+    A \vocab{probability space} is a triplet \( (\Omega, \mathscr{F}, \mathbb{P}) \) where
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( \Omega \) is the sample space,
+        \item \( \mathscr{F} \) is a \hyperref[def:sigma-algebra]{\( \sigma \)-algebra on \( \Omega \)} whose elements are events,
+        \item \( \mathbb{P} : \mathscr{F} \to [0,1] \) is a \vocab{probability measure} or just \vocab{probability}. 
+    \end{enumerate}
+    The function \( \mathbb{P} \) satisfies:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \setcounter{enumi}{3}
+        \item \( \mathbb{P}(\Omega) = 1 \),
+        \item If \( A_1, A_2, \dots \) are pairwise disjoint events, then
+        \[
+        \mathbb{P}\!\left( \bigcup_{k=1}^{\infty} A_k \right)
+        = \sum_{k=1}^{\infty} \mathbb{P}(A_k).
+        \]
+    \end{enumerate}
+    We read \( \mathbb{P}(A) \) as “the probability that \( A \) occurs.”
+\end{dfn}
+
+
+
+If you are not yet familiar with the formal definition of a \( \sigma \)-algebra, do not worry.  
+For our purposes, it is enough to know that it is a collection of events with the following properties:
+
+\begin{enumerate}[label=\textbf{\roman*)}]
+    \item The impossible event \( \varnothing \) is included.
+    \item The certain event \( \Omega \) is included.
+    \item If \( A \) is an event, then its complement \( A^c \) (the event that \( A \) does not occur) is also an event.
+    \item If \( A_1, A_2, \dots \) are events, then their union \( \bigcup_{k=1}^{\infty} A_k \) is also an event.
+\end{enumerate}
+
+These properties ensure that we can consistently assign probabilities to events and combinations of events.
+
+\begin{lemma}
+    \( \mathbb{P} \left( \varnothing \right)=0 \).
+\end{lemma}
+\begin{proof}
+    Since \( \Omega \cap \varnothing = \varnothing \), they are pairwise disjoint. Then
+    \begin{align*}
+        1 &= \mathbb{P} \left( \Omega \right)\\ 
+        &= \mathbb{P} \left( \Omega \cup \varnothing \right) \\
+        &= \mathbb{P} \left( \Omega \right) + \mathbb{P} \left( \varnothing \right) \\
+       1 &= 1 + \mathbb{P} \left( \varnothing \right)
+    \end{align*}
+    So  \( \mathbb{P} \left( \varnothing \right)=0 \).
+\end{proof}
+
+\begin{lemma}
+    If \( A^{c} \) denotes \( \Omega - A \) where \( A \in \mathscr{F} \). Then 
+    \[ \mathbb{P} \left( A^{c} \right) = 1- \mathbb{P} \left( A \right) .\]
+\end{lemma}
+\begin{proof}
+    Very similar to above (In fact, the previous result is just a specific case of this result.) \( A^{c} \cap A = \varnothing \) and \( A^{c} \cup A = \Omega \) 
+    \begin{align*}
+        1 &= \mathbb{P} \left( \Omega \right)\\ 
+        &= \mathbb{P} \left( A \cup A^{c} \right) \\
+        &= \mathbb{P} \left( A \right) + \mathbb{P} \left( A^{c} \right)
+    \end{align*}
+    So \( \mathbb{P} \left( A^{c} \right) = 1- \mathbb{P} \left( A \right) \).
+\end{proof}
+

@@ -96,3 +96,77 @@ So
 \end{example}
 
 
+\begin{exercise}
+    Show that 
+    \[ \int_{0 }^{1} \frac{1}{\left( 1+yx \right) \sqrt{1-x^{2}}} \dd{x} = \frac{ \arccos{ \left( y \right) }}{\sqrt{1-y^{2}}} \quad \text{for } y \in \left( -1,1 \right) \]
+\end{exercise}
+\begin{solution}
+  Let \( x = \sin(\theta) \) so \( \dd{x} = \cos(\theta)\dd{\theta} \)
+
+\begin{align*}
+\int_{0}^{1} \frac{1}{(1+yx)\sqrt{1-x^{2}}}\dd{x}
+&= \int_{0}^{\pi/2}
+\frac{\cos(\theta)}
+{\left(1 + y \sin(\theta)\right)\sqrt{1-\sin^{2}(\theta)}}
+\dd{\theta} \\ 
+&= \int_{0}^{\pi/2}
+\frac{\cos(\theta)}
+{\left(1 + y \sin(\theta)\right) \cos{ \left( \theta \right) }}
+\dd{\theta} \\
+&= \int_{0}^{\pi/2} \frac{1}{1+ y \sin{ \left( \theta \right) }} \dd{\theta}
+\end{align*}
+Now, we apply Weierstrass substitution with \( \sin{ \left( \theta \right) } = \frac{2u}{1+u^{2}} \) and \( \dd{\theta} = \frac{2}{1+u^{2}} \dd{u} \)
+    \begin{align*}
+        \int_{0}^{\pi/2} \frac{1}{1+ y \sin{ \left( \theta \right) }} \dd{\theta} &= \int_{0}^{1} \frac{1}{{\displaystyle 1 + \frac{2yu}{1+u^{2}}}} \frac{2}{1+u^{2}} \dd{u} \\ 
+        &= \int_{0 }^{1} \frac{2}{1+u^{2}+2yu} \dd{u} \\
+        &= \int_{0}^{1} \frac{2}{\left( u^{2} + 2yu +y^{2}\right) + \left( 1-y^{2} \right)} \dd{u} \tag{Note: Since $\abs{y} <1$, $1-y^{2} >0$. } \\
+        &= \frac{2}{1-y^{2}} \displaystyle\int_{0}^{1} \frac{1}{\frac{\left( u +y\right)^{2}}{1-y^{2}} +1} \dd{u} \\
+        &= \frac{2}{1-y^{2}} \int_{0}^{1} \frac{1}{ \left( \frac{u+y}{\sqrt{1-y^{2}}} \right)^{2} +1} \dd{u}
+    \end{align*}
+    Now we set \( t = \frac{u+y}{\sqrt{1-y^{2}}} \) and \( \dd{t}= \frac{1}{\sqrt{1-y^{2}}} \dd{u} \) or \( \dd{u} = \sqrt{1-y^{2}} \dd{t} \). 
+    So 
+    \begin{align*}
+        \frac{2}{1-y^{2}} \int_{0}^{1} \frac{1}{ \left( \frac{u+y}{\sqrt{1-y^{2}}} \right)^{2} +1} \dd{u} &= \frac{2}{1-y^{2}}\int_{\frac{y}{\sqrt{1-y^{2}}}}^{\frac{1+y}{\sqrt{1-y^{2}}}} \frac{\sqrt{1-y^{2}}}{1+t^{2}} \dd{t} \\
+        &= \frac{2}{\sqrt{1-y^{2}}} \left( \arctan{ \left( t \right) } \eval_{\frac{y}{\sqrt{1-y^{2}}}}^{\frac{1+y}{\sqrt{1-y^{2}}}} \right) \\
+        &=  \frac{2}{\sqrt{1-y^{2}}} \left( \arctan{ \left( \frac{1+y}{\sqrt{1-y^{2}}} \right) } - \arctan{ \left( \frac{y}{\sqrt{1-y^{2}}} \right) }\right)
+    \end{align*}
+    Now, we have to contend with \(  \arctan{ \left( \frac{1+y}{\sqrt{1-y^{2}}} \right) } - \arctan{ \left( \frac{y}{\sqrt{1-y^{2}}} \right) } \).\\
+We compute this difference using the tangent subtraction formula. Let
+\[
+\alpha = \arctan\!\left( \frac{1+y}{\sqrt{1-y^{2}}} \right),
+\qquad
+\beta = \arctan\!\left( \frac{y}{\sqrt{1-y^{2}}} \right).
+\]
+Then
+\begin{align*}
+\tan(\alpha - \beta)
+&= \frac{\tan\alpha - \tan\beta}{1 + \tan\alpha\,\tan\beta} \\
+&= \frac{\dfrac{1+y}{\sqrt{1-y^2}} - \dfrac{y}{\sqrt{1-y^2}}}
+{1 + \dfrac{(1+y)y}{1-y^2}} \\
+&= \frac{ \dfrac{1}{\sqrt{1-y^2}} }
+{ \dfrac{1+y}{1-y^2} } \\
+&= \frac{\sqrt{1-y^2}}{1+y}
+= \sqrt{ \frac{1-y}{1+y} }.
+\end{align*}
+
+Now let \( \theta = \arccos(y) \), so that \( y = \cos\theta \) with \( \theta \in (0,\pi) \).  
+The half-angle identity gives
+\[
+\tan\!\left( \frac{\theta}{2} \right)
+= \sqrt{ \frac{1-\cos\theta}{1+\cos\theta} }
+= \sqrt{ \frac{1-y}{1+y} }.
+\]
+Therefore,
+\[
+\tan(\alpha - \beta) = \tan\!\left( \frac{\theta}{2} \right).
+\]
+Since both angles lie in \( (0,\tfrac{\pi}{2}) \), we conclude
+\[
+\arctan\!\left( \frac{1+y}{\sqrt{1-y^{2}}} \right)
+- \arctan\!\left( \frac{y}{\sqrt{1-y^{2}}} \right)
+= \frac{1}{2}\arccos(y).
+\]
+So finally, we have 
+ \[ \int_{0 }^{1} \frac{1}{\left( 1+yx \right) \sqrt{1-x^{2}}} \dd{x} = \frac{ \arccos{ \left( y \right) }}{\sqrt{1-y^{2}}} \quad \text{for } y \in \left( -1,1 \right) \]
+ as desired. 
+\end{solution}
