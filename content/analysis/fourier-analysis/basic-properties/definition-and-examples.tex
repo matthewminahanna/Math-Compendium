@@ -1,0 +1,54 @@
+\begin{dfn}
+    Suppose that \( f: [a,b] \to \mathbb{R} \) is Riemann integrable on \( [a,b] \). Set \( L = b-a \). Given \( n \in \mathbb{Z} \), the \vocab{nth Fourier coefficient} is defined to be: 
+    \[ \hat{f}(n):= \frac{1}{L} \int_{a}^{b} f(x) \exp \left( - \frac{2 n \pi i x}{L} \right) \dd{x}.\]
+    The \vocab{Fourier series} of \( f(x) \) is given by 
+    \[ f(x) \sim \sum_{n = -\infty}^{\infty} \hat{f}(n) \exp \left( \frac{2 n \pi i x}{L} \right).\]
+\end{dfn}
+
+\begin{exercise}
+    Show that for each integer \( n \), 
+    \[ \exp \left( n \pi i \right)  = \exp \left( - n \pi i \right)  \]
+\end{exercise}
+\begin{solution}
+    Using Euler's formula, we have
+    \[ \exp(n\pi i) = \cos(n\pi) + i\sin(n\pi). \]
+    For any integer \( n \), we know that \( \cos(n\pi) = (-1)^n \) and \( \sin(n\pi) = 0 \).
+    Therefore,
+    \[ \exp(n\pi i) = (-1)^n. \]
+    
+    Similarly,
+    \[ \exp(-n\pi i) = \cos(-n\pi) + i\sin(-n\pi). \]
+    Since cosine is an even function and sine is an odd function, we have
+    \[ \cos(-n\pi) = \cos(n\pi) = (-1)^n \quad \text{and} \quad \sin(-n\pi) = -\sin(n\pi) = 0. \]
+    Thus,
+    \[ \exp(-n\pi i) = (-1)^n. \]
+    
+    Therefore, \( \exp(n\pi i) = \exp(-n\pi i) = (-1)^n \) for all integers \( n \).
+\end{solution}
+
+
+\begin{example}
+    Suppose we want to find the Fourier series of \( f(x) =x \) over the interval \( \left[ -a,a \right] \). Then 
+    \[ \hat{f}(n) = \frac{1}{2a} \int_{-a }^{a} x  \exp \left( - \frac{2 n \pi i x}{2a} \right) \dd{x} \]
+    This is routine integration by parts, so we get 
+    \begin{align*}
+        \hat{f}(n) &= \frac{1}{2a} \left( \frac{1 }{- \frac{2 n \pi i }{2a}} x  \exp \left( - \frac{2 n \pi i x}{2a} \right)  - \frac{1}{ \left( - \frac{2 n \pi i }{2a} \right)^{2}} \exp \left( - \frac{2 n \pi i x}{2a} \right) \eval_{-a}^{a}\right) \\
+        &= \frac{1}{2a} \left( - \frac{a}{n \pi i} x  \exp \left( - \frac{2 n \pi i x}{2a} \right)  + \frac{a^{2}}{ \left( n \pi  \right)^{2}}  \exp \left( - \frac{2 n \pi i x}{2a} \right) \eval_{-a}^{a} \right) \\
+        &= \left( \frac{a }{2 \left( n \pi  \right)^{2}}  \exp \left( - \frac{ n \pi i x}{a} \right) - \frac{1}{2 n \pi i} x  \exp \left( - \frac{ n \pi i x}{a} \right)  \right)\eval_{-a}^{a} \\
+        &= \frac{a }{2 \left( n \pi  \right)^{2}}  \exp \left( -n \pi i \right)  - \frac{1}{2 n \pi i} a \exp \left( -n \pi i \right) - \frac{a }{2 \left( n \pi  \right)^{2}}  \exp \left( n \pi i \right)  -   \frac{1}{2 n \pi i} a \exp \left( n \pi i \right) \\
+        &= \frac{a}{2 \left( n \pi  \right)^{2}} \left( \exp \left( - n \pi i \right) - \exp \left( n \pi i \right) \right) - \frac{a}{2 n \pi i } \left( \exp \left( - n \pi i \right) +\exp \left( n \pi i \right) \right) \\ 
+        &= - \frac{a }{n \pi i} \left( \exp \left( n \pi i \right)  \right) \\
+        &= \left( -1 \right)^{n+1} \frac{a}{n \pi i} \quad n \in \mathbb{Z}
+    \end{align*}
+    So 
+  \begin{align*}
+        x &\sim \sum_{n \in \mathbb{Z} - \{ 0 \}} \hat{f}(n) \exp \left( \frac{n \pi i x }{a}\right) \\ 
+        &= \sum_{n \in \mathbb{Z} - \{ 0 \}}  \left( -1 \right)^{n+1} \frac{a}{n \pi i} \exp \left( \frac{n \pi i x }{a}\right) \\
+        &= \sum_{n \in \mathbb{Z} - \{ 0 \}}  \left( -1 \right)^{n+1} \frac{a}{n \pi i} \left( \cos{ \left( \frac{n \pi  x }{a} \right) } + i \sin{ \left( \frac{n \pi  x }{a} \right) }\right) \\
+       &= \sum_{n \in \mathbb{Z} - \{ 0 \}}  \left( -1 \right)^{n+1} \frac{a}{n \pi i} \cos{ \left( \frac{n \pi  x }{a} \right) } +  \left( -1 \right)^{n+1} \frac{a}{n \pi i} i \sin{ \left( \frac{n \pi  x }{a} \right) } \\
+       &= \sum_{n \in \mathbb{Z} - \{ 0 \}} 0 +  \left( -1 \right)^{n+1} \frac{a}{n \pi i} i \sin{ \left( \frac{n \pi  x }{a} \right) } \tag{Since $\cos{ \left( \frac{n \pi  x }{a} \right) }$ is even in $n$ but $  \frac{a}{n \pi i}$ is odd.} \\
+       &= 2 \sum_{n =1}^{\infty} \left( -1 \right)^{n+1} \frac{a}{n \pi i} i \sin{ \left( \frac{n \pi  x }{a} \right) } \\
+       &= 2\sum_{n =1}^{\infty} \left( -1 \right)^{n+1} \frac{a}{n \pi } \sin{ \left( \frac{n \pi  x }{a} \right) }
+\end{align*}
+    Here is a \href{https://www.desmos.com/calculator/f8ey4wrfu4}{nice Desmos visualization}.
+\end{example}

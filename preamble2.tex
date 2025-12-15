@@ -2,7 +2,7 @@
 \usepackage[
 backend=biber,
 style=alphabetic,
-sorting=ynt
+sorting=nyt  % Changed from ynt to nyt for name-year-title sorting
 ]{biblatex}
 \usepackage[toc,page]{appendix}
 \usepackage{booktabs}
@@ -91,4 +91,74 @@ sorting=ynt
 % Apply the page style
 \pagestyle{scrheadings}
 
+\usepackage{tocloft}
+\setlength{\cftpartnumwidth}{1em}
+\cftsetindents{part}{0em}{3.5em} %IF NUMBERS BLEED INTO PART IN TOC, INCREASE 2ND NUMBER 
 
+\renewcommand{\cftpartfont}{\sffamily\bfseries\large\firaextrabold}
+
+\addbibresource{sample.bib}
+
+% Simpler underline for authors
+\renewcommand*{\mkbibnamefamily}[1]{\underline{#1}}
+\renewcommand*{\mkbibnamegiven}[1]{\underline{#1}}
+\renewcommand*{\mkbibnameprefix}[1]{\underline{#1}}
+\renewcommand*{\mkbibnamesuffix}[1]{\underline{#1}}
+
+% Bold book titles
+\DeclareFieldFormat[book]{title}{\textbf{#1}}
+\DeclareFieldFormat[book]{booktitle}{\textbf{#1}}
+\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\fbox{\strut#1}}}
+
+\usepackage[Glenn]{fncychap}
+\ChNameAsIs
+\ChTitleAsIs
+\definecolor{catppuccinBlue}{RGB}{70, 110, 160}      % Sapphire
+\definecolor{catppuccinGrey}{RGB}{108, 112, 134}      % Overlay0
+
+\ChTitleVar{\firaheavy\Huge\color{catppuccinBlue}}
+\ChNumVar{\firaheavy\huge\color{catppuccinBlue}}
+\ChNameVar{\firaheavy\huge\color{catppuccinBlue}}
+
+\usepackage{xpatch}
+\xpatchcmd\DOCH
+  {\mghrulefill}{\color{catppuccinGrey}\mghrulefill}
+  {}{\PatchFailed}
+\xpatchcmd\DOTI
+  {\mghrulefill}{\color{catppuccinGrey}\mghrulefill}
+  {}{\PatchFailed}
+\xpatchcmd\DOTIS
+  {\mghrulefill}{\color{catppuccinGrey}\mghrulefill}
+  {}{\PatchFailed}
+
+% Add negative space to reduce gaps
+\makeatletter
+\let\old@makechapterhead\@makechapterhead
+\let\old@makeschapterhead\@makeschapterhead
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{-100pt}% Reduce space before
+  \old@makechapterhead{#1}%
+  \vspace*{-75pt}% Reduce space after
+}
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{-100pt}% Reduce space before
+  \old@makeschapterhead{#1}%
+  \vspace*{-75pt}% Reduce space after
+}
+\makeatother
+
+\DeclareNameAlias{sortname}{family-given}
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}%
+  \newunit\newblock
+  \printfield{title}%
+  \newunit\newblock
+  \printfield{isbn}%
+  \finentry}
+
+
+
+
+  

@@ -3,13 +3,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{enumitem}
+
 
 
 \usepackage{tikz-cd,tikz}
@@ -24,7 +24,6 @@
 \usepackage[sfdefault,lining,book]{FiraSans}
 \usepackage{FiraMono}
 \usepackage{sansmathfonts}
-
 
 \usepackage{faktor}
 \DeclareMathSizes{10.95}{11.2}{7}{7}
@@ -41,6 +40,10 @@ bottom=0.70in
 \usepackage[mathscr]{eucal}
 \PassOptionsToPackage{usenames,svgnames,dvipsnames,table,xcdraw}{xcolor}
 \usepackage{xcolor}
+\usepackage{listings}
+\renewcommand{\ttdefault}{FiraMono-TLF}
+
+
 
 \usepackage[tight]{minitoc}
 \mtcsetfont{parttoc}{chapter}{\sffamily\bfseries}
@@ -72,6 +75,9 @@ bottom=0.70in
 \usepackage{wasysym}
 
 \newenvironment{ignore}{}{}
+
+
+
 
 \theoremstyle{definition}
 
@@ -126,6 +132,21 @@ bottom=0.70in
 \declaretheorem[style=proofst, name=Proof]{replacementproof}
 \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
 
+\declaretheoremstyle[
+	numbered = no,
+    headfont=\bfseries\sffamily\color{theoremcolor!70!black}, bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        linewidth=4pt,
+        skipabove = 0pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=theoremcolor, backgroundcolor=theoremcolor!5,
+    },
+    qed = $\blacksquare$
+]{proofalt}
+\declaretheorem[style=proofalt, name=Alternative Proof]{altproof}
+
 % Catppuccin Latte - Red for definitions
 \definecolor{definitioncolor}{HTML}{d20f39}
 \declaretheoremstyle[
@@ -153,6 +174,85 @@ bottom=0.70in
 ]{examplest}
 
 \declaretheorem[style=examplest, name=Example, numberwithin=section]{example}
+
+\definecolor{ctp-base}{HTML}{1e1e2e}      % Dark background
+\definecolor{ctp-green}{HTML}{a6e3a1}     % Green (primary - matrix vibe)
+\definecolor{ctp-teal}{HTML}{94e2d5}      % Teal (secondary accent)
+\definecolor{ctp-surface}{HTML}{313244}   % Subtle gray for comments
+\definecolor{ctp-text}{HTML}{cdd6f4}      % White for line numbers
+
+% Base Catppuccin style with matrix green theme
+\lstdefinestyle{catppuccin-base}{
+    numbers=left,
+    numberstyle=\color{ctp-text},
+    numbersep=8pt,
+    backgroundcolor=\color{ctp-base},
+    basicstyle=\ttfamily\color{ctp-green},
+    keywordstyle=\color{ctp-green}\bfseries,
+    commentstyle=\color{ctp-surface}\itshape,
+    stringstyle=\color{ctp-teal},
+    identifierstyle=\color{ctp-green},
+    breaklines=true,
+    columns=flexible,
+    keepspaces=true,
+    showstringspaces=false,
+    tabsize=4,
+    frame=none,
+}
+
+
+% Python style
+\lstdefinestyle{catppuccin-python}{
+    style=catppuccin-base,
+    language=Python,
+    morekeywords={self, True, False, None, lambda, yield, async, await},
+    sensitive=true,
+}
+
+% R style
+\lstdefinestyle{catppuccin-r}{
+    style=catppuccin-base,
+    language=R,
+    morekeywords={tibble, mutate, filter, select, ggplot, aes, geom_point},
+    alsoletter={., _},
+}
+
+% Octave/MATLAB style
+\lstdefinestyle{catppuccin-octave}{
+    style=catppuccin-base,
+    language=Octave,
+    morekeywords={endfunction, endfor, endwhile, endif},
+}
+
+% SageMath style (Python-based)
+\lstdefinestyle{catppuccin-sage}{
+    style=catppuccin-python,
+    morekeywords={QQ, ZZ, RR, CC, GF, Matrix, vector, var, solve, factor, expand},
+}
+
+% Theorem-style environment
+\declaretheoremstyle[
+    spaceabove = 1pt,
+    headindent = 1pt,
+    headfont=\bfseries\sffamily\color{ctp-green},
+    bodyfont=\normalfont\color{ctp-green},
+    postheadspace=\newline,
+    postheadhook=\noindent,
+    mdframed={
+        linewidth=3pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=ctp-green,
+        backgroundcolor=ctp-base,
+        innerleftmargin=15pt,
+        innerrightmargin=10pt,
+        innertopmargin=10pt,
+        innerbottommargin=10pt,
+    }
+]{codingexamplest}
+\declaretheorem[style=codingexamplest, name=Coding Example, numbered=no]{codingexample}
+
+
+
 
 % Catppuccin Latte - Lavender for exercises
 \definecolor{exercisecolor}{HTML}{7287fd}
@@ -234,7 +334,7 @@ qed = $\newmoon$
 \setkomafont{chapter}{\Huge\firaheavy}
 \setkomafont{section}{\Large\firaextrabold}
 \setkomafont{subsection}{\large\firasemibold}
-% for smarter referencing (optional but helpful)
+
 
 % Custom equation numbering format: Part.Chapter.Section.Equation
 \renewcommand{\theequation}{\thesection.\arabic{equation}}

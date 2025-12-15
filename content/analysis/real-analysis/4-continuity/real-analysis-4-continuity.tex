@@ -1,0 +1,69 @@
+\section{Continuity of Functions to \( \mathbb{R} \)}
+
+\begin{lemma}\label{thm:reciprocal-is-continuous}
+    Suppose \( f: I \to \mathbb{R} \) is continuous at \( x_{0} \in I \), \( f(x_{0}) =y \), and that for all \( x \in I \), \( f(x) \neq 0 \). Then \( \frac{1}{f(x)}: I \to \mathbb{R} \) is continuous at \( x_{0} \) and 
+    \[ \lim_{x \to x_{0}} \frac{1}{f(x)} = \frac{1}{y} .\]
+\end{lemma}
+\begin{proof}
+Pick \( \delta >0 \), such that 
+\[ \abs{f(x) - y} < \min \left\{ \frac{\abs{y}}{2}, \frac{\abs{y}^{2} \epsilon}{2} \right\} .\] Notice
+\begin{align*}
+     \abs{y} - \abs{f(x)} &\le  \abs{\abs{y} - \abs{f(x)}} \\ 
+     &\le \abs{f(x) - y} \tag{By the \hyperref[thm:Reverse-Triangle]{reverse triangle inequality} } \\ 
+    &< \frac{\abs{y}}{2} \tag{By hypothesis}
+\end{align*}
+So \( \abs{y} - \abs{ f(x)} < \frac{\abs{y}}{2}\) This gives us \( \frac{\abs{y}}{2}<  \abs{ f(x)}\) or \( \boxed{\frac{1}{\abs{ f(x)}} < \frac{2}{\abs{y}}} \). Now 
+    \begin{align*}
+        \abs{\frac{1}{f(x)} - \frac{1}{y}} &= \abs{\frac{y - f(x)}{y f(x)}} \\
+        &= \frac{1}{ \abs{y} \abs{f(x)}} \abs{y - f(x)} \\
+        &< \frac{2}{\abs{y}^{2}} \abs{y-f(x)} \tag{By our earlier investigation}
+        \\
+        &< \frac{2}{\abs{y}^{2}} \frac{\abs{y}^{2} \epsilon}{2} \tag{By our choice of $\delta$} \\
+        &= \epsilon
+    \end{align*}
+So we can bound \( \abs{\frac{1}{f(x)} - \frac{1}{y}} \) by arbitrarily small epsilon, which was required. 
+
+\end{proof}
+
+
+\begin{lemma}\label{thm:prod-of-continuous-functions-continuous}
+    Suppose that \( f: I \to \mathbb{R} \) and \( g: I \to \mathbb{R} \) are continuous at \( x_{0} \in I \) and that \( f(x_{0}) = y_{f} \) and \( g(x_{0})=y_{g} \). Then, the product \( f \cdot g: I \to \mathbb{R} \) defined by \( \left( f \cdot g \right)(x) = f(x) \cdot g(x) \) for all \( x \in I \) is continuous at \( x_{0} \) and 
+    \[ \lim_{x \to x_{0}} \left( f \cdot g\right)(x) = y_{f}  y_{g} \]
+\end{lemma}
+\begin{proof}
+We want to show that for any \( \epsilon >0 \), there exists a \( \delta >0 \) such that whenever \( \abs{x_{0} -x} < \delta \), we have \( \abs{f(x_{0}) g(x_{0}) - f(x)  g(x)} =  \abs{f(x_{0})  g(x_{0}) - y_{f}  y_{g}} < \epsilon \). Before we choose our delta, let us do some manipulation: 
+\begin{align*}
+     \abs{f(x_{0}) g(x_{0}) - y_{f} y_{g}} &= \abs{ \left( f(x_{0}) - y_{f}  \right) \left( g (x_{0}) - y_{g} \right) + y_{g}  \left( f(x_{0}) -y_{f} \right) + y_{f} \left( g\left( x_{0} \right) -y_{g} \right)} \\
+     & \le \abs{\left( f(x_{0}) - y_{f}  \right) \left( g (x_{0}) - y_{g} \right)} + \abs{ y_{g}  \left( f(x_{0}) -y_{f} \right)} + \abs{y_{f} \left( g\left( x_{0} \right) -y_{g} \right)} \\
+     &= \abs{ f(x_{0}) - y_{f}} \abs{g (x_{0}) - y_{g}} + \abs{ y_{g} } \abs{f(x_{0}) -y_{f} } + \abs{y_{f} } \abs{g\left( x_{0} \right) -y_{g}}
+\end{align*}
+In that regard, we apply the continuity hypothesis and pick \( \delta >0 \) such that 
+\begin{align*}
+ \abs{f(x_{0}) -y_{f} } &<\min \left\{ \sqrt{\frac{\epsilon}{3}}, \frac{\epsilon}{3 \left( \abs{y_{g}}+1 \right)} \right\} \\
+ \abs{g\left( x_{0} \right) -y_{g}} &< \min \left\{ \sqrt{\frac{\epsilon}{3}}, \frac{\epsilon}{3 \left( \abs{y_{f}}+1 \right)} \right\}
+\end{align*}
+So 
+\begin{align*}
+ \abs{f(x_{0}) g(x_{0}) - y_{f} y_{g}} &\le \abs{ f(x_{0}) - y_{f}} \abs{g (x_{0}) - y_{g}} + \abs{ y_{g} } \abs{f(x_{0}) -y_{f} } + \abs{y_{f} } \abs{g\left( x_{0} \right) -y_{g}} \\
+ &<  \sqrt{\frac{\epsilon}{3}} \sqrt{\frac{\epsilon}{3}} + \frac{\epsilon \abs{y_{g}}}{3 \left( \abs{y_{g}}+1 \right)} + \frac{\epsilon \abs{y_{f}}}{3 \left( \abs{y_{f}}+1 \right)} \\
+ &< \frac{\epsilon}{3} + \frac{\epsilon}{3} +\frac{\epsilon}{3} \\
+ &= \epsilon
+\end{align*}
+So we can for any \( \epsilon >0\), we can find a \( \delta >0 \) such that \(  \abs{f(x_{0})  g(x_{0}) - y_{f}  y_{g}} < \epsilon  \) whenever \( \abs{x_{0} -x} < \delta \), which is what we wanted. 
+\end{proof}
+
+
+\begin{corollary}
+     Suppose that \( f: I \to \mathbb{R} \) and \( g: I \to \mathbb{R} \) are continuous at \( x_{0} \in I \) and that \( f(x_{0}) = y_{f} \) and \( g(x_{0})=y_{g} \ne 0 \). Then, the quotient \( \frac{f}{g}: I \to \mathbb{R} \) defined by \( \left( \frac{f }{g} \right)(x)= \frac{f(x)}{g(x)} \) is continuous at \( x_{0} \) and 
+    \[ \lim_{x \to x_{0}} \frac{f(x)}{g(x)} = \frac{y_{f}}{y_{g}} .\]
+\end{corollary}
+\begin{proof}
+    Apply \cref{thm:reciprocal-is-continuous} to \( g \) and then apply \cref{thm:prod-of-continuous-functions-continuous} to \( f \) and the resultant \( \frac{1}{g} \).
+\end{proof}
+
+\section{Continuity of Functions Between Metric Spaces}
+
+\begin{dfn}
+    Let\( \left( X, \rho_{X} \right) \) and \( \left( Y, \rho_{Y} \right) \) be metric spaces. A function \( f: X \to Y \) is \vocab{continuous} at \( x \in X \) if for all \( \epsilon >0 \), there exists a \( \delta >0 \) such that 
+    \[ \rho_{X} \left( t,x \right) < \delta \Rightarrow \rho_{Y} \left( f (t),f(x) \right) < \epsilon. \]
+\end{dfn}

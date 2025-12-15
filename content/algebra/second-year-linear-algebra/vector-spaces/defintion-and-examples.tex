@@ -19,6 +19,123 @@
   \item[\textbf{Existence of an Additive Inverse:}] For every \( \vb{v} \in \mathbf{V} \), there exists a \( \vb{w} \in \mathbf{V} \) called the \vocab{additive inverse} such that \( \vb{v} + \vb{w} = \vb{0} \).
   \item[\textbf{Multiplicative Identity:}] For \( 1 \in \mathbb{K} \), we have that \( 1 \vb{v} = \vb{v} \) for all \( \vb{v} \in \mathbf{V} \).
 \end{description}
-
+We will usually pick \( \mathbb{K} \) to be \( \mathbb{R} \) or \( \mathbb{C} \). If \( \mathbb{K} = \mathbb{R} \), we will sometimes call \( \mathbf{V} \) a \vocab{real vector space}. If \( \mathbb{K} = \mathbb{C} \), we will sometimes call \( \mathbf{V} \) a \vocab{comples vecotr space}. 
 
 \end{dfn}
+
+
+
+\begin{example}
+  Let \( \mathbb{K} \) be a field and let \( \mathbb{K}^{n} \) be the set of all \( n \)-tuples whose entries come from \( \mathbb{K} \). We define 
+  \[ \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) = \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \] and 
+  \[ \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) = \left( \lambda a_{1}, \lambda a_{2}, \dots , \lambda a_{n} \right) \] for all \( \lambda , a_{1}, a_{2}, \dots, a_{n},b_{1}, b_{2}, \dots , b_{n} \in \mathbb{K} \). \\ 
+  Closure under addition and scalar multiplication is immediate from inheritance from the field \( \mathbb{K} \). \\ 
+  For \textbf{commutativity} , we have if \( \vb{a} =  \left( a_{1}, a_{2}, \dots, a_{n} \right) \) and \( \vb{b} =  \left( b_{1}, b_{2}, \dots , b_{n} \right) \) then 
+  \begin{align*}
+    \vb{a} + \vb{b} &= \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) \\
+    &= \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \\
+    &=  \left( b_{1} +a_{1}, b_{2} +a_{2}, \dots, b_{n} +a_{n} \right) \tag{Since $\mathbb{K}$ is a field.}\\
+    &= \left( b_{1}, b_{2}, \dots , b_{n} \right) + \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+    &= \vb{b} + \vb{a}
+  \end{align*}
+  For \textbf{associativity}, let \( \vb{c} = \left( c_{1}, c_{2}. \dots, c_{n} \right) \) so 
+  \begin{align*}
+    \left[ \vb{a} + \vb{b} \right] + \vb{c} &= \left[ \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) \right] + \left( c_{1}, c_{2}. \dots, c_{n} \right) \\
+    &= \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) + \left( c_{1}, c_{2}. \dots, c_{n} \right) \\
+    &= \left( \left[ a_{1} +b_{1} \right]  + c_{1},  \left[ a_{2} +b_{2} \right]  + c_{2}, \dots, \left[ a_{n} +b_{n} \right]  + c_{n} \right) \\
+    &= \left( a_{1} + \left[ b_{1} + c_{1} \right] , a_{2} + \left[ b_{2} + c_{2} \right], \dots, a_{n} + \left[ b_{n} + c_{n} \right]  \right) \tag{Since $\mathbb{K}$ is a field.}  \\
+    &= \left( a_{1}, a_{2}, \dots, a_{n} \right) +\left( b_{1} + c_{1}, b_{2} + c_{2}, \dots, b_{n} + c_{n} \right) \\
+    &=  \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left[  \left( b_{1}, b_{2}, \dots , b_{n} \right) +  \left( c_{1}, c_{2}. \dots, c_{n} \right)\right] \\
+    &=\vb{a} + \left[ \vb{b} + \vb{x} \right]
+  \end{align*}
+  For the second part of associativity, pick \( \lambda, \mu \in \mathbb{K} \). Then 
+  \begin{align*}
+    \lambda \left[ \mu \vb{a} \right] &= \lambda \left( \mu a _{1}, \mu a_{2}, \dots, \mu a_{n} \right) \\
+    &= \left( \lambda \left[ \mu a_{1} \right], \lambda \left[ \mu a_{2} \right], \dots, \lambda \left[ \mu a_{n} \right] \right) \\
+    &= \left( \left[ \lambda \mu \right] a_{1},  \left[ \lambda \mu \right] a_{2}, \dots , \left[ \lambda \mu \right] a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\
+    &= \left[ \lambda \mu \right] \left( a_{1}, a_{2}, \dots, a_{n} \right) \\ 
+    &= \left[ \lambda \mu \right] \vb{a}
+  \end{align*}
+  For the \textbf{distributive properties}, we have 
+  \begin{align*}
+    \lambda \left[ \vb{a} + \vb{b} \right] &= \lambda \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \\
+    &= \left( \lambda \left[ a_{1} + b_{1} \right],  \lambda \left[ a_{2} + b_{2} \right], \dots  \lambda \left[ a_{n} + b_{n} \right] \right) \\
+    &= \left( \lambda a_{1} + \lambda b_{1}, \lambda a_{2} + \lambda b_{2} , \dots , \lambda a_{n} + \lambda b_{n}  \right) \tag{Since $\mathbb{K}$ is a field.} \\
+    &= \left( \lambda a_{1}, \lambda a_{2}, \dots, \lambda a_{n} \right) +\left( \lambda b_{1}, \lambda b_{2}, \dots, \lambda b_{n} \right) \\
+    &= \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) + \lambda\left( b_{1}, b_{2}, \dots , b_{n} \right) \\
+    &= \lambda \vb{a} + \lambda \vb{b}
+  \end{align*}
+For the second distributive property, we have 
+\begin{align*}
+  \left[ \lambda + \mu \right] \vb{a} &= \left[ \lambda + \mu \right] \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+  &= \left(\left[ \lambda + \mu \right] a_{1},\left[ \lambda + \mu \right]a_{2}, \dots, \left[ \lambda + \mu \right]a_{n} \right) \\
+  &= \left( \lambda a_{1} + \mu a_{1}, \lambda a_{2} + \mu a_{2}, \dots, \lambda a_{n} + \mu a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\ 
+  &= \left( \lambda a_{1}, \lambda a_{2}, \dots, \lambda a_{n} \right) + \left( \mu a_{1}, \mu a_{2}, \dots, \mu a_{n} \right) \\
+  &= \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) + \mu \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+  &= \lambda \vb{a} + \mu \vb{a}
+\end{align*}
+For the \textbf{additive identity}, let \( \vb{0} = \left( 0, 0, \dots, 0 \right) \) so for any \( \vb{a} \), we have 
+\begin{align*}
+  \vb{a} + \vb{0} &= \left( a_{1}, a_{2}, \dots, a_{n} \right)  +  \vb{0} = \left( 0, 0, \dots, 0 \right) \\
+  &=  \left( a_{1} + 0, a_{2} + 0, \dots, a_{n} +0 \right) \\
+  &=  \left( a_{1}, a_{2}, \dots, a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\ 
+  &= \vb{a}
+\end{align*}
+For the \textbf{additive inverse}, pick for any \( \vb{a} = \left( a_{1}, a_{2}, \dots, a_{n} \right) \) the vector \( - \vb{a} = \left(- a_{1}, -a_{2}, \dots, -a_{n} \right) \). So 
+\begin{align*}
+  \vb{a} + \left[ - \vb{a} \right] &= \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left(- a_{1}, -a_{2}, \dots, -a_{n} \right) \\
+  &= \left( a_{1} - a_{1},  a_{2} - a_{2}, \dots,  a_{n} - a_{n} \right) \\
+  &= \left( 0, 0, \dots, 0 \right) \tag{Since $\mathbb{K}$ is a field.} \\
+  &= \vb{0}
+\end{align*}
+For the \textbf{multiplicative identity} , we have 
+\begin{align*}
+  1 \vb{a} &= 1 \left( a_{1}, a_{2}, \dots, a_{n} \right)  \\
+  &= \left(1 a_{1}, 1a_{2}, \dots, 1a_{n} \right) \\
+  &= \left( a_{1}, a_{2}, \dots, a_{n} \right) \tag{Since $\mathbb{K}$ is a field.}  \\
+  &= \vb{a}
+\end{align*}
+
+\end{example}
+
+
+\begin{lemma}
+  In a vector space \( \mathbf{V} \), the additive identity is unique.
+\end{lemma}
+\begin{proof}
+    Suppose that \( \vb{0} \) and \( \vb{0}' \) are each additive identities for a vector space \( \mathbf{V} \). Then 
+    \begin{align*}
+      \vb{0} &= \vb{0} + \vb{0}' \tag{Since $\vb{0}'$ is an additive identity. }\\
+      &= \vb{0}' \tag{Since $\vb{0}$ is an additive identity. }
+    \end{align*}
+    
+\end{proof}
+
+\begin{lemma}
+For each \( \vb{v} \in \mathbf{V} \), its inverse is unique.
+\end{lemma}
+\begin{proof}
+    Suppose that \( \vb{w} \) and \( \vb{w}' \) are each inverses to \( \vb{v} \). Then 
+    \begin{align*}
+      \vb{w} &= \vb{w} + \vb{0}\\
+      &= \vb{w} + \left( \vb{v} + \vb{w}' \right) \\
+      &= \left( \vb{w} + \vb{v} \right) + \vb{w}'\\
+      &= \vb{0} + \vb{w}' \\
+      &= \vb{w}'
+    \end{align*}
+    
+\end{proof}
+
+
+\begin{exercise}
+  Suppose that \( \mathbf{V} \) is a real vector space. We define the \vocab{complexification} of \( \mathbf{V} \), denoted as \( \mathbf{V}_{\mathbb{C}} \), as \( \mathbf{V} \times  \mathbf{V} \) where we write \( \left( \vb{v}, \vb{w} \right) \) as \( \vb{v} + i \vb{w} \). We define addition on \( \mathbf{V}_{\mathbb{C}} \) as 
+  \[ \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) = \left( \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + \vb{w}_{2} \right) \]
+  and scalar multiplication by 
+  \[ \left( \alpha + i \beta \right) \left( \vb{v} + i \vb{w} \right) = \left( \alpha \vb{v} - \beta \vb{w} \right) + i \left( \beta \vb{v} + \alpha \vb{w} \right) \]
+  for \( \alpha, \beta \in \mathbb{R} \). \\
+  Show that \( \mathbf{V}_{\mathbb{C}}\) is a complex space. 
+\end{exercise}
+\begin{solution}
+    
+\end{solution}
+

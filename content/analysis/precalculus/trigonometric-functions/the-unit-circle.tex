@@ -1,0 +1,46 @@
+\begin{dfn}
+    The \vocab{unit circle} is the collection of all points in \( \mathbb{R}^{2} \) that are a distance of \( 1 \) from the origin. 
+\end{dfn}
+
+\begin{exercise}
+    Use the above definition to derive an explicit \( x,y \) representation of the unit circle. 
+\end{exercise}
+\begin{solution}
+    Applying the distance formula 
+    \[ \boxed{d \left( \vb{p}, \vb{q} \right) = \sqrt{ \left( p_{x} - q_{x} \right)^{2} + \left( p_{y}- q_{y} \right)^{2}} }\] by setting 
+    \( \vb{p} = \left( x,y \right) \), \( \vb{q} = \left( 0,0 \right) \) and \( d \left( \vb{p}, \vb{q} \right) =1 \). 
+    We have 
+    \[ 1 = \sqrt{ \left( x-0 \right)^{2} + \left( y-0 \right)^{2}} \]
+    or 
+    \[ 1 = \sqrt{x^{2} + y^{2}} \]
+    and we can square both sides to get 
+    \[ \boxed{x^{2}+ y^{2}=1.} \]
+\end{solution}
+
+\begin{exercise}
+    Suppose that \( \ell_{(-1,0)} \) and \( \ell_{(1,0)} \) are lines passing through \( (-1,0) \) and \( (1,0) \), respectively, such that \( \ell_{(-1,0)} \) and \( \ell_{(1,0)} \) are perpendicular and neither is horizontal. Show that the set of all intersection points of such pairs \( \ell_{(-1,0)} \) and \( \ell_{(1,0)} \) forms the unit circle.
+    
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/analysis/precalculus/perpendicularlinesformcircle.png}
+      
+    \end{center}
+\end{exercise}
+\begin{solution}
+    For any \( m \neq 0 \), we can write 
+    \begin{align*}
+        \ell_{(-1,0)} &: y = -m \left( x+1 \right) \\
+        \ell_{(1,0)} &: y = \frac{1}{m} \left( x-1 \right)
+    \end{align*}
+  We can multiply both sides of the first equation by \( y \) since \( y \neq 0 \) to get 
+  \[ y^{2} = -my \left( x+1 \right) .\]
+  Similarly, since \( m \neq 0 \), we can multiply both sides of the second equation by \( m \) to get
+  \[ my = (x-1) \]
+  Now we can substitute this expression for \( my \)
+  \begin{align*}
+    y^{2} &= -my \left( x+1 \right) \\
+    y^{2} &= - \left( x-1 \right) \left( x+1 \right) \\
+    y^{2} &= 1-x^{2}
+  \end{align*}
+  So we get 
+  \[ \boxed{x^{2}+y^{2}=1} \] as desired.
+\end{solution}

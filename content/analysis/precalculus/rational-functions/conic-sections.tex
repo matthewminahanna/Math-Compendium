@@ -1,0 +1,20 @@
+\subsection{Parabolas}
+
+\begin{lemma}
+    Fix a point \( \vb{p} = \left( p_{x}, p_{y} \right) \) and a line \( y=c \), such that \( p_{y} \neq c \) (The point does not lie on the line). The locus of points equidistant from both the point and the line is the graph of a quadratic function.  Here is a \href{https://www.desmos.com/calculator/78dqsw2yji}{nice Desmos visualization}.
+\end{lemma}
+\begin{proof}
+    \( \left( x,y \right) \) be on the locus of points described above. Setting the distances described above equal to each other, we have 
+    \begin{align*}
+        d \left( \left( x,y \right), \left( p_{x}, p_{y} \right) \right) &= \abs{y-c} \\
+        \sqrt{ \left( x-p_{x} \right)^{2} + \left( y- p_{y} \right)^{2}} &= \abs{y-c} \\
+        \left( x-p_{x} \right)^{2} + \left( y- p_{y} \right)^{2} &= \left( y-c \right)^{2} \\
+        \left( x-p_{x} \right)^{2} &= \left( y-c \right)^{2} - \left( y- p_{y} \right)^{2} \\
+        \left( x-p_{x} \right)^{2} &= \left[ \left( y-c \right) - \left( y-p_{y} \right) \right] \left[ \left( y-c \right) + \left( y-p_{y} \right) \right]\\
+         \left( x-p_{x} \right)^{2} &= \left( p_{y}-c \right) \left[ 2y-c-p_{y} \right] \\
+         \frac{1}{2 \left(  p_{y}-c  \right)} \left( x-p_{x} \right)^{2} + \frac{x+p_{y}}{2} &=y
+    \end{align*}
+    So 
+    \[ \boxed{y=  \frac{1}{2 \left(  p_{y}-c  \right)} \left( x-p_{x} \right)^{2} + \frac{c+p_{y}}{2}} \]
+    is the desired quadratic.
+\end{proof}

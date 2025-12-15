@@ -41,7 +41,7 @@ The \vocab{topology induced by the metric} is a topological space on \( M \) wit
     I claim that \( B_{\rho} \left( y; \epsilon \right) \subseteq B_{\rho} \left( x_{1}; \epsilon_{1} \right) \cap B_{\rho} \left( x_{2}; \epsilon_{2} \right) \). To show this pick any \( z \in B_{\rho} \left( y; \epsilon \right) \), then 
     \begin{align*}
         \rho \left( x_{1},z \right)  & \le \rho \left( x_{1},y \right) + \rho \left( y,z \right)\\
-        &< \rho\left( x_{1},y \right) + \epsilon_{1} - \rho \left( x_{1},y \right) \comment{Since $z \in B_{\rho} \left( y, \epsilon \right)$}\\
+        &< \rho\left( x_{1},y \right) + \epsilon_{1} - \rho \left( x_{1},y \right) \tag{Since $z \in B_{\rho} \left( y, \epsilon \right)$}\\
        &< \epsilon_{1}
     \end{align*}
     so \( z \in B_{\rho} \left( x_{1}; \epsilon_{1} \right) \). Showing \( z \in B_{\rho} \left( x_{2};\epsilon_{2} \right) \) is similar. So \( z \in   B_{\rho} \left( x_{1}; \epsilon_{1} \right) \cap B_{\rho} \left( x_{2}; \epsilon_{2} \right)\), which shows that \( B_{\rho} \left( y; \epsilon \right) \subseteq   B_{\rho} \left( x_{1}; \epsilon_{1} \right) \cap B_{\rho} \left( x_{2}; \epsilon_{2} \right) \)
@@ -189,14 +189,24 @@ Although the base cases of \( n =2 \) or \( n=3 \) trivially hold, we will set t
 \end{proof}
 
 
-\begin{exercise}
-    Show that in a normed space \( \abs{ \; \norm{\vb{x}} - \norm{\vb{y}}\; } \le \norm{\vb{x} - \vb{y}}. \)
-\end{exercise}
-\begin{solution}
-    We can define the metric \( \rho \) induced by the norm as \( \rho \left( \vb{x}, \vb{y} \right) := \norm{ \vb{x} -\vb{y}}\). As such, we wish to show that \( \abs{ \rho \left( \vb{x}, \vb{0} \right) - \rho \left( \vb{y}, \vb{0} \right)} \le \rho \left( \vb{x}, \vb{y} \right) \). This is straightforward. 
+
+\begin{lemma}[The Reverse Triangle Inequality]\label{thm:Reverse-Triangle}
+    In a normed space \( \abs{ \; \norm{\vb{x}} - \norm{\vb{y}}\; } \le \norm{\vb{x} - \vb{y}}. \)
+\end{lemma}
+\begin{proof}
+       We can define the metric \( \rho \) induced by the norm as \( \rho \left( \vb{x}, \vb{y} \right) := \norm{ \vb{x} -\vb{y}}\). As such, we wish to show that \( \abs{ \rho \left( \vb{x}, \vb{0} \right) - \rho \left( \vb{y}, \vb{0} \right)} \le \rho \left( \vb{x}, \vb{y} \right) \). This is straightforward. 
     \begin{align*}
         &\rho \left( \vb{x}, \vb{0} \right)  \le \rho \left( \vb{x},\vb{y} \right) + \rho \left(  \vb{y}, \vb{0} \right) \tag*{By the triangle inequality.} \\
         &\rho \left( \vb{x} , \vb{0} \right) - \rho \left( \vb{y}, \vb{0} \right) \le \rho \left( \vb{x},\vb{y} \right)
     \end{align*}
-    Applying the absolute value to both sides resolves this exercise.
-\end{solution}
+    Applying the absolute value to both sides finishes this proof.
+\end{proof}
+\begin{altproof}
+    We can set \( \vb{x} = \vb{x}- \vb{y} + \vb{y} \). Then 
+    \begin{align*}
+        \norm{\vb{x}} &= \norm{\left( \vb{x}- \vb{y} \right) + \vb{y}} \\
+        &\le \norm{\vb{x}- \vb{y}} + \norm{\vb{y}}
+    \end{align*}
+    so 
+    \[ \norm{\vb{x}} - \norm{\vb{y}} \le \norm{\vb{x}- \vb{y}}\]. Taking the absolute value of both sides finishes this proof.
+\end{altproof}
