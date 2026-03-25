@@ -1,0 +1,22 @@
+
+
+\begin{lemma}
+    Suppose that \( f: \mathbb{R}^{3} \to \mathbb{R} \) has continuous second order partial derivatives. Then \( \largetriangledown \times \left( \largetriangledown f \right) = \va{0} \).
+\end{lemma}
+\begin{proof}
+        We have 
+    \[ \largetriangledown f = \pdv{f}{x}\;  \va{i} + \pdv{f }{y} \; \va{j} + \pdv{f }{z}\;  \va{k} \]
+    Then 
+    \begin{align*}
+        \largetriangledown \times \left( \largetriangledown f \right) &= \det \begin{bmatrix}
+            \va{i} & \va{j} & \va{k}\\
+            & & & \\
+            \pdv{x} & \pdv{y} & \pdv{z}\\
+            & & & \\
+            \pdv{f}{x} & \pdv{f}{y} &\pdv{f}{z}\\
+        \end{bmatrix}\\
+        &= \left( \pdv{f}{y}{z} - \pdv{f}{z}{y} \right)\;  \va{i} +  \left( \pdv{f}{z}{x} - \pdv{f}{x}{z} \right)\;  \va{j} + \left( \pdv{f}{x}{y} - \pdv{f}{y}{x} \right)\;  \va{k}\\
+        &= \va{0}
+    \end{align*}
+    \textbf{Remark:} This lemma essentially says that being a zero curl vector field is a necessary condition for a vector field to be conservative. It turns out it is also sufficient for simply connected domains.
+\end{proof}

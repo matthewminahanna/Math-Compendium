@@ -1,0 +1,140 @@
+\subsection{Functions}
+
+A function of a single real variable; i.e. functions that "eat" a real number and spit out a (not necessarily different) real number. \\ 
+We can describe functions verbally. For example, suppose that I give you a number and I would like you to multiply that my 3 and then subtract 7 from it. From this description, we can then write out these sequence of instructions as a function for future manipulation 
+\[ f(x) = 3x -7 \]
+We read the expression \( f(x) \) as \vocab{f of x}. Here \( f \) represents a shorthand for the process that we described. Here \( x \) is a \vocab{variable} use to represent a number that we can substitute later. For example, if \( x=5 \), then 
+\[ f(5) = 3(5)-7=15-7=8 \]
+The collection of all values were allowed to input into the function is called the \vocab{domain} of \( f \) and the set of all values that the function can return is called the \vocab{range} of \( f \).\\ 
+\begin{example}
+    Consider the function defined by subtracting 8 from a given input and then dividing the result from 1
+\[ f(x)= \frac{1}{x-8}\]
+What are the domain and range of \( f(x) \)? \\ 
+I claim that \( 8 \) is the only number not in the domain of \( f \). If I substitute \( x =8 \), then 
+\begin{align*}
+    f(8) &= \frac{1}{8-8}\\ 
+    &= \frac{1}{0}
+\end{align*}
+\( \frac{1}{0} \) is \vocab{undefined}. To see why, suppose that \( \frac{1}{0} \) had a value, call it \( y \). Then \( y= \frac{1}{0} \) or \( 0 \cdot y =1 \) but we know that \( 0 \) times any number has to equal \( 0 \). Contradiction! It is not hard to see why any other value for \( x \) is fine. So the domain of \( f \) is all real numbers except for \( 8 \) or \( \boxed{\left( - \infty, 8 \right) \cup \left( 8, \infty \right)} \). \\ 
+Similarly, we can show that the range of \( f \) consists of all real numbers except for \( 0 \). For if \( 0 \) was in the range of \( f \), 
+\begin{align*}
+    0 &= \frac{1}{x-8}\\ 
+    0 \cdot \left( x-8 \right) &=1
+\end{align*}
+Again \( 0 \) times any number has to equal \( 0 \). It is not hard to see why \( f \) can return any other number. So the range of \( f \) is all real numbers except for \( 0 \) or \( \boxed{\left( - \infty, 0 \right) \cup \left( 0, \infty \right)} \).
+\end{example}
+
+\begin{exercise}
+    Suppose that \( f(x) = 2x^{2}-3 \). 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item Find \( f(2) \). 
+        \item Find all values \( t \) such that \( f(t)=47 \).
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    $ $ \vspace{-1em}
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item \( f(2) = 2 \left( 2 \right)^{2}-3 = 8-3=5 \).
+        \item We want \( 2t^{2}-3=47 \) so 
+        \begin{align*}
+            2t^{2} &= 50\\
+            t^{2} &= 25 \\
+            t &= \pm 5
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Suppose that 
+    \[ f \left( x,y,z \right) = 3x - 2y + 7 z^{2} \]
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item Find \( f \left( 3,-5,-1 \right) \)
+        \item For what value of \( t \) will \( f \left( t, 2, -1 \right) =21 \)?
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    $ $ \vspace{-1.5em}
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item We have 
+        \begin{align*}
+            f \left(  3, -5,-1\right) &= 3 \left( 3 \right) - 2 \left( -5 \right) + 7 \left( -1 \right)^{2} \\
+            &= 9 + 10 + 7\\
+            &= 26
+        \end{align*}
+        \item We have 
+        \begin{align*}
+            f \left( t, 2, -1 \right) &=21  \\
+            3t - 2 \left( 2 \right) + 7 \left( -1 \right)^{2} &= 21 \\
+            3t -4 + 7 &= 21 \\
+            3t + 3 &= 21 \\
+            t + 1 &= 7 \\
+            t &= 6
+        \end{align*}
+        
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Suppose that \( f(x)= a x^{4} + b x^{2}+x + 5 \) 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item If \( f \left( -4 \right)= 3 \), what is \( f \left( 4 \right) \) ?  
+        \item If \( f \left( -s \right) =t \), what is \( f \left( s \right) \)?
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+   $  $ \vspace{-1.5em}
+   \begin{enumerate}[label=\textbf{\roman*)}]
+    \item  \begin{align*}
+        f \left( -4 \right) &= 3 \\
+        a \left(  -4 \right)^{4} + b \left( -4 \right)^{2} -4 +5 &= 3 \\
+        a \left(  4 \right)^{4} + b \left( 4 \right)^{2} -4 + 8 + 5 &= 3+8 \\
+        a \left(  4 \right)^{4} + b \left( 4 \right)^{2} +4 + 5 &= 11 \\
+        f \left( 4 \right) &= 11
+    \end{align*}
+    \item The above argument generalizes 
+    \begin{align*}
+        f \left( -s \right) &= t  \\
+        a \left(  -s \right)^{4} + b \left( -s \right)^{2} -s +5 &= t \\
+         a \left(  s \right)^{4} + b \left( s \right)^{2} -s + 2s + 5 &= t+ 2s \\
+          a \left(  s \right)^{4} + b \left( s \right)^{2} +s + 5 &= t+ 2s \\
+          f \left( s \right) &= t +2s
+    \end{align*}
+    
+   \end{enumerate}
+   
+    
+\end{solution}
+
+\begin{exercise}
+    Find the domain and range of the following functions:
+    \begin{align*}
+        &\textbf{(a)}\  \ a \left( x  \right) = 2x-3 &&\textbf{(b)}\  \ b(x) = \frac{2x}{x-1}\\
+        &\textbf{(c)}\  \ c \left( x \right) = \sqrt{-2x+7} &&\textbf{(d)}\ \  d \left( x \right) = 9x^{2} +4
+    \end{align*}
+    
+\end{exercise}
+\begin{solution}
+    $ $ \vspace{-1.5em}
+    \begin{enumerate}[label=\textbf{\alph*)}]
+        \item There is no restriction on the real values \( a(x) \) can have. Now if \( y = 2x-3 \), we can set \( x = \frac{y+3}{2} \) so \( a(x) \) achieves all values in \( \mathbb{R} \). So the domain and range of \( a(x) \) are both \( \left( - \infty, \infty \right) \). 
+        \item For \( b(x) \), we cannot input \( x =1 \). For range, we need to do some manipulation 
+        \begin{align*}
+            \frac{2x}{x-1} &= \frac{2x -2 +2}{x-1} \tag*{Adding a special $0$ in the numerator.}\\
+            &= \frac{2x-2}{x-1} + \frac{2}{x-1} \\
+            &= 2 + \frac{2}{x-1}
+        \end{align*}
+        Since there is no way to get \( \frac{2}{x-1} \) to equal \( 0 \), it must follow that \( 2 \) is not in the range of \( b(x) \). In conclusion, the domain of \( b(x) \) is \( \left( - \infty, 1   \right) \cup \left( 1, \infty \right) \) and the range of \( b(x) \) is \( \left( - \infty, 2   \right) \cup \left( 2, \infty \right) \). \\ 
+        \item For \( c(x) \), we know we cannot have the inside of a square root become negative. So we want \( -2x+7 \ge 0 \). Therefore, 
+        \begin{align*}
+            -2x+7 &\ge 0\\
+            -2x &\ge -7 \\
+            x &\le \frac{7}{2}
+        \end{align*}
+        Since there is no transformation applied after the square root function (see next section), the range is simply all non-negative real numbers. So the domain of \( c(x) \) is \( \left( - \infty, \frac{7}{2} \right] \) and its range is \( \left[ 0, \infty \right) \).
+        \item There is no constraint on the values of \( x \) that can go into \( d \left( x \right) \). Since \( 9x^{2} \ge 0 \) for \( x \in \mathbb{R} \), we have \( d(x)=9x^{2}+4 \ge 4 \). In conclusion, the domain of \( d(x) \) is \( \mathbb{R} \) or \( \left( - \infty, \infty \right) \) and the range is \( \left[ 4, \infty \right) \).
+    \end{enumerate}
+\end{solution}
+
+\begin{dfn}
+    If \( f(x) \) is defined on a subset \( S \) of \( \mathbb{R} \) and \( T \) is a subset of \( S \), we can \vocab{restrict \( f  \) to \( T \)} by defining \( f_{T}: T \to \mathbb{R} \) by \( f_{T} \left( x \right) = f(x) \).
+\end{dfn}

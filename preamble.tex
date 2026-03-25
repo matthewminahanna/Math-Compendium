@@ -1,21 +1,17 @@
+% Begin initial call of packages
 \usepackage{makeidx}
 \makeindex
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{enumitem}
-
-
-
 \usepackage{tikz-cd,tikz}
     \usetikzlibrary{hobby, calc, intersections, decorations.markings, decorations.pathreplacing} %libraries
     \tikzset{>=latex}
-
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
@@ -24,10 +20,8 @@
 \usepackage[sfdefault,lining,book]{FiraSans}
 \usepackage{FiraMono}
 \usepackage{sansmathfonts}
-
 \usepackage{faktor}
 \DeclareMathSizes{10.95}{11.2}{7}{7}
-%\boldmath
 \everymath{\displaystyle}
 \usepackage{hyperref}
 \usepackage{nameref,cleveref}
@@ -42,7 +36,7 @@ bottom=0.70in
 \usepackage{xcolor}
 \usepackage{listings}
 \renewcommand{\ttdefault}{FiraMono-TLF}
-
+%End initial call of packages
 
 
 \usepackage[tight]{minitoc}
@@ -100,7 +94,7 @@ bottom=0.70in
 \declaretheorem[style=theoremst, name=Theorem,numberwithin=section]{theorem}
 \declaretheorem[style=theoremst, name=Lemma,sibling=theorem]{lemma}
 \declaretheorem[style=theoremst, name=Proposition,numberwithin=section]{proposition}
-\declaretheorem[style=theoremst, name=Corollary, numbered=no]{corollary}
+\declaretheorem[style=theoremst, name=Corollary, sibling=theorem]{corollary}
 
 % Catppuccin Latte - Lavender for ideas
 \definecolor{ideacolor}{HTML}{7287fd}
@@ -178,7 +172,7 @@ bottom=0.70in
 \definecolor{ctp-base}{HTML}{1e1e2e}      % Dark background
 \definecolor{ctp-green}{HTML}{a6e3a1}     % Green (primary - matrix vibe)
 \definecolor{ctp-teal}{HTML}{94e2d5}      % Teal (secondary accent)
-\definecolor{ctp-surface}{HTML}{313244}   % Subtle gray for comments
+\definecolor{ctp-surface}{HTML}{9ca0b0}   % Subtle gray for comments
 \definecolor{ctp-text}{HTML}{cdd6f4}      % White for line numbers
 
 % Base Catppuccin style with matrix green theme
@@ -243,13 +237,13 @@ bottom=0.70in
         rightline=false, topline=false, bottomline=false,
         linecolor=ctp-green,
         backgroundcolor=ctp-base,
-        innerleftmargin=15pt,
+        innerleftmargin=25pt,
         innerrightmargin=10pt,
-        innertopmargin=10pt,
+        innertopmargin=5pt,
         innerbottommargin=10pt,
     }
 ]{codingexamplest}
-\declaretheorem[style=codingexamplest, name=Coding Example, numbered=no]{codingexample}
+\declaretheorem[style=codingexamplest, name= \hspace{-20pt} Coding Example, numbered=no]{codingexample}
 
 
 

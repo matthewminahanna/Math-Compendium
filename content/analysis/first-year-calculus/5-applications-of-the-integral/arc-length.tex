@@ -1,0 +1,18 @@
+\begin{exercise}
+    Find the exact length of the curve 
+    \[ y= \frac{2}{3} x^{\frac{3}{2}}, \quad x \in \left[ 0,3 \right] \]
+\end{exercise}
+\begin{solution}
+    Applying 
+    \[ \text{Arc length} = \int_{a }^{b} \sqrt{ 1 + \left( \dv{y }{x}  \right) ^{2}} \dd{x} \]
+    we have 
+    \begin{align*}
+        \text{Arc length} &= \int_{0}^{3} \sqrt{1 + \left( x^{\frac{1}{2}} \right)^{2}} \dd{x} \\
+        &= \int_{0}^{3} \left( 1+x \right)^{\frac{1}{2}} \dd{x} \\
+        &= \frac{2}{3} \left( 1+x \right)^{\frac{3}{2}} \eval_{0}^{3} \\
+        &=  \frac{2}{3} \left[ \left( 4 \right)^{\frac{3}{2}} - \left( 1 \right)^{\frac{3}{2}} \right]
+    \end{align*}
+So 
+\[ \boxed{ \text{Arc length} = \frac{14}{3}} \]
+\end{solution}
+

@@ -72,3 +72,70 @@ These properties ensure that we can consistently assign probabilities to events 
     So \( \mathbb{P} \left( A^{c} \right) = 1- \mathbb{P} \left( A \right) \).
 \end{proof}
 
+\begin{lemma}\label{thm:inequality-for-subsets-of-prob-space}
+    If \( A \) and \( B \) are events such that \( A \subseteq B \), then \( \mathbb{P} \left( A \right) \le \mathbb{P} \left( B \right)\).
+\end{lemma}
+\begin{proof}
+    If \( A \subseteq B \), then we can write 
+    \[ B = A \cup \left( B \cap A^{c} \right) .\] So 
+    \begin{align*}
+        \mathbb{P} \left( B \right) &=  \mathbb{P} \left( A \cup \left( B \cap A^{c} \right)  \right) \\
+        \mathbb{P} \left( B \right)&= \mathbb{P} \left( A \right) + \mathbb{P} \left( B \cap A^{c} \right) \tag*{Since $A$ and $B \cap A^{c}$ are disjoint.}
+    \end{align*}
+    Since \( \mathbb{P} \left( B \cap A^{c} \right) \) is non-negative, it follows that \( \mathbb{P} \left( A \right) \le \mathbb{P} \left( B \right)\).
+\end{proof}
+
+\begin{corollary}
+    For any event \( A \), \( \mathbb{P} \left( A \right) \le 1 \).
+\end{corollary}
+\begin{proof}
+    Since \( \mathbb{P} \left( \Omega \right) =1 \), the result follows by \cref{thm:inequality-for-subsets-of-prob-space}.
+\end{proof}
+
+\begin{theorem}\label{thm:P-of-A-union-B}
+    For any events \( A \) and \( B \), we have 
+    \[ \mathbb{P} \left( A \cup B \right) = \mathbb{P} \left( A \right) + \mathbb{P} \left( B \right) - \mathbb{P} \left( A \cap B \right). \]
+\end{theorem}
+\begin{proof}
+    We can perform a separation of \( A \cup B \) as all of the elements of \( A \) union all the elements of \( B \) that are not in \( A \) or 
+    \[ A \cup B = A \cup \left( A^{c} \cap B \right) .\]
+    This gives us 
+    \begin{equation}\label{eqn:P-of-A-or-B}
+        \mathbb{P} \left( A \cup B \right) = \mathbb{P} \left( A \right) + \mathbb{P} \left( A^{c} \cap B \right)
+    \end{equation}
+    Similarly, we can write \( B \) as the collection of all elements of \( B \) that are in \( A \) union all the elements of \( B \) that are not in \( A^{c} \) or 
+    \[ B = \left( A \cap B \right) \cup \left( A^{c} \cap B \right) .\]
+    So 
+    \[ \mathbb{P} \left( B \right) = \mathbb{P} \left( A \cap B \right) + \mathbb{P} \left( A^{c} \cap B \right) \]
+    or 
+    \begin{equation}\label{eqn:P-of-A-complement-and-B}
+        \mathbb{P} \left( A^{c} \cap B \right) = \mathbb{P} \left( B \right) - \mathbb{P} \left( A \cap B \right) 
+    \end{equation}
+    Substituting \cref{eqn:P-of-A-complement-and-B} into \cref{eqn:P-of-A-or-B} establishes the result.
+\end{proof}
+
+\begin{theorem}
+Let \( X = \left\{ X_{1}, X_{2}, \dots, X_{n} \right\} \) be a collection of events. Then 
+\[ \mathbb{P} \left( \bigcup_{k=1}^{n} X_{k} \right) = \sum_{Y \in 2^{X}} (-1)^{\abs{Y}+1} \;  \; \mathbb{P} \left( \bigcap_{X_{k} \in Y} X_{k} \right)\] where \( 2^{X} \) is the power set of \( X \).
+\end{theorem}
+\begin{proof}
+    We will prove this by induction. Note that \cref{thm:P-of-A-union-B} is the base case so we can proceed immediately to the inductive step. \\ 
+    Suppose, for induction, that the result holds for all collections of n events. We pick a particular collection \( X = \left\{  X_{1}, X_{2}, \dots, X_{n}\right\} \) and consider \( X' = X \cup \left\{ X_{n+1} \right\} \). Then 
+    \begin{align*}
+        \mathbb{P} \left( \bigcup_{k=1}^{n+1} X_{k}\right) &= \mathbb{P} \left(   \left(  \bigcup_{k=1}^{n} X_{k}\right) \cup X_{n+1} \right) \\
+        &=\mathbb{P} \left( \bigcup_{k=1}^{n} X_{k} \right) + \mathbb{P} \left( X_{n+1} \right) - \mathbb{P} \left(   \left(  \bigcup_{k=1}^{n} X_{k}\right) \cap X_{n+1} \right) \tag*{By the base case.} \\
+        &= \mathbb{P} \left( \bigcup_{k=1}^{n} X_{k} \right) + \mathbb{P} \left( X_{n+1} \right) - \mathbb{P} \left( \bigcup_{k=1}^{n} \left( X_{k} \cap X_{n+1} \right) \right)
+    \end{align*}
+    Now if we let \( \overline{X} = \left\{ X_{k} \cap X_{n+1} \right\}_{k=1}^n \), we have 
+    \begin{align*}
+         \mathbb{P} \left( \bigcup_{k=1}^{n+1} X_{k}\right) &= \mathbb{P} \left( \bigcup_{k=1}^{n} X_{k} \right) + \mathbb{P} \left( X_{n+1} \right) - \mathbb{P} \left( \bigcup_{k=1}^{n} \left( X_{k} \cap X_{n+1} \right) \right) \\
+         &= \mathbb{P} \left( \bigcup_{k=1}^{n} X_{k} \right) + \mathbb{P} \left( X_{n+1} \right) - \left[ \sum_{Y \in 2^{\overline{X}}} \left( -1 \right)^{\abs{Y}+1} \; \; \mathbb{P} \left( \bigcap_{X_{k} \in Y} X_{k} \right) \right] \\
+         &= \sum_{Y \in 2^{X}} (-1)^{\abs{Y}+1} \;  \; \mathbb{P} \left( \bigcap_{X_{k} \in Y} X_{k} \right) + \mathbb{P} \left( X_{n+1} \right) +  \sum_{Y \in 2^{\overline{X}}} \left( -1 \right)^{\abs{Y}} \; \; \mathbb{P} \left( \bigcap_{X_{k} \in Y} X_{k} \right)
+    \end{align*}
+   The above sum can be re-indexed to be 
+   \[  \mathbb{P} \left( \bigcup_{k=1}^{n+1} X_{k}\right) = \sum_{Y \in 2^{X'}} (-1)^{\abs{Y}+1} \;  \; \mathbb{P} \left( \bigcap_{X_{k} \in Y} X_{k} \right) \]
+   as desired. 
+\end{proof}
+
+
+

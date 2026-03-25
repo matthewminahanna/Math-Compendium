@@ -1,0 +1,78 @@
+\begin{dfn}
+    A \vocab{real algebra} is a vector space \( \mathbf{A} \) over \( \mathbb{R} \) that is equipped with a bilinear map \( m: \mathbf{A} \times \mathbf{A} \to \mathbf{A} \) called multiplication. As usual, we will denote \( m \left( \vb{a}, \vb{b} \right) \) be either juxtaposition, \( \vb{a} \vb{b} \), or by \( \vb{a} \cdot \vb{b} \). 
+    \begin{itemize}
+        \item \( \mathbf{A} \) is said to be \vocab{associative}  if \( \left( \vb{a} \vb{b} \right) \vb{c} = \vb{a} \left( \vb{b} \vb{c} \right) \) for all \( \vb{a}, \vb{b}, \vb{c} \in \mathbf{A} \) 
+        \item \( \mathbf{A} \) is \vocab{alternative} if \( \left( \vb{a}\vb{a} \right) \vb{b} = \vb{a} \left( \vb{a} \vb{b} \right) \) and \( \vb{a} \left( \vb{b}  \vb{b} \right) = \left( \vb{a} \vb{b} \right) \vb{b}\) for all \( \vb{a}, \vb{b} \in \mathbf{A} \). (Note that this is a weaker version of associativity). 
+        \item \( \mathbf{A} \) is \vocab{flexible} if \( \vb{a} \left(  \vb{b} \vb{a} \right) = \left( \vb{a} \vb{b} \right) \vb{a}\) for all \( \vb{a}, \vb{b} \in \mathbf{A} \)
+        \item \( \mathbf{A} \) is \vocab{commutative} if \( \vb{a}\vb{b}= \vb{b}\vb{a} \) for all \( \vb{a}, \vb{b} \in \mathbf{A} \). 
+        \item \( \mathbf{A} \) is \vocab{unital} if there exists a vector \( \vb{1} \in \mathbf{A} \) such that \( \vb{1} \vb{v} = \vb{v} \vb{1} = \vb{v} \) for all \( \vb{v} \in \mathbf{A} \). 
+        \item \( \mathbf{A} \) is called a \vocab{division algebra} if the equations \( \vb{a} \vb{x} = \vb{b} \) and \( \vb{y} \vb{a} = \vb{b} \) have \emph{unique} solutions for all \( \vb{a}, \vb{b} \in \mathbf{A} \) and \( \vb{a} \neq \vb{0} \).
+        \item \( \mathbf{A} \) is called a \vocab{normed algebra} if there exists a norm on \( \mathbf{A} \) that is sub-multiplicative, that is, \( \norm{\vb{a} \vb{b}} \le \norm{\vb{a}} \norm{\vb{b}}\) for all \( \vb{a}, \vb{b} \in \mathbf{A} \).
+    \end{itemize}
+\end{dfn}
+
+\begin{lemma}
+    If \( \mathbf{A} \) is a division algebra then it has a left and right cancellation law. 
+    \[ \vb{a} \vb{x} = \vb{a} \vb{y} \Rightarrow \vb{x} = \vb{y} \quad \text{and} \quad  \vb{x} \vb{b} = \vb{y} \vb{b} \Rightarrow \vb{x} = \vb{y} \]
+\end{lemma}
+\begin{proof}
+    \( \left( \Rightarrow \right) \) Suppose that \( \mathbf{A} \) is a division algebra. Assume that \( \vb{x} \) and \( \vb{y} \) are both solutions to \( \vb{a} \vb{z} = \vb{b} \), or in other words, \( \vb{a} \vb{x} = \vb{a} \vb{y} \). By the \emph{uniqueness} of solutions in a division algebra, it immediately follows that \( \vb{x} = \vb{y} \). So \( \mathbf{A} \) has the left cancellation property. Right cancellation is similarly shown. 
+\end{proof}
+\begin{altproof}[If \( \mathbf{A} \) is finite-dimensional]
+    In fact, if \( \mathbf{A} \) is finite-dimensional, the converse also holds. We can apply \cref{thm:equal-dim-imp-equiv-of-inj-and-surj} to the linear maps given by 
+    \[ L_{\vb{a}} \left( \vb{x} \right) = \vb{a} \vb{x} \quad \text{and} \quad R_{\vb{a}} \left( \vb{x} \right) =  \vb{x} \vb{a} \quad \text{ for } \vb{a} \neq \vb{0} \]
+    \( \mathbf{A} \) being a division algebra effectively states that \( L_{\vb{a}} \) and \( R_{\vb{a}} \) are surjections. Similarly, the left and right cancellation laws state that \( L_{\vb{a}} \) and \( R_{\vb{a}} \) are injections.
+\end{altproof}
+
+
+
+\begin{exercise}
+    Let \( \mathbf{A} \) be an associative normed unital real algebra and let \( \left[ \vb{x}, \vb{y} \right] = \vb{x} \vb{y} - \vb{y} \vb{x}\). Assume there exists \( \vb{x}, \vb{y} \in \mathbf{A} \) with \( \left[ \vb{x}, \vb{y} \right] = \vb{1} \). 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item Show that for all \( n \in \mathbb{N} \), \( \left[ \vb{x}^{n}, \vb{y} \right] = n \vb{x}^{n-1} \). 
+        \item Deduce from \textbf{(i)}, that \( \vb{x}^{n} \neq \vb{0}\) for all \( n \in \mathbb{N} \).
+        \item Then deduce that there cannot exist \( \vb{x}, \vb{y} \) with \( \left[ \vb{x}, \vb{y} \right] = \vb{1}\).
+    \end{enumerate}
+\end{exercise}
+\begin{solution} $ $\vspace{-1.3em}
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item We prove this by induction. The base case is simply the hypothesis so we immediately proceed to the inductive step. So assume that the hypothesis holds for all \( n \le k \). Then 
+        \begin{align*}
+            \vb{x} \left[ \vb{x}^{k}, \vb{y} \right] + \left[ \vb{y}, \vb{x}^{k} \right] \vb{x} &= \vb{x} \left( k \vb{x}^{k-1} \right) +  \left( k \vb{x}^{k-1} \right) \vb{x} \tag*{By induction hypothesis} \\
+             \vb{x} \left[ \vb{x}^{k}, \vb{y} \right] + \left[ \vb{y}, \vb{x}^{k} \right] \vb{x} &= 2k \vb{x}^{k} \\
+             \vb{x} \left( \vb{x}^{k} \vb{y} - \vb{y} \vb{x}^{k} \right) + \left( \vb{x}^{k} \vb{y} - \vb{y} \vb{x}^{k} \right) \vb{x} &= 2k \vb{x}^{k} \\
+             \vb{x}^{k+1} \vb{y} - \left( \vb{x} \vb{y} \right) \vb{x}^{k} + \vb{x}^{k} \left( \vb{y} \vb{x} \right) - \vb{y} \vb{x}^{k+1} &= 2k \vb{x}^{k} \\
+             \vb{x}^{k+1}\vb{y} - \left( \vb{1} + \vb{y}\vb{x} \right) \vb{x}^{k} + \vb{x}^{k} \left( \vb{x}\vb{y}  - \vb{1}\right) - \vb{y} \vb{x}^{k+1} &= 2k \vb{x}^{k} \tag*{Applying the commutator relation in the hypothesis.} \\ 
+             \vb{x}^{k+1}\vb{y} - \vb{x}^{k} - \vb{y} \vb{x}^{k+1} + \vb{x}^{k+1}\vb{y} - \vb{x}^{k} - \vb{y}\vb{x}^{k+1}&= 2k \vb{x}^{k} \\
+             \vb{x}^{k+1}\vb{y}  - \vb{y} \vb{x}^{k+1} + \vb{x}^{k+1}\vb{y}  - \vb{y}\vb{x}^{k+1}&= 2k \vb{x}^{k} + 2 \vb{x}^{k}\\ 
+             2 \left[ \vb{x}^{k+1}, \vb{y} \right] &= 2 \left( k+1 \right) \vb{x}^{k}
+        \end{align*}
+        Dividing both sides by 2 establishes the result. 
+        \item It is clear from the hypothesis that \( \vb{x} \neq \vb{0} \). From this, assume for a contradiction that there is some \emph{minimal} \( n \in \mathbb{N} \) for which \( \vb{x}^{n} = \vb{0} \). Applying the result from \textbf{(i)}, we have 
+        \begin{align*}
+            \left[ \vb{x}^{n}, \vb{y} \right] &= n \vb{x}^{n-1} \\
+            \vb{x}^{n}\vb{y} - \vb{y} \vb{x}^{n} &= n \vb{x}^{n-1} \\
+            \vb{0} \vb{y} - \vb{y} \vb{0} &= n \vb{x}^{n-1}\\
+            \vb{0} &= n \vb{x}^{n-1} \\
+            \vb{0} &= \vb{x}^{n-1}
+        \end{align*}
+        This contradiction establishes the result.
+        \item We apply the norm to both sides of the expression \( n \vb{x}^{n-1} = \left[ \vb{x}^{n}, \vb{y} \right] \).
+        \begin{align*}
+            \norm{n \vb{x}^{n-1}} &= \norm{\left[ \vb{x}^{n}, \vb{y} \right]} \\
+            n \norm{\vb{x}^{n-1}} &= \norm{\vb{x}^{n} \vb{y} - \vb{y} \vb{x}^{n}}\\
+            n \norm{\vb{x}^{n-1}} & \le \norm{\vb{x}^{n} \vb{y}} +\norm{\vb{y} \vb{x}^{n}} \\
+            n \norm{\vb{x}^{n-1}} & \le 2\norm{\vb{x}^{n}} \norm{\vb{y}} \\
+            n \norm{\vb{x}}^{n-1} & \le 2 \norm{\vb{x}}^{n} \norm{\vb{y}} \\ 
+            n &\le 2 \norm{\vb{x}} \norm{\vb{y}}
+        \end{align*}
+        Letting \( n \to \infty \) yields a contradiction which establishes the result.
+    \end{enumerate}
+\end{solution}
+
+
+\begin{dfn}
+    A \vocab{homomorphism} between algebras \( \mathbf{A} \) and \( \mathbf{B} \) is a linear map \( \varphi: \mathbf{A} \to \mathbf{B} \) with the added condition that \( \varphi \left( \vb{a} \vb{a}' \right) = \varphi \left( \vb{a} \right) \varphi \left( \vb{a}' \right) \), for all \( \vb{a}, \vb{a}' \in \mathbf{A} \). \\ 
+    \( \varphi \) is an \vocab{isomorphism}  if it is a bijection. \( \varphi \) is an \vocab{automorphism} if it is an isomorphism and \( \mathbf{A} = \mathbf{B} \).
+\end{dfn}
+

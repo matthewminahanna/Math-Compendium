@@ -1,0 +1,68 @@
+\begin{dfn}
+    Suppose \( \left( X, \mathscr{T}_{X} \right) \) is a topological space. Suppose that \( Y \subset X \). Then \( Y \) can be endowed with the \vocab{subspace topology} \( \mathscr{T}_{Y} \) where 
+    \[ \mathscr{T}_{Y} = \left\{ Y \cap U \ \ \middle| \ \ U \in \mathscr{T}_{X} \right\}. \]
+    \textbf{Remark:} I choose (artificially) to limit the definition of the subspace topology to be a proper subset of \( X \). This definition works just as well when \( Y =X \) but is uninteresting since, in this case, \( \mathscr{T}_{Y} \) would be the same topology as \( \mathscr{T}_{X} \).
+\end{dfn}
+
+\begin{exercise}
+    Show that \( \mathscr{T}_{Y} \) with the subspace topology is a topology on \( Y \).
+\end{exercise}
+\begin{solution}
+    We just do a routine check of all the conditions of a topology. 
+    \begin{enumerate}[label=\textbf{\roman*)}]
+        \item Clearly \( \varnothing \) and \( Y \) belong to \( \mathscr{T}_{Y} \) since 
+        \[ \varnothing = Y \cap \varnothing \quad  \text{and} \quad Y = Y \cap X .\]
+        \item Pick some arbitrary collection \( \left\{ V_{\alpha} \right\}_{\alpha \in A} \subseteq \mathscr{T}_{Y} \). By definition, every \( V_{\alpha} = Y \cap U_{\alpha} \) for some open set \( U_{\alpha} \in \mathscr{T}_{X} \). So 
+        \begin{align*}
+            \bigcup_{\alpha \in A} V_{\alpha} &= \bigcup_{\alpha \in A} \left( Y \cap U_{\alpha} \right) \\
+            &= Y \cap \left( \bigcup_{\alpha \in A} U_{\alpha} \right)
+        \end{align*}
+        \( Y \cap \left( \bigcup_{\alpha \in A} U_{\alpha} \right)  \) belongs in \( \mathscr{T}_{Y} \) since \( \bigcup_{\alpha \in A} U_{\alpha} \) is an open set. So \( \bigcup_{\alpha \in A} V_{\alpha} \) also belongs in \( \mathscr{T}_{Y} \). This demonstrates closure under arbitrary unions. 
+        \item Now pick some finite subcollection \( \left\{ V_{j} \right\}_{j=1}^{n} \). Again, each \( V_{j} = Y \cap U_{j} \) for some open set \( U_{j} \in \mathscr{T}_{X} \). So 
+        \begin{align*}
+            \bigcap_{j=1}^{n} V_{j} &= \bigcap_{j=1}^{n} \left( Y \cap U_{j} \right) \\
+            &= Y \cap \left( \bigcap_{j=1}^{n} U_{j} \right)
+        \end{align*}
+        \(  Y \cap \left( \bigcap_{j=1}^{n} U_{j} \right) \) belongs in \( \mathscr{T}_{Y} \) since \( \bigcap_{j=1}^{n} U_{j} \) is an open set. So \( \bigcap_{j=1}^{n} V_{j} \) also belongs in \( \mathscr{T}_{Y} \). This demonstrates closure under finite intersections. 
+    \end{enumerate}
+\end{solution}
+
+\begin{lemma}
+    Let \( \mathscr{B}_{X} \) be a basis for the topology \( \mathscr{T}_{X} \) on \( X \). Let \( \mathscr{T}_{Y} \) be the subspace topology on \( Y \subset X \). Then 
+    \[ \mathscr{B}_{Y} = \left\{ Y \cap B \ \ \middle| \ \ B \in \mathscr{B}_{X} \right\} \]
+    is a basis for \( \mathscr{T}_{Y} \).
+\end{lemma}
+\begin{proof}
+    We apply \cref{thm:open-cover-collection-basis-characterization}. Pick some arbitrary open set \( V \in \mathscr{T}_{Y} \) and some \( y \in V \). By definition \( V = Y \cap U \) for some \( U \in \mathscr{T}_{X} \). Since \( \mathscr{B}_{X} \) is a basis for \( \mathscr{T}_{X} \). There is some basis element \( B_{y} \) which contains \( y \) for which \( y \in B_{y} \subseteq U \). Hence, \( y \in  \left( Y \cap B_{y}\right) \subseteq \left( Y \cap U \right) \). By \cref{thm:open-cover-collection-basis-characterization}, \( \mathscr{B}_{Y} \) qualifies as a basis for the subspace topology on \( Y \).
+\end{proof}
+
+\begin{lemma}\label{lem:closed-subspace-intersection-characterization}
+    Let \( Y \) be a subspace of \( X \). A set \( A \) is closed in \( Y \) if and only if it is the intersection of \( Y \) with a closed set of \( X \).
+\end{lemma}
+\begin{proof}
+    \( \left( \Rightarrow \right) \) Suppose that \( A \) is closed in \( \mathscr{T}_{Y} \). Then \( Y-A \) is open in \( \mathscr{T}_{Y} \). Therefore \[ Y-A= Y \cap U \] for some open set \( U \) of \( \mathscr{T}_{X} \). Since \( U \) is open, \( U = X-C \) for some closed set \( C \). This gives us
+    \[ Y-A= Y \cap \left( X-C \right) \]
+    so 
+    \begin{align*}
+        Y-A &= Y \cap \left( X-C \right) \\
+        Y-A &= \left(  Y \cap X \right) - \left( Y \cap C \right) \\
+        Y- A &= Y - \left( Y \cap C \right) \tag*{Since $Y \subset X$.}\\
+        A &= Y \cap C
+    \end{align*}
+    So \( A \) is the intersection of \( Y \) with a closed set \( C \) of \( X \). \\ 
+    \( \left( \Leftarrow \right) \) Now suppose that \( A \) is the intersection of \( Y \) with some closed set \( C \) of \( X \). Then we just reverse the argument from the forward direction. 
+    \begin{align*}
+        A &= Y \cap C \\
+        Y- A &= Y - \left( Y \cap C \right) \\
+        Y-A &= \left(  Y \cap X \right) - \left( Y \cap C \right) \tag*{Since $Y \subset X$.} \\
+        Y-A &= Y \cap \left( X-C \right)
+    \end{align*}
+    The right hand side of the last expression is the intersection of \( Y \) with an open set of \( X \). So \( Y-A \) is open in \( \mathscr{T}_{Y} \) so \( A \) is closed in the subspace topology on \( Y \).
+\end{proof}
+
+\begin{corollary}
+    Suppose that \( Y \) carries the subspace topology inherited from \( X \) and that \( Y \) is closed in \( X \). A subset \( A \) of \( Y \) is closed in \( Y \) if and only if it is closed in \( X \). 
+\end{corollary}
+\begin{proof}
+    Write \( A = A \cap Y \) and apply \cref{lem:closed-subspace-intersection-characterization}.
+\end{proof}

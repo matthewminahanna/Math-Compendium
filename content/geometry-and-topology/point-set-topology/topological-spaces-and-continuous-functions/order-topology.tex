@@ -1,0 +1,41 @@
+\begin{dfn}\label{def:basis-for-order-topology}
+    Let \( X \) be an \hyperref[def:order-on-a-set]{ordered set}. A basis for the \vocab{order topology} on \( X \) consists of all open intervals; that is, 
+    \[ \mathscr{B}_{\mathrm{order},X} = \left\{ \left( a,b \right)\ \middle| \ a<b \right\} ,\]
+    where \( a,b \in X \). \\ 
+    If \( X \) has a minimal element, say \( m \), we also include elements of the form:
+    \[ [m,a) = \left\{ x \in X \ \middle| \ m \le x <a \right\} .\] 
+    Similarly, if \( X \) has a maximal element, say \( M \), we also include elements of the form: 
+    \[ (a,M] = \left\{ x \in X \ \middle| \ a< x \le M\right\}   \]
+  \textbf{Note: } Some textbooks include all the rays in the basis; that is, elements of the form 
+  \[ \left( - \infty, a \right) = \left\{ x \in X \ \middle| \ x < a \right\} \]  
+  and 
+  \[ \left( a, \infty \right) = \left\{ x \in X \ \middle| \ x > a \right\} \]
+  are include in the basis. However, this is not necessary since if we show that \( \mathscr{B}_{\mathrm{order},X} \) is indeed a basis for a topology, then we can leverage \textbf{closure under arbitrary unions} to generate the rays: 
+  \[ \left( - \infty, a \right) = \bigcup_{x < a} \left( x,a \right) \]
+  and 
+  \[ \left( a, \infty \right) = \bigcup_{x > a} \left( a,x \right) . \]
+\end{dfn}
+
+\begin{lemma}
+    \( \mathscr{B}_{\mathrm{order}, X} \), as described in \cref{def:basis-for-order-topology} satisfies the conditions laid in \cref{def: basis for a topology}.
+\end{lemma}
+\begin{proof}
+    The first condition is easy. If \( x \) is maximal or minimal, then we can just pick elements of the form \( (a,x] \) or \( [x,a) \) respectively. Otherwise, if \( x \) is neither maximal nor minimal, then there are elements \( a,b \in X \) for which \( a< x <b\). Then we just pick \( (a,b) \). So any \( x \in X\) is contained in some basis element of \( \mathscr{B}_{\mathrm{order}, X} \). \\ 
+    For the second condition, we will just work through all the cases:
+    \begin{enumerate}[label=\textbf{\roman*)}]
+      \item If \( X \) has a minimal element, \( m \), and we have two basis elements \( B_{1} = \left[ m, a \right) \) and \( B_{2} = \left[ m,b \right) \), then we just pick \( B_{3} = \left[ m, \min \left\{ a,b \right\} \right) \) and it is obvious that \( B_{3} = B_{1} \cap B_{2} \). Since if \( x \) satisfies \( m \le x < \min \left\{ a,b \right\} \), then clearly \( m \le x <a \) and \( m \le x <b \). Conversly if  \( m \le x <a \) and \( m \le x <b \), then \( m \le x < \min \left\{ a,b \right\} \). 
+      \item Similarly, if \( X \) has a maximal element, \( M \), and we have two basis elements, \( B_{1} = \left( a,M \right] \) and  \( B_{2} = \left( b,M \right] \), then we just pick \( B_{3} = \left( \max \left\{ a,b \right\},M \right] \) and again, it is obvious that  \( B_{3} = B_{1} \cap B_{2} \). The heuristic argument for this is the same as above. 
+      \item If \( X \) has a minimal element, \( m \), and we have two basis elements \( B_{1} = \left[ m, a \right) \) and \( B_{2} = \left( b,c \right) \), we simply pick \( B_{3} = \left( b, \min \left\{ a,c \right\} \right) \). It is clear that \( B_{3} = B_{1} \cap B_{2} \). If \( x \) satisfies, \( m \le x <a \) and \( b < x <c \), then \( b < x <  \min{a,c}\) since \( m \) is minimal. Similarly, if \( b < x <  \min{a,c}\), then \( m \le x <a \) and \( b < x <c \).
+      \item Similarly, if \( X \) has a maximal element, and we have two basis elements \( B_{1} = \left( a, M \right] \) and \( B_{2} = \left( b,c \right) \), we simply pick \( B_{3} = \left( \max \left\{ a,b \right\} ,c\right) \)  and again, it is obvious that  \( B_{3} = B_{1} \cap B_{2} \). The heuristic argument for this is the same as above. 
+      \item Finally if \( B_{1} = \left( a,b \right) \) and \( B_{2} = \left( c,d \right) \), we pick \( B_{3} = \left( \max \left\{ a,c \right\}, \min \left\{ b,d \right\} \right) \). It is obvious that \( B_{3} = B_{1}  \cap B_{2} \). If \( a < x< b \) and \( c < x < d \), then \( \max \left\{ {a,c} \right\} < x < \min \left\{ b,d \right\} \). Conversely, if  \( \max \left\{ {a,c} \right\} < x < \min \left\{ b,d \right\} \), then \( a < x< b \) and \( c < x < d \).
+    \end{enumerate}
+    So \( \mathscr{B}_{\mathrm{order}, X} \) generates a topology on \( X \) and we call this topology \( \left( X, \mathscr{T}_{\mathrm{order}} \right) \). \Cref{thm:topology-equals-union-of-basis} tells us what this topology looks like.
+\end{proof}
+
+\begin{example}
+  Let \( X \) and \( Y \) be ordered sets. We define the \vocab{dictionary (or lexicographic) order} on \( X \times Y \) by \( \left( x_{1}, y_{1} \right) < \left( x_{2}, y_{2} \right) \) if 
+  \begin{enumerate}[label=\textbf{\roman*)}]
+    \item \( x_{1} < x_{2} \) or
+    \item \( x_{1} = x_{2} \) and \( y_{1} < y_{2} \)
+  \end{enumerate}
+\end{example}

@@ -170,3 +170,28 @@ So finally, we have
  \[ \int_{0 }^{1} \frac{1}{\left( 1+yx \right) \sqrt{1-x^{2}}} \dd{x} = \frac{ \arccos{ \left( y \right) }}{\sqrt{1-y^{2}}} \quad \text{for } y \in \left( -1,1 \right) \]
  as desired. 
 \end{solution}
+
+\begin{exercise}
+    Find 
+    \[ \int \frac{\dd{x}}{1 + \sin{ \left( x \right) }} .\]
+\end{exercise}
+\begin{solution}
+We have 
+\begin{align*}
+    \int \frac{\dd{x}}{1 + \sin{ \left( x \right) }} &= \int \frac{ \frac{2}{1+ u^{2}}}{1 + \frac{2u}{1+u^{2}}} \dd{u} \\
+    &= \int \frac{ \frac{2}{1+u^{2}}}{ \frac{1 + 2u + u^{2}}{1 + u^{2}}} \dd{u} \\
+    &= \int \frac{2}{ \left( 1+u  \right)^{2}} \dd{u} \\
+    &= - \frac{2}{1+u} + C
+\end{align*}
+So  \[ \boxed{\int \frac{\dd{x}}{1 + \sin{ \left( x \right) }}  = - \frac{2}{1 + \tan{ \left( \frac{x}{2} \right) }} +C} \]
+It is not at all obvious that the derivative of \( - \frac{2}{1 + \tan{ \left( \frac{x}{2} \right) }} \) equals \( \frac{1}{1 + \sin{ \left( x \right) }} \). So verifying this almost promises us extra trigonometric practice. 
+\begin{align*}
+    \dv{x} \left[  - \frac{2}{1 + \tan{ \left( \frac{x}{2} \right) }}  \right] &= - \frac{  \left[ 1 + \tan{ \left( \frac{x}{2} \right) } \right] \dv{x}\left[ 2 \right] - [2] \dv{x} \left[ 1 + \tan{ \left( \frac{x}{2} \right) } \right]  }{ \left( 1 + \tan{ \left( \frac{x}{2} \right) } \right)^{2}} \\ 
+    &= \frac{ \sec^{2}{ \left( \frac{x}{2} \right) }}{1 + 2 \tan{ \left( \frac{x}{2} \right) } + \tan^{2}{ \left( \frac{x}{2} \right) }} \\
+    &= \frac{\sec^{2}{ \left( \frac{x}{2} \right) }}{\sec^{2}{ \left( \frac{x}{2} \right) } + 2 \tan{ \left( \frac{x}{2} \right) }} \\
+     &= \frac{\sec^{2}{ \left( \frac{x}{2} \right) }}{\sec^{2}{ \left( \frac{x}{2} \right) } + 2 \tan{ \left( \frac{x}{2} \right) }} \cdot \frac{ \cos{^{2} \left( \frac{x}{2} \right) }}{\cos{^{2} \left( \frac{x}{2} \right) }} \tag{Justified since we never multiply by $\frac{0}{0}$} \\
+     &= \frac{1}{1 + 2 \sin{ \left( \frac{x}{2} \right) } \cos{ \left( \frac{x}{2} \right) }} \\
+     &= \frac{1}{1+ \sin{ \left( (x) \right) }}
+\end{align*}
+
+\end{solution}
