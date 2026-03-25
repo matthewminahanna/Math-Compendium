@@ -1,0 +1,282 @@
+\begin{dfn}\label{def:vector-space}
+    A \vocab{vector space} over a field \( \mathbb{K} \) is a set \( \mathbf{V} \) with elements called \vocab{vectors} such that all of the following criteria are held:
+\begin{description}
+  \item[\textbf{Closure under addition:}] 
+  There is a binary operation called \vocab{vector addition} where 
+  \begin{align*}
+    + : \; &\mathbf{V} \times \mathbf{V} \to \mathbf{V} \\
+    &(\vb{u}, \vb{v}) \mapsto \vb{u} + \vb{v},
+  \end{align*}
+    \item[\textbf{Closure under scalar multiplication:}] There is an operation called \vocab{scalar multiplication} where
+    \begin{align*}
+     \cdot : \; & \mathbb{K} \times \mathbf{V} \to \mathbf{V} \\
+    &(\lambda, \vb{v}) \mapsto \lambda \vb{v},
+  \end{align*}
+  \item[\textbf{Commutativity:}] \( \vb{u} + \vb{v} = \vb{v} + \vb{u} \) for all \( \vb{u}, \vb{v} \in \mathbf{V} \). 
+  \item[\textbf{Associativity:}] \( \left( \vb{u} + \vb{v} \right) + \vb{w} = \vb{u} + \left( \vb{v} + \vb{w} \right) \) and \( \alpha \left( \beta \vb{v}   \right)  = \left( \alpha \beta \right) \vb{v} \) for all \( \vb{u}, \vb{v},\vb{w} \in \mathbf{V} \) and \( \alpha, \beta \in \mathbb{K} \).
+  \item[\textbf{Distributive Properties:}] \( \alpha \left( \vb{u} + \vb{v} \right) = \alpha \vb{u} + \alpha \vb{v} \) and \( \left( \alpha + \beta \right)\vb{v} = \alpha \vb{v} + \beta \vb{v} \) for all \( \vb{u}, \vb{v} \in \mathbf{V} \) and \( \alpha, \beta \in \mathbb{K} \).
+  \item[\textbf{Existence of an Additive Identity:}] There exists an element  \( \vb{0} \in \mathbf{V} \) called the \vocab{additive identity} such that for all \( \vb{v} \in \mathbf{V} \), we have \( \vb{v} + \vb{0} = \vb{v} \).
+  \item[\textbf{Existence of an Additive Inverse:}] For every \( \vb{v} \in \mathbf{V} \), there exists a \( \vb{w} \in \mathbf{V} \) called the \vocab{additive inverse} such that \( \vb{v} + \vb{w} = \vb{0} \).
+  \item[\textbf{Multiplicative Identity:}] For \( 1 \in \mathbb{K} \), we have that \( 1 \vb{v} = \vb{v} \) for all \( \vb{v} \in \mathbf{V} \).
+\end{description}
+We will usually pick \( \mathbb{K} \) to be \( \mathbb{R} \) or \( \mathbb{C} \). If \( \mathbb{K} = \mathbb{R} \), we will sometimes call \( \mathbf{V} \) a \vocab{real vector space}. If \( \mathbb{K} = \mathbb{C} \), we will sometimes call \( \mathbf{V} \) a \vocab{complex vector space}. 
+
+\end{dfn}
+
+\begin{example}
+  Let \( \mathbb{K} \) be a field and let \( \mathbb{K}^{n} \) be the set of all \( n \)-tuples whose entries come from \( \mathbb{K} \). We define 
+  \[ \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) = \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \] and 
+  \[ \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) = \left( \lambda a_{1}, \lambda a_{2}, \dots , \lambda a_{n} \right) \] for all \( \lambda , a_{1}, a_{2}, \dots, a_{n},b_{1}, b_{2}, \dots , b_{n} \in \mathbb{K} \). \\ 
+  Closure under addition and scalar multiplication is immediate from inheritance from the field \( \mathbb{K} \). \\ 
+  For \textbf{commutativity} , we have if \( \vb{a} =  \left( a_{1}, a_{2}, \dots, a_{n} \right) \) and \( \vb{b} =  \left( b_{1}, b_{2}, \dots , b_{n} \right) \) then 
+  \begin{align*}
+    \vb{a} + \vb{b} &= \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) \\
+    &= \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \\
+    &=  \left( b_{1} +a_{1}, b_{2} +a_{2}, \dots, b_{n} +a_{n} \right) \tag{Since $\mathbb{K}$ is a field.}\\
+    &= \left( b_{1}, b_{2}, \dots , b_{n} \right) + \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+    &= \vb{b} + \vb{a}
+  \end{align*}
+  For \textbf{associativity}, let \( \vb{c} = \left( c_{1}, c_{2}. \dots, c_{n} \right) \) so 
+  \begin{align*}
+    \left[ \vb{a} + \vb{b} \right] + \vb{c} &= \left[ \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left( b_{1}, b_{2}, \dots , b_{n} \right) \right] + \left( c_{1}, c_{2}. \dots, c_{n} \right) \\
+    &= \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) + \left( c_{1}, c_{2}. \dots, c_{n} \right) \\
+    &= \left( \left[ a_{1} +b_{1} \right]  + c_{1},  \left[ a_{2} +b_{2} \right]  + c_{2}, \dots, \left[ a_{n} +b_{n} \right]  + c_{n} \right) \\
+    &= \left( a_{1} + \left[ b_{1} + c_{1} \right] , a_{2} + \left[ b_{2} + c_{2} \right], \dots, a_{n} + \left[ b_{n} + c_{n} \right]  \right) \tag{Since $\mathbb{K}$ is a field.}  \\
+    &= \left( a_{1}, a_{2}, \dots, a_{n} \right) +\left( b_{1} + c_{1}, b_{2} + c_{2}, \dots, b_{n} + c_{n} \right) \\
+    &=  \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left[  \left( b_{1}, b_{2}, \dots , b_{n} \right) +  \left( c_{1}, c_{2}. \dots, c_{n} \right)\right] \\
+    &=\vb{a} + \left[ \vb{b} + \vb{c} \right]
+  \end{align*}
+  For the second part of associativity, pick \( \lambda, \mu \in \mathbb{K} \). Then 
+  \begin{align*}
+    \lambda \left[ \mu \vb{a} \right] &= \lambda \left( \mu a _{1}, \mu a_{2}, \dots, \mu a_{n} \right) \\
+    &= \left( \lambda \left[ \mu a_{1} \right], \lambda \left[ \mu a_{2} \right], \dots, \lambda \left[ \mu a_{n} \right] \right) \\
+    &= \left( \left[ \lambda \mu \right] a_{1},  \left[ \lambda \mu \right] a_{2}, \dots , \left[ \lambda \mu \right] a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\
+    &= \left[ \lambda \mu \right] \left( a_{1}, a_{2}, \dots, a_{n} \right) \\ 
+    &= \left[ \lambda \mu \right] \vb{a}
+  \end{align*}
+  For the \textbf{distributive properties}, we have 
+  \begin{align*}
+    \lambda \left[ \vb{a} + \vb{b} \right] &= \lambda \left( a_{1} +b_{1}, a_{2} +b_{2}, \dots, a_{n} +b_{n} \right) \\
+    &= \left( \lambda \left[ a_{1} + b_{1} \right],  \lambda \left[ a_{2} + b_{2} \right], \dots  \lambda \left[ a_{n} + b_{n} \right] \right) \\
+    &= \left( \lambda a_{1} + \lambda b_{1}, \lambda a_{2} + \lambda b_{2} , \dots , \lambda a_{n} + \lambda b_{n}  \right) \tag{Since $\mathbb{K}$ is a field.} \\
+    &= \left( \lambda a_{1}, \lambda a_{2}, \dots, \lambda a_{n} \right) +\left( \lambda b_{1}, \lambda b_{2}, \dots, \lambda b_{n} \right) \\
+    &= \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) + \lambda\left( b_{1}, b_{2}, \dots , b_{n} \right) \\
+    &= \lambda \vb{a} + \lambda \vb{b}
+  \end{align*}
+For the second distributive property, we have 
+\begin{align*}
+  \left[ \lambda + \mu \right] \vb{a} &= \left[ \lambda + \mu \right] \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+  &= \left(\left[ \lambda + \mu \right] a_{1},\left[ \lambda + \mu \right]a_{2}, \dots, \left[ \lambda + \mu \right]a_{n} \right) \\
+  &= \left( \lambda a_{1} + \mu a_{1}, \lambda a_{2} + \mu a_{2}, \dots, \lambda a_{n} + \mu a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\ 
+  &= \left( \lambda a_{1}, \lambda a_{2}, \dots, \lambda a_{n} \right) + \left( \mu a_{1}, \mu a_{2}, \dots, \mu a_{n} \right) \\
+  &= \lambda \left( a_{1}, a_{2}, \dots, a_{n} \right) + \mu \left( a_{1}, a_{2}, \dots, a_{n} \right) \\
+  &= \lambda \vb{a} + \mu \vb{a}
+\end{align*}
+For the \textbf{additive identity}, let \( \vb{0} = \left( 0, 0, \dots, 0 \right) \) so for any \( \vb{a} \), we have 
+\begin{align*}
+  \vb{a} + \vb{0} &= \left( a_{1}, a_{2}, \dots, a_{n} \right)  +  \vb{0} = \left( 0, 0, \dots, 0 \right) \\
+  &=  \left( a_{1} + 0, a_{2} + 0, \dots, a_{n} +0 \right) \\
+  &=  \left( a_{1}, a_{2}, \dots, a_{n} \right) \tag{Since $\mathbb{K}$ is a field.} \\ 
+  &= \vb{a}
+\end{align*}
+For the \textbf{additive inverse}, pick for any \( \vb{a} = \left( a_{1}, a_{2}, \dots, a_{n} \right) \) the vector \( - \vb{a} = \left(- a_{1}, -a_{2}, \dots, -a_{n} \right) \). So 
+\begin{align*}
+  \vb{a} + \left[ - \vb{a} \right] &= \left( a_{1}, a_{2}, \dots, a_{n} \right) + \left(- a_{1}, -a_{2}, \dots, -a_{n} \right) \\
+  &= \left( a_{1} - a_{1},  a_{2} - a_{2}, \dots,  a_{n} - a_{n} \right) \\
+  &= \left( 0, 0, \dots, 0 \right) \tag{Since $\mathbb{K}$ is a field.} \\
+  &= \vb{0}
+\end{align*}
+For the \textbf{multiplicative identity} , we have 
+\begin{align*}
+  1 \vb{a} &= 1 \left( a_{1}, a_{2}, \dots, a_{n} \right)  \\
+  &= \left(1 a_{1}, 1a_{2}, \dots, 1a_{n} \right) \\
+  &= \left( a_{1}, a_{2}, \dots, a_{n} \right) \tag{Since $\mathbb{K}$ is a field.}  \\
+  &= \vb{a}
+\end{align*}
+
+\end{example}
+
+\begin{lemma}
+  In a vector space \( \mathbf{V} \), the additive identity is unique.
+\end{lemma}
+\begin{proof}
+    Suppose that \( \vb{0} \) and \( \vb{0}' \) are each additive identities for a vector space \( \mathbf{V} \). Then 
+    \begin{align*}
+      \vb{0} &= \vb{0} + \vb{0}' \tag{Since $\vb{0}'$ is an additive identity. }\\
+      &= \vb{0}' \tag{Since $\vb{0}$ is an additive identity. }
+    \end{align*}
+    
+\end{proof}
+
+\begin{lemma}
+For each \( \vb{v} \in \mathbf{V} \), its inverse is unique.
+\end{lemma}
+\begin{proof}
+    Suppose that \( \vb{w} \) and \( \vb{w}' \) are each inverses to \( \vb{v} \). Then 
+    \begin{align*}
+      \vb{w} &= \vb{w} + \vb{0}\\
+      &= \vb{w} + \left( \vb{v} + \vb{w}' \right) \\
+      &= \left( \vb{w} + \vb{v} \right) + \vb{w}'\\
+      &= \vb{0} + \vb{w}' \\
+      &= \vb{w}'
+    \end{align*}
+    
+\end{proof}
+
+\begin{exercise}
+  Let \( S \) be any non-empty set and let \( \mathbf{V} \) be a vector space. Denote 
+  \[ \mathbf{V}^{S} = \left\{ f: S \to \mathbf{V} \right\} .\] 
+  Show that \( \mathbf{V}^{S} \) can be made into a vector space where 
+  \[ \left( f+g \right)(s)  =f(s) +g(s) \]
+  \[ \left( \lambda f \right)(s) = \lambda \left( f(s) \right) \]
+  for all \( f,g \in \mathbf{V}^{S} \), \( s \in S \), and \( \lambda \in \mathbb{K} \).\\ 
+  \textbf{Note:} The notation of \( \mathbf{V}^{S} \) is a generalization of \( X^{n} \). We can think of \( X^{n} \) as the set of functions from the set contain \( n \) elements to \( X \). For example, for \( \mathbb{R}^{3} \), we have 
+  \[ \begin{pmatrix}
+    1 & 2 & 3\\
+    \downarrow & \downarrow & \downarrow \\
+    f(1) & f(2) & f(3)\\
+  \end{pmatrix} \Rightarrow \left( f(1), f(2), f(3) \right) \Rightarrow (x_{1}, x_{2}, x_{3})\]
+\end{exercise}
+\begin{solution}
+    For \textbf{closure under addition}, we have for any \( f,g \in \mathbf{V}^{S} \) and \( s \in S \), 
+    \begin{align*}
+      \left( f+g \right)(s) &= f(s) + g(s) 
+    \end{align*}
+  Since \( f(s) \) and \( g(s) \) each belong to \( \mathbf{V} \), \( f(s) +g(s) \in \mathbf{V} \) by closure of addition in \( \mathbf{V} \). So \( \left( f+g \right) \) is a function \( S \to \mathbf{V} \) or \( \left( f+g \right) \in \mathbf{V}^{S} \). \\ 
+  For closure under \textbf{scalar multiplication}, pick \( \lambda \in \mathbb{K} \) so 
+  \[ \left( \lambda f\right)(s) = \lambda \left[ f(s) \right] .\]
+  Again since \( f(s) \) belongs to \( \mathbf{V} \), \( \lambda \left[ f(s) \right] \in \mathbf{V}  \) by the existing closure of scalar multiplication of \( \mathbf{V} \), so \( \left( \lambda f \right) \in \mathbf{V}^{S} \). \\ 
+  For \textbf{commutativity}, 
+  \begin{align*}
+    \left( f+g \right)(s) &= f(s) + g(s) \\
+    &= g(s) +f(s) \tag{By the existing commutativity of $\mathbf{V}$}\\
+    &= \left( g+f \right)(s) 
+  \end{align*}
+   For \textbf{associativity}, pick \( h \in \mathbf{V}^{S} \), then 
+   \begin{align*}
+    \left[ \left( f+g \right) +h \right](s) &= \left( f+g \right)(s) + h(s) \\
+    &= \left[ f(s) + g(s) \right] + h(s) \\
+    &= f(s) + \left[ g(s) +h(s) \right] \tag{By the existing associativity of $\mathbf{V}$} \\
+    &= f(s) + \left( g+h \right)(s) \\ 
+    &= \left[ f + \left( g+h \right) \right](s)
+   \end{align*}
+   For the second part of associativity, we have for \( \lambda, \mu \in \mathbb{K} \), 
+   \begin{align*}
+    \left[ \lambda \left( \mu f \right) \right](s) &= \lambda \left[ \left( \mu  f\right)(s) \right] \\
+    &= \lambda \left[ \mu \left( f(s) \right) \right] \\
+    &= \left( \lambda \mu \right) \left[ f(s) \right] \tag{By the existing associativity of $\mathbf{V}$} \\
+    &= \left[ \left( \lambda \mu \right) \left( f \right) \right](s)
+   \end{align*}
+For \textbf{distributivity}, 
+\begin{align*}
+  \left[ \lambda \left( f + g \right) \right](s) &= \lambda \left[ \left( f+g \right)(s) \right] \\
+  &= \lambda \left[ f(s) + g(s) \right] \\
+  &= \lambda \left[ f(s) \right] + \lambda \left[ g(s) \right] \\
+  &= \left( \lambda f \right)(s) + \left( \lambda g \right)(s)
+\end{align*}
+ For the second part of distributivity, 
+ \begin{align*}
+  \left[ \left( \lambda + \mu \right)(f) \right] &= \left( \lambda + \mu \right) \left[ f(s) \right]\\
+  &= \lambda \left[ f(s) \right] + \mu \left[ f(s) \right] \\
+  &= \left( \lambda f \right)(s) + \left( \mu f \right)(s)
+ \end{align*}
+ For \textbf{additive identity}, define \( Z(s) = \vb{0}_{\mathbf{V}} \) for all \( s \in S \). So 
+ \begin{align*}
+  \left( f+Z \right)(s) &= f(s) + Z(s) \\
+  &= f(s) + \vb{0}_{\mathbf{V}}\\
+  &= f(s)
+ \end{align*}
+ For the \textbf{additive inverse}, for any \( f \in \mathbf{V}^{S} \), define \( -f \in \mathbf{V}^{S} \) such that \( \left( -f \right)(s) = -f(s) \) so 
+ \begin{align*}
+  \left( f + \left( -f \right) \right)(s) &= f(s) + \left( -f \right)(s)\\
+  &= f(s) + (-(f)(s))\\
+  &= \vb{0}_{\mathbf{V}}\\
+  &= Z(s)
+ \end{align*}
+ Finally for the multiplicative identity, 
+ \begin{align*}
+  \left( 1 f \right)(s) &= 1 \left[ f(s) \right] \\
+  &= f(s)
+ \end{align*}
+ So \( \mathbf{V}^{S} \) is a vector space.
+\end{solution}
+
+
+
+\begin{exercise}
+  Suppose that \( \mathbf{V} \) is a real vector space. We define the \vocab{complexification} of \( \mathbf{V} \), denoted as \( \mathbf{V}_{\mathbb{C}} \), as \( \mathbf{V} \times  \mathbf{V} \) where we write \( \left( \vb{v}, \vb{w} \right) \) as \( \vb{v} + i \vb{w} \). We define addition on \( \mathbf{V}_{\mathbb{C}} \) as 
+  \[ \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) = \left( \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + \vb{w}_{2} \right) \]
+  and scalar multiplication by 
+  \[ \left( \alpha + i \beta \right) \left( \vb{v} + i \vb{w} \right) = \left( \alpha \vb{v} - \beta \vb{w} \right) + i \left( \beta \vb{v} + \alpha \vb{w} \right) \]
+  for \( \alpha, \beta \in \mathbb{R} \). \\
+  Show that \( \mathbf{V}_{\mathbb{C}}\) is a complex space. 
+\end{exercise}
+\begin{solution} 
+  For \textbf{closure under addition}, if we are given \(  \left( \vb{v}_{1} + i \vb{v}_{2} \right), \left( \vb{w}_{1} + i \vb{w}_{2} \right)  \in \mathbf{V}_{\mathbb{C}}\), we have 
+  \begin{align*}
+     \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) &=  \left( \vb{v}_{1} + \vb{w}_{1} \right) +i\left( \vb{v}_{2} + \vb{w}_{2} \right) 
+  \end{align*}
+  Since \( \vb{v}_{1} + \vb{w}_{1}\) and \( \vb{v}_{2} + \vb{w}_{2}\) both belong to \( \mathbf{V} \) by existing closure, it follows that \( \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right)\in \mathbf{V}_{\mathbb{C}} \). \\
+  For \textbf{closure under scalar multiplication}, we have for any \( \alpha +i \beta \in \mathbb{C} \) and \( \vb{v} + i \vb{w} \), 
+  \begin{align*}
+    \left( \alpha + i \beta \right) \left( \vb{v} + i \vb{w} \right) &= \left( \alpha \vb{v} - \beta \vb{w} \right) + i \left( \beta \vb{v} + \alpha \vb{w} \right)
+  \end{align*}
+  Since \( a \vb{v} - \beta \vb{w} \) and \( \beta + \alpha \vb{w} \) both belong to \( \mathbf{V} \), again by existing closure, we have \(  \left( \alpha + i \beta \right) \left( \vb{v} + i \vb{w} \right) \in \mathbf{V}_{\mathbb{C}} \). \\ 
+  For \textbf{commutativity},  
+  \begin{align*}
+     \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) &= \left( \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + \vb{w}_{2} \right) \\
+     &= \left( \vb{w}_{1} + \vb{v}_{1} \right) + i \left( \vb{w}_{2} + \vb{v}_{2} \right) \tag{From the existing vector space commutativity of $\mathbf{V}$.} \\ 
+     &=  \left( \vb{w}_{1} + i \vb{w}_{2} \right) +  \left( \vb{v}_{1} + i \vb{v}_{2} \right)
+  \end{align*}
+  For \textbf{associativity}, pick \( \vb{u} = \vb{u}_{1} + i \vb{u}_{2} \),
+  \begin{align*}
+   \hspace{-2em} \left[ \left(  \vb{u}_{1} + i \vb{u}_{2} \right)  +  \left( \vb{v}_{1} + i \vb{v}_{2} \right) \right] +  \left( \vb{w}_{1} + i \vb{w}_{2} \right) &= \left[ \left( \vb{u}_{1} +\vb{v}_{1} \right) + i \left( \vb{u}_{2} +\vb{v}_{2} \right) \right] + \left( \vb{w}_{1} + i \vb{w}_{2} \right) \\
+    &= \left( \left[ \vb{u}_{1} +\vb{v}_{1} \right] + \vb{w}_{1}\right) + i\left(  \left[ \vb{u}_{2} +\vb{v}_{2}  \right] + \vb{w}_{2}\right) \\
+    &= \left( \vb{u}_{1} + \left[ \vb{v}_{1} + \vb{w}_{1} \right] \right) + i \left( \vb{u}_{2} + \left[ \vb{v}_{2} + \vb{w}_{2} \right] \right) \tag{\small From the existing vector space associativity of $\mathbf{V}$.} \\
+    &= \left( \vb{u}_{1} + i \vb{v}_{2} \right) + \left[ \left( \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + \vb{w}_{2} \right)  \right]\\
+    &= \left( \vb{u}_{1} + i \vb{v}_{2} \right) + \left[  \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) \right]
+  \end{align*}
+  For the second part of associativity, pick \( \alpha_{1} + i \beta_{1}, \alpha_{2} + i \beta_{2} \in \mathbb{C} \), we have 
+  \begin{align*}
+    \left(  \alpha_{1} + i \beta_{1} \right) \left[ \left( \alpha_{2} + i \beta_{2}  \right)\left( \vb{v}+ i\vb{w} \right) \right] &=  \left(  \alpha_{1} + i \beta_{1} \right)  \left[  \left( \alpha_{2}\vb{v} - \beta_{2} \vb{w} \right) + i \left( \beta_{2}\vb{v} + \alpha_{2} \vb{w} \right)\right] \\
+    &= \left[ \left( \alpha_{1}\alpha_{2} \vb{v} - \alpha_{1} \beta_{2} \vb{w} \right) - \left( \beta_{1} \beta_{2} \vb{v} + \beta_{1} \alpha_{2} \vb{w} \right) \right] + i \left[ \left( \beta_{1} \alpha_{2} \vb{v} - \beta_{1} \beta_{2} \vb{w} \right)  + \left( \alpha_{1} \beta_{2} \vb{v}  + \alpha_{1} \alpha_{2} \vb{w} \right)\right]
+    \\
+    &= \left[ \left( \alpha_{1} \alpha_{2} -\beta_{1} \beta_{2} \right) \vb{v} - \left( \beta_{1} \alpha_{2} + \alpha_{1} \beta_{2} \right)  \vb{w}\right] + \left[ \left( \beta_{1}\alpha_{2} + \alpha_{1} \beta_{2}\right) \vb{v} + \left( \alpha_{1} \alpha_{2}-\beta_{1}\beta_{2} \right)  \vb{w}\right] \\
+    &= \left[ \left(  \alpha_{1} \alpha_{2}-\beta_{1}\beta_{2} \right) + i \left(  \beta_{1}\alpha_{2} + \alpha_{1} \beta_{2}  \right) \right] \left( \vb{v}+ i \vb{w} \right) \\
+    &= \left[ \left( \alpha_{1} + i \beta_{1} \right) \left( \alpha_{2} + i \beta_{2}  \right) \right] \left(  \vb{v}+ i \vb{w} \right)
+  \end{align*}
+  For \textbf{distributivity}, we have 
+  \begin{align*}
+    \left( \alpha + i \beta \right) \left[ \left( \vb{v}_{1} + i \vb{v}_{2} \right) + \left( \vb{w}_{1} + i \vb{w}_{2} \right) \right] &=   \left( \alpha + i \beta \right)  \left[ \left( \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + i\vb{w}_{2} \right) \right] \\ 
+    &= \left( \alpha + i \beta \right) \left[\left(  \vb{v}_{1} + \vb{w}_{1} \right) + i \left( \vb{v}_{2} + \vb{w}_{2} \right) \right] \\
+    &= \left[ \alpha \left( \vb{v}_{1} + \vb{w}_{1} \right) - \beta \left( \vb{v}_{2} + \vb{w}_{2} \right) \right] + i \left[ \alpha \left( \vb{v}_{2} + \vb{w}_{2} \right) + \beta  \left( \vb{v}_{1} + \vb{w}_{1} \right) \right] \\
+    &= \left[ \left( \alpha \vb{v}_{1} - \beta \vb{v}_{2} \right)+ i \left( \alpha \vb{v}_{2} + \beta \vb{v}_{1} \right)\right] +  \left[ \left( \alpha \vb{w}_{1} - \beta \vb{w}_{2} \right)+ i \left( \alpha \vb{w}_{2} + \beta \vb{w}_{1} \right)\right] \\
+    &= \left( \alpha + i \beta \right) \left( \vb{v}_{1} + i\vb{v}_{2} \right) +  \left( \alpha + i \beta \right) \left( \vb{w}_{1} + i\vb{w}_{2} \right)
+  \end{align*}
+   For the second part of distributivity, 
+   \begin{align*}
+    \left[ \left(  \alpha_{1} + i \beta_{1}  \right) + \left(  \alpha_{2} + i \beta_{2}  \right)\right] \left( \vb{v} + i \vb{w} \right) &= \left[ \left( \alpha_{1} + \alpha_{2}\right) + i \left( \beta_{1} + \beta_{2} \right) \right] \left( \vb{v}+ i \vb{w} \right) \\
+    &= \left[ \left( \alpha_{1} + \alpha_{2} \right) \vb{v} - \left( \beta_{1}+ \beta_{2} \right) \vb{w}\right] + i \left[ \left( \beta_{1} + \beta_{2} \right) \vb{v} + \left( \alpha_{1} + \alpha_{2} \right) \vb{w} \right] \\
+    &=\left[ \left( \alpha_{1} \vb{v} - \beta_{1} \vb{w} \right) + i \left( \beta_{1} \vb{v} + \alpha_{1} \vb{w} \right) \right] +\left[ \left( \alpha_{2} \vb{v} - \beta_{2} \vb{w} \right) + i \left( \beta_{2} \vb{v} + \alpha_{1} \vb{w} \right) \right] \\
+    &=\left[ \left(  \alpha_{1} + i \beta_{1}  \right)\left( \vb{v} + i \vb{w} \right)  \right] + \left[  \left(  \alpha_{2} + i \beta_{2}  \right) \left( \vb{v} + i \vb{w} \right) \right]
+   \end{align*}
+  For the \textbf{additive identity} , we set \( \vb{0}_{\mathbf{V}_{\mathbb{C}}} = \vb{0}_{\mathbf{V}} + i \vb{0}_{\mathbf{V}} \), then 
+  \begin{align*}
+    \left( \vb{v} + i\vb{w} \right) + \left( \vb{0}_{\mathbf{V}} + i \vb{0}_{\mathbf{V}} \right) & = \left( \vb{v} + \vb{0}_{\mathbf{V}} \right) + i\left( \vb{w} + \vb{0}_{\mathbf{V}} \right) \\
+    &= \vb{v} + i\vb{w}
+  \end{align*}
+  For the \textbf{additive inverse}, for any \( \vb{v}+ i \vb{w} \)  pick \( -\vb{v} + i \left( -\vb{w} \right) \) 
+  \begin{align*}
+    \left( \vb{v}+ i \vb{w} \right) + \left( -\vb{v} + i \left( -\vb{w} \right) \right) &= \left( \vb{v} + \left( -\vb{v} \right) \right) + i \left( \vb{w} + \left( -\vb{w} \right) \right) \\
+    &= \vb{0}_{\mathbf{V}} + i \vb{0}_{\mathbf{V}}
+  \end{align*}
+  For the \textbf{multiplicative identity}, pick \( 1 + 0i \)  so 
+  \begin{align*}
+    \left( 1 + 0i \right) \left( \vb{v} + i\vb{w} \right) &= \left( 1 \vb{v} - 0 \vb{w} \right) + i \left( 1 \vb{w} + 0\vb{v} \right) \\
+    &= \vb{v} + i \vb{w}
+  \end{align*}
+  
+\end{solution}
+
+
+
